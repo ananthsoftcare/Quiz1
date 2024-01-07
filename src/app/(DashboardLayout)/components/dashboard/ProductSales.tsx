@@ -52,8 +52,8 @@ const ProductSales = () => {
   //     data: [25, 66, 20, 40, 12, 58, 20],
   //   },
   // ];
-  const series: any = [44, 55, 67, 83,90,50]
-  const options: any = {
+  const seriescolumnchart: any = [44, 55, 67, 83, 90, 50]
+  const optionscolumnchart: any = {
     chart: {
       height: 250,
       type: 'radialBar',
@@ -78,16 +78,23 @@ const ProductSales = () => {
         }
       }
     },
-    labels: ['Maths', 'Physics', 'Chemistry', 'Biology','Communication','Social Welfare'],
+    labels: ['Maths', 'Physics', 'Chemistry', 'Biology', 'Communication', 'Social Welfare'],
   }
 
   return (
     <DashboardCard title="Student"
-    middlecontent={
-        <ReactApexChart options={options} series={series} type="radialBar" height={260}/>
+      middlecontent={
+        <Chart
+          options={optionscolumnchart}
+          series={seriescolumnchart}
+          type='radialBar'
+          width={"100%"}
+          height="315px"
+        />
+        // <ReactApexChart options={options} series={series} type="radialBar" height={260}/>
       }
     >
-    </DashboardCard>
+    </DashboardCard >
   );
 };
 

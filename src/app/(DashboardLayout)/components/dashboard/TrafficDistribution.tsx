@@ -1,11 +1,10 @@
 import dynamic from "next/dynamic";
-// const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-import Chart from "react-apexcharts";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from "@mui/material/styles";
 import { Grid, Stack, Typography, Avatar, Box } from "@mui/material";
 import { IconArrowUpLeft } from "@tabler/icons-react";
 import DashboardCard from "@/app/(DashboardLayout)/components/shared/DashboardCard";
-import ReactApexChart from "react-apexcharts";
+
 
 const TrafficDistribution = () => {
   // chart color
@@ -84,8 +83,8 @@ const TrafficDistribution = () => {
   //   }]
   // };
   // const seriescolumnchart: any = [5368, 3500, 4106];
-  const series: any = [92, 97, 95, 88, 99]
-  const options: any = {
+  const seriescolumnchart: any = [92, 97, 95, 88, 99]
+  const optionscolumnchart: any = {
     chart: {
       height: 'auto',
       type: 'polarArea'
@@ -129,9 +128,13 @@ const TrafficDistribution = () => {
   return (
     <DashboardCard title="Student Quiz"
       middlecontent={
-        <div id="chart" style={{ justifyContent: 'flex-start', alignItems: 'flex-start', textAlign: 'start' ,width:320}}>
-          <Chart options={options} series={series} type="polarArea" />
-        </div>
+        <Chart
+          options={optionscolumnchart}
+          series={seriescolumnchart}
+          type='polarArea'
+          width={"100%"}
+          height="325px"
+        />
       }>
     </DashboardCard >
   );

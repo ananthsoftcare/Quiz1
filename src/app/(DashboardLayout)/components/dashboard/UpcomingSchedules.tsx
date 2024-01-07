@@ -111,7 +111,7 @@ const UpcomingSchedules = () => {
   return (
     <DashboardCard title="Remainders"
       middlecontent={<Box sx={{
-        overflow: "auto", maxHeight: '240px', scrollbarwidth: 'thin'}}>
+        overflow: "auto", maxHeight: '295px', scrollbarwidth: 'thin'}}>
         <Grid >
           {products.length > 0 ? (
             <Table size="small" aria-label="purchases" >

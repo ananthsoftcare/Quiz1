@@ -17,7 +17,7 @@ export const Upgrade = () => {
           target="_blank"
           disableElevation
           component={Link}
-          href="https://www.wrappixel.com/templates/spike-nextjs-admin-template/"
+        
           variant="contained"
           aria-label="logout"
           size="large" sx={{width: "100%"}}

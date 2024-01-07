@@ -19,12 +19,12 @@ const Dashboard = () => {
       <Box>
         <Grid container spacing={3}>
           <Grid item xs={12} lg={6}>
-            <DashboardBooks/>
+            <DashboardBooks />
           </Grid>
           <Grid item xs={12} lg={6}>
             <ProfitExpenses />
           </Grid>
-       
+
           {/* <Grid item xs={12}>
             <DashboardBooks />
           </Grid> */}
@@ -35,6 +35,7 @@ const Dashboard = () => {
             <Grid container spacing={3}>
               <Grid item xs={12} lg={4}>
                 <TrafficDistribution />
+                {/* <RadialBarChart /> */}
               </Grid>
               <Grid item xs={12} lg={4}>
                 <ProductSales />
