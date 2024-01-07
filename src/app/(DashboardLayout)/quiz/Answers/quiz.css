@@ -1,0 +1,37 @@
+.radio-custom {
+    appearance: none;
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    background: url("../images/radioicon.png");
+    background-repeat: no-repeat;
+}
+
+
+.radio-custom:checked {
+    display: inline-block;
+    vertical-align: middle;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: url('../images/radiohover.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+
+.radio-custom :hover {
+    appearance: none;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    cursor: pointer;
+    background: url('../images/radiohover.png')
+}
