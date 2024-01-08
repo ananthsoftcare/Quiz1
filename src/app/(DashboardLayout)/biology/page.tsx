@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
 import './styles.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { IconQuestionMark } from '@tabler/icons-react';
 // import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
 
@@ -22,7 +22,21 @@ import {
 } from "@mui/material";
 import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
 
+import { styled } from '@mui/material/styles';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import { useRouter } from 'next/navigation';
 
+
+const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => (
+	<Tooltip {...props} arrow classes={{ popper: className }} />
+  ))(({ theme }) => ({
+	[`& .${tooltipClasses.arrow}`]: {
+	  color: theme.palette.common.black,
+	},
+	[`& .${tooltipClasses.tooltip}`]: {
+	  backgroundColor: theme.palette.common.black,
+	}
+  }));
 
 
 
@@ -32,20 +46,22 @@ export default function Content() {
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+const router = useRouter();
+	type floating = {
+		openModal: string;
+	  };
 
-	function openForm() {
-        const openform = window.document.getElementById("#myForm")!
-        if(openform != null){
-            openform.style.display = 'block';
-        }
-    }
+	  const [floatingOpen, setFloatingOpen] = 
+useState<floating>({
+	openModal: ''
+  });
 
-    function closeForm() {
-        const closeform = window.document.getElementById("#myForm")!
-        if(closeform != null){
-            closeform.style.display = 'none';
-        }
-    }
+function openForm (){
+	setFloatingOpen({openModal:'block'})
+}
+function closeForm() {
+	setFloatingOpen({openModal:'none'})
+}
 
 
 	return (
@@ -53,15 +69,23 @@ export default function Content() {
 			{/* <Box height="100%"> */}
 			{/* <button>back</button> */}
 			<PageContainer title="Content" description="this is Content">
-				<b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>
-					{/* <svg  xmlns="http://www.w3.org/2000/svg" width="50" height="60" viewBox="0 0 21 21"><g fill="none" fill-rule="evenodd" stroke="cornflowerblue" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 14.5v-2a3 3 0 0 0-3-3h-8m0 3l-3.001-3l3.001-3"/><path d="m9.5 12.5l-3.001-3l3.001-3"/></g></svg> */}
-
-					Biology</b>
+			
+					<div className="row">
+					<div className="column1">
+						<BootstrapTooltip title="Back">
+						<svg cursor="pointer" onClick={()=>router.push('/')} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
+						</BootstrapTooltip>
+					</div>
+					<div className="column2" style={{ justifyContent: "center", display: "flex",marginRight:"126px" }}>
+						<b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center",  display: "flex" }}>
+						Biology</b>
+					</div>
+				</div>
 				<div className='borderLink'>
 					<div className='main'>
 						<div className='scrollcontent' >
 							<section id="introduction">
-								<h2 style={{ fontSize: "16px" }}>Introduction</h2>
+								<h2 style={{ fontSize: "16px",margin:0 }}>Introduction</h2>
 								<p>
 									Astronomy involves the observation of distant objects beyond Earth: from
 									low-orbit spy satellites to our own Solar System to our Milky Way galaxy
@@ -100,7 +124,7 @@ export default function Content() {
 								</p>
 							</section>
 							<section id="request-response">
-								<h2 style={{ fontSize: "16px" }}>Nitrogen Cycle</h2>
+								<h2 style={{ fontSize: "16px",margin:0 }}>Nitrogen Cycle</h2>
 								<div>
 									New Science Text Books are prepared in such a way that they develop childrens observation
 									power and research enthusiasm. The official documents of national and State Curriculum frame
@@ -170,7 +194,7 @@ export default function Content() {
 								</div>
 							</section>
 							<section id="authentication">
-								<h2 style={{ fontSize: "16px" }}>Mitosis And Meiosis</h2>
+								<h2 style={{ fontSize: "16px",margin:0 }}>Mitosis And Meiosis</h2>
 								<p>
 									1960s: Passwords and encryption
 									In 1961, Corbato created a password program to use on the MIT computer system. By the late 1960s, programmers worked to develop a stronger password solution—one that wasn’t stored in plaintext files. Robert Morris, a cryptographer at Bell Labs, developed a password encryption scheme while working on Unix. It used a key derivation function that calculates a secret value and makes it easy to compute in one direction, but not in the opposite.
@@ -189,7 +213,7 @@ export default function Content() {
 								</p>
 							</section>
 							<section id="endpoints">
-								<h2 style={{ fontSize: "16px" }}>Endpoints <b>(Root)</b></h2>
+								<h2 style={{ fontSize: "16px",margin:0 }}>Endpoints <b>(Root)</b></h2>
 								<section id="endpoints--root">
 									<p>
 										Mathematical modelling is an essential tool for understanding the world. In olden days
@@ -506,7 +530,7 @@ export default function Content() {
 								</section> */}
 							</section>
 							<section id="links">
-								<h2 style={{ fontSize: "16px" }}>Flora And Fauna</h2>
+								<h2 style={{ fontSize: "16px",margin:0 }}>Flora And Fauna</h2>
 								<p>
 									Its founder, Italian architect Paolo
 									Soleri, hopes Arcosanti will inspire a change in the prevailing culture.
@@ -533,7 +557,7 @@ export default function Content() {
 								</p>
 							</section>
 							<section id="expanders">
-								<h2 style={{ fontSize: "16px" }}> Human Digestive System</h2>
+								<h2 style={{ fontSize: "16px",margin:0 }}> Human Digestive System</h2>
 								<p>
 									In view of the COVID-19 pandemic, it was felt imperative to reduce content load on students. The National Education Policy 2020 also emphasises reducing the content load and providing opportunities for experiential learning with creative mindset. In this background, the NCERT had undertaken the exercise to rationalise the textbooks across all classes and all subjects. Learning Outcomes already developed by the NCERT across classes had been taken into consideration in this exercise. Contents of the textbooks had been rationalised in view of the following:
 
@@ -546,7 +570,7 @@ export default function Content() {
 								</p>
 							</section>
 							<section id="filters">
-								<h2 style={{ fontSize: "16px" }}>Human Heart</h2>
+								<h2 style={{ fontSize: "16px",margin:0 }}>Human Heart</h2>
 								<p>
 									Mind takes form in the city;
 									and in turn, urban forms condition mind. – Lewis Mumford
@@ -606,7 +630,7 @@ export default function Content() {
 								<li><a href="#authentication">Evolution</a></li>
 								<li><a href="#authentication">Ecology</a></li>
 								<li><a href="#authentication">Refrences</a></li> */}
-								<li><a href="#endpoints">Endpoints</a>
+								<li><a href="#endpoints" style={{color:"blue"}}>Endpoints</a>
 									<ul>
 										<li className=""><a href="#endpoints--root">Root</a></li>
 										<li className=""><a href="#endpoints--cities-overview">Cities Overview</a></li>
@@ -659,7 +683,7 @@ export default function Content() {
       </button> */}
 				<svg className="open-button" xmlns="http://www.w3.org/2000/svg" onClick={() => openForm()} width="100" height="50" viewBox="0 0 20 20"><path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" /></svg>
 
-				<div className="chat-popup form-container" id="#myForm">
+				<div className="chat-popup form-container" style={{display:floatingOpen.openModal}}>
 					{/* <form action="/action_page.php" className="form-container"> */}
 					<h6 style={{ margin: "0px", padding: "3px 3px", backgroundColor: "#EFE8E4", fontSize: "1rem" }}>Please enter your question and submit
 

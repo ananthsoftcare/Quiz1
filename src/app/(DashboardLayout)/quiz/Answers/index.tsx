@@ -1,8 +1,10 @@
-import { Button, FormControl } from '@mui/material'
+import { Autocomplete, Button, FormControl, Grid, MenuItem, TextField } from '@mui/material'
 import { FC, useState } from 'react'
 import { IAnswersComponentProps } from '../../types'
 import { Icon24Hours } from '@tabler/icons-react'
 import '../Answers/quiz.css'
+import chemistry from '../Question/chemistry.jpg';
+import chemistry1 from '../images/chemistry1.jpeg'
 
 const containerStyle = {
   display: 'flex',
@@ -24,29 +26,77 @@ const Answers: FC<IAnswersComponentProps> = ({
     }
   }
 
+  const currencies = [
+    {
+      label: 'I was too quick',
+    },
+    {
+      label: 'I thought i know',
+    },
+    {
+      label: 'I was almost right',
+    },
+    {
+      label: 'The system validation is wrong',
+    },
+    {
+      label: 'I do not know',
+    },
+  ];
+
   if (hasAnswered) {
     return (
       <>
-        {answers.map((a,i) => (
-          <FormControl key={i} margin="normal" style={{ width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
-            <Button
-              sx={{ display: 'block',  textAlign: 'left', width: "70%" }}
-              // fullWidth
-              variant={
-                selectedAnswer === a
-                  ? 'contained'
-                  : a === correctAnswer
+        {answers.map((a, i) => {
+          return (
+            < FormControl key={i} margin="normal" style={{ width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center', backgroundImage: `url(${chemistry})` }}>
+              <Button
+                sx={{ display: 'block', textAlign: 'left', width: "70%" }}
+                fullWidth
+                variant={
+                  selectedAnswer === a
                     ? 'contained'
-                    : 'outlined'
-              }
-              color={a === correctAnswer ? 'success' : 'error'}
-              disabled={a !== correctAnswer && a !== selectedAnswer}
-              key={a}
-            >
-              <input type="radio" className="radio-custom" /> {a}
-            </Button>
-          </FormControl>
-        ))}
+                    : a === correctAnswer
+                      ? 'contained'
+                      : 'outlined'
+                }
+                style={{ color: a === correctAnswer ? '#274E13' : '#CC0000', backgroundColor: a === correctAnswer ? '#fff' : '#fff', border: a === correctAnswer ? '1px solid #274E13' : '1px solid #CC0000', fontWeight: a === correctAnswer ? 'bold' : '' }}
+                // color={a === correctAnswer ? 'success' : 'error'}
+                disabled={a !== correctAnswer && a !== selectedAnswer}
+                key={a}
+              >
+                {(a === selectedAnswer && a !== correctAnswer) ? (
+                  <Grid container item xs={12} display={'flex'}>
+                    <Grid item xs={8}>
+                      <input type="radio" className="radio-custom" /> {a}
+                    </Grid>
+                    <Grid item xs={4}>
+                      {(a === selectedAnswer && a !== correctAnswer) ?
+                        <Autocomplete
+                          disablePortal
+                          size='small'
+                          id="combo-box-demo"
+                          options={currencies}
+                          sx={{ width: 230, display: 'flex', color: '#fff', backgroundColor: '#fff', border: '1px solid #fff' }}
+                          renderInput={(params) => <TextField  {...params}
+                            size='small'
+                            label="Choose why you went wrong"
+                            variant='outlined'
+                          />}
+                        />
+                        : ""}
+                    </Grid>
+                  </Grid>
+                ) :
+                  <>
+                    <input type="radio" className="radio-custom" /> {a}
+                  </>
+                }
+              </Button>
+            </FormControl >
+          )
+        })
+        }
       </>
     )
   }
@@ -54,7 +104,7 @@ const Answers: FC<IAnswersComponentProps> = ({
   // if he has not answer
   return (
     <>
-      {answers.map((a,i) => (
+      {answers.map((a, i) => (
         <FormControl key={i} margin="normal" style={{ width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
           <Button fullWidth
             sx={{ display: 'block', textAlign: 'left', width: "70%" }}

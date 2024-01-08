@@ -9,6 +9,7 @@ import type { IQuestionComponentProps } from '../../types'
 import Answers from '../Answers'
 import cardquizimage from '../images/quiz.png'
 import { ChangeEvent, MouseEvent } from 'react'
+import '../Answers/quiz.css'
 
 const Question: FC<IQuestionComponentProps> = ({
   question,
@@ -25,7 +26,6 @@ const Question: FC<IQuestionComponentProps> = ({
     selectedAnswer: '',
     hasAnswered: false,
   })
-
 
   const router = useRouter()
   const ALL_ANSWERS_SHUFFLED = useRef(
@@ -80,13 +80,18 @@ const Question: FC<IQuestionComponentProps> = ({
       '/'
     )
   }
+
   return (
     // <Fade timeout={1500} in={true}>
     //   <Container >
     <Card sx={{
-      p: 3, backgroundColor: '#fff', width: '100%', background: 'linear-gradient(0deg, rgba(238,252,237,1) 4%, rgba(233,250,215,1) 100%)'
+      p: 2, backgroundColor: '#fff', width: '100%', height: '100%'
     }}>
-      < Typography
+      <header className='progress'>
+        <progress max={questionsCount + 1} value={number + Number(questionProps.selectedAnswer !== null)} />
+        <p>Question <strong>{number}</strong> / {questionsCount}</p>
+      </header>
+      {/* < Typography
         variant="subtitle2"
         display="block"
         textAlign="center"
@@ -95,14 +100,14 @@ const Question: FC<IQuestionComponentProps> = ({
         style={{ color: '#713593', fontWeight: 'bold', }}
       >
         Question {number}/{questionsCount}
-      </Typography>
+      </Typography> */}
 
       <Typography
         display="block"
         textAlign="center"
         style={{ fontWeight: 'bold' }}
         // fontStyle="italic"
-        mb={4}
+        mb={1}
       >
         {question}
       </Typography>
@@ -127,7 +132,7 @@ const Question: FC<IQuestionComponentProps> = ({
         component="div"
         display="flex"
         justifyContent="center"
-        mt={4}
+        mt={1}
         gap={3}
       >
         <Button

@@ -8,10 +8,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import './styles.css';
+import '../styles.css';
 import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
 import { Card, Typography } from '@mui/material';
-import Link from 'next/link'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -33,9 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-
 export default function page() {
-
     let questions = [
         {
             "Sid": 0,
@@ -271,12 +268,12 @@ export default function page() {
             {/* <Box height="100%"> */}
             {/* <button>back</button> */}
             <PageContainer title="Content" description="this is Content">
-                <b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>Questions</b>
+                <b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>Answers</b>
                 <div className='borderLink'>
                     <div className='main'>
                         <div className='scrollcontent' >
                             <section id="introduction">
-                                <h2 style={{ fontSize: "16px" }}>P2p Queries</h2>
+                                {/* <h2 style={{ fontSize: "16px" }}>Introduction</h2> */}
 
                                 <TableContainer component={Paper}>
                                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -287,35 +284,30 @@ export default function page() {
                                         </TableHead> */}
                                         <TableBody>
 
-                                            {questions.map((question) => {
+                                            {questions.map((ques) => {
                                                 return (
-
-
-                                                    question.questions.map((qus) => {
+                                                    ques.questions.map((qus) => {
                                                         return (
-                                                            <StyledTableRow key={question.Sid} >
-                                                                <StyledTableCell style={{ minWidth: 200, width: 900, padding: 15 }} > {question.subject}
-                                                                    <StyledTableCell ><Link style={{ textDecoration: 'none' }} href="notifications/answers"  > {qus.question} </Link> </StyledTableCell>
-                                                                </StyledTableCell>
-                                                            </StyledTableRow>
+                                                            qus.answers.map((ans) => {
+                                                                return (
+                                                                    <StyledTableRow key={ans.aid} >
+                                                                        <StyledTableCell style={{ minWidth: 200, width: 900, padding: 15 }} > {ans.answer}
+
+
+                                                                            <div>
+                                                                                <StyledTableCell >{ans.author} </StyledTableCell>
+                                                                                <StyledTableCell >{ans.postedDate} </StyledTableCell>
+                                                                            </div>
+                                                                        </StyledTableCell>
+                                                                    </StyledTableRow>
+                                                                )
+                                                            })
                                                         )
                                                     })
 
 
                                                 )
                                             })}
-
-                                            {/* {
-                                                questions.map((question, index) => {
-                                                    return (
-                                                        {
-                                                            questions.map((question, index) => {
-                                                                return (
-                                                                    <StyledTableCell>{question.Sid}</StyledTableCell>
-                                                                )
-                                                            })
-                                                        })
-                                                })} */}
                                         </TableBody>
                                     </Table>
                                 </TableContainer>
@@ -336,6 +328,10 @@ export default function page() {
 
     )
 }
+
+
+
+
 
 
 

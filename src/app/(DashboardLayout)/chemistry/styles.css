@@ -111,9 +111,9 @@ h1 {
 /** page layout **/
 .main {
 	display: grid;
-	grid-template-columns: 4fr 12em;
+	grid-template-columns: 4fr 13em;
 	max-width: 100em;
-	/* width: 90%; */
+	width: 100%;
 	padding: 15px;
 	margin: 0 auto;
 	/* overflow: auto; */
@@ -123,11 +123,32 @@ h1 {
 /** enlarge the sections for this demo, so that we have a long scrollable page **/
 section {
 	/* padding-bottom: 20rem; */
-	padding:  0 0.5rem 0.5rem 0;
+	padding:  0 1.5rem 0.5rem 0.7rem;
 }
 
 
-
+.column1 {
+	float: left;
+	width: "10%";
+	margin: "0px";
+	
+	/* width: 50%; */
+	/* padding: 10px; */
+	/* height: 300px;  */
+  }
+  .column2{
+width:"90%"
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+	content: "";
+	display: table;
+	clear: both;
+	padding: 2px 0 0 0;
+	line-height: 2px;
+	/* height: 5px; */
+  }
 
 
 
@@ -243,6 +264,7 @@ body {
   ::-webkit-scrollbar-thumb:hover {
 	background:#a5cd39; 
   }
+  
   
   
   
