@@ -52,13 +52,7 @@ interface IFormComponentProps extends IHomePageProps {
 }
 
 
-
-const DashboardBooks: FC<IFormComponentProps> = ({
-    categories,
-    difficulties,
-    types,
-    showLoader,
-}) => {
+const DashboardBooks = () => {
     const router = useRouter()
     const [questionNumber, setQuestionNumber] = useState(5)
     const [options, setOptions] = useState({
@@ -215,7 +209,7 @@ const DashboardBooks: FC<IFormComponentProps> = ({
 
                                     </div>
                                 }
-                                title={<span style={{ fontWeight: 'bold',fontSize:14 }}>Maths</span>}
+                                title={<span style={{ fontWeight: 'bold', fontSize: 14 }}>Maths</span>}
                             // subheader={<CardActions className="overlay" style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="success" />Analytics</CardActions>}
                             /><Divider />
 
@@ -232,14 +226,14 @@ const DashboardBooks: FC<IFormComponentProps> = ({
                             }}>
 
                                 <Link href='/maths'>
-                                <Button size="small" variant="text"  sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconNotebook style={{ height: 16 }} /> Content
-                                </Button>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconNotebook style={{ height: 16 }} /> Content
+                                    </Button>
                                 </Link>
 
                             </Grid>
@@ -355,14 +349,14 @@ const DashboardBooks: FC<IFormComponentProps> = ({
                                 borderRight: '1px solid #ddd'
                             }}>
                                 <Link href="/physics">
-                                <Button size="small" variant="text" sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconNotebook style={{ height: 16 }} /> Content
-                                </Button>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconNotebook style={{ height: 16 }} /> Content
+                                    </Button>
                                 </Link>
                             </Grid>
                             <Grid item xs={6} sx={{
@@ -440,15 +434,15 @@ const DashboardBooks: FC<IFormComponentProps> = ({
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                 <Link href='/biology'>
-                                <Button size="small" variant="text" sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconNotebook style={{ height: 16 }} /> Content
-                                </Button>
+                                <Link href='/biology'>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconNotebook style={{ height: 16 }} /> Content
+                                    </Button>
                                 </Link>
 
                             </Grid>
@@ -529,14 +523,14 @@ const DashboardBooks: FC<IFormComponentProps> = ({
                                 borderRight: '1px solid #ddd'
                             }}>
                                 <Link href="/chemistry">
-                                <Button size="small" variant="text" sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconNotebook style={{ height: 16 }} /> Content
-                                </Button>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconNotebook style={{ height: 16 }} /> Content
+                                    </Button>
                                 </Link>
                             </Grid>
                             <Grid item xs={6} sx={{
@@ -615,15 +609,15 @@ const DashboardBooks: FC<IFormComponentProps> = ({
                                 borderRight: '1px solid #ddd'
                             }}>
                                 <Link href="/communication">
-                               
-                                <Button size="small" variant="text" sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconNotebook style={{ height: 16 }} /> Content
-                                </Button>
+
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconNotebook style={{ height: 16 }} /> Content
+                                    </Button>
                                 </Link>
                             </Grid>
                             <Grid item xs={6} sx={{
@@ -711,14 +705,14 @@ const DashboardBooks: FC<IFormComponentProps> = ({
                                 borderRight: '1px solid #ddd'
                             }}>
                                 <Link href="/socialwelfare">
-                                <Button size="small" variant="text" sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconNotebook style={{ height: 16 }} /> Content
-                                </Button>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconNotebook style={{ height: 16 }} /> Content
+                                    </Button>
                                 </Link>
                             </Grid>
                             <Grid item xs={6} sx={{

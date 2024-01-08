@@ -61,14 +61,14 @@ const RadialBarChart = () => {
     ];
 
     return (
-        <DashboardCard
-            title="Student"
-            action={
-                <Fab color="error" size="medium" sx={{ color: '#ffffff' }}>
-                    <IconCurrencyDollar width={24} />
-                </Fab>
-            }
-            footer={
+        // <DashboardCard
+        //     title="Student"
+        //     action={
+        //         <Fab color="error" size="medium" sx={{ color: '#ffffff' }}>
+        //             <IconCurrencyDollar width={24} />
+        //         </Fab>
+        //     }
+        //     footer={
                 <Box className="rounded-bars">
                     <Chart
                         options={optionscolumnchart}
@@ -77,9 +77,9 @@ const RadialBarChart = () => {
                         width={"100%"}
                         height="100px" />
                 </Box>
-            }
-        >
-        </DashboardCard>
+        //     }
+        // >
+        // </DashboardCard>
     );
 };
 

@@ -43,7 +43,7 @@ export interface IQuestionComponentProps {
   question: string
   number: number
   correctAnswer: string
-  falseAnswers: string[]
+  falseAnswers: any
   questionsCount: number
   score: number
   nextQuestion: () => void

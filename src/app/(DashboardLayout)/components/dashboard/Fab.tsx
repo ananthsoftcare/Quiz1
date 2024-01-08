@@ -14,6 +14,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { IconBellQuestion, IconBellRinging, IconMenu } from "@tabler/icons-react";
+import Link from "next/link";
 
 const actions = [
     { label: "About", ques: '2 question raised from physics 2 question raised from physics 2 question raised from physics 2 question raised from physics', bg: '#F3C790' },
@@ -97,7 +98,7 @@ const FAB = () => {
                 </Typography>
                 {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
                 {rotate === true ? (
-                    <>  <span style={{ color: "#fff",fontWeight:'bold' }}>18 Questions raised from the course you entrolled</span>
+                    <>  <span style={{ color: "#fff", fontWeight: 'bold' }}>18 Questions raised from the course you entrolled</span>
                         <ExpandLessIcon style={{ color: "#fff", width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
                     </>
                 ) : <>
@@ -115,16 +116,18 @@ const FAB = () => {
                 }}>
                     {actions.map((product, i) => {
                         return (
-                            <div style={{ padding: 2,paddingLeft:5 }}>
+                            <div key={i} style={{ padding: 2, paddingLeft: 5 }}>
                                 <Box style={{ borderRadius: '4px', padding: 5, backgroundColor: product.bg, }}>
-                                    <Typography sx={{
-                                        ":hover": {
-                                            color: "#107869",
+                                    <Link href={'/notifications'}>
+                                        <Typography sx={{
+                                            ":hover": {
+                                                color: "#107869",
+                                                fontWeight: 'bold',
+                                            }, display: 'inline-flex',
+                                            fontSize: 14,
                                             fontWeight: 'bold',
-                                        }, display: 'inline-flex',
-                                        fontSize: 14,
-                                        fontWeight: 'bold',
-                                    }}>{product.ques}</Typography>
+                                        }}>{product.ques}</Typography>
+                                    </Link>
                                 </Box>
                             </div>
                         )

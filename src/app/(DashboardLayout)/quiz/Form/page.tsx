@@ -27,12 +27,8 @@ interface IFormComponentProps extends IHomePageProps {
   showLoader: () => void
 }
 
-const Form: FC<IFormComponentProps> = ({
-  categories,
-  difficulties,
-  types,
-  showLoader,
-}) => {
+const Form = (
+) => {
   const router = useRouter()
   const [questionNumber, setQuestionNumber] = useState(5)
   const [options, setOptions] = useState({

@@ -27,8 +27,8 @@ const Answers: FC<IAnswersComponentProps> = ({
   if (hasAnswered) {
     return (
       <>
-        {answers.map(a => (
-          <FormControl margin="normal" style={{ width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+        {answers.map((a,i) => (
+          <FormControl key={i} margin="normal" style={{ width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
             <Button
               sx={{ display: 'block',  textAlign: 'left', width: "70%" }}
               // fullWidth
@@ -54,8 +54,8 @@ const Answers: FC<IAnswersComponentProps> = ({
   // if he has not answer
   return (
     <>
-      {answers.map(a => (
-        <FormControl margin="normal" style={{ width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+      {answers.map((a,i) => (
+        <FormControl key={i} margin="normal" style={{ width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
           <Button fullWidth
             sx={{ display: 'block', textAlign: 'left', width: "70%" }}
             variant={selectedAnswer === a ? 'contained' : 'outlined'}

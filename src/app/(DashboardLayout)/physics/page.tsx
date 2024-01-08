@@ -34,17 +34,19 @@ export default function Content() {
 	const handleClose = () => setOpen(false);
 
 
-
 	function openForm() {
-		document.getElementById('#myForm').style.display = 'block';
-	}
+        const openform = window.document.getElementById("#myForm")!
+        if(openform != null){
+            openform.style.display = 'block';
+        }
+    }
 
-	function closeForm() {
-		document.getElementById('#myForm').style.display = 'none';
-	}
-
-
-
+    function closeForm() {
+        const closeform = window.document.getElementById("#myForm")!
+        if(closeform != null){
+            closeform.style.display = 'none';
+        }
+    }
 
 	return (
 		<div className='mainpage' style={{ position: "fixed", width: "80%" }} >

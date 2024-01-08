@@ -44,14 +44,19 @@ export default function Content() {
 	const handleClose = () => setOpen(false);
 
 
-	function openForm() {
-		document.getElementById('myForm').style.display = 'block';
-	  }
-	
-	  function closeForm() {
-		document.getElementById('myForm').style.display = 'none';
-	  }
+function openForm() {
+        const openform = window.document.getElementById("block")!
+        if(openform != null){
+            openform.style.display = 'block';
+        }
+    }
 
+    function closeForm() {
+        const closeform = window.document.getElementById("none")!
+        if(closeform != null){
+            closeform.style.display = 'none';
+        }
+    }
 	return (
 		<>
   <Box height="100%">

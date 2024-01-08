@@ -14,10 +14,11 @@ import { IResultPageProps } from '../types'
 import { useRouter } from 'next/navigation'
 import prize from './prize.png'
 import Image from 'next/image'
-import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 
-const ResultPage: NextPage<IResultPageProps> = ({ result }) => {
+const ResultPage: NextPage= () => {
 
   const router = useRouter()
   const [loading, setLoading] = useState(false)
@@ -111,22 +112,22 @@ const seriescolumnchart: any = [
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ctx => {
-  const { result } = ctx.query
+// export const getServerSideProps: GetServerSideProps = async ctx => {
+//   const { result } = ctx.query
 
-  // if we don't received the params => redirect to home page
-  if (!Boolean(result)) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    }
-  }
+//   // if we don't received the params => redirect to home page
+//   if (!Boolean(result)) {
+//     return {
+//       redirect: {
+//         destination: '/',
+//         permanent: false,
+//       },
+//     }
+//   }
 
-  return {
-    props: { result },
-  }
-}
+//   return {
+//     props: { result },
+//   }
+// }
 
 export default ResultPage

@@ -32,15 +32,20 @@ export default function Content() {
 	const handleClose = () => setOpen(false);
 
 
+
 	function openForm() {
-		document.getElementById('myForm').style.display = 'block';
-	  }
-	
-	  function closeForm() {
-		document.getElementById('myForm').style.display = 'none';
-	  }
+        const openform = window.document.getElementById("#myForm")!
+        if(openform != null){
+            openform.style.display = 'block';
+        }
+    }
 
-
+    function closeForm() {
+        const closeform = window.document.getElementById("#myForm")!
+        if(closeform != null){
+            closeform.style.display = 'none';
+        }
+    }
 	  
 
 	return (
