@@ -5,6 +5,9 @@ import { Icon24Hours } from '@tabler/icons-react'
 import '../Answers/quiz.css'
 import chemistry from '../Question/chemistry.jpg';
 import chemistry1 from '../images/chemistry1.jpeg'
+import radioImageHover from '../images/radiohover.png'
+import radioImage from '../images/radioicon.png'
+import Image from 'next/image'
 
 const containerStyle = {
   display: 'flex',
@@ -60,17 +63,20 @@ const Answers: FC<IAnswersComponentProps> = ({
                       ? 'contained'
                       : 'outlined'
                 }
-                style={{ color: a === correctAnswer ? '#274E13' : '#CC0000', backgroundColor: a === correctAnswer ? '#fff' : '#fff', border: a === correctAnswer ? '1px solid #274E13' : '1px solid #CC0000', fontWeight: a === correctAnswer ? 'bold' : '' }}
-                // color={a === correctAnswer ? 'success' : 'error'}
+                // style={{ color: a === correctAnswer ? '#fff' : '#fff', backgroundColor: a === correctAnswer ? '#fff' : '#fff', border: a === correctAnswer ? '1px solid #274E13' : '1px solid #CC0000', fontWeight: a === correctAnswer ? 'bold' : '' }}
+                color={a === correctAnswer ? 'success' : 'error'}
                 disabled={a !== correctAnswer && a !== selectedAnswer}
                 key={a}
               >
                 {(a === selectedAnswer && a !== correctAnswer) ? (
                   <Grid container item xs={12} display={'flex'}>
-                    <Grid item xs={8}>
-                      <input type="radio" className="radio-custom" /> {a}
+                    <Grid item xs={7}>
+                      {selectedAnswer === a ?
+                        <Image src={radioImageHover} alt="logo" height={12} width={12} /> :
+                        <Image src={radioImage} alt="logo" height={12} width={12} />} &emsp;{a}
+                      {/* <input type="radio" className="radio-custom" /> {a} */}
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={5}>
                       {(a === selectedAnswer && a !== correctAnswer) ?
                         <Autocomplete
                           disablePortal
@@ -89,7 +95,10 @@ const Answers: FC<IAnswersComponentProps> = ({
                   </Grid>
                 ) :
                   <>
-                    <input type="radio" className="radio-custom" /> {a}
+                    {selectedAnswer === a ?
+                      <Image src={radioImageHover} alt="logo" height={12} width={12} /> :
+                      <Image src={radioImage} alt="logo" height={12} width={12} />} &emsp;{a}
+                    {/* <input type="radio" className="radio-custom" /> {a} */}
                   </>
                 }
               </Button>
@@ -112,7 +121,10 @@ const Answers: FC<IAnswersComponentProps> = ({
             onClick={() => handleBtnClick(a)}
             key={a}
           >
-            <input type="radio" id="choiceA" className="radio-custom" name="question1" />{a}
+            {selectedAnswer === a ?
+              <Image src={radioImageHover} alt="logo" height={10} width={10} /> :
+              <Image src={radioImage} alt="logo" height={10} width={10} />} &emsp;{a}
+            {/* <input type="radio" id="choiceA" className="radio-custom" name="question1" /> */}
           </Button>
         </FormControl>
       ))}

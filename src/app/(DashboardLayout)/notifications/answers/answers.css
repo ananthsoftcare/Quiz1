@@ -1,0 +1,62 @@
+.columnans1 {
+    float: left;
+    width: 2%;
+    padding: 5px;
+   /* height: 300px;  Should be removed. Only for demonstration */
+  }
+
+  .columnans2 {
+    float: left;
+    width: 100%;
+	line-height: 35%;
+    padding: 5px;
+    justify-content: end;
+    display: flex;
+   /* height: 300px;  Should be removed. Only for demonstration */
+  }
+  .columnans3 {
+    float: left;
+    width: 98%;
+    padding: 10px 10px 0 10px;
+   /* height: 300px;  Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .rowans:after {
+    content: "";
+    display: table;
+    clear: both;
+    line-height: 10px;
+  }
+  .rowans:nth-child(even) {background-color: rgb(227, 255, 220);}
+
+
+  ::-webkit-scrollbar {
+	width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 2px rgb(161, 247, 2); 
+	border-radius:10px;
+  }
+   
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background:#a5cd39; 
+	border-radius:10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background:#a5cd39; 
+  }
+
+  .scrollcontent {
+    max-height: 540px;
+    width: auto;
+    overflow: auto;
+    padding-bottom: 1%;
+    
+  }

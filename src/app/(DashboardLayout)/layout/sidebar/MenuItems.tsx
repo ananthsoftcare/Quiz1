@@ -32,16 +32,16 @@ const Menuitems = [
   // },
   {
     id: uniqueId(),
-    title: "Student",
+    title: "Questions",
     icon: IconSchool,
-    href: "/utilities/typography",
+    href: "/notifications",
   },
-  {
-    id: uniqueId(),
-    title: "Content",
-    icon: IconTable,
-    href: "/utilities/shadow",
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: "Content",
+  //   icon: IconTable,
+  //   href: "/utilities/shadow",
+  // },
   // {
   //   id: uniqueId(),
   //   title: "Dummy",
@@ -68,18 +68,18 @@ const Menuitems = [
   //   navlabel: true,
   //   subheader: "Extra",
   // },
-  {
-    id: uniqueId(),
-    title: "Class",
-    icon: IconUsersGroup,
-    href: "/icons",
-  },
-  {
-    id: uniqueId(),
-    title: "Account",
-    icon: IconUser,
-    href: "/sample-page",
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: "Class",
+  //   icon: IconUsersGroup,
+  //   href: "/icons",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Account",
+  //   icon: IconUser,
+  //   href: "/sample-page",
+  // },
   // {
   //   // id: uniqueId(),
   //   title: "Content",

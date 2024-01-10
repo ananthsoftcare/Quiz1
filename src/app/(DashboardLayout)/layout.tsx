@@ -6,19 +6,21 @@ import Sidebar from "@/app/(DashboardLayout)/layout/sidebar/Sidebar";
 
 const MainWrapper = styled("div")(() => ({
   display: "flex",
-  minHeight: "100vh",
+  minHeight: "80vh",
   width: "100%",
   padding: "20px",
 }));
 
 const PageWrapper = styled("div")(() => ({
-  display: "flex",
+  display: 'flex',
+ 
   flexGrow: 1,
-
-  paddingBottom: "1px",
+  paddingBottom: '1px',
+  marginBottom: 1,
   flexDirection: "column",
   zIndex: 1,
-  backgroundColor: "transparent",
+
+
 }));
 
 interface Props {
@@ -61,8 +63,8 @@ export default function RootLayout({
           {/* ------------------------------------------- */}
           {/* Page Route */}
           {/* ------------------------------------------- */}
-          <Box sx={{ minHeight: "calc(100vh - 170px)", py: 3  }}>
-            {children}  
+          <Box sx={{ minHeight: "calc(100vh - 170px)", py: 3 }}>
+            {children}
           </Box>
           {/* ------------------------------------------- */}
           {/* End Page */}

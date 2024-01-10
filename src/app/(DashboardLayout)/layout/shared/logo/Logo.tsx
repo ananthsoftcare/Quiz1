@@ -17,7 +17,7 @@ const LinkStyled = styled(Link)(() => ({
 const Logo = () => {
   return (
     // <LinkStyled href="/">
-    <div style={{ margin: 10, marginBottom: 30, textAlign: 'center' }}>
+    <div style={{ margin: 10, marginBottom: 30, marginTop: 15, textAlign: 'center' }}>
       <Image src={studentimage} alt="logo" height={40} width={185} />
     </div>
     /* </LinkStyled> */

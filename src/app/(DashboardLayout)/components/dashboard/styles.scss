@@ -213,13 +213,12 @@
 
 
 .progress {
-  margin-bottom: 4rem;
-  display: grid;
+  /* display: grid; */
   justify-content: space-between;
-  gap: 1.2rem;
   grid-template-columns: auto auto;
-  font-size: 1.8rem;
-  color: var(#1098ad);
+  font-size: 12px;
+  font-weight: 700;
+  color: #713593;
 }
 
 progress {

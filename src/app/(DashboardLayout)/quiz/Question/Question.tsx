@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation';
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import SendRoundedIcon from '@mui/icons-material/SendRounded'
 import { Box, Button, Card, Fade, Typography } from '@mui/material'
@@ -10,6 +10,7 @@ import Answers from '../Answers'
 import cardquizimage from '../images/quiz.png'
 import { ChangeEvent, MouseEvent } from 'react'
 import '../Answers/quiz.css'
+
 
 const Question: FC<IQuestionComponentProps> = ({
   question,
@@ -28,6 +29,13 @@ const Question: FC<IQuestionComponentProps> = ({
   })
 
   const router = useRouter()
+  const loadedRef = useRef(false)
+  useEffect(() => {
+    if (!loadedRef.current) {
+      console.log("run")
+      loadedRef.current = true;
+    }
+  }, []);
   const ALL_ANSWERS_SHUFFLED = useRef(
     [correctAnswer, ...falseAnswers].sort(() => Math.random() - 0.5)
   )
@@ -82,31 +90,17 @@ const Question: FC<IQuestionComponentProps> = ({
   }
 
   return (
-    // <Fade timeout={1500} in={true}>
-    //   <Container >
     <Card sx={{
-      p: 2, backgroundColor: '#fff', width: '100%', height: '100%'
+      p: 2, backgroundColor: '#fff', width: '100%',
     }}>
       <header className='progress'>
         <progress max={questionsCount + 1} value={number + Number(questionProps.selectedAnswer !== null)} />
-        <p>Question <strong>{number}</strong> / {questionsCount}</p>
+        <span>Question {number}/ {questionsCount}</span>
       </header>
-      {/* < Typography
-        variant="subtitle2"
-        display="block"
-        textAlign="center"
-        mt={1}
-        mb={2}
-        style={{ color: '#713593', fontWeight: 'bold', }}
-      >
-        Question {number}/{questionsCount}
-      </Typography> */}
-
       <Typography
         display="block"
         textAlign="center"
         style={{ fontWeight: 'bold' }}
-        // fontStyle="italic"
         mb={1}
       >
         {question}
@@ -114,7 +108,6 @@ const Question: FC<IQuestionComponentProps> = ({
 
       <Box
         sx={{
-          // display: 'flex',
           textAlign: 'center',
           alignItems: 'center',
           justifyContent: 'space-evenly',
@@ -169,8 +162,6 @@ const Question: FC<IQuestionComponentProps> = ({
         >Skip Quiz</Button>
       </Box>
     </Card>
-    //   </Container >
-    // </Fade >
   )
 }
 

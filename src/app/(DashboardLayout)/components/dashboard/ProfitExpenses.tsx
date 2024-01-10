@@ -32,55 +32,34 @@ const ProfitExpenses = () => {
   const optionscolumnchart: any = {
     options: {
       chart: {
+        height: 350,
         type: 'line',
-      },
-      fill: {
-        opacity: 0.1
-      },
-      dropShadow: {
-        enabled: false,
-        top: 0,
-        left: 0,
-        blur: 0,
-        opacity: 0
+        zoom: {
+          enabled: false
+        },
       },
       dataLabels: {
-        dropShadow: false,
-        enabled: true,
-        style: {
-          textShadow: false,
-          textOutline: false
+        enabled: false
+      },
+      stroke: {
+        width: 2,
+      },
+      markers: {
+        size: 0,
+        hover: {
+          sizeOffset: 6
         }
       },
-
-      grid: {
-        strokeDashArray: 0,
-        borderColor: "rgba(0,0,0,0.1)",
-      },
-
-      stroke: {
-        show: true,
-        curve: 'stepline',
-        lineCap: 'butt',
-        colors: undefined,
-        width: 0,
-        dashArray: 0,
-        height: 0,
-      },
       xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "Aug",
+        categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
+          '10 Jan', '11 Jan', '12 Jan'
         ],
       },
-    },
-  };
+      grid: {
+        borderColor: '#f1f1f1',
+      }
+    }
+  }
   const seriescolumnchart: any = [
     {
       name: "Maths",
@@ -243,55 +222,55 @@ const ProfitExpenses = () => {
 
 
 
-return (
-  <Card style={{ paddingRight: 5 }}
+  return (
+    <Card style={{ paddingRight: 5 }}
 
-  // title="Profit & Expenses"
-  // action={
-  //   <>
-  //     <IconButton
-  //       aria-label="more"
-  //       id="long-button"
-  //       aria-controls={open ? "long-menu" : undefined}
-  //       aria-expanded={open ? "true" : undefined}
-  //       aria-haspopup="true"
-  //       onClick={handleClick}
-  //     >
-  //       <MoreVertIcon />
-  //     </IconButton>
-  //     <Menu
-  //       id="long-menu"
-  //       MenuListProps={{
-  //         "aria-labelledby": "long-button",
-  //       }}
-  //       anchorEl={anchorEl}
-  //       open={open}
-  //       onClose={handleClose}
-  //     >
-  //       {options.map((option) => (
-  //         <MenuItem
-  //           key={option}
-  //           selected={option === "Pyxis"}
-  //           onClick={handleClose}
-  //         >
-  //           {option}
-  //         </MenuItem>
-  //       ))}
-  //     </Menu>
-  //   </>
-  // }
-  >
-    {/* <Box className="rounded-bars"> */}
-    <Chart
-      options={optionscolumnchart}
-      series={seriescolumnchart}
-      type='line'
-      width={"100%"}
-      height="315px"
-    />
-    {/* </Box> */}
-  </Card>
-);
+    // title="Profit & Expenses"
+    // action={
+    //   <>
+    //     <IconButton
+    //       aria-label="more"
+    //       id="long-button"
+    //       aria-controls={open ? "long-menu" : undefined}
+    //       aria-expanded={open ? "true" : undefined}
+    //       aria-haspopup="true"
+    //       onClick={handleClick}
+    //     >
+    //       <MoreVertIcon />
+    //     </IconButton>
+    //     <Menu
+    //       id="long-menu"
+    //       MenuListProps={{
+    //         "aria-labelledby": "long-button",
+    //       }}
+    //       anchorEl={anchorEl}
+    //       open={open}
+    //       onClose={handleClose}
+    //     >
+    //       {options.map((option) => (
+    //         <MenuItem
+    //           key={option}
+    //           selected={option === "Pyxis"}
+    //           onClick={handleClose}
+    //         >
+    //           {option}
+    //         </MenuItem>
+    //       ))}
+    //     </Menu>
+    //   </>
+    // }
+    >
+      {/* <Box className="rounded-bars"> */}
+      < Chart
+        options={optionscolumnchart}
+        series={seriescolumnchart}
+        type='line'
+        width={"100%"}
+        height="303px"
+      />
+      {/* </Box> */}
+    </Card >
+  );
 };
 
 export default ProfitExpenses;

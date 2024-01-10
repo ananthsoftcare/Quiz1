@@ -8,9 +8,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import '../styles.css';
+import './answers.css';
 import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
 import { Card, Typography } from '@mui/material';
+import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/router';
+import { usePathname, useSearchParams } from 'next/navigation'
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -32,12 +36,50 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export default function page() {
-    let questions = [
+export default function page({ searchParams }: {
+    searchParams: {
+        // Sid: number,
+        //     subject: string,
+        //     qcount: number,
+        //     answers:Array<{
+        //         aid: number,
+        //         author: string,
+        //         postedDate: string,
+        //         answer: string
+        //     }>
+
+
+        // {
+        //  Sid: number,
+        //  subject: string,
+        //  qcount: any,
+        //  questions:Array<{
+        Qid: number,
+        question: string,
+        acount: number,
+        answers: Array<{
+            aid: string,
+            author: string,
+            postedDate: string,
+            answer: string
+        }>
+        //  }>
+
+
+        // }
+    }
+}) {
+    // const router = useRouter();
+    // const data = router.query;
+    // console.log("data",data)
+    console.log("SearchParams", searchParams)
+
+
+    let questions1 = [
         {
             "Sid": 0,
             "subject": "Physics",
-            "qcount": 2,
+            "qcount": 1,
             "questions": [
                 {
                     "Qid": 1,
@@ -46,9 +88,9 @@ export default function page() {
                     "answers": [
                         {
                             "aid": 0,
-                            "author": "Karan",
+                            "author": "Karan kishoreKumar ",
                             "postedDate": "18-04-2023",
-                            "answer": "Joining of nuclei"
+                            "answer": "Joining of nuclei i just started with React and Next.js and I'm messing around with hooks and i got stuck, i created a vertical menu, i want to display the content below each title, but only one at a time taking in mind these 2 options"
                         },
                         {
                             "aid": 1,
@@ -73,7 +115,7 @@ export default function page() {
                             "aid": 0,
                             "author": "Sanu",
                             "postedDate": "07-08-2023",
-                            "answer": "Isobars"
+                            "answer": "Isobars i just started with React and Next.js and I'm messing around with hooks and i got stuck, i created a vertical menu, i want to display the content below each title, but only one at a time taking in mind these 2 options"
                         },
                         {
                             "aid": 1,
@@ -105,7 +147,7 @@ export default function page() {
                             "aid": 0,
                             "author": "Nina",
                             "postedDate": "13-04-2023",
-                            "answer": "All real numbers"
+                            "answer": "All i just started with React and Next.js and I'm messing around with hooks and i got stuck, i created a vertical menu, i want to display the content below each title, but only one at a time taking in mind these 2 options"
                         },
                         {
                             "aid": 1,
@@ -151,7 +193,7 @@ export default function page() {
         {
             "Sid": 2,
             "subject": "Biology",
-            "qcount": 2,
+            "qcount": 3,
             "questions": [
                 {
                     "Qid": 0,
@@ -160,9 +202,9 @@ export default function page() {
                     "answers": [
                         {
                             "aid": 0,
-                            "author": "Prince",
+                            "author": "Akshara Hassan",
                             "postedDate": "23-04-2023",
-                            "answer": "insects"
+                            "answer": "Insects i just started with React and Next.js and I'm messing around with hooks and i got stuck, i created a vertical menu, i want to display the content below each title, but only one at a time taking in mind these 2 options"
                         },
                         {
                             "aid": 1,
@@ -208,7 +250,7 @@ export default function page() {
         {
             "Sid": 3,
             "subject": "Chemistry",
-            "qcount": 2,
+            "qcount": 4,
             "questions": [
                 {
                     "Qid": 0,
@@ -229,7 +271,7 @@ export default function page() {
                         },
                         {
                             "aid": 2,
-                            "author": "Karan2",
+                            "author": "Karan kishoreKumar2",
                             "postedDate": "19-05-2023",
                             "answer": "No Answer"
                         }
@@ -242,7 +284,64 @@ export default function page() {
                     "answers": [
                         {
                             "aid": 0,
-                            "author": "Karan",
+                            "author": "Karan kishoreKumar",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sid": 3,
+            "subject": "Chemistry",
+            "qcount": 5,
+            "questions": [
+                {
+                    "Qid": 0,
+                    "question": "The Rosenmund reaction can produce which carbonyl compounds?",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Narain",
+                            "postedDate": "23-04-2023",
+                            "answer": "When Faraday first made public his discovery that relative motion between a bar magnet and a wire loop produced a small current in the latter, he was asked"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Suja",
+                            "postedDate": "23-04-2023",
+                            "answer": "Benzaldehyde"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Karan kishoreKumar2",
+                            "postedDate": "19-05-2023",
+                            "answer": "No Answer"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 1,
+                    "question": "Reactions occur between aldehydes and ketones?",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan kishoreKumar",
                             "postedDate": "23-04-2023",
                             "answer": "nucleophilic addition"
                         },
@@ -263,69 +362,106 @@ export default function page() {
             ]
         }
     ]
+    // const hrManagerResponses = discussion.filter(response => response.employeeRoleName === HR_MANAGER);
+
+    // const  matchQuestions = questions1.filter(responsequestions => console.log("responsequestions",responsequestions.qcount === searchParams.qcount) )
+    // console.log("matchQuestions",matchQuestions)
+    const questionMatch = questions1.map(response => response.questions)
+    const match = questionMatch.map(response => response[0].answers)
+    // const questionandAnswer = questionMatch.filter(response1 => console.log("response"))
+    //  response.question === searchParams.question)
+    // console.log("questionMatch",questionMatch)
     return (
-        <div className='mainpage' style={{ position: "fixed", width: "120%" }} >
-            {/* <Box height="100%"> */}
-            {/* <button>back</button> */}
-            <PageContainer title="Content" description="this is Content">
-                <b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>Answers</b>
-                <div className='borderLink'>
-                    <div className='main'>
-                        <div className='scrollcontent' >
-                            <section id="introduction">
-                                {/* <h2 style={{ fontSize: "16px" }}>Introduction</h2> */}
+        <form method="post">
+            <Card  className="scrollcontent" sx={{ p: 1,  mx: 'auto', }}>
+                <b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>Physics</b>
+                <TableContainer>
+                    <Table aria-label="customized table">
+                        <TableBody>
+                            <b>Query</b>
+                            {/* {questions1.map((ques) => {
+                                return (
+                                    ques.questions.map((qus) => {
+                                        return (
+                                            qus.answers.map((ans) => { */}
 
-                                <TableContainer component={Paper}>
-                                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                                        {/* <TableHead>
-                                            <TableRow>
-                                                <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                                            </TableRow>
-                                        </TableHead> */}
-                                        <TableBody>
+                            <div>
+                                <p >{searchParams.question}</p>
+                            </div>
 
-                                            {questions.map((ques) => {
-                                                return (
-                                                    ques.questions.map((qus) => {
-                                                        return (
-                                                            qus.answers.map((ans) => {
-                                                                return (
-                                                                    <StyledTableRow key={ans.aid} >
-                                                                        <StyledTableCell style={{ minWidth: 200, width: 900, padding: 15 }} > {ans.answer}
+                            <b>Answers</b>
+                            <>
+                                {match.map((response,index) => (
+                                    // return(
+                                    console.log("reponse", index),
+
+                              
+<div className="rowans" key={response[1].aid}>
+{/* <p style={{margin:" 2px"}}>
+  <svg style={{display: "inline",padding:"2px"}}  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="skyblue" d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1m-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1"/></svg>
+  <span style={{display: "inline",padding:"2px"}}>{response[0].answer}</span>
+</p> */}
+  <div className="columnans1">
+  <p style={{margin:"5px 0 5px 0"}}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="navy" d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1m-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1"/></svg>
+</p>
+  </div>
+  <div className="columnans3">
+     <span style={{display: "inline"}}>{response[0].answer}</span>
+  </div>
+  <div className="columnans2">
+    {/* <h2>Column 2</h2> */}
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#0085db" stroke-width="2"><path stroke-linejoin="round" d="M4 18a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="7" r="3"/></g></svg>
+    <p style={{margin:"2px",color:"blue",display:"flex",flexDirection:"column",justifyContent:"center"}}>   {response[0].author}</p>&emsp;
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><rect width="18" height="15" x="3" y="6" stroke="navy" rx="2"/><path fill="navy" d="M3 10c0-1.886 0-2.828.586-3.414C4.172 6 5.114 6 7 6h10c1.886 0 2.828 0 3.414.586C21 7.172 21 8.114 21 10z"/><path stroke="navy" stroke-linecap="round" d="M7 3v3m10-3v3"/><rect width="4" height="2" x="7" y="12" fill="navy" rx=".5"/><rect width="4" height="2" x="7" y="16" fill="navy" rx=".5"/><rect width="4" height="2" x="13" y="12" fill="navy" rx=".5"/><rect width="4" height="2" x="13" y="16" fill="navy" rx=".5"/></g></svg>
+    <p style={{margin:"2px",display:"flex",flexDirection:"column",justifyContent:"center"}}>  {response[0].postedDate}</p>
+  </div>
+  {/* <div className="columnans3">
+    <p style={{margin:"2px"}}>{response[0].postedDate}</p>
+  </div> */}
+</div>
+ 
+
+                                    //   <StyledTableRow key={response[0].aid} >
+                                    //                      <StyledTableCell> {response[0].answer}
+                                    //                          <div>
+                                    //                              <StyledTableCell >{response[0].author} </StyledTableCell>
+                                    //                              <StyledTableCell >{response[0].postedDate} </StyledTableCell>
+                                    //                          </div>
+                                    //                      </StyledTableCell>
+                                    //                  </StyledTableRow>
+                                    // <div className='column3'>
+                                    //     <p style={{ margin: "2px" }}> {qus.creater}</p>
+                                    //     {/* <Link href= 'notifications/answers'>Answers</Link> */}
+                                    //     {/* <p>20</p> */}
+                                    // </div>
+                                    // <div className='column4'>
 
 
-                                                                            <div>
-                                                                                <StyledTableCell >{ans.author} </StyledTableCell>
-                                                                                <StyledTableCell >{ans.postedDate} </StyledTableCell>
-                                                                            </div>
-                                                                        </StyledTableCell>
-                                                                    </StyledTableRow>
-                                                                )
-                                                            })
-                                                        )
-                                                    })
-
-
-                                                )
-                                            })}
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
-                            </section>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-
-
-            </PageContainer >
-
-        </div >
-
-
+                                    // </div>
+                                ))}
+                            </>
+                            {/* // <StyledTableRow key={ans.aid} >
+                                                    //     <StyledTableCell> {ans.answer}
+                                                    //         <div>
+                                                    //             <StyledTableCell >{ans.author} </StyledTableCell>
+                                                    //             <StyledTableCell >{ans.postedDate} </StyledTableCell>
+                                                    //         </div>
+                                                    //     </StyledTableCell>
+                                                    // </StyledTableRow> */}
+                            {/* ) */}
+                            {/* })
+                                        )
+                                    })
+                                )
+                            })} */}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Card>
+        </form >
     )
 }
 

@@ -44,7 +44,7 @@ const Sidebar = ({
               left: 20,
               bottom: 20,
               borderRadius: "13px",
-              height: "calc(100% - 40px)",
+              height: "calc(100% - 50px)",
             },
           }}
         >

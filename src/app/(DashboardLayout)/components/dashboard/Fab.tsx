@@ -116,7 +116,7 @@ const FAB = () => {
                 }}>
                     {actions.map((product, i) => {
                         return (
-                            <div key={i} style={{ padding: 2, paddingLeft: 5 }}>
+                            <div key={i} style={{ padding: 5 }}>
                                 <Box style={{ borderRadius: '4px', padding: 5, backgroundColor: product.bg, }}>
                                     <Link href={'/notifications'}>
                                         <Typography sx={{

@@ -35,7 +35,7 @@ const products = [
   },
   {
     id: "3",
-    name: "Christopher Jamil",
+    name: "Christopher",
     post: "Project Manager",
     pname: "MedicalPro WP Theme",
     priority: "Biology Next Quiz : Due Date :",
@@ -71,7 +71,7 @@ const products = [
   },
   {
     id: "7",
-    name: "Christopher Jamil",
+    name: "Christopher",
     post: "Project Manager",
     pname: "MedicalPro WP Theme",
     priority: "Biology Next Quiz : Due Date :",

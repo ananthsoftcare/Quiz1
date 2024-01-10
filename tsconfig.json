@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,9 +24,26 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/content/contentdisplay.tsx", "src/app/(DashboardLayout)/components/contentview/content1/Contentdisplay.js", "src/app/(DashboardLayout)/components/contentview/page.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "pages/content/contentdisplay.tsx",
+    "src/app/(DashboardLayout)/components/contentview/content1/Contentdisplay.js",
+    "src/app/(DashboardLayout)/components/contentview/page.tsx",
+    "next/build/types/**/*.ts",
+    "quiz/build/types/**/*.ts",
+    "quiznext/build/types/**/*.ts",
+    "new/build/types/**/*.ts",
+    "newquiz/build/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

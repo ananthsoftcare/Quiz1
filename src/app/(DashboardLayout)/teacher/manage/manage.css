@@ -1,0 +1,181 @@
+.scrollcontent {
+    max-height: 540px;
+    width: auto;
+    overflow: auto;
+    padding-bottom: 1%;
+  }
+
+  .columnmanage2 {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+   /* height: 300px;  Should be removed. Only for demonstration */
+  }
+  .columnmanage1 {
+    float: left;
+    width: 70%;
+    padding:2px;
+   /*  height: 300px; Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .rowmanage:after {
+    content: "";
+    display: table;
+    clear: both;
+    padding: 10px;
+  }
+
+  select {
+    box-sizing: border-box;
+  
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 30.33%;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+  
+    cursor: default;
+  }
+
+
+
+  select::-ms-expand {
+    display: none;
+  }
+
+
+  select {
+    padding: 5px 10px 5px 8px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='292.4' height='292.4'%3E%3Cpath fill='%23333' d='M287 69.4a17.6 17.6 0 0 0-13-5.4H18.4c-5 0-9.3 1.8-12.9 5.4A17.6 17.6 0 0 0 0 82.2c0 5 1.8 9.3 5.4 12.9l128 127.9c3.6 3.6 7.8 5.4 12.8 5.4s9.2-1.8 12.8-5.4L287 95c3.5-3.5 5.4-7.8 5.4-12.8 0-5-1.9-9.2-5.5-12.8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 9px;
+    color: #333;
+  }
+
+
+  select:hover {
+    border-color: #777;
+  }
+  
+  select:focus {
+    border-color: #999;
+    box-shadow: 0 0 1px 2px #6db4ff;
+    outline: none;
+  }
+  select:disabled,
+select[aria-disabled=true] {
+  cursor: not-allowed;
+  background-color: rgba(211, 211, 211, .75);
+}
+
+select:disabled:hover,
+select[aria-disabled=true]:hover {
+  border-color: #999;
+}
+
+    
+  ::-webkit-scrollbar {
+    width: 5px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px rgb(161, 247, 2); 
+    border-radius:10px;
+    }
+     
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background:#a5cd39; 
+    border-radius:10px;
+    }
+
+     textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 0px 0;
+      border: none;
+      background: #f1f1f1;
+      resize: none;
+      min-height: 200px;
+      }
+
+
+      textarea:focus {
+        background-color: #ddd;
+        outline: none;
+        }
+
+        .input[type=search] {
+          width: 40%;
+          padding: 6px 7px;
+          margin: 8px 0 0 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+    
+
+        .pill {
+          /* background-color: #ddd; */
+          border: none;
+          /* color: black; */
+          padding: 4px 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 16px;
+        }
+        
+        /* .pill:hover {
+          background-color: green;
+        } */
+
+        .managerows:nth-child(even) {background-color: rgb(248, 255, 246);}
+        .managerows:hover{
+          background-color: #3470b0;
+        }
+
+
+        .overflowtext {
+          padding: 1%;
+          /* width: 150px; */
+          overflow: hidden;
+              text-overflow: ellipsis;
+              /* white-space: nowrap;  */
+              -webkit-line-clamp: 1;
+              
+              /* overflow: hidden; */
+          /* white-space: wr; */
+          /* height: 17px; */
+          color: #252525;
+          }
+         .pillbutton{
+          border: none;
+          /* color: black; */
+          padding: 4px 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 16px;
+         }

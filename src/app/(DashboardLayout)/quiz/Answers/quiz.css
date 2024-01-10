@@ -61,3 +61,25 @@ progress {
     background-color: #a5cd39;
     border-radius: 100px;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px rgb(161, 247, 2);
+    border-radius: 10px;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #a5cd39;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #a5cd39;
+}

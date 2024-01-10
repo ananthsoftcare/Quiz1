@@ -4,7 +4,7 @@
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Box } from '@mui/material';
+import { Box, Card } from '@mui/material';
 import './styles.css';
 import React, { useState } from 'react';
 import { IconQuestionMark } from '@tabler/icons-react';
@@ -67,22 +67,23 @@ export default function Content() {
 
 
 	return (
-		<div className='mainpage' style={{ position: "fixed", width: "80%" }} >
-			{/* <Box height="100%"> */}
-			{/* <button>back</button> */}
-			<PageContainer title="Content" description="this is Content">
+		<form method="post" >
+			<Card sx={{ p: 1, width: 'max(100%,500px)', mx: 'auto' }}>
+				{/* <Box height="100%"> */}
+				{/* <button>back</button> */}
+				<PageContainer title="Content" description="this is Content">
 
 
-				<div className="row">
-					<div className="column1" style={{ padding: "7px" }}>
-						<BootstrapTooltip title="Back">
-							<svg cursor="pointer" onClick={() => router.push('/')} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
-						</BootstrapTooltip>
-					</div>
-					<div className="column2" style={{ justifyContent: "center", display: "flex", marginRight: "126px" }}>
-						<b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>
-							Communication</b>
-					</div>
+					<div className="row">
+						<div className="column1" style={{ padding: "7px" }}>
+							<BootstrapTooltip title="Back">
+								<svg cursor="pointer" onClick={() => router.push('/')} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
+							</BootstrapTooltip>
+						</div>
+						<div className="column2" style={{ justifyContent: "center", display: "flex", marginRight: "126px" }}>
+							<b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>
+								Communication</b>
+						</div>
 					</div>
 					<div className='borderLink'>
 						<div className='main'>
@@ -712,9 +713,10 @@ export default function Content() {
 						{/* </form> */}
 					</div>
 
-			</PageContainer>
-			{/* </Box> */}
-		</div>
+				</PageContainer>
+				{/* </Box> */}
+			</Card>
+		</form>
 
 
 	)
