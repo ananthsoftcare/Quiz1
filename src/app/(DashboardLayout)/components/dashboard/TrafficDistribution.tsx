@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from "@mui/material/styles";
-import { Grid, Stack, Typography, Avatar, Box } from "@mui/material";
+import { Grid, Stack, Typography, Avatar, Box, Card } from "@mui/material";
 import { IconArrowUpLeft } from "@tabler/icons-react";
 import DashboardCard from "@/app/(DashboardLayout)/components/shared/DashboardCard";
 
@@ -126,7 +126,7 @@ const TrafficDistribution = () => {
   }
 
   return (
-    <DashboardCard title="Student Quiz"
+    <DashboardCard title="Quiz Participation"
       middlecontent={
         <Chart
           options={optionscolumnchart}
@@ -137,6 +137,16 @@ const TrafficDistribution = () => {
         />
       }>
     </DashboardCard >
+    // <Card style={{ padding: 3 }}>
+    //   <Typography style={{ fontSize: 15,paddingTop:10 ,fontWeight: 'bold', color: '#073763', padding: 2, borderRadius: '5px', paddingLeft: 18 }}>Quiz Participation</Typography>
+    //   <Chart
+    //     options={optionscolumnchart}
+    //     series={seriescolumnchart}
+    //     type='polarArea'
+    //     width={"100%"}
+    //     height="325px"
+    //   />
+    // </Card>
   );
 };
 

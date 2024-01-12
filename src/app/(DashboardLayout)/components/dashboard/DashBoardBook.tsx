@@ -159,6 +159,19 @@ const DashboardBooks = () => {
         )
     }
 
+    const handleAnalytics = (e: MouseEvent<HTMLElement>) => {
+        e.preventDefault()
+        // showLoader()
+
+        router.push(
+            // {
+            //     pathname: '/quiz',
+            //     query: { questionNumber, ...options },
+            // },
+            '/studentanalytics'
+        )
+    }
+
     return (
         <PageContainer title="Shadow" description="this is Shadow">
             {/* <DashboardCard title="Course"> */}
@@ -167,20 +180,23 @@ const DashboardBooks = () => {
                     <Card sx={{ padding: 0 }}>
                         <Grid className="container">
                             <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                            < AnalyticsIcon sx={{
-                                    ":hover": {
-                                        color: 'blue', height: '40px', width: '100px',
-                                    },
-                                    height: '35px', width: '100px', color: "#fff",
-                                }} />
+                                <IconButton onClick={handleAnalytics}>
+                                    < AnalyticsIcon sx={{
+                                        ":hover": {
+                                            color: 'blue', height: '40px', width: '100px',
+                                        },
+                                        height: '35px', width: '100px', color: "#fff",
+                                    }} />
+                                </IconButton>
                             </Typography>
                             <CardHeader
                                 style={{ padding: 0, backgroundColor: '', }}
                                 avatar={
-                                    <WalletIcon style={{height: '65px', width: '45px', marginLeft: 9 }} color="success" />
+                                    <WalletIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="success" />
                                 }
                                 action={
-                                    <div style={{ width: '11%', height: "7px", marginTop: 20, marginLeft:66 }}>
+                                    <div style={{ width: '11%', height: "7px", marginLeft: 66 }}>
+                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
                                         <CircularProgressbar value={66} text={`${66}%`} strokeWidth={7} styles={{
                                             background: {
                                                 fill: "#6aa84f",
@@ -277,20 +293,23 @@ const DashboardBooks = () => {
                     <Card sx={{ padding: 0 }}>
                         <Grid className="container">
                             <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                            < AnalyticsIcon sx={{
-                                    ":hover": {
-                                        color: 'blue', height: '40px', width: '100px',
-                                    },
-                                    height: '35px', width: '100px', color: "#fff",
-                                }} />
+                                <IconButton onClick={handleAnalytics}>
+                                    < AnalyticsIcon sx={{
+                                        ":hover": {
+                                            color: 'blue', height: '40px', width: '100px',
+                                        },
+                                        height: '35px', width: '100px', color: "#fff",
+                                    }} />
+                                </IconButton>
                             </Typography>
                             <CardHeader
                                 style={{ padding: 0, backgroundColor: '' }}
                                 avatar={
-                                    <ShutterSpeedIcon style={{height: '65px', width: '45px', marginLeft: 4,padding:0 }} color="warning" />
+                                    <ShutterSpeedIcon style={{ height: '65px', width: '45px', marginLeft: 4, padding: 0 }} color="warning" />
                                 }
                                 action={
-                                    <div style={{ width: '11%', height: "7px", marginTop: 20, marginLeft: 60 }}>
+                                    <div style={{ width: '11%', height: "7px", marginLeft: 60 }}>
+                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
                                         <CircularProgressbar value={77} text={`${77}%`} strokeWidth={7} styles={{
                                             background: {
                                                 fill: "#f1c232",
@@ -379,20 +398,23 @@ const DashboardBooks = () => {
                     <Card sx={{ padding: 0 }}>
                         <Grid className="container">
                             <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                            < AnalyticsIcon sx={{
-                                    ":hover": {
-                                        color: 'blue', height: '40px', width: '100px',
-                                    },
-                                    height: '35px', width: '100px', color: "#fff",
-                                }} />
+                                <IconButton onClick={handleAnalytics}>
+                                    < AnalyticsIcon sx={{
+                                        ":hover": {
+                                            color: 'blue', height: '40px', width: '100px',
+                                        },
+                                        height: '35px', width: '100px', color: "#fff",
+                                    }} />
+                                </IconButton>
                             </Typography>
                             <CardHeader
                                 style={{ padding: 0, backgroundColor: '' }}
                                 avatar={
-                                    <BiotechIcon style={{height: '65px', width: '45px', marginLeft: 9 }} color="info" />
+                                    <BiotechIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="info" />
                                 }
                                 action={
-                                    <div style={{ width: '11%', height: "7px", marginTop: 18, marginLeft: 56 }}>
+                                    <div style={{ width: '11%', height: "7px", marginLeft: 56 }}>
+                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
                                         <CircularProgressbar value={88} text={`${88}%`} strokeWidth={7} styles={{
                                             background: {
                                                 fill: "#89bded",
@@ -417,7 +439,7 @@ const DashboardBooks = () => {
                                         }} />
                                     </div>
                                 }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13}}>Biology</span>}
+                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Biology</span>}
                             // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="info" />Analytics</CardActions>}
                             />
                         </Grid><Divider />
@@ -466,20 +488,23 @@ const DashboardBooks = () => {
                     <Card sx={{ padding: 0 }}>
                         <Grid className="container">
                             <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                            < AnalyticsIcon sx={{
-                                    ":hover": {
-                                        color: 'blue', height: '40px', width: '100px',
-                                    },
-                                    height: '35px', width: '100px', color: "#fff",
-                                }} />
+                                <IconButton onClick={handleAnalytics}>
+                                    < AnalyticsIcon sx={{
+                                        ":hover": {
+                                            color: 'blue', height: '40px', width: '100px',
+                                        },
+                                        height: '35px', width: '100px', color: "#fff",
+                                    }} />
+                                </IconButton>
                             </Typography>
                             <CardHeader
                                 style={{ padding: 0, backgroundColor: '' }}
                                 avatar={
-                                    <ScienceIcon style={{height: '65px', width: '45px', marginLeft: 9 }} color="error" />
+                                    <ScienceIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="error" />
                                 }
                                 action={
-                                    <div style={{ width: '12%', height: "7px", marginTop: 18, marginLeft: 38 }}>
+                                    <div style={{ width: '12%', height: "7px", marginLeft: 38 }}>
+                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
                                         <CircularProgressbar value={99} text={`${99}%`} strokeWidth={7} styles={{
                                             background: {
                                                 fill: "#e9a35a",
@@ -553,20 +578,23 @@ const DashboardBooks = () => {
                     <Card sx={{ padding: 0 }}>
                         <Grid className="container">
                             <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                            < AnalyticsIcon sx={{
-                                    ":hover": {
-                                        color: 'blue', height: '40px', width: '100px',
-                                    },
-                                    height: '35px', width: '100px', color: "#fff",
-                                }} />
+                                <IconButton onClick={handleAnalytics}>
+                                    < AnalyticsIcon sx={{
+                                        ":hover": {
+                                            color: 'blue', height: '40px', width: '100px',
+                                        },
+                                        height: '35px', width: '100px', color: "#fff",
+                                    }} />
+                                </IconButton>
                             </Typography>
                             <CardHeader
                                 style={{ padding: 0, backgroundColor: '' }}
                                 avatar={
-                                    <SmsIcon style={{height: '65px', width: '45px', marginLeft: 9 }} color="primary" />
+                                    <SmsIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="primary" />
                                 }
                                 action={
-                                    <div style={{ width: '13%', height: "7px", marginTop: 20, marginLeft: 5 }}>
+                                    <div style={{ width: '13%', height: "7px", marginLeft: 5 }}>
+                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
                                         <CircularProgressbar value={85} text={`${85}%`} strokeWidth={7} styles={{
                                             background: {
                                                 fill: "#e9a35a",
@@ -591,7 +619,7 @@ const DashboardBooks = () => {
                                         }} />
                                     </div>
                                 }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13}}>Communication</span>}
+                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Communication</span>}
                             // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="primary" />Analytics</CardActions>}
                             />
                         </Grid><Divider />
@@ -640,20 +668,23 @@ const DashboardBooks = () => {
                     <Card sx={{ padding: 0 }}>
                         <Grid className="container">
                             <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                            < AnalyticsIcon sx={{
-                                    ":hover": {
-                                        color: 'blue', height: '40px', width: '100px',
-                                    },
-                                    height: '35px', width: '100px', color: "#fff",
-                                }} />
+                                <IconButton onClick={handleAnalytics}>
+                                    < AnalyticsIcon sx={{
+                                        ":hover": {
+                                            color: 'blue', height: '40px', width: '100px',
+                                        },
+                                        height: '35px', width: '100px', color: "#fff",
+                                    }} />
+                                </IconButton>
                             </Typography>
                             <CardHeader
                                 style={{ padding: 0, margin: 0, backgroundColor: '' }}
                                 avatar={
-                                    <PublicIcon style={{height: '65px', width: '45px', marginLeft: 1 }} color="secondary" />
+                                    <PublicIcon style={{ height: '65px', width: '45px', marginLeft: 1 }} color="secondary" />
                                 }
                                 action={
-                                    <div style={{ width: '13%', height: "7px", marginTop: 20, marginLeft: 22 }}>
+                                    <div style={{ width: '12.5%', height: "7px", marginLeft: 22 }}>
+                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
                                         <CircularProgressbar value={75} text={`${75}%`} strokeWidth={7} styles={{
                                             background: {
                                                 fill: "#999999",

@@ -44,9 +44,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 interface page {
     pathname: string;
     query: any;
-  }
+}
 
-export default function page() {
+export default function PageNotify() {
 
 
 
@@ -450,83 +450,83 @@ export default function page() {
 
 
 
-// const handleClickanswers = (e:any) =>{
-// // console.log("e",e)
+    // const handleClickanswers = (e:any) =>{
+    // // console.log("e",e)
 
-// router.push({'/notifications/answers', query: { userid:e}});
-// }
+    // router.push({'/notifications/answers', query: { userid:e}});
+    // }
 
     return (
         <form method="post" >
             <Card sx={{ p: 1, width: 'max(100%,500px)', mx: 'auto' }} className='scrollcontent'>
                 <div className="rowhead">
-					<div className="columnhead1" >
-                    <b style={{ justifyContent: "center",marginLeft: "500px", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>
-							Questions</b>
-					</div>
-					<div className="columnhead2" style={{ justifyContent: "end", display: "flex"}}>
-						{/* <Button style={{backgroundColor:'#b9b0b0',color:"white",borderRadius:"5px"}}>Filter features here:</Button>&nbsp; */}
-<Typography ><b>Filters</b></Typography>&nbsp;
-                    <select name="cars" id="cars">
-  <option value="biology">Biology</option>
-  <option value="chemistry">Chemistry</option>
-  <option value="maths">Physics</option>
-  <option value="biology">Communication</option>
-  {/* <option value="chemistry">Chemistry</option> */}
-  <option value="maths">Maths</option>
-  <option value="social">Social Welfare</option>
-</select>
-                       
+                    <div className="columnhead1" style={{textAlign:"end"}} >
+                        {/* <Typography >Questions</Typography> */}
+                        <b style={{ fontSize: "23px"}}>
+                            Questions</b>
                     </div>
-				</div>
+                    <div className="columnhead2" style={{display:"flex"}}>
+                        {/* <Button style={{backgroundColor:'#b9b0b0',color:"white",borderRadius:"5px"}}>Filter features here:</Button>&nbsp; */}
+                        <Typography ><b>Filters</b></Typography>&nbsp;
+                        <select name="cars" id="cars">
+                            <option value="biology">Biology</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="maths">Physics</option>
+                            <option value="biology">Communication</option>
+                            {/* <option value="chemistry">Chemistry</option> */}
+                            <option value="maths">Maths</option>
+                            <option value="social">Social Welfare</option>
+                        </select>
+                    </div>
+                </div>
 
                 <TableContainer >
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
                         <TableBody>
-                            {questions.map((question:any) => {
+                            {questions.map((question: any) => {
                                 return (
-                                    question.questions.map((qus:any) => {
-                                        return ( 
+                                    question.questions.map((qus: any) => {
+                                        return (
                                             <div className='row' key={question.Sid}>
                                                 <div className='column1' >
                                                     {question.subject === "Physics" ? <div className="container">
                                                         {/* <span className="icon"></span> */}
-                                                        <span className="label" style={{  textAlign:"center",color: 'white',width:"80%",backgroundColor:"rgb(0, 227, 150)",borderRadius:"7px"}}><b>Physics</b></span>
+                                                        <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(0, 227, 150)", borderRadius: "7px" }}><b>Physics</b></span>
                                                     </div> :
                                                         question.subject === "Maths" ? <div className="container">
                                                             {/* <span className="icon"></span> */}
-                                                            <span className="label" style={{ textAlign:"center",color: 'white',width:"80%",backgroundColor:"rgb(0, 143, 251)",borderRadius:"7px"}}><b>Maths</b></span></div>
+                                                            <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(0, 143, 251)", borderRadius: "7px" }}><b>Maths</b></span></div>
                                                             : question.subject === "Biology" ? <div className="container">
                                                                 {/* <span className="icon"><BiotechIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
-                                                                <span className="label" style={{ textAlign:"center",color: 'white',width:"80%",backgroundColor:"rgb(254, 176, 25)",borderRadius:"7px"}}><b>Biology</b></span></div>
+                                                                <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(254, 176, 25)", borderRadius: "7px" }}><b>Biology</b></span></div>
                                                                 : question.subject === "Chemistry" ? <div className="container">
                                                                     {/* <span className="icon"><ScienceIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
-                                                                    <span className="label" style={{ textAlign:"center",color: 'white',width:"80%",backgroundColor:"rgb(255, 69, 96)",borderRadius:"7px" }}><b>Chemistry</b></span></div>
+                                                                    <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(255, 69, 96)", borderRadius: "7px" }}><b>Chemistry</b></span></div>
                                                                     : question.subject === "Communication" ? <div className="container">
                                                                         {/* <span className="icon"><SmsIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
-                                                                        <span className="label" style={{  textAlign:"center",color: 'white',width:"80%",backgroundColor:"rgb(119, 93, 208) ",borderRadius:"7px"}}><b>Communication</b></span></div>
+                                                                        <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(119, 93, 208) ", borderRadius: "7px" }}><b>Communication</b></span></div>
                                                                         : question.subject === "SocialWelfare" ? <div className="container">
                                                                             {/* <span className="icon"><PublicIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
-                                                                            <span className="label" style={{  textAlign:"center",color: 'white',width:"80%",backgroundColor:"rgb(0, 143, 251) ",borderRadius:"7px" }}><b>Social Welfare</b></span></div>
+                                                                            <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(0, 143, 251) ", borderRadius: "7px" }}><b>Social Welfare</b></span></div>
                                                                             : ""}
                                                     {/* question.subject === "Maths" ? <span style={{ color: 'rgb(0, 143, 251)' }} > Maths</span> : question.subject === "Biology" ? <span style={{ color: 'rgb(254, 176, 25)' }} >Biology</span> :
                                                              question.subject === "Chemistry" ? <span style={{ color: 'rgb(255, 69, 96)' }}> Chemistry</span> : question.subject === "Communication" ? <span style={{ color: "rgb(119, 93, 208) " }} >Communication</span> :
                                                                  question.subject === "SocialWelfare " ? <span style={{ color: 'rgb(0, 143, 251) ' }} color='rgb(0, 143, 251) '> Social Welfare</span> : ""} */}
                                                 </div>
                                                 <div className='column2' >
-                                                    <p style={{margin:"2px"}}>{qus.question}</p>
+                                                    <p style={{ margin: "2px" }}>{qus.question}</p>
                                                 </div>
                                                 <div className='column3'>
-                                                    <p style={{margin:"2px",color:"blue"}}> {qus.creater}</p>
+                                                    <p style={{ margin: "2px", color: "blue" }}> {qus.creater}</p>
                                                     {/* <Link href= 'notifications/answers'>Answers</Link> */}
                                                     {/* <p>20</p> */}
                                                 </div>
                                                 <div className='column4'>
-                                                    <Link  href={{pathname:"/notifications/answers",query:qus}}>
-                                                    <p style={{margin:"2px"}}>
-                                                     Answers &nbsp;({qus.answers.length})</p>
+                                                    <Link href={{ pathname: "/notifications/answers", query: qus }}>
+                                                        <p style={{ margin: "2px" }}>
+                                                            Answers &nbsp;({qus.answers.length})</p>
                                                     </Link>
-                                                  
+
                                                 </div>
                                             </div>
                                             // <StyledTableRow key={question.Sid}>

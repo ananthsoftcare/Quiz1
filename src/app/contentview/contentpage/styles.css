@@ -90,7 +90,7 @@ body {
   }
   
   /* Button used to open the chat form - fixed at the bottom of the page */
-  .open-button {
+  /* .open-button {
 	background-color: #555;
 	color: white;
 	cursor: pointer;
@@ -103,8 +103,8 @@ body {
 	position: fixed;
 	bottom: 23px;
 	right: 28px;
-	/* width: 280px; */
-  }
+	width: 280px;
+  } */
 
   @keyframes bounce-1 {
 	0%   { transform: translateY(0); }

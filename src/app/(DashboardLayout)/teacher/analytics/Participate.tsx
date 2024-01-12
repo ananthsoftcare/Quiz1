@@ -3,6 +3,7 @@ import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCa
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from "@mui/material/styles";
+import { Card, Typography } from '@mui/material';
 
 
 
@@ -81,16 +82,16 @@ const Participate = () => {
 
 
     return (
-        <DashboardCard title="Average participation in Hours Spent"
-            middlecontent={
-                <Chart
-                    options={optionscolumnchart}
-                    series={seriescolumnchart}
-                    type="bar"
-                    width={"100%"}
-                />
-            }>
-        </DashboardCard >
+        <Card>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Average participation in Hours Spent</Typography>
+
+            <Chart
+                options={optionscolumnchart}
+                series={seriescolumnchart}
+                type="bar"
+                height={250} width={350}
+            />
+        </Card >
     );
 };
 

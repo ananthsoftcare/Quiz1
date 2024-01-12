@@ -22,7 +22,7 @@ import chemistry from '../images/chemistry.jpeg'
 import chemistry3 from '../images/chemistry3.jpeg'
 import quizimage from '../images/quiz.png'
 import Image from 'next/image';
-import { IconArrowBigRightLine, IconSend, IconSortAscending2 } from '@tabler/icons-react';
+import { IconArrowBigLeftLine, IconArrowBigRightLine, IconSend, IconSortAscending2 } from '@tabler/icons-react';
 // import type { IHomePageProps, IFormOptions } from '../types'
 
 interface IFormComponentProps extends IHomePageProps {
@@ -137,9 +137,33 @@ const Form = (
                 Start Quiz &nbsp;<IconArrowBigRightLine />
               </Button>
             </FormControl>
+            <FormControl margin="normal" style={{ width: '100%', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+              <Button
+                variant="contained"
+                type="submit"
+                size="medium"
+                sx={{
+                  ":hover": {
+                    color: "#fff",
+                    background: 'linear-gradient(32deg,#faa917, #faa917, #faa917,#faa917)',
+                    boxShadow: "2px 2px 5px 0px #faa917",
+                    fontSize: 16,
+                    fontWeight: 'bold'
+                  },
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  fontSize: 16,
+                  background: 'linear-gradient(32deg,#ff6b24, #ff6b24, #ff6b24,#ff6b24)',
+                }}
+                style={{ width: '80%' }}
+                onClick={handleSkipBtnClick}
+              >
+                Cancel Quiz &nbsp;<IconArrowBigLeftLine />
+              </Button>
+            </FormControl>
           </Grid>
         </Grid>
-        <Box
+        {/* <Box
           sx={{
             // display: 'flex',
             textAlign: 'start',
@@ -153,7 +177,7 @@ const Form = (
             sx={{ display: 'block', textAlign: 'left', color: '#073763', fontWeight: 'bold', backgroundColor: '#faa917' }}
             onClick={handleSkipBtnClick}
           >Cancel Quiz</Button>
-        </Box>
+        </Box> */}
         {/* </FormControl> */}
       </Card>
     </form>

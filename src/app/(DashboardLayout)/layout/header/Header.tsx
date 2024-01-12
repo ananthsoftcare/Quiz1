@@ -14,8 +14,9 @@ import PropTypes from "prop-types";
 
 // components
 import Profile from "./Profile";
-import { IconBellRinging, IconMenu } from "@tabler/icons-react";
+import { IconBellRinging, IconMenu, IconSpeakerphone } from "@tabler/icons-react";
 import Notification from "./Notification";
+import Badges from "./Badges";
 
 interface ItemType {
   toggleMobileSidebar: (event: React.MouseEvent<HTMLElement>) => void;
@@ -77,6 +78,20 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
               Upgrade to Pro
             </Button> */}
           </Box>
+          {/* <IconButton
+            size="large"
+            aria-label="show 11 new notifications"
+            color="inherit"
+            aria-controls="msgs-menu"
+            aria-haspopup="true"
+            // onClick={handleClick2}
+          >
+            <Badge variant="dot" color="primary">
+              <IconSpeakerphone size="21" stroke="1.5" />
+            </Badge>
+          </IconButton> */}
+          <Badges/>
+
           <Notification />
           <Profile />
         </Stack>

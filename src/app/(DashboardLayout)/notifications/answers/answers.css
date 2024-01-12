@@ -28,7 +28,7 @@
     clear: both;
     line-height: 10px;
   }
-  .rowans:nth-child(even) {background-color: rgb(227, 255, 220);}
+  .rowans:nth-child(even) {background-color: rgb(227, 255, 220)}
 
 
   ::-webkit-scrollbar {
@@ -60,3 +60,32 @@
     padding-bottom: 1%;
     
   }
+
+
+  .rowanswers {
+    display: flex;
+    align-items: center;
+    }
+    
+    .columnanswers1 {
+    width: 49%;
+    margin-right: 10px;
+    justify-content:start;
+    }
+    
+    .columnanswers2 {
+    width: 51%;
+    padding: 0 0 5px 0;
+    justify-content: end;
+    }
+
+    .answer-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .answer-text {
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    

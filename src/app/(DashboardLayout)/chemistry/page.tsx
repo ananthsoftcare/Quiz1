@@ -27,6 +27,7 @@ import { useRouter } from 'next/navigation';
 import { styled } from '@mui/material/styles';
 // import Button from '@mui/material/Button';
 import { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import Rating from '@/app/rating';
 // import Typography from '@mui/material/Typography';
 
 
@@ -76,7 +77,7 @@ export default function Content() {
 				{/* <Box height="100%"> */}
 				{/* <button>back</button> */}
 				<PageContainer title="Content" description="this is Content">
-					<div className="row">
+					<div className="row-chemistry">
 						<div className="column1" style={{ padding: "7px" }}>
 							<BootstrapTooltip title="Back">
 								<svg cursor="pointer" onClick={() => router.push('/')} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
@@ -630,28 +631,52 @@ export default function Content() {
 							</div>
 							<nav className="section-nav scrollcontent">
 								<ol>
-									<li><a href="#introduction">Introduction</a></li>
-									<li><a href="#valency">Valency</a></li>
-									<li><a href="#soaps&detergents">Soaps and detergents</a></li>
+									<li style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#introduction">Introduction</a></li>
+									<li style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#valency">Valency</a></li>
+									<li style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#soaps&detergents">Soaps and detergents</a></li>
 									{/* <li><a href="#authentication">Chemical Basis</a></li>
 								<li><a href="#authentication">Evolution</a></li>
 								<li><a href="#authentication">Ecology</a></li>
 								<li><a href="#authentication">Refrences</a></li> */}
 									<li><a href="#endpoints" style={{ color: "blue" }}>Endpoints</a>
 										<ul>
-											<li className=""><a href="#endpoints--root">Root</a></li>
-											<li className=""><a href="#endpoints--cities-overview">Cities Overview</a></li>
-											<li className=""><a href="#endpoints--city-detail">City Detail</a></li>
-											<li className=""><a href="#endpoints--city-config">City Config</a></li>
-											<li className=""><a href="#endpoints--city-spots-overview">City Spots Overview</a></li>
-											<li className=""><a href="#endpoints--city-spot-detail">City Spot Detail</a></li>
+											<li className="" style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#endpoints--root">Root</a></li>
+											<li className=""style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#endpoints--cities-overview">Cities Overview</a></li>
+											<li className=""style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#endpoints--city-detail">City Detail</a></li>
+											<li className=""style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#endpoints--city-config">City Config</a></li>
+											<li className=""style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#endpoints--city-spots-overview">City Spots Overview</a></li>
+											<li className=""style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#endpoints--city-spot-detail">City Spot Detail</a></li>
 											{/* <li className=""><a href="#endpoints--city-icons-overview">City Icons Overview</a></li>
 										<li className=""><a href="#endpoints--city-icon-detail">City Icon Detail</a></li> */}
 										</ul>
 									</li>
-									<li className=""><a href="#carbon-compounds">Carbon compounds</a></li>
-									<li className=""><a href="#reactivity-series">Reactivity series</a></li>
-									<li className=""><a href="#conclusion">Conclusion</a></li>
+									<li className=""style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#carbon-compounds">Carbon compounds</a></li>
+									<li className=""style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#reactivity-series">Reactivity series</a></li>
+									<li className=""style={{ display: "flex",
+        justifyContent: "start",gap:"5px",
+    }}> <Rating/>&nbsp;<a href="#conclusion">Conclusion</a></li>
 								</ol>
 
 							</nav>
@@ -688,8 +713,12 @@ export default function Content() {
 					{/* <button className="open-button" >
         Chat
       </button> */}
-					<svg className="open-button" xmlns="http://www.w3.org/2000/svg" onClick={() => openForm()} width="100" height="50" viewBox="0 0 20 20"><path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" /></svg>
-
+					<div className="open-modal-question" onClick={() => openForm()} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <b>Have Questions ? ask to your peers</b>
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 20 20">
+        <path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" />
+    </svg>
+</div>
 					<div className="chat-popup form-container" style={{ display: floatingOpen.openModal }}>
 						{/* <form action="/action_page.php" className="form-container"> */}
 						<h6 style={{ margin: "0px", padding: "3px 3px", backgroundColor: "#EFE8E4", fontSize: "1rem" }}>Please enter your question and submit

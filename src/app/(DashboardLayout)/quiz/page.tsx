@@ -203,7 +203,7 @@ const QuizPage: NextPage = () => {
     )
 
     const nextQuestion = () => SetCurrentQuestionIndex(x => x + 1)
-
+    const previousQuestion = () => SetCurrentQuestionIndex(x => x - 1)
     const updateScore = () => setGameScore(s => s + 1)
 
     return (
@@ -216,6 +216,7 @@ const QuizPage: NextPage = () => {
                 falseAnswers={targetQuestion?.incorrect_answers?.map((a: string) =>
                     decode(a)
                 )}
+                previousQuestion={previousQuestion}
                 nextQuestion={nextQuestion}
                 questionsCount={questionsCount}
                 score={gameScore}

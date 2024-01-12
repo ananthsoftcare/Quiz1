@@ -15,9 +15,9 @@ export interface ICategory {
   name: string
 }
 
-export interface IAnswerType extends ICategory {}
+export interface IAnswerType extends ICategory { }
 
-export interface IDifficulty extends ICategory {}
+export interface IDifficulty extends ICategory { }
 
 // ---------------------------------------------------- //
 
@@ -47,10 +47,14 @@ export interface IQuestionComponentProps {
   questionsCount: number
   score: number
   nextQuestion: () => void
+  previousQuestion: () => void
   updateScore: () => void
   showLoader: () => void
 }
 
+export interface ITimerSeconds {
+  initialSeconds: number
+}
 export interface IFormOptions {
   questionNumber: number
   category: string

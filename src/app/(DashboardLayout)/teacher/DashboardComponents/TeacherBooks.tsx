@@ -237,7 +237,7 @@ const DashboardBooks = () => {
                                 borderRight: '1px solid #ddd'
                             }}>
 
-                                <Link href='/maths'>
+                                <Link href='/teacher/maths'>
                                     <Button size="small" variant="text" sx={{
                                         ":hover": {
                                             color: "#ffffff",
@@ -362,7 +362,7 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href="/physics">
+                                <Link href="/teacher/physics">
                                     <Button size="small" variant="text" sx={{
                                         ":hover": {
                                             color: "#ffffff",
@@ -450,7 +450,7 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href='/biology'>
+                                <Link href='/teacher/biology'>
                                     <Button size="small" variant="text" sx={{
                                         ":hover": {
                                             color: "#ffffff",
@@ -540,7 +540,7 @@ const DashboardBooks = () => {
 
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href="/chemistry">
+                                <Link href="/teacher/chemistry">
                                     <Button size="small" variant="text" sx={{
                                         ":hover": {
                                             color: "#ffffff",
@@ -628,7 +628,7 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href="/communication">
+                                <Link href="/teacher/communication">
 
                                     <Button size="small" variant="text" sx={{
                                         ":hover": {
@@ -726,7 +726,7 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href="/socialwelfare">
+                                <Link href="/teacher/socialwelfare">
                                     <Button size="small" variant="text" sx={{
                                         ":hover": {
                                             color: "#ffffff",

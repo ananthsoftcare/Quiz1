@@ -1,239 +1,242 @@
 :root {
-    --color-darkest: #343a40;
-    --color-dark: #495057;
-    --color-medium: #ced4da;
-    --color-light: #f1f3f5;
-  
-    --color-theme: #1098ad;
-    --color-accent: #ffa94d;
+  --color-darkest: #343a40;
+  --color-dark: #495057;
+  --color-medium: #ced4da;
+  --color-light: #f1f3f5;
+
+  --color-theme: #1098ad;
+  --color-accent: #ffa94d;
+}
+
+.fab-container {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-direction: column-reverse;
+  position: fixed;
+  right: 0.5em;
+  bottom: 0.5em;
+  // max-height: 52px;
+
+  &.open {
+    max-height: max-content;
   }
-  
-  .fab-container {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      flex-direction: column-reverse;
-      position: fixed;
-      right: 0.5em;
-      bottom: 0.5em;
-      // max-height: 52px;
-  
-      &.open {
-          max-height: max-content;
-      }
-  
-  }
-  
-  
-  .container {
-      position: relative;
-  
-    }
-    
-    .image {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    
-    .overlay {
-      position: absolute; 
-      bottom: 0; 
-      background: rgb(0, 0, 0);
-      background: rgba(110, 109, 109, 0.5); /* Black see-through */
-      color: #f1f1f1; 
-      width: 100%;
-      transition: .5s ease;
-      opacity:0;
-      color: white;
-      // font-size: 20px;
-       padding: 15px;
-      text-align: center;
-    }
-    
-    .container:hover .overlay {
-      opacity: 1;
-    }
-    
-  //   .image {
-  //     display: block;
-  //     width: 100%;
-  //     height: auto;
-  //   }
-    
-  //   .overlay {
-  //     // position: relative; 
-  //     display: flex;
-  //     // background: rgba(63, 63, 63, 0.5);
-  //     background: rgb(0, 0, 0);
-  //     background: rgba(0, 0, 0, 0.5); /* Black see-through */
-  //     color: #f1f1f1; 
-  //     width: 60%;
-  //     transition: .5s ease;
-  //     opacity:0;
-  //     color: white;
-  //     font-size: 12px;
-  //     // padding: 20px;
-  //     text-align: center;
-  //   }
-  //   .container:hover .overlay {
-  //     opacity: 1;
-  //   }
-  
-  .button {
-    background: none;
-    border: none;
-  }
-  
-  .button .bloom-container {
-    position: relative;
-    transition: all 0.2s ease-in-out;
-    border: none;
-    background: none;
-  }
-  
-  .button .bloom-container .button-container-main {
-    width: 110px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    display: grid;
-    place-content: center;
-    border-right: 5px solid white;
-    border-left: 5px solid rgba(128, 128, 128, 0.147);
-    transform: rotate(-45deg);
-    transition: all 0.5s ease-in-out;
-  }
-  
-  .button .bloom-container .button-container-main .button-inner {
-    height: 60px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    position: relative;
-    box-shadow: rgba(100, 100, 111, 0.5) -10px 5px 10px 0px;
-    transition: all 0.5s ease-in-out;
-  }
-  
-  .button .bloom-container .button-container-main .button-inner .back {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: linear-gradient(60deg, rgb(1, 85, 103) 0%, rgb(147, 245, 255) 100%);
-  }
-  
-  .button .bloom-container .button-container-main .button-inner .front {
-    position: absolute;
-    inset: 5px;
-    border-radius: 50%;
-    background: linear-gradient(60deg, rgb(0, 103, 140) 0%, rgb(58, 209, 233) 100%);
-    display: grid;
-    place-content: center;
-  }
-  
-  .button .bloom-container .button-container-main .button-inner .front .svg {
-    fill: #ffffff;
-    opacity: 0.5;
-    width: 30px;
-    aspect-ratio: 1;
-    transform: rotate(45deg);
-    transition: all 0.2s ease-in;
-  }
-  
-  .button .bloom-container .button-container-main .button-glass {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.888) 100%);
-    transform: translate(0%, -50%) rotate(0deg);
-    transform-origin: bottom center;
-    transition: all 0.5s ease-in-out;
-  }
-  
-  .button .bloom-container .bloom {
-    height: 1px;
-    width: 1px;
-    position: absolute;
-    background: white;
-  }
-  
-  .button .bloom-container .bloom1 {
-    top: 10px;
-    right: 20px;
-    box-shadow: rgb(255, 255, 255) 0px 0px 10px 10px, rgb(255, 255, 255) 0px 0px 20px 20px;
-  }
-  
-  .button .bloom-container .bloom2 {
-    bottom: 10px;
-    left: 20px;
-    box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px 10px, rgba(255, 255, 255, 0.5) 0px 0px 30px 20px;
-  }
-  
-  .button .bloom-container:hover {
-    transform: scale(1.1);
-  }
-  
-  .button .bloom-container:hover .button-container-main .button-glass {
-    transform: translate(0%, -40%);
-  }
-  
-  .button .bloom-container:hover .button-container-main .button-inner .front .svg {
-    opacity: 1;
-    filter: drop-shadow(0 0 10px white);
-  }
-  
-  .button .bloom-container:active {
-    transform: scale(0.7);
-  }
-  
-  .button .bloom-container:active .button-container-main .button-inner {
-    transform: scale(1.2);
-  }
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 2px rgb(161, 247, 2); 
-    border-radius:10px;
-  }
-   
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background:#a5cd39; 
-    border-radius:10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background:#a5cd39; 
-  }
-  
-  
-  .progress {
-    /* display: grid; */
-    justify-content: space-between;
-    grid-template-columns: auto auto;
-    font-size: 12px;
-    font-weight: 700;
-    color: #713593;
-  }
-  
-  progress {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 12px;
-    grid-column: 1 / -1;
-  }
-  
-  ::-webkit-progress-bar {
-    background-color: var(#1098ad);
-    border-radius: 100px;
-  }
-  ::-webkit-progress-value {
-    background-color: var(#1098ad);
-    border-radius: 100px;
-  }
-  
+
+}
+
+
+.container {
+  position: relative;
+
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(110, 109, 109, 0.5);
+  /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  transition: .5s ease;
+  opacity: 0;
+  color: white;
+  // font-size: 20px;
+  padding: 15px;
+  text-align: center;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+//   .image {
+//     display: block;
+//     width: 100%;
+//     height: auto;
+//   }
+
+//   .overlay {
+//     // position: relative; 
+//     display: flex;
+//     // background: rgba(63, 63, 63, 0.5);
+//     background: rgb(0, 0, 0);
+//     background: rgba(0, 0, 0, 0.5); /* Black see-through */
+//     color: #f1f1f1; 
+//     width: 60%;
+//     transition: .5s ease;
+//     opacity:0;
+//     color: white;
+//     font-size: 12px;
+//     // padding: 20px;
+//     text-align: center;
+//   }
+//   .container:hover .overlay {
+//     opacity: 1;
+//   }
+
+.button {
+  background: none;
+  border: none;
+}
+
+.button .bloom-container {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background: none;
+}
+
+.button .bloom-container .button-container-main {
+  width: 110px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  place-content: center;
+  border-right: 5px solid white;
+  border-left: 5px solid rgba(128, 128, 128, 0.147);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.button .bloom-container .button-container-main .button-inner {
+  height: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: rgba(100, 100, 111, 0.5) -10px 5px 10px 0px;
+  transition: all 0.5s ease-in-out;
+}
+
+.button .bloom-container .button-container-main .button-inner .back {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(60deg, rgb(1, 85, 103) 0%, rgb(147, 245, 255) 100%);
+}
+
+.button .bloom-container .button-container-main .button-inner .front {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: linear-gradient(60deg, rgb(0, 103, 140) 0%, rgb(58, 209, 233) 100%);
+  display: grid;
+  place-content: center;
+}
+
+.button .bloom-container .button-container-main .button-inner .front .svg {
+  fill: #ffffff;
+  opacity: 0.5;
+  width: 30px;
+  aspect-ratio: 1;
+  transform: rotate(45deg);
+  transition: all 0.2s ease-in;
+}
+
+.button .bloom-container .button-container-main .button-glass {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.888) 100%);
+  transform: translate(0%, -50%) rotate(0deg);
+  transform-origin: bottom center;
+  transition: all 0.5s ease-in-out;
+}
+
+.button .bloom-container .bloom {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  background: white;
+}
+
+.button .bloom-container .bloom1 {
+  top: 10px;
+  right: 20px;
+  box-shadow: rgb(255, 255, 255) 0px 0px 10px 10px, rgb(255, 255, 255) 0px 0px 20px 20px;
+}
+
+.button .bloom-container .bloom2 {
+  bottom: 10px;
+  left: 20px;
+  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px 10px, rgba(255, 255, 255, 0.5) 0px 0px 30px 20px;
+}
+
+.button .bloom-container:hover {
+  transform: scale(1.1);
+}
+
+.button .bloom-container:hover .button-container-main .button-glass {
+  transform: translate(0%, -40%);
+}
+
+.button .bloom-container:hover .button-container-main .button-inner .front .svg {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px white);
+}
+
+.button .bloom-container:active {
+  transform: scale(0.7);
+}
+
+.button .bloom-container:active .button-container-main .button-inner {
+  transform: scale(1.2);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgb(161, 247, 2);
+  border-radius: 10px;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a5cd39;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a5cd39;
+}
+
+
+.progress {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: auto auto;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 0.5rem;
+  color: #713593;
+}
+
+progress {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 12px;
+  grid-column: 1 / -1;
+}
+
+::-webkit-progress-bar {
+  background-color: var(#1098ad);
+  border-radius: 100px;
+}
+
+::-webkit-progress-value {
+  background-color: var(#1098ad);
+  border-radius: 100px;
+}

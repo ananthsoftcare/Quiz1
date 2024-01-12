@@ -27,6 +27,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { styled } from '@mui/material/styles';
 // import Button from '@mui/material/Button';
 import { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import Rating from './rating';
 // import Typography from '@mui/material/Typography';
 
 
@@ -86,7 +87,7 @@ export default function Content() {
 					<div className="row">
 						<div className="column1" style={{ padding: "7px" }}>
 							<BootstrapTooltip title="Back">
-								<svg cursor="pointer" onClick={() => router.push('/')} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
+								<svg cursor="pointer" onClick={() => router.push('/teacher/dashboard')} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
 							</BootstrapTooltip>
 						</div>
 						<div className="column2" style={{ justifyContent: "center", display: "flex", marginRight: "126px" }}>
@@ -637,7 +638,11 @@ export default function Content() {
 							</div>
 							<nav className="section-nav scrollcontent">
 								<ol>
-									<li><a href="#introduction">Introduction</a></li>
+									<li><a href="#introduction">Introduction
+									<Rating/>
+									
+									
+									</a></li>
 									<li><a href="#valency">Valency</a></li>
 									<li><a href="#soaps&detergents">Soaps and detergents</a></li>
 									{/* <li><a href="#authentication">Chemical Basis</a></li>

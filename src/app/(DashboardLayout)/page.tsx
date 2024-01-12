@@ -10,10 +10,13 @@ import Blog from '@/app/(DashboardLayout)/components/dashboard/Blog';
 import ProductSales from '@/app/(DashboardLayout)/components/dashboard/ProductSales';
 import DashboardBooks from './components/dashboard/DashBoardBook';
 import RadialBarChart from './components/dashboard/RadialBarChart';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 
 
 const Dashboard = () => {
+  const router = useRouter()
   return (
     <PageContainer title="Dashboard" description="this is Dashboard">
       <Box>

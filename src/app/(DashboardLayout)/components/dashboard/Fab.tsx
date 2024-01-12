@@ -52,14 +52,14 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
         duration: theme.transitions.duration.shortest,
     }),
 }));
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: "#f7c974",
-    },
-    '&:nth-of-type(even)': {
-        backgroundColor: "white",
-    },
-}));
+// const StyledTableRow = styled(TableRow)(({ theme }) => ({
+//     '&:nth-of-type(odd)': {
+//         backgroundColor: "#f7c974",
+//     },
+//     '&:nth-of-type(even)': {
+//         backgroundColor: "white",
+//     },
+// }));
 const FAB = () => {
     const [open, setOpen] = useState(false);
     const [rotate, setRotate] = useState(false)

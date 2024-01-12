@@ -37,13 +37,24 @@
 }
 
 .progress {
-    /* display: grid; */
+    display: grid;
     justify-content: space-between;
     grid-template-columns: auto auto;
     font-size: 12px;
     font-weight: 700;
+    gap: 0.5rem;
     color: #713593;
 }
+
+/* .progress {
+    display: grid;
+    justify-content: space-between;
+
+    grid-template-columns: auto auto;
+    font-size: 12px;
+    font-weight: 700;
+    color:#713593;
+} */
 
 progress {
     -webkit-appearance: none;
@@ -82,4 +93,39 @@ progress {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #a5cd39;
+}
+
+.modal-wrapper {
+    width: 500px;
+    height: 600px;
+}
+
+.modal {
+    background: white;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-body {
+    padding-top: 10px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 25px;
 }

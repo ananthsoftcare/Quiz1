@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from '@mui/material/styles';
-import { Stack, Typography, Avatar, Fab } from '@mui/material';
+import { Stack, Typography, Avatar, Fab, Card } from '@mui/material';
 import { IconArrowDownRight, IconCurrencyDollar } from '@tabler/icons-react';
 import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCard';
 import ReactApexChart from "react-apexcharts";
@@ -82,7 +82,7 @@ const ProductSales = () => {
   }
 
   return (
-    <DashboardCard title="Student"
+    <DashboardCard title="Peer Student Count"
       middlecontent={
         <Chart
           options={optionscolumnchart}
@@ -95,6 +95,17 @@ const ProductSales = () => {
       }
     >
     </DashboardCard >
+
+    // <Card style={{ padding: 3 }}>
+    //   <Typography style={{ fontSize: 15, paddingTop: 10, fontWeight: 'bold', color: '#073763', padding: 2, borderRadius: '5px', paddingLeft: 18 }}>Peer Student Count</Typography>
+    //   <Chart
+    //     options={optionscolumnchart}
+    //     series={seriescolumnchart}
+    //     type='radialBar'
+    //     width={"100%"}
+    //     height="315px"
+    //   />
+    // </Card >
   );
 };
 
