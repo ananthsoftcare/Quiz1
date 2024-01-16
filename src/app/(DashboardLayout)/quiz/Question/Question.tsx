@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { FC, useEffect, useRef, useState } from 'react'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import SendRoundedIcon from '@mui/icons-material/SendRounded'
-import { Autocomplete, Box, Button, Card, FormControl, Grid, MenuItem, TextField, Typography } from '@mui/material'
+import { Autocomplete, Box, Button, Card, CardActions, FormControl, Grid, IconButton, IconButtonProps, MenuItem, TextField, Typography, styled } from '@mui/material'
 import { Container } from '@mui/system'
 import type { IQuestionComponentProps } from '../../types'
 import Answers from '../Answers'
@@ -14,11 +14,17 @@ import Modal from '@mui/material/Modal';
 import React from "react";
 import { IconArrowBigLeft } from '@tabler/icons-react';
 import CountdownTimer from '../Timer';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+
 
 const style = {
   position: 'absolute' as 'absolute',
-  top: '78%',
-  left: '70%',
+  top: '50%',
+  left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'rgb(222 253 253)',
@@ -28,6 +34,19 @@ const style = {
   p: 2,
 };
 
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} style={{ padding: 0 }} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
 
 
 const Question: FC<IQuestionComponentProps> = ({
@@ -42,12 +61,14 @@ const Question: FC<IQuestionComponentProps> = ({
   updateScore,
   showLoader,
 }) => {
+
   const [questionProps, setQuestionProps] = useState({
     selectedAnswer: '',
     hasAnswered: false,
   })
   const [openModal, setOpenModal] = useState(false)
   const [wrongans, setWrongAns] = useState('')
+  const [isChooseWrongAns, setIsChooseWrongAns] = useState(false)
 
   const router = useRouter()
   const loadedRef = useRef(false)
@@ -142,11 +163,26 @@ const Question: FC<IQuestionComponentProps> = ({
   ];
   const handleChangeAuto = () => {
     // setWrongAns(event)
-    nextQuestion()
+    setTimeout(() => {
+      nextQuestion()
+    }, 1000)
   }
 
+  const [hintOpens, setHindOpen] = useState(false);
+  const [rotate, setRotate] = useState(false)
 
 
+
+
+  const mouseEnter = () => {
+    setHindOpen(true);
+    setRotate(true)
+  }
+
+  const mouseLeave = () => {
+    setHindOpen(false)
+    setRotate(false)
+  };
 
 
   return (
@@ -155,8 +191,8 @@ const Question: FC<IQuestionComponentProps> = ({
     }}>
       <header className='progress'>
         <progress max={questionsCount + 1} value={number + Number(questionProps.selectedAnswer !== null)} />
-        <span>Question {number}/ {questionsCount}</span>
-      <CountdownTimer initialSeconds={300} />
+        <span style={{ color: '#fff', borderRadius: '4px', padding: 2, backgroundColor: 'rgb(145 154 231)' }}>Question {number}/ {questionsCount}</span>
+        <CountdownTimer initialSeconds={300} />
       </header>
       <Typography
         display="block"
@@ -198,6 +234,49 @@ const Question: FC<IQuestionComponentProps> = ({
         >
           Back
         </Button>
+        {questionProps.hasAnswered ? (
+          <div>
+            <CardActions style={{ padding: 10, backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}>
+              <Typography sx={{
+                ":hover": {
+                  color: "#ddd",
+                }, display: 'inline-flex',
+                fontSize: 14,
+                alignItems: 'center',
+                fontWeight: 'bold',
+                textAlign: 'center',
+                // borderRight: '1px solid #ddd'
+              }}>
+                Click hind to know where you went wrong?
+              </Typography>
+              {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
+              {rotate === true ? (
+                <>  <span style={{ color: "#fff", fontWeight: 'bold' }}></span>
+                  <ExpandLessIcon style={{ fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
+                </>
+              ) : <>
+                <span style={{ color: "#fff" }}></span>
+                <ExpandMoreIcon style={{ fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
+              </>
+              }
+            </CardActions>
+            {hintOpens == true ? (
+              <Modal
+                open={hintOpens}
+                onClose={mouseLeave}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={style}>
+                <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 2, borderRadius: '5px', }}> Hint</Typography>
+                  <p style={{ padding: 3 }}>
+                    You may like to start by skim-reading or “speed-reading” the multiple-choice passages. But then go back and read them slowly and deliberately, and think about the exact meaning of every sentence. Note key words and phrases on your whiteboard if it helps you to concentrate.
+                  </p>
+                </Box>
+              </Modal>
+            ) : ""}
+          </div>
+        ) : ""}
         {questionProps.hasAnswered === false ? (
           <Button
             variant="outlined"
@@ -219,7 +298,15 @@ const Question: FC<IQuestionComponentProps> = ({
             >
               <Box sx={style}>
                 <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 3, borderRadius: '5px', paddingLeft: 10 }}>  Choose why you went wrong ?</Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                <FormGroup style={{ backgroundColor: '#fff', padding: 15, }}>
+                  <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Reacted quickly" />
+                  <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="It was Complicated" />
+                  <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Not Prepared" />
+                  <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Thought I was right" />
+                  <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Faulty question" />
+                  <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Other" />
+                </FormGroup>
+                {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   <Autocomplete
                     disablePortal
                     size='small'
@@ -233,7 +320,7 @@ const Question: FC<IQuestionComponentProps> = ({
                       variant='outlined'
                     />}
                   />
-                </Typography>
+                </Typography> */}
               </Box>
             </Modal>
           </div>
@@ -250,7 +337,8 @@ const Question: FC<IQuestionComponentProps> = ({
           </Button>
         ) : ""}
 
-      </Box>
+      </Box>&nbsp;
+
       <Box
         sx={{
           // display: 'flex',

@@ -6,6 +6,7 @@ import PageContainer from '@/app/(DashboardLayout)/components/container/PageCont
 import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCard';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { useState } from 'react';
+import { DashBoardBooks } from './Book';
 import studentimage from '../../layout/shared/logo/student.jpg'
 import { useTheme } from '@mui/material/styles';
 import WalletIcon from '@mui/icons-material/Wallet';
@@ -25,13 +26,14 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PublicIcon from '@mui/icons-material/Public';
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-
 import Link from "next/link";
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import Button from '@mui/material/Button';
+import AnalyticsOutlinedIcon from '@mui/icons-material/AnalyticsOutlined';
+import "./styles.scss";
 import { ChangeEvent, FC, MouseEvent } from 'react'
-import { IHomePageProps } from "../../types";
-import { useRouter } from 'next/navigation';
+import { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import { useRouter } from "next/navigation";
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -44,71 +46,62 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const darkTheme = createTheme({ palette: { mode: 'dark' } });
 const lightTheme = createTheme({ palette: { mode: 'light' } });
+const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+        backgroundColor: theme.palette.common.white,
+        color: 'rgba(0, 0, 0, 0.87)',
+        boxShadow: theme.shadows[1],
+        fontSize: 11,
+    },
+}));
 
-
-interface IFormComponentProps extends IHomePageProps {
-    showLoader: () => void
-}
 
 
 const DashboardBooks = () => {
-    const router = useRouter()
-    const [questionNumber, setQuestionNumber] = useState(5)
-    const [options, setOptions] = useState({
-        category: '0',
-        type: 'any',
-        difficulty: 'any',
-    })
     const theme = useTheme();
     const primary = theme.palette.primary.main;
     const secondary = theme.palette.secondary.main;
     const errorlight = '#fdede8';
     const optionscolumnchart: any = {
         chart: {
-            height: 80,
-            innerWidth: 10,
-            type: "radialBar",
-        },
-        series: [67],
-        colors: ["#20E647"],
-        plotOptions: {
-            radialBar: {
-                startAngle: -135,
-                endAngle: 135,
-                track: {
-                    background: '#333',
-                    startAngle: -135,
-                    endAngle: 135,
-                },
-                dataLabels: {
-                    name: {
-                        show: false,
-                    },
-                    value: {
-                        fontSize: "14px",
-                        fontWeight: 'bold',
-                        show: true
-                    }
-                }
-            }
-        },
-        fill: {
-            type: "gradient",
-            gradient: {
-                shade: "dark",
-                type: "horizontal",
-                gradientToColors: ["#87D4F9"],
-                stops: [0, 100]
-            }
+            type: 'area',
+            fontFamily: "'Plus Jakarta Sans', sans-serif;",
+            foreColor: '#ddd',
+            toolbar: {
+                show: false,
+            },
+            height: 60,
+            sparkline: {
+                enabled: true,
+            },
+            group: 'sparklines',
         },
         stroke: {
-            lineCap: "butt"
+            curve: 'smooth',
+            width: 2,
         },
-        labels: ["Progress"]
+        fill: {
+            colors: ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800'],
+            type: 'solid',
+            opacity: 0.05,
+        },
+        markers: {
+            size: 0,
+        },
+        // tooltip: {
+        //   theme: theme.palette.mode === 'dark' ? 'dark' : 'light',
+        // },
     };
     const seriescolumnchart: any = [
-        100
+        {
+            name: '',
+            color: "#ddd",
+            data: [25, 66, 20, 40, 12, 58, 20],
+        },
     ];
+
     const [isHovered, setIsHovered] = useState({
         isHovered: false,
         id: ""
@@ -130,22 +123,8 @@ const DashboardBooks = () => {
             isHovered: false
         });
     }
+    const router = useRouter()
     const percentage = 66;
-
-
-    // const handleSubmitEvents = (e: MouseEvent<HTMLElement>) => {
-    //     e.preventDefault()
-    //     // showLoader()
-
-    //     router.push(
-    //         // {
-    //         //     pathname: '/quiz',
-    //         //     query: { questionNumber, ...options },
-    //         // },
-    //         '/quiz'
-    //     )
-    // }
-
     const handleSubmitEvents = (e: MouseEvent<HTMLElement>) => {
         e.preventDefault()
         // showLoader()
@@ -159,45 +138,32 @@ const DashboardBooks = () => {
         )
     }
 
-    const handleAnalytics = (e: MouseEvent<HTMLElement>) => {
-        e.preventDefault()
-        // showLoader()
-
-        router.push(
-            // {
-            //     pathname: '/quiz',
-            //     query: { questionNumber, ...options },
-            // },
-            '/studentanalytics'
-        )
-    }
-
     return (
-        <PageContainer title="Shadow" description="this is Shadow">
-            {/* <DashboardCard title="Course"> */}
-            <Grid container spacing={1}>
-                <Grid item xs={12} lg={6}>
-                    <Card sx={{ padding: 0 }}>
-                        <Grid className="container">
-                            <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                                <IconButton onClick={handleAnalytics}>
-                                    < AnalyticsIcon sx={{
-                                        ":hover": {
-                                            color: 'blue', height: '40px', width: '100px',
-                                        },
-                                        height: '35px', width: '100px', color: "#fff",
-                                    }} />
-                                </IconButton>
+        <Box height="100%">
+            <PageContainer title="Shadow" description="this is Shadow">
+                {/* <DashboardCard title="Course"> */}
+                <Grid container spacing={1}>
+                    <Grid item xs={12} lg={6}>
+                        <Card style={{ padding: 0 }}>
+                            <Grid container item xs={12} className="container">
+                                <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
+                                < AnalyticsIcon sx={{
+                                    ":hover": {
+                                        color: 'blue', height: '45px', width: '100px',
+                                    },
+                                    height: '40px', width: '100px', color: "#fff",
+                                }} />
                             </Typography>
-                            <CardHeader
-                                style={{ padding: 0, backgroundColor: '', }}
-                                avatar={
-                                    <WalletIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="success" />
-                                }
-                                action={
-                                    <div style={{ width: '11%', height: "7px", marginLeft: 66 }}>
-                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
-                                        <CircularProgressbar value={66} text={`${66}%`} strokeWidth={7} styles={{
+                                {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
+                                <Grid item xs={2.5} paddingLeft={1}>
+                                    <WalletIcon style={{ height: '50px', width: '50px' }} color="success" />
+                                </Grid>
+                                <Grid item xs={6.5} paddingTop={1.8} paddingLeft={1.5} >
+                                    <span style={{ fontWeight: 'bold', }} >Maths</span>
+                                </Grid>
+                                <Grid item xs={3} paddingTop={0.5}>
+                                    <div style={{ width: 40, fontSize: 10, padding: 0, color: '#6aa84f' }}>
+                                        <CircularProgressbar value={66} text={`${66}%`} styles={{
                                             background: {
                                                 fill: "#6aa84f",
                                                 fontSize: '28px',
@@ -219,98 +185,74 @@ const DashboardBooks = () => {
                                                 fontSize: '28px',
                                             },
                                         }} />
-
-
+                                        Average
                                     </div>
-                                }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Maths</span>}
-                            // subheader={<CardActions className="overlay" style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="success" />Analytics</CardActions>}
-                            /><Divider />
-                        </Grid>
-                        <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "#fff",
-                                    background: 'linear-gradient(34deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px #e9f7ed"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
+                                </Grid>
+                            </Grid>
+                            <Divider />
+                            <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Link href='/maths'>
+                                        <Button size="small" variant="text" sx={{
+                                            ":hover": {
+                                                color: "#ffffff",
+                                            },
+                                            fontSize: 14,
+                                        }}>
+                                            <IconNotebook style={{ height: 16 }} /> Content
+                                        </Button>
+                                    </Link>
 
-                                <Link href='/maths'>
-                                    <Button size="small" variant="text" sx={{
+                                </Grid>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
                                         ":hover": {
                                             color: "#ffffff",
                                         },
                                         fontSize: 14,
                                     }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
+                                        <IconBulb style={{ height: 16 }} /> Quiz
                                     </Button>
-                                </Link>
-
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                {/* <Link href={'/quiz/chemistryquiz/Home'}> */}
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} lg={6} >
+                        <Card>
+                            <Grid container item xs={12} className="container" >
+                                <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
+                                < AnalyticsIcon sx={{
                                     ":hover": {
-                                        color: "#ffffff",
+                                        color: 'blue', height: '45px', width: '100px',
                                     },
-                                    fontSize: 14,
-
-                                }}>
-                                    <IconBulb style={{ height: 16 }} /> Quiz
-                                </Button>
-                                {/* </Link> */}
-
-                            </Grid>
-
-
-                            {/* <Button size="small" variant="text"
-<<<<<<< HEAD
->>>>>>> 1fdd2a68c73ee996f5e17d3541843045748aab39
-=======
->>>>>>> 18d78a5d8d7dfd710a78da49d44cff0fa19a050a
-                                    sx={{
-                                        ":hover": {
-                                            bgcolor: "#B4F8C8",
-                                            color: "green",
-                                            fontSize: 5
-                                        }
-                                    }}>
-                                    Analytics
-                                </Button> */}
-                        </Grid>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} lg={6} >
-                    <Card sx={{ padding: 0 }}>
-                        <Grid className="container">
-                            <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                                <IconButton onClick={handleAnalytics}>
-                                    < AnalyticsIcon sx={{
-                                        ":hover": {
-                                            color: 'blue', height: '40px', width: '100px',
-                                        },
-                                        height: '35px', width: '100px', color: "#fff",
-                                    }} />
-                                </IconButton>
+                                    height: '40px', width: '100px', color: "#fff",
+                                }} />
                             </Typography>
-                            <CardHeader
-                                style={{ padding: 0, backgroundColor: '' }}
-                                avatar={
-                                    <ShutterSpeedIcon style={{ height: '65px', width: '45px', marginLeft: 4, padding: 0 }} color="warning" />
-                                }
-                                action={
-                                    <div style={{ width: '11%', height: "7px", marginLeft: 60 }}>
-                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
-                                        <CircularProgressbar value={77} text={`${77}%`} strokeWidth={7} styles={{
+                                {/* <Typography className="overlay" style={{ color: "rgb(163, 0, 214)", fontSize: 20, fontWeight: 'bold', cursor: 'pointer',justifyContent: 'center', display: 'inline-flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ width: '30px', height: '30px', fontWeight: 'bold', color: "rgb(163, 0, 214)", cursor: 'pointer', display: 'flex', alignItems: 'center', textAlign: 'center' , justifyContent: 'center'}} />Analytics</Typography> */}
+                                <Grid item xs={2} paddingLeft={1} paddingTop={0.5}>
+                                    <ShutterSpeedIcon style={{ height: '50px', width: '50px' }} color="warning" />
+                                </Grid>
+                                <Grid item xs={7} paddingTop={1.5} paddingLeft={3}>
+                                    <span style={{ fontWeight: 'bold' }} >Physics</span>
+                                    {/* <Typography className="overlay" display={'flex'}>< AnalyticsIcon style={{ height: 18, color: "#fff" }} />Analytics</Typography> */}
+                                </Grid>
+                                <Grid item xs={3} paddingTop={0.5}>
+                                    <div style={{ width: 40, fontSize: 10, padding: 0, color: '#6aa84f' }}>
+                                        <CircularProgressbar value={66} text={`${66}%`} styles={{
                                             background: {
                                                 fill: "#f1c232",
                                                 fontSize: '28px',
@@ -332,90 +274,73 @@ const DashboardBooks = () => {
                                                 fontSize: '28px',
                                             },
                                         }} />
+                                        Average
                                     </div>
-                                    // <CircularProgressbar value={percentage} text={`${percentage}%`} />
-                                }
+                                </Grid>
+                            </Grid>
+                            <Divider orientation="horizontal" flexItem sx={{ mr: "-1px" }} />
+                            <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Link href='/physics'>
+                                        <Button size="small" variant="text" sx={{
+                                            ":hover": {
+                                                color: "#ffffff",
+                                            },
+                                            fontSize: 14,
+                                        }}>
+                                            <IconNotebook style={{ height: 16 }} /> Content
+                                        </Button>
+                                    </Link>
 
-                                //     <CircularProgressbar
-                                //     value={percentages[index]}
-                                //     text={`${percentages[index]}%`}
-                                //   />
-                                //     <Chart
-                                //         options={optionscolumnchart}
-                                //         series={seriescolumnchart}
-                                //         type="radialBar"
-                                //         width={"55%"}
-                                //         height="100px" />
-                                //     // <Avatar sx={{ bgcolor: red[500], marginTop: 1, fontSize: 12 }} aria-label="recipe">
-                                //     //     80%
-                                //     // </Avatar>
-                                // }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Physics</span>}
-                            // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="warning" />Analytics</CardActions>}
-                            />
-                        </Grid><Divider />
-                        <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Link href="/physics">
-                                    <Button size="small" variant="text" sx={{
+                                </Grid>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
                                         ":hover": {
                                             color: "#ffffff",
                                         },
                                         fontSize: 14,
                                     }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
+                                        <IconBulb style={{ height: 16 }} /> Quiz
                                     </Button>
-                                </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} lg={6} >
+                        <Card style={{ padding: 0 }}>
+                            <Grid container item xs={12} className="container">
+                                <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
+                                < AnalyticsIcon sx={{
                                     ":hover": {
-                                        color: "#ffffff",
+                                        color: 'blue', height: '45px', width: '100px',
                                     },
-                                    fontSize: 14,
-                                }}>
-                                    <IconBulb style={{ height: 16 }} /> Quiz
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} lg={6} >
-                    <Card sx={{ padding: 0 }}>
-                        <Grid className="container">
-                            <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                                <IconButton onClick={handleAnalytics}>
-                                    < AnalyticsIcon sx={{
-                                        ":hover": {
-                                            color: 'blue', height: '40px', width: '100px',
-                                        },
-                                        height: '35px', width: '100px', color: "#fff",
-                                    }} />
-                                </IconButton>
+                                    height: '40px', width: '100px', color: "#fff",
+                                }} />
                             </Typography>
-                            <CardHeader
-                                style={{ padding: 0, backgroundColor: '' }}
-                                avatar={
-                                    <BiotechIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="info" />
-                                }
-                                action={
-                                    <div style={{ width: '11%', height: "7px", marginLeft: 56 }}>
-                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
-                                        <CircularProgressbar value={88} text={`${88}%`} strokeWidth={7} styles={{
+                                {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
+                                <Grid item xs={2.5} paddingLeft={0} paddingTop={0.5}>
+                                    <BiotechIcon style={{ height: '50px', width: '60px' }} color="info" />
+                                </Grid>
+                                <Grid item xs={6.5} paddingTop={1.8} paddingLeft={1.2} >
+                                    <span style={{ fontWeight: 'bold', }} >Biology</span>
+                                </Grid>
+                                <Grid item xs={3} paddingTop={0.5}>
+                                    <div style={{ width: 40, fontSize: 10, padding: 0, color: '#89bded' }}>
+                                        <CircularProgressbar value={66} text={`${66}%`} styles={{
                                             background: {
                                                 fill: "#89bded",
                                                 fontSize: '28px',
@@ -437,75 +362,73 @@ const DashboardBooks = () => {
                                                 fontSize: '28px',
                                             },
                                         }} />
+                                        Average
                                     </div>
-                                }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Biology</span>}
-                            // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="info" />Analytics</CardActions>}
-                            />
-                        </Grid><Divider />
-                        <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Link href='/biology'>
-                                    <Button size="small" variant="text" sx={{
+                                </Grid>
+                            </Grid>
+                            <Divider />
+                            <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Link href='/biology'>
+                                        <Button size="small" variant="text" sx={{
+                                            ":hover": {
+                                                color: "#ffffff",
+                                            },
+                                            fontSize: 14,
+                                        }}>
+                                            <IconNotebook style={{ height: 16 }} /> Content
+                                        </Button>
+                                    </Link>
+
+                                </Grid>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
                                         ":hover": {
                                             color: "#ffffff",
                                         },
                                         fontSize: 14,
                                     }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
+                                        <IconBulb style={{ height: 16 }} /> Quiz
                                     </Button>
-                                </Link>
-
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} lg={6} >
+                    <Card style={{ padding: 0 }}>
+                            <Grid container item xs={12} className="container">
+                                <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
+                                < AnalyticsIcon sx={{
                                     ":hover": {
-                                        color: "#ffffff",
+                                        color: 'blue', height: '45px', width: '100px',
                                     },
-                                    fontSize: 14,
-                                }}>
-                                    <IconBulb style={{ height: 16 }} /> Quiz
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Card>
-                </Grid><Divider />
-                <Grid item xs={12} lg={6} >
-                    <Card sx={{ padding: 0 }}>
-                        <Grid className="container">
-                            <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                                <IconButton onClick={handleAnalytics}>
-                                    < AnalyticsIcon sx={{
-                                        ":hover": {
-                                            color: 'blue', height: '40px', width: '100px',
-                                        },
-                                        height: '35px', width: '100px', color: "#fff",
-                                    }} />
-                                </IconButton>
+                                    height: '40px', width: '100px', color: "#fff",
+                                }} />
                             </Typography>
-                            <CardHeader
-                                style={{ padding: 0, backgroundColor: '' }}
-                                avatar={
-                                    <ScienceIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="error" />
-                                }
-                                action={
-                                    <div style={{ width: '12%', height: "7px", marginLeft: 38 }}>
-                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
-                                        <CircularProgressbar value={99} text={`${99}%`} strokeWidth={7} styles={{
+                                {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
+                                <Grid item xs={2.5} paddingLeft={1}>
+                                    <ScienceIcon style={{ height: '50px', width: '50px' }} color="error" />
+                                </Grid>
+                                <Grid item xs={6.5} paddingTop={1.8} paddingLeft={1.8} >
+                                    <span style={{ fontWeight: 'bold', }} >Chemistry</span>
+                                </Grid>
+                                <Grid item xs={3} paddingTop={0.5}>
+                                    <div style={{ width: 40,fontSize:10,padding:0,color:'#e9a35a'}}>
+                                        <CircularProgressbar value={66} text={`${66}%`} styles={{
                                             background: {
                                                 fill: "#e9a35a",
                                                 fontSize: '28px',
@@ -527,165 +450,161 @@ const DashboardBooks = () => {
                                                 fontSize: '28px',
                                             },
                                         }} />
+                                        Average
                                     </div>
-                                }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Chemistry</span>}
-                            // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="error" />Analytics</CardActions>}
-                            />
-                        </Grid><Divider />
-                        <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
+                                </Grid>
+                            </Grid>
+                            <Divider />
+                            <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Link href='/chemistry'>
+                                        <Button size="small" variant="text" sx={{
+                                            ":hover": {
+                                                color: "#ffffff",
+                                            },
+                                            fontSize: 14,
+                                        }}>
+                                            <IconNotebook style={{ height: 16 }} /> Content
+                                        </Button>
+                                    </Link>
 
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Link href="/chemistry">
-                                    <Button size="small" variant="text" sx={{
+                                </Grid>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
                                         ":hover": {
                                             color: "#ffffff",
                                         },
                                         fontSize: 14,
                                     }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
+                                        <IconBulb style={{ height: 16 }} /> Quiz
                                     </Button>
-                                </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} lg={6} >
+                    <Card style={{ padding: 0 }}>
+                            <Grid container item xs={12} className="container">
+                                <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
+                                < AnalyticsIcon sx={{
                                     ":hover": {
-                                        color: "#ffffff",
+                                        color: 'blue', height: '45px', width: '100px',
                                     },
-                                    fontSize: 14,
-                                }}>
-                                    <IconBulb style={{ height: 16 }} /> Quiz
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} lg={6} >
-                    <Card sx={{ padding: 0 }}>
-                        <Grid className="container">
-                            <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                                <IconButton onClick={handleAnalytics}>
-                                    < AnalyticsIcon sx={{
-                                        ":hover": {
-                                            color: 'blue', height: '40px', width: '100px',
-                                        },
-                                        height: '35px', width: '100px', color: "#fff",
-                                    }} />
-                                </IconButton>
+                                    height: '40px', width: '100px', color: "#fff",
+                                }} />
                             </Typography>
-                            <CardHeader
-                                style={{ padding: 0, backgroundColor: '' }}
-                                avatar={
-                                    <SmsIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="primary" />
-                                }
-                                action={
-                                    <div style={{ width: '13%', height: "7px", marginLeft: 5 }}>
-                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
-                                        <CircularProgressbar value={85} text={`${85}%`} strokeWidth={7} styles={{
+                                {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
+                                <Grid item xs={2.5} paddingLeft={1} paddingTop={0.6}>
+                                    <SmsIcon style={{ height: '50px', width: '50px' }} color="primary" />
+                                </Grid>
+                                <Grid item xs={6.5} paddingTop={1.8} paddingLeft={1.5} >
+                                    <span style={{ fontWeight: 'bold', }} >Communication</span>
+                                </Grid>
+                                <Grid item xs={3} paddingTop={0.5}>
+                                    <div style={{ width: 40,fontSize:10,padding:0,color:'#5387b6'}}>
+                                        <CircularProgressbar value={66} text={`${66}%`} styles={{
                                             background: {
-                                                fill: "#e9a35a",
+                                                fill: "#5387b6",
                                                 fontSize: '28px',
                                                 fontWeight: 'bold'
                                             },
                                             path: {
-                                                stroke: "#e9a35a"
+                                                stroke: "#5387b6"
                                             },
                                             trail: {
                                                 // stroke: "ActiveBorder",
                                                 transform: "rotate(90deg)",
                                                 transformOrigin: "center center",
-                                                backgroundColor: '#e9a35a'
+                                                backgroundColor: '#5387b6'
                                             },
                                             text: {
                                                 // Tweak text color:
-                                                fill: '#e9a35a',
+                                                fill: '#5387b6',
                                                 // Tweak text size:
                                                 fontSize: '28px',
                                             },
                                         }} />
+                                        Average
                                     </div>
-                                }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Communication</span>}
-                            // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="primary" />Analytics</CardActions>}
-                            />
-                        </Grid><Divider />
-                        <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, borderRadius: '4px', }}>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Link href="/communication">
+                                </Grid>
+                            </Grid>
+                            <Divider />
+                            <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Link href='/communication'>
+                                        <Button size="small" variant="text" sx={{
+                                            ":hover": {
+                                                color: "#ffffff",
+                                            },
+                                            fontSize: 14,
+                                        }}>
+                                            <IconNotebook style={{ height: 16 }} /> Content
+                                        </Button>
+                                    </Link>
 
-                                    <Button size="small" variant="text" sx={{
+                                </Grid>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
                                         ":hover": {
                                             color: "#ffffff",
                                         },
                                         fontSize: 14,
                                     }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
+                                        <IconBulb style={{ height: 16 }} /> Quiz
                                     </Button>
-                                </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} lg={6} >
+                    <Card style={{ padding: 0 }}>
+                            <Grid container item xs={12} className="container">
+                                <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
+                                < AnalyticsIcon sx={{
                                     ":hover": {
-                                        color: "#ffffff",
+                                        color: 'blue', height: '45px', width: '100px',
                                     },
-                                    fontSize: 14,
-                                }}>
-                                    <IconBulb style={{ height: 16 }} /> Quiz
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} lg={6} >
-                    <Card sx={{ padding: 0 }}>
-                        <Grid className="container">
-                            <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
-                                <IconButton onClick={handleAnalytics}>
-                                    < AnalyticsIcon sx={{
-                                        ":hover": {
-                                            color: 'blue', height: '40px', width: '100px',
-                                        },
-                                        height: '35px', width: '100px', color: "#fff",
-                                    }} />
-                                </IconButton>
+                                    height: '40px', width: '100px', color: "#fff",
+                                }} />
                             </Typography>
-                            <CardHeader
-                                style={{ padding: 0, margin: 0, backgroundColor: '' }}
-                                avatar={
-                                    <PublicIcon style={{ height: '65px', width: '45px', marginLeft: 1 }} color="secondary" />
-                                }
-                                action={
-                                    <div style={{ width: '12.5%', height: "7px", marginLeft: 22 }}>
-                                        <span style={{ fontSize: 12, color: '#073763' }}>Average</span>
-                                        <CircularProgressbar value={75} text={`${75}%`} strokeWidth={7} styles={{
+                                {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
+                                <Grid item xs={2.5} paddingLeft={1} paddingTop={0.6}>
+                                    <PublicIcon style={{ height: '50px', width: '50px' }} color="secondary" />
+                                </Grid>
+                                <Grid item xs={6.5} paddingTop={1.8} paddingLeft={1.5} >
+                                    <span style={{ fontWeight: 'bold', }} >Social Welfare</span>
+                                </Grid>
+                                <Grid item xs={3} paddingTop={0.5}>
+                                    <div style={{ width: 40,fontSize:10,padding:0,color:'#999999'}}>
+                                        <CircularProgressbar value={66} text={`${66}%`} styles={{
                                             background: {
                                                 fill: "#999999",
                                                 fontSize: '28px',
@@ -707,64 +626,56 @@ const DashboardBooks = () => {
                                                 fontSize: '28px',
                                             },
                                         }} />
+                                        Average
                                     </div>
-                                    // <Chart
-                                    //     options={optionscolumnchart}
-                                    //     series={seriescolumnchart}
-                                    //     type="radialBar"
-                                    //     width={"30%"}
-                                    //     height="100px" />
-                                    // <Avatar sx={{ bgcolor: red[500], marginTop: 1, fontSize: 12 }} aria-label="recipe">
-                                    //     80%
-                                    // </Avatar>
-                                }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>SocialWelfare</span>}
-                            // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="secondary" />Analytics</CardActions>}
-                            />
-                        </Grid><Divider />
-                        <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, borderRadius: '4px', }}>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Link href="/socialwelfare">
-                                    <Button size="small" variant="text" sx={{
+                                </Grid>
+                            </Grid>
+                            <Divider />
+                            <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Link href='/socialwelfare'>
+                                        <Button size="small" variant="text" sx={{
+                                            ":hover": {
+                                                color: "#ffffff",
+                                            },
+                                            fontSize: 14,
+                                        }}>
+                                            <IconNotebook style={{ height: 16 }} /> Content
+                                        </Button>
+                                    </Link>
+
+                                </Grid>
+                                <Grid item xs={6} sx={{
+                                    ":hover": {
+                                        color: "green",
+                                        background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                        boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    },
+                                    borderRight: '1px solid #ddd'
+                                }}>
+                                    <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
                                         ":hover": {
                                             color: "#ffffff",
                                         },
                                         fontSize: 14,
                                     }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
+                                        <IconBulb style={{ height: 16 }} /> Quiz
                                     </Button>
-                                </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={6} sx={{
-                                ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
-                                },
-                                borderRight: '1px solid #ddd'
-                            }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconBulb size={'small'} style={{ height: 16 }} /> Quiz
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Card>
-                </Grid>
-            </Grid>
-            {/* </DashboardCard> */}
-        </PageContainer >
+                        </Card>
+                    </Grid>
+                </Grid >
+                {/* </DashboardCard> */}
+            </PageContainer >
+        </Box >
     );
 };
 

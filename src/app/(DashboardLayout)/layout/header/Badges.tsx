@@ -114,7 +114,7 @@ const Badges = () => {
         color="inherit"
         aria-controls="msgs-menu"
         aria-haspopup="true"
-       onClick={handleClick2}
+        onClick={handleClick2}
       >
         <Badge variant="dot" color="primary">
           <IconSpeakerphone size="21" stroke="1.5" />
@@ -135,6 +135,7 @@ const Badges = () => {
         sx={{
           "& .MuiMenu-paper": {
             // width: "250px",
+            maxHeight:"380px",
             border: '1px solid ddd'
           },
         }}
@@ -154,7 +155,7 @@ const Badges = () => {
                       </Grid> */}
                       <Grid item xs={10.5}>
                         <div>
-                          {/* <Link href={'/notifications'}> */}
+                          <Link href={'/Announcement'}>
                           <Typography sx={{
                             ":hover": {
                               color: "#107869",
@@ -162,12 +163,12 @@ const Badges = () => {
                             }, display: 'inline-flex',
                             fontSize: 14,
                             fontWeight: 'bold',
-                            textAlign: 'center',
-                            justifyContent: 'center',
-                            alignItems: 'center'
+                            // textAlign: 'center',
+                            // justifyContent: 'center',
+                            alignItems: 'justify'
                             // color: product.clr
-                          }}>{product.priority}</Typography>
-                          {/* </Link> */}
+                          }}>{product.priority + product.date}</Typography>
+                          </Link>
                         </div>
                       </Grid>
                     </Grid>

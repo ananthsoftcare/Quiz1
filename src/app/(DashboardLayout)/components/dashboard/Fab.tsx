@@ -19,11 +19,11 @@ import Link from "next/link";
 const actions = [
     { label: "About", ques: '2 question raised from physics 2 question raised from physics 2 question raised from physics 2 question raised from physics', bg: '#F3C790' },
     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
-    { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
+    { label: "Picture", ques: '1 question raised from chemistry', bg: '#ccffff' },
     { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
-    { label: "About", ques: '2 question raised from physics', bg: '#F3C790' },
+    { label: "About", ques: '2 question raised from physics', bg: '#ccffff' },
     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
-    { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
+    { label: "Picture", ques: '1 question raised from chemistry', bg: '#ccffff' },
     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
     { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
     { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
@@ -111,7 +111,7 @@ const FAB = () => {
 
             {open === true ? (
                 <Box sx={{
-                    overflow: "auto", border: '1px solid #faa917', backgroundColor: 'rgb(230 217 255)',
+                    overflow: "auto", border: '1px solid #faa917', backgroundColor: ' #f2f2ff',
                     maxHeight: '340px', maxWidth: '397px', scrollbarwidth: 'thin', borderRadius: '4px',
                 }}>
                     {actions.map((product, i) => {

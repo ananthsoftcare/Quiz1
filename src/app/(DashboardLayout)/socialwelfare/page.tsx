@@ -628,52 +628,28 @@ export default function Content() {
 							</div>
 							<nav className="section-nav scrollcontent">
 								<ol>
-									<li style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#introduction">Introduction</a></li>
-									<li style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#request-response">Request &amp; Response</a></li>
-									<li style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#authentication">Authentication</a></li>
+									<li ><a href="#introduction">Introduction</a></li>
+									<li ><a href="#request-response">Request &amp; Response</a></li>
+									<li ><a href="#authentication">Authentication</a></li>
 									{/* <li><a href="#authentication">Chemical Basis</a></li>
 								<li><a href="#authentication">Evolution</a></li>
 								<li><a href="#authentication">Ecology</a></li>
 								<li><a href="#authentication">Refrences</a></li> */}
 									<li><a href="#endpoints" style={{ color: "blue" }}>Endpoints</a>
 										<ul>
-											<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#endpoints--root">Root</a></li>
-											<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#endpoints--cities-overview">Cities Overview</a></li>
-											<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#endpoints--city-detail">City Detail</a></li>
-											<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#endpoints--city-config">City Config</a></li>
-											<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#endpoints--city-spots-overview">City Spots Overview</a></li>
-											<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#endpoints--city-spot-detail">City Spot Detail</a></li>
+											<li className="" ><a href="#endpoints--root">Root</a></li>
+											<li className="" ><a href="#endpoints--cities-overview">Cities Overview</a></li>
+											<li className="" ><a href="#endpoints--city-detail">City Detail</a></li>
+											<li className="" ><a href="#endpoints--city-config">City Config</a></li>
+											<li className="" ><a href="#endpoints--city-spots-overview">City Spots Overview</a></li>
+											<li className="" ><a href="#endpoints--city-spot-detail">City Spot Detail</a></li>
 											{/* <li className=""><a href="#endpoints--city-icons-overview">City Icons Overview</a></li>
 										<li className=""><a href="#endpoints--city-icon-detail">City Icon Detail</a></li> */}
 										</ul>
 									</li>
-									<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#links">Links</a></li>
-									<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#expanders">Expanders</a></li>
-									<li className="" style={{ display: "flex",
-        justifyContent: "start",gap:"5px",
-    }}> <Rating/>&nbsp;<a href="#filters">Filters</a></li>
+									<li className="" ><a href="#links">Links</a></li>
+									<li className="" ><a href="#expanders">Expanders</a></li>
+									<li className="" ><a href="#filters">Filters</a></li>
 								</ol>
 
 							</nav>

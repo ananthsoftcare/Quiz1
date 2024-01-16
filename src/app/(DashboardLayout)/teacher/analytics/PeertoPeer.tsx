@@ -24,7 +24,9 @@ const PeertoPeer = () => {
                 legend: {
                     position: 'bottom'
                 }
-            }
+            }, dataLabels: {
+                enabled: false
+            },
         }]
     }
     return (
@@ -33,14 +35,14 @@ const PeertoPeer = () => {
 
         // <Card style={{height:'32%'}}
         >
-            <Typography style={{ fontSize: 12, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Peer to peer participation through queries and answers</Typography>
+            <Typography style={{ fontSize: 11, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Peer to peer participation through queries and answers</Typography>
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
 
                 type="pie" width={230} height={450}
 
-                // type="pie" width={"100%"} height={150}
+            // type="pie" width={"100%"} height={150}
 
             />
         </Card >

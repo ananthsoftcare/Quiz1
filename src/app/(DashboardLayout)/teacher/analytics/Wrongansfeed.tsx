@@ -46,9 +46,7 @@ const Wrongansfeed = () => {
         responsive: [{
             breakpoint: 480,
             options: {
-                chart: {
-                    width: 200
-                },
+              
                 legend: {
                     position: 'bottom'
                 }
@@ -64,7 +62,6 @@ const Wrongansfeed = () => {
                 options={optionscolumnchart}
                 series={seriescolumnchart}
                 type="donut"
-
                 width={325}
                 height={300}
 

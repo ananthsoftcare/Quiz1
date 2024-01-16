@@ -28,17 +28,13 @@ const AvgParticipate = () => {
         },
         dataLabels: {
             enabled: true,
-
             offsetY: -20,
-            style: {
-                fontSize: '12px',
-                colors: ["#304758"]
-            }
+
         },
 
         xaxis: {
             categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-            position: 'top',
+            position: 'bottom',
             axisBorder: {
                 show: false
             },
@@ -94,7 +90,7 @@ const AvgParticipate = () => {
                 width={450}
                 height={250}
             />
-{/* =======
+            {/* =======
         <DashboardCard title="Average Participation in Quiz contest"
             middlecontent={
                 <Chart

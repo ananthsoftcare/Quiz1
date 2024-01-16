@@ -30,7 +30,7 @@ const CountdownTimer: FC<ITimerSeconds> = ({ initialSeconds }) => {
 
 
     return (
-        <div>
+        <div style={{color:'#fff',borderRadius:'4px',padding:2, backgroundColor:'rgb(145 154 231)'}}>
             {formatTime(seconds)}
         </div>
     );
