@@ -51,11 +51,33 @@ export default function Content() {
 	type floating = {
 		openModal: string;
 	};
+	// type modalAdd = {
+	// 	buttonAdd:boolean;
+	// }
+
+
+	const style = {
+		position: 'absolute' as 'absolute',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%, -50%)',
+		width: 400,
+		bgcolor: 'background.paper',
+		//border: '2px solid #000',
+		boxShadow: 24,
+		pt: 2,
+		px: 4,
+		pb: 3,
+	};
 
 	const [floatingOpen, setFloatingOpen] =
 		useState<floating>({
 			openModal: ''
 		});
+
+
+
+	const [openModalAddTitle, setOpenModalAddTitle] = React.useState(false)
 
 	function openForm() {
 		setFloatingOpen({ openModal: 'block' })
@@ -64,9 +86,56 @@ export default function Content() {
 		setFloatingOpen({ openModal: 'none' })
 	}
 
+	const handleopenModal = () => {
+		setOpenModalAddTitle(!openModalAddTitle)
+	}
+
+	const handleChangeDropdown = (e: any) => {
+		if (e.target.value === "addTitle") {
+			setOpenModalAddTitle(true)
+		}
+	}
 
 	return (
-		<form method="post" >
+		// <form method="post" >
+		<div>
+			<Modal
+				open={openModalAddTitle}
+				onClose={() => setOpenModalAddTitle(false)}
+				// size='md'
+
+				aria-labelledby="child-modal-title"
+				aria-describedby="child-modal-description"
+			>
+				<Box sx={{ ...style, width: 500 }}>
+					<div className="rowModal">
+						<div className="columnModal">
+							<label>Title</label>
+						</div>
+						<div className="columnModal">
+							<input name="Email" id="Email" className="input" type="email" />
+						</div>
+						<div className="columnModal">
+							<label>Collection</label>
+						</div>
+						<div className="columnModal">
+							<input name="collection" id="collection" className="input" type="text" />
+						</div>
+						<div className="columnModal">
+							<label>Description</label>
+						</div>
+						<div className="columnModal">
+							<textarea name='description' className="input" ></textarea>
+							{/* <input name="description" id="description" className="input" type="textarea" /> */}
+						</div>
+					</div>
+<div style={{justifyContent:"flex-end",display:"flex"}}>
+
+
+					<Button style={{ justifyContent: "end", display: "flex",color:"white", backgroundColor: "rgb(0, 133, 219)" }} onClick={() => setOpenModalAddTitle(false)}>Submit</Button>
+					</div>
+				</Box>
+			</Modal>
 			<Card sx={{ p: 1, width: 'max(100%,500px)', mx: 'auto' }}>
 				{/* <Box height="100%"> */}
 				{/* <button>back</button> */}
@@ -77,13 +146,31 @@ export default function Content() {
 								<svg cursor="pointer" onClick={() => router.push('/')} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
 							</BootstrapTooltip>
 						</div>
-						<div className="column2" style={{ justifyContent: "center", display: "flex", marginRight: "126px" }}>
+						<div className="column2" style={{ justifyContent: "center", display: "flex" }}>
 							<b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>
 								Maths</b>
 						</div>
+						<div className="column3" style={{ justifyContent: "end", display: "flex" }}>
+
+							<Typography ><b>Apply Your Collection</b></Typography>&nbsp;
+							<select  name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)}>
+								<option value="introduction">introduction</option>
+								<option value="chemistry">Chemistry</option>
+								<option value="maths">Physics</option>
+								<option value="biology">Communication</option>
+								{/* <option value="chemistry">Chemistry</option> */}
+								<option value="maths">Maths</option>
+								<option value="social">Social Welfare</option>
+								<option value="addTitle"><button >Add Title</button></option>
+								{/* <option onClick={() => handleopenModal()} value=''></option> */}
+								<button >Add title</button>
+							</select>
+						</div>
 					</div>
 					<div className='borderLink'>
+
 						<div className='main'>
+
 							<div className='scrollcontent' >
 								<section id="introduction">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Introduction</h2>
@@ -622,8 +709,12 @@ export default function Content() {
 								</section>
 							</div>
 							<nav className="section-nav scrollcontent">
+
 								<ol>
-									<li ><a href="#introduction">Introduction</a></li>
+									<li > <a href="#introduction" style={{
+										display: "flex",
+										alignItems: "center", gap: "5px",
+									}}>Introduction <Rating onclick={() => handleopenModal()} />&nbsp;</a></li>
 									<li ><a href="#analytical-essay">Analytical Essay</a></li>
 									<li ><a href="#argumentative-essay">Argumentative Essay</a></li>
 									<li ><a href="#authentication">Chemical Basis</a></li>
@@ -687,21 +778,21 @@ export default function Content() {
 					{/* <button className="open-button" >
         Chat
       </button> */}
-	
+
 					{/* <svg className="open-button" xmlns="http://www.w3.org/2000/svg" onClick={() => openForm()} width="100" height="50" viewBox="0 0 20 20"> */}
-						
-						{/* <path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" /></svg> */}
+
+					{/* <path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" /></svg> */}
 
 
 
 
 
-<div className="open-modal-question" onClick={() => openForm()} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <b>Have Questions ? ask to your peers</b>
-    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 20 20">
-        <path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" />
-    </svg>
-</div>
+					<div className="open-modal-question" onClick={() => openForm()} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+						<b>Have Questions,ask to your peers</b>
+						<svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 20 20">
+							<path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" />
+						</svg>
+					</div>
 
 
 					<div className="chat-popup form-container" style={{ display: floatingOpen.openModal }}>
@@ -731,8 +822,8 @@ export default function Content() {
 				</PageContainer>
 				{/* </Box> */}
 			</Card>
-		</form>
-		// </div 
+			{/* </form> */}
+		</div>
 	)
 }
 

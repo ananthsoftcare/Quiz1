@@ -15,32 +15,35 @@ const PeertoPeer = () => {
     const successlight = theme.palette.success.light;
 
 
-    const seriescolumnchart: any = [44, 55, 13, 43, 22];
+    const seriescolumnchart: any = [56, 30];
     const optionscolumnchart: any = {
-        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+        labels: ['Queries', 'Answers'],
         responsive: [{
             breakpoint: 480,
             options: {
                 legend: {
-                    position: 'bottom'
+                    enabled: false,
+                    // position: 'bottom'
                 }
-            }
+            }, dataLabels: {
+                enabled: false
+            },
         }]
     }
     return (
 
-        <Card style={{ height: '65%' }}
+        <Card style={{ height: '80%' }}
 
         // <Card style={{height:'32%'}}
         >
-            <Typography style={{ fontSize: 12, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Peer to peer participation through queries and answers</Typography>
+            <Typography style={{ fontSize: 11, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Peer to peer participation through queries and answers</Typography><br /><br />
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
 
-                type="pie" width={230} height={450}
+                type="pie" height={350} width={350}
 
-                // type="pie" width={"100%"} height={150}
+            // type="pie" width={"100%"} height={150}
 
             />
         </Card >

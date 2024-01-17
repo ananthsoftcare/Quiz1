@@ -6,13 +6,14 @@ import ProfitExpenses from '@/app/(DashboardLayout)/components/dashboard/ProfitE
 import TrafficDistribution from '@/app/(DashboardLayout)/components/dashboard/TrafficDistribution';
 import UpcomingSchedules from '@/app/(DashboardLayout)/components/dashboard/UpcomingSchedules';
 import TopPayingClients from '@/app/(DashboardLayout)/components/dashboard/TopPayingClients';
+import Blog from '@/app/(DashboardLayout)/components/dashboard/Blog';
 import ProductSales from '@/app/(DashboardLayout)/components/dashboard/ProductSales';
 import DashboardBooks from './components/dashboard/DashBoardBook';
 import RadialBarChart from './components/dashboard/RadialBarChart';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Treemaps from './components/dashboard/treemap';
 import FAB from './components/dashboard/Fab';
+import Treemaps from './components/dashboard/treemap';
 
 
 
@@ -42,8 +43,7 @@ const Dashboard = () => {
                 {/* <RadialBarChart /> */}
               </Grid>
               <Grid item xs={12} lg={4}>
-                {/* <ProductSales /> */}
-                <Treemaps/>
+              <Treemaps/>
               </Grid>
               <Grid item xs={12} lg={4}>
                 <UpcomingSchedules />
@@ -55,7 +55,7 @@ const Dashboard = () => {
             <TopPayingClients />
           </Grid> */}
           <Grid item xs={12}>
-            <FAB />
+          <FAB />
           </Grid>
         </Grid>
       </Box>

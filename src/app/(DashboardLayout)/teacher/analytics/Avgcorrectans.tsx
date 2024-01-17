@@ -39,13 +39,14 @@ const Avgcorrectans = () => {
 
     }
     return (
-        <Card style={{ height: '65%' }}
+        <Card style={{ height: '80%' }}
         >
             <Typography style={{ fontSize: 11, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Average correct answer by question difficulty level</Typography>
+            <br/><br/><br/><br/>
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
-                type="donut" width={230} height={450}
+                type="donut" height={350} width={350}
             // type="donut" width={"100%"} height={500}
             />
         </Card >

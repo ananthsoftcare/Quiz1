@@ -20,20 +20,6 @@ const Participate = () => {
         data: [44, 55, 41, 67, 22, 43, 21]
     }];
     const optionscolumnchart: any = {
-
-        annotations: {
-            points: [{
-                seriesIndex: 0,
-                label: {
-                    borderColor: '#775DD0',
-                    offsetY: 0,
-                    style: {
-                        color: '#fff',
-                        background: '#775DD0',
-                    },
-                }
-            }]
-        },
         plotOptions: {
             bar: {
                 borderRadius: 10,
@@ -42,7 +28,7 @@ const Participate = () => {
         },
         dataLabels: {
             enabled: false
-        },
+        }, colors: '#ADD8E6',
         stroke: {
             width: 2
         },
@@ -62,22 +48,22 @@ const Participate = () => {
         },
         yaxis: {
             title: {
-                text: 'Servings',
+                text: 'Marks',
             },
         },
-        fill: {
-            type: 'gradient',
-            gradient: {
-                shade: 'light',
-                type: "horizontal",
-                shadeIntensity: 0.25,
-                gradientToColors: undefined,
-                inverseColors: true,
-                opacityFrom: 0.85,
-                opacityTo: 0.85,
-                stops: [50, 0, 100]
-            },
-        }
+        // fill: {
+        //     type: 'gradient',
+        //     gradient: {
+        //         shade: 'light',
+        //         type: "horizontal",
+        //         shadeIntensity: 0.25,
+        //         gradientToColors: undefined,
+        //         inverseColors: true,
+        //         opacityFrom: 0.85,
+        //         opacityTo: 0.85,
+        //         stops: [50, 0, 100]
+        //     },
+        // }
     }
 
 
@@ -89,7 +75,7 @@ const Participate = () => {
                 options={optionscolumnchart}
                 series={seriescolumnchart}
                 type="bar"
-                height={250} width={350}
+                height={250} width={500}
             />
         </Card >
     );

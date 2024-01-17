@@ -391,9 +391,8 @@ export default function Page({ searchParams }: {
                     <div className="columnanswers1" >
                     <BootstrapTooltip title="Back">
                     <button onClick={()=>router.push('/notifications')} style={{backgroundColor:"white",border:"grey"}}>
-            <svg  cursor='pointer'  width="20" height="20" className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 8 14">
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"/>
-  </svg>
+                    <svg cursor="pointer" xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
+
   </button>
   </BootstrapTooltip>
                         {/* <Typography >Questions</Typography> */}

@@ -10,6 +10,14 @@ import {
   IconTable,
   IconUser,
   IconUsersGroup,
+  IconAwardFilled,
+  IconAwardOff,
+  IconShield,
+  IconShieldHalf,
+  IconAward,
+  IconSpeakerphone,
+  IconBellRinging,
+  IconNote,
 } from "@tabler/icons-react";
 
 import { uniqueId } from "lodash";
@@ -36,12 +44,38 @@ const Menuitems = [
     icon: IconSchool,
     href: "/notifications",
   },
-  // {
-  //   id: uniqueId(),
-  //   title: "Content",
-  //   icon: IconTable,
-  //   href: "/utilities/shadow",
-  // },
+    {
+    id: uniqueId(),
+    title: "Collabration",
+    icon: IconTable,
+    href: "/Collabration",
+    children: [
+      {
+        id: uniqueId(),
+        title: "Collection",
+        icon: IconNote,
+        href: "/collection",
+      },
+      {
+        id: uniqueId(),
+        title: "P2P Quries",
+        icon: IconBellRinging,
+        href: "/notifications",
+      },
+      {
+        id: uniqueId(),
+        title: "Announcement",
+        icon: IconSpeakerphone,
+        href: "/Announcement",
+      },
+    ]
+  },
+  {
+    id: uniqueId(),
+    title: "Teacher",
+    icon: IconAward,
+    href: "/teacher/dashboard",
+  },
   // {
   //   id: uniqueId(),
   //   title: "Dummy",
@@ -52,18 +86,18 @@ const Menuitems = [
   //   navlabel: true,
   //   subheader: "Auth",
   // },
-  {
-    id: uniqueId(),
-    title: "Login",
-    icon: IconLogin,
-    href: "/authentication/login",
-  },
-  {
-    id: uniqueId(),
-    title: "Register",
-    icon: IconUserPlus,
-    href: "/authentication/register",
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: "Login",
+  //   icon: IconLogin,
+  //   href: "/authentication/login",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Register",
+  //   icon: IconUserPlus,
+  //   href: "/authentication/register",
+  // },
   // {
   //   navlabel: true,
   //   subheader: "Extra",

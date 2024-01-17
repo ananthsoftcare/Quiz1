@@ -1,19 +1,22 @@
 .star {
   visibility:hidden;
-  font-size:25px;
+  font-size:18px;
   width: 2px;
   /* top: -5px; */
   cursor:pointer;
+  /* background-color: aqua; */
   /* color: rgb(255, 221, 0); */
 }
 .star:before {
  content: "\2606";
  position: absolute;
  visibility:visible;
+ /* background-color: grey; */
  /* color: rgb(255, 255, 7); */
 }
 .star:checked:before {
  content: "\2605";
  position: absolute;
+ /* background-color: grey; */
  color: rgb(255, 247, 10);
 }

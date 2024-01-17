@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from "@mui/material/styles";
 
-import { IconArrowUpLeft } from "@tabler/icons-react";
 
 
 const Performance = () => {
@@ -18,17 +17,17 @@ const Performance = () => {
 
 
     const seriescolumnchart: any = [{
-        name: "Session Duration",
-        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+        name: "Sessions",
+        data: [45, 52, 38, 54, 83, 96, 81]
     },
-    {
-        name: "Page Views",
-        data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-    },
-    {
-        name: 'Total Visits',
-        data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
-    }
+        // {
+        //     name: "Session 2",
+        //     data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+        // },
+        // {
+        //     name: 'Total Visits',
+        //     data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+        // }
     ]
     const optionscolumnchart: any = {
         chart: {
@@ -45,6 +44,7 @@ const Performance = () => {
             enabled: false
         },
         stroke: {
+            curve: 'smooth',
             width: 2,
         },
         markers: {
@@ -54,10 +54,9 @@ const Performance = () => {
             }
         },
         xaxis: {
-            categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
-                '10 Jan', '11 Jan', '12 Jan'
-            ],
+            categories: ['Session 01', 'Session 02', 'Session 03', 'Session 04', 'Session 05', 'Session 06', 'Session 07'],
         },
+
         grid: {
             borderColor: '#f1f1f1',
         }
@@ -71,9 +70,9 @@ const Performance = () => {
                     options={optionscolumnchart}
                     series={seriescolumnchart}
 
-                    type="line" height={270}width={450}
+                    type="line" height={270} width={"100%"}
 
-                    // type="line" height={275}width={"100%"}
+                // type="line" height={275}width={"100%"}
 
                 />
             </Box>

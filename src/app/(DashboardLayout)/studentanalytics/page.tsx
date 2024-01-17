@@ -2,13 +2,17 @@
 import { Grid, Box, Card } from '@mui/material';
 import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
 // components
-import AvgParticipate from './AvgParticipate';
+import AvgParticipate from './QuizSession';
 import Participate from './Participate';
 import Performance from './Performance';
 import PeertoPeer from './PeertoPeer';
+import QuizSession from "./QuizSession"
 import Avgcorrectans from './Avgcorrectans';
 import TopPerformers from './TopPerformers';
 import Wrongansfeed from './Wrongansfeed';
+import "./style.css"
+import ReasonNeg from './ReasonNeg';
+import ReasonProp from './ReasonProp';
 
 const TeacherDashboard = () => {
   return (
@@ -16,115 +20,80 @@ const TeacherDashboard = () => {
       <Box>
         <Grid item xs={12} lg={12}>
           <Grid container spacing={1}>
-            <Grid item xs={12} lg={4}>
-              <AvgParticipate />
-            </Grid>
-            <Grid item xs={12} lg={4}>
-              <Participate />
-            </Grid>
-            <Grid item xs={12} lg={4} >
+            <Grid item xs={12} lg={6}>
+              Filter By: &nbsp;
 
-              {/* <Grid container item display={'flex'} direction={'row'} spacing={0.25}>
-                <Card style={{ width: 155, height: 90 }} >
-                  <div style={{ marginLeft: 20, marginTop: 20, marginRight: 10, fontSize: 12, padding: 10 }}> No. of Students: <b>40</b></div> */}
+              <select name="Chapter" id="Chapter">
+                <option value="All">All</option>
+                <option value="Chapter 1">Chapter 1</option>
+                <option value="Chapter 2">Chapter 2</option>
+                <option value="Chapter 3">Chapter 3</option>
+                <option value="Chapter 4">Chapter 4</option>
+                <option value="Chapter 5">Chapter 5</option>
+              </select>&nbsp;
+              <select name="Topic" id="Topic">
+                <option value="All">All</option>
+                <option value="Analytical Essay">Analytical Essay</option>
+                <option value="Argumentative Essay">Argumentative Essay</option>
+                <option value="Endpoints (Root)">Endpoints (Root)</option>
+                <option value="City Config">City Config</option>
+              </select><br /><br /><br />
 
-              <Grid  item display={'flex'}>
-                <Card style={{ width: 165, height: 90 }} >
-                  <div style={{ marginLeft: 20, marginTop: 20, marginRight: 10,fontSize:12 }}> No. of Students: <b>40</b></div>
-                </Card>&emsp;
-                <Card style={{ width: 155, height: 90 }}>
-                  <div style={{ marginLeft: 20, marginTop: 20, marginRight: 10, fontSize: 12, padding: 10 }}>Total number of Quizzes: <b>500</b></div>
-                </Card>
-              </Grid>&nbsp;
-              <TopPerformers />
-            </Grid>
-            <Grid container item xs={12} spacing={1} >
-              <Grid item xs={12} lg={4}>
-                <Performance />
-              </Grid>
-
-              {/* <Grid container item xs={12} lg={1} spacing={0.1}>
-                <Card style={{ width: 75, height: 90, padding: 10, fontSize: 12 }}> */}
-
-              <Grid item xs={12} lg={1} >
-                <Card style={{width: 75, height: 90 , padding: 5,fontSize:12  }}>
-
-                  <div > No. of Chapters: <b>56</b></div>
-                </Card>&nbsp;
-                <Card style={{ width: 75, height: 90, padding: 10, fontSize: 12 }}>
-                  <div >No. of Topics: <b>500</b></div>
-                </Card>&nbsp;
-                <Card style={{ width: 75, height: 90, padding: 10, fontSize: 12 }}>
-                  <div >No. of Questions: <b>500</b></div>
-                </Card>&nbsp;
-              </Grid>
-
-              {/* <Grid container item xs={12} lg={1.5} direction={'row'}>
-                <Card style={{ padding: 5, fontSize: 12 }}> */}
-
-              <Grid item xs={12} lg={1.5}>
-                <Card style={{ padding: 5,fontSize:12  }}>
-
-                  <div>Total No. of Questions / Queries:<b>556</b></div>
-                </Card><br/>
-                <PeertoPeer />
-              </Grid>
-              <Grid item xs={12} lg={1.5}>
-                <Card style={{ height: 75, padding: 5, fontSize: 12 }}>
-                  <div >Total No. of Answers: <b>200</b></div>
-                </Card>&nbsp;
-                <Avgcorrectans />
-              </Grid>
-              <Grid item xs={12} lg={4}>
-                <Wrongansfeed />
-              </Grid>
-            </Grid>
-
-            {/* <Grid item xs={12} lg={4}>
               <Performance />
             </Grid>
-            <Grid item xs={12} lg={1.6}>
-              <Grid item>
-                <Card style={{ width: 75, height: 120 }}>
-                  <div style={{ marginLeft: 20, marginTop: 20, marginRight: 10 }}> No. of Chapters: <b>56</b></div>
-                </Card>
-              </Grid><br />
-              <Grid item>
-                <Card style={{ width: 75, height: 120 }}>
-                  <div style={{ marginLeft: 20, marginTop: 20, marginRight: 10 }}>No. of Topics: <b>500</b></div>
-                </Card>
-              </Grid><br />
-              <Grid item>
-                <Card style={{ width: 75, height: 120 }}>
-                  <div style={{ marginLeft: 20, marginTop: 20, marginRight: 10 }}>No. of Questions: <b>500</b></div>
-                </Card>
+            <Grid item xs={12} lg={6}>
+              <Grid item display={'flex'}>
+                <div className="card1" style={{ width: "100%", height: 80, fontSize: 16 }} >
+                  Overall Score<b>&nbsp;&nbsp;69%</b>
+                </div>
+              </Grid>
+              <QuizSession />
+              {/* <TopPerformers /> */}
+            </Grid>
+            <Grid container item xs={12} spacing={1} lg={12} >
+              <Grid container item xs={12} lg={4}>
+                <div className="card1" style={{ width: 130, height: 90, padding: 15, fontSize: 16 }} >
+                  Total No. of Quiz Sessions  <b>40</b>
+                </div>
+                <div className='card1' style={{ width: 130, height: 90, padding: 15, fontSize: 16 }}>
+                  Successful Sessions:  <b>35</b>
+                </div>
+                <TopPerformers />
+              </Grid>
+              <Grid container item xs={12} spacing={1} lg={8} display={'flex'}>
+                <Grid item lg={2}>
+                  <div className="card1" style={{ width: '90%', height: 90, padding: 15 }}>
+                    <div > No. of Chapters: <b>56</b></div>
+                  </div>&nbsp;
+                  <div className="card1" style={{ width: '90%', height: 90, padding: 15 }}>
+                    <div >No. of Topics: <b>340</b></div>
+                  </div>&nbsp;
+                  <div className="card1" style={{ width: '90%', height: 90, padding: 15 }}>
+                    <div >No. of Questions: <b>902</b></div>
+                  </div>&nbsp;
+                </Grid>
+                <Grid item xs={12} lg={5} >
+                  <div className="card1" style={{ padding: 5, width: '100%' }}>
+                    <div >Peer to Peer participation Questions raised and answered:<b>30</b></div>
+                  </div>
+                  <PeertoPeer />
+                </Grid>
+                <Grid item xs={12} lg={5} >
+                  <div className="card1" style={{ padding: 5, width: '100%' }}>
+                    <div >Avg. time spent on a quiz question <b>2.39 Min</b></div>
+                  </div>
+                  <Avgcorrectans />
+                </Grid>
+              </Grid>
+
+              <Grid item xs={12} lg={6}>
+                <ReasonNeg />
+              </Grid>
+              <Grid item xs={12} lg={6}>
+                <ReasonProp />
               </Grid>
             </Grid>
-            <Grid item xs={6} lg={1.5}>
-              <Grid item>
-                <Card style={{ width: 165, height: 120 }}>
-                  <div style={{ marginLeft: 20, marginTop: 20, marginRight: 10 }}>Total No. of Questions / Queries:<b>556</b></div>
-                </Card>
-              </Grid><br />
-              <Grid item>
-                <PeertoPeer />
-              </Grid>
-            </Grid>
-            <Grid item xs={12} lg={2}>
-              <Grid>
-                <Card style={{ width: 150, height: 120 }}>
-                  <div style={{ marginLeft: 20, marginTop: 20, marginRight: 10 }}>Total No. of Answers: <b>200</b></div>
-                </Card>
-              </Grid><br />
-              <Grid >
-                <Avgcorrectans />
-              </Grid>
-            </Grid> */}
-            {/* <Grid item xs={12} lg={4}>
-              <Grid >
-                <Wrongansfeed />
-              </Grid>
-            </Grid> */}
+
           </Grid>
         </Grid>
       </Box>

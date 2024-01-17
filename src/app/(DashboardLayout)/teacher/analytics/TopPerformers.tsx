@@ -24,14 +24,13 @@ const TopPerformers = () => {
         chart: {
             type: 'bar',
 
-            height: 350,
             toolbar: {
                 show: false
             }
-        },
+        }, colors: '#20B2AA',
         plotOptions: {
             bar: {
-                borderRadius: 4,
+                borderRadius: 10,
                 horizontal: true,
             }
         },
@@ -44,19 +43,19 @@ const TopPerformers = () => {
     }
 
     return (
-        <Card> 
-           <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Top Performers by Score</Typography>
-                <Chart
-                    options={optionscolumnchart}
-                    series={seriescolumnchart}
+        <Card>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Top Performers by Score</Typography>
+            <Chart
+                options={optionscolumnchart}
+                series={seriescolumnchart}
 
-                    type="bar" height={135} width={350}
+                type="bar" height={200} width={500}
 
-                    // type="bar" height={170} width={"100%"}
+            // type="bar" height={170} width={"100%"}
 
-                />
-           
-            </Card>
+            />
+
+        </Card>
     )
 
 };

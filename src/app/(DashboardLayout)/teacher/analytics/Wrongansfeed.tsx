@@ -19,54 +19,38 @@ const Wrongansfeed = () => {
 
     const seriescolumnchart: any = [44, 55, 41, 17, 15]
     const optionscolumnchart: any = {
-        chart: {
-            width: 380,
-            type: 'donut',
-        },
         plotOptions: {
             pie: {
                 startAngle: -90,
                 endAngle: 270
             }
         },
+        
         dataLabels: {
             enabled: false
         },
         fill: {
             type: 'gradient',
         },
-        // legend: {
-        //     formatter: function () {
-        //         return val + " - " + opts.w.globals.series[opts.seriesIndex]
-        //     }
-        // },
-        title: {
-            text: ''
-        },
+
         responsive: [{
             breakpoint: 480,
-            options: {
-              
-                legend: {
-                    position: 'bottom'
-                }
-            }
         }]
     }
 
     return (
-        <Card style={{ height: "93%" }}
+        <Card style={{ height: "95%" }}
         >
             <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Wrong Answer Feedback</Typography>
+            <br /><br /><br /><br /><br />
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
                 type="donut"
-                width={325}
-                height={300}
+                height={"100%"} width={350}
 
-                // width={"100%"}
-                // height={300}
+            // width={"100%"}
+            // height={300}
 
             />
         </Card >

@@ -97,7 +97,7 @@ const ProfitExpenses = () => {
         series={seriescolumnchart}
         type='line'
         width={"100%"}
-        height="267x"
+        height="270px"
       />
       {/* </Box> */}
     </Card >

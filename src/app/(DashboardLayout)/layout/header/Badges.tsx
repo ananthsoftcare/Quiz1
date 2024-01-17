@@ -141,7 +141,7 @@ const Badges = () => {
         }}
       >
         <Card elevation={8} variant="elevation" sx={{
-          border: '1px solid #fff', backgroundColor: '#fff', overflow: 'auto',
+          border: '1px solid #fff', backgroundColor: '#fff',
           maxHeight: '420px', maxWidth: '397px', scrollbarwidth: 'thin', borderRadius: '4px',
         }}>
           {products.map((product, i) => {

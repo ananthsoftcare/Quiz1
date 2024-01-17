@@ -146,6 +146,7 @@ const DashboardBooks = () => {
                     <Grid item xs={12} lg={6}>
                         <Card style={{ padding: 0 }}>
                             <Grid container item xs={12} className="container">
+                                <Link href='/studentanalytics'>
                                 <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
                                 < AnalyticsIcon sx={{
                                     ":hover": {
@@ -154,6 +155,7 @@ const DashboardBooks = () => {
                                     height: '40px', width: '100px', color: "#fff",
                                 }} />
                             </Typography>
+                            </Link>
                                 {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
                                 <Grid item xs={2.5} paddingLeft={1}>
                                     <WalletIcon style={{ height: '50px', width: '50px' }} color="success" />
@@ -234,6 +236,7 @@ const DashboardBooks = () => {
                     <Grid item xs={12} lg={6} >
                         <Card>
                             <Grid container item xs={12} className="container" >
+                            <Link href='/studentanalytics'>
                                 <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
                                 < AnalyticsIcon sx={{
                                     ":hover": {
@@ -242,6 +245,7 @@ const DashboardBooks = () => {
                                     height: '40px', width: '100px', color: "#fff",
                                 }} />
                             </Typography>
+                            </Link>
                                 {/* <Typography className="overlay" style={{ color: "rgb(163, 0, 214)", fontSize: 20, fontWeight: 'bold', cursor: 'pointer',justifyContent: 'center', display: 'inline-flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ width: '30px', height: '30px', fontWeight: 'bold', color: "rgb(163, 0, 214)", cursor: 'pointer', display: 'flex', alignItems: 'center', textAlign: 'center' , justifyContent: 'center'}} />Analytics</Typography> */}
                                 <Grid item xs={2} paddingLeft={1} paddingTop={0.5}>
                                     <ShutterSpeedIcon style={{ height: '50px', width: '50px' }} color="warning" />
@@ -323,7 +327,8 @@ const DashboardBooks = () => {
                     <Grid item xs={12} lg={6} >
                         <Card style={{ padding: 0 }}>
                             <Grid container item xs={12} className="container">
-                                <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
+                            <Link href='/studentanalytics'>
+                                <Typography  className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
                                 < AnalyticsIcon sx={{
                                     ":hover": {
                                         color: 'blue', height: '45px', width: '100px',
@@ -331,6 +336,7 @@ const DashboardBooks = () => {
                                     height: '40px', width: '100px', color: "#fff",
                                 }} />
                             </Typography>
+                            </Link>
                                 {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
                                 <Grid item xs={2.5} paddingLeft={0} paddingTop={0.5}>
                                     <BiotechIcon style={{ height: '50px', width: '60px' }} color="info" />
@@ -411,6 +417,7 @@ const DashboardBooks = () => {
                     <Grid item xs={12} lg={6} >
                     <Card style={{ padding: 0 }}>
                             <Grid container item xs={12} className="container">
+                            <Link href='/studentanalytics'>
                                 <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
                                 < AnalyticsIcon sx={{
                                     ":hover": {
@@ -419,6 +426,7 @@ const DashboardBooks = () => {
                                     height: '40px', width: '100px', color: "#fff",
                                 }} />
                             </Typography>
+                            </Link>
                                 {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
                                 <Grid item xs={2.5} paddingLeft={1}>
                                     <ScienceIcon style={{ height: '50px', width: '50px' }} color="error" />
@@ -499,6 +507,7 @@ const DashboardBooks = () => {
                     <Grid item xs={12} lg={6} >
                     <Card style={{ padding: 0 }}>
                             <Grid container item xs={12} className="container">
+                            <Link href='/studentanalytics'>
                                 <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
                                 < AnalyticsIcon sx={{
                                     ":hover": {
@@ -507,6 +516,7 @@ const DashboardBooks = () => {
                                     height: '40px', width: '100px', color: "#fff",
                                 }} />
                             </Typography>
+                            </Link>
                                 {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
                                 <Grid item xs={2.5} paddingLeft={1} paddingTop={0.6}>
                                     <SmsIcon style={{ height: '50px', width: '50px' }} color="primary" />
@@ -587,6 +597,7 @@ const DashboardBooks = () => {
                     <Grid item xs={12} lg={6} >
                     <Card style={{ padding: 0 }}>
                             <Grid container item xs={12} className="container">
+                            <Link href='/studentanalytics'>
                                 <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
                                 < AnalyticsIcon sx={{
                                     ":hover": {
@@ -595,6 +606,7 @@ const DashboardBooks = () => {
                                     height: '40px', width: '100px', color: "#fff",
                                 }} />
                             </Typography>
+                            </Link>
                                 {/* <Typography className="overlay" style={{ fontSize: 20, fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center' }}>< AnalyticsIcon style={{ height: '70px', width: '50px', color: "#fff", display: 'flex', alignItems: 'center', textAlign: 'center' }} />Analytics</Typography> */}
                                 <Grid item xs={2.5} paddingLeft={1} paddingTop={0.6}>
                                     <PublicIcon style={{ height: '50px', width: '50px' }} color="secondary" />

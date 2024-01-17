@@ -19,6 +19,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { CloseOutlined } from '@mui/icons-material';
 
 
 const style = {
@@ -31,7 +32,7 @@ const style = {
   border: '2px solid #k',
   borderRadius: '5px',
   boxShadow: 2,
-  p: 2,
+  p: 1,
 };
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -184,7 +185,6 @@ const Question: FC<IQuestionComponentProps> = ({
     setRotate(false)
   };
 
-
   return (
     <Card sx={{
       p: 2, backgroundColor: '#fff', width: '100%',
@@ -236,45 +236,61 @@ const Question: FC<IQuestionComponentProps> = ({
         </Button>
         {questionProps.hasAnswered ? (
           <div>
-            <CardActions style={{ padding: 10, backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}>
-              <Typography sx={{
-                ":hover": {
-                  color: "#ddd",
-                }, display: 'inline-flex',
-                fontSize: 14,
-                alignItems: 'center',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                // borderRight: '1px solid #ddd'
-              }}>
-                Click hind to know where you went wrong?
-              </Typography>
-              {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
-              {rotate === true ? (
-                <>  <span style={{ color: "#fff", fontWeight: 'bold' }}></span>
-                  <ExpandLessIcon style={{ fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
-                </>
-              ) : <>
-                <span style={{ color: "#fff" }}></span>
-                <ExpandMoreIcon style={{ fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
+            {correctAnswer === questionProps.selectedAnswer ? (
+              ""
+            ) :
+              <>
+                <CardActions style={{ padding: 10, backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}>
+                  <Typography sx={{
+                    ":hover": {
+                      color: "#ddd",
+                    }, display: 'inline-flex',
+                    fontSize: 14,
+                    alignItems: 'center',
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                    // borderRight: '1px solid #ddd'
+                  }}>
+                    Click hind to know where you went wrong?
+                  </Typography>
+                  {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
+                  {rotate === true ? (
+                    <>  <span style={{ color: "#fff", fontWeight: 'bold' }}></span>
+                      <ExpandLessIcon style={{ fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
+                    </>
+                  ) : <>
+                    <span style={{ color: "#fff" }}></span>
+                    <ExpandMoreIcon style={{ fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
+                  </>
+                  }
+                </CardActions>
+                {hintOpens === true ? (
+                  <Modal
+                    open={hintOpens}
+                    onClose={mouseLeave}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+
+                    <Box sx={style}>
+                      <div style={{ display: 'flex' }}>
+                        <Grid container item xs={12} spacing={2}>
+                          <Grid item xs={10.5}>
+                            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', borderRadius: '5px', }}> Hint</Typography>
+                          </Grid>
+                          <Grid item xs={1.5}>
+                              <CloseOutlined onClick={mouseLeave} style={{color:'#713593',cursor:'pointer'}}/>
+                          </Grid>
+                        </Grid>
+                      </div>
+                      <p style={{ padding:10 ,paddingTop:1,backgroundColor:'#fff'}}>
+                        You may like to start by skim-reading or “speed-reading” the multiple-choice passages. But then go back and read them slowly and deliberately, and think about the exact meaning of every sentence. Note key words and phrases on your whiteboard if it helps you to concentrate.
+                      </p>
+                    </Box>
+                  </Modal>
+                ) : ""}
               </>
-              }
-            </CardActions>
-            {hintOpens == true ? (
-              <Modal
-                open={hintOpens}
-                onClose={mouseLeave}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-              >
-                <Box sx={style}>
-                <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 2, borderRadius: '5px', }}> Hint</Typography>
-                  <p style={{ padding: 3 }}>
-                    You may like to start by skim-reading or “speed-reading” the multiple-choice passages. But then go back and read them slowly and deliberately, and think about the exact meaning of every sentence. Note key words and phrases on your whiteboard if it helps you to concentrate.
-                  </p>
-                </Box>
-              </Modal>
-            ) : ""}
+            }
           </div>
         ) : ""}
         {questionProps.hasAnswered === false ? (

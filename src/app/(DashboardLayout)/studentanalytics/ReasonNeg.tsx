@@ -6,10 +6,9 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from "@mui/material/styles";
 
-import { IconArrowUpLeft } from "@tabler/icons-react";
 
 
-const Performance = () => {
+const ReasonNeg = () => {
     const theme = useTheme();
     const primary = theme.palette.primary.main;
     const error = theme.palette.error.main;
@@ -18,17 +17,21 @@ const Performance = () => {
 
 
     const seriescolumnchart: any = [{
-        name: "Session Duration",
-        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+        name: "Not Sure",
+        data: [45, 52, 38, 54, 23, 26, 21, 10, 48, 28, 15, 30]
     },
     {
-        name: "Page Views",
-        data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+        name: "Too Quick",
+        data: [25, 11, 12, 12, 14, 18, 19, 37, 36, 51, 32, 35]
     },
     {
-        name: 'Total Visits',
-        data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
-    }
+        name: 'Difficult',
+        data: [17, 27, 14, 19, 15, 18, 12, 17, 12, 16, 15, 17]
+    },
+    {
+        name: "Lowest",
+        data: [18, 21, 42, 15, 13, 18, 29, 17, 36, 21, 32, 15]
+    },
     ]
     const optionscolumnchart: any = {
         chart: {
@@ -36,44 +39,38 @@ const Performance = () => {
             type: 'line',
             zoom: {
                 enabled: false
-            },
-            toolbar: {
-                show: false,
             }
         },
         dataLabels: {
             enabled: false
         },
         stroke: {
+            curve: 'smooth',
             width: 2,
         },
-        markers: {
-            size: 0,
-            hover: {
-                sizeOffset: 6
-            }
+        grid: {
+            row: {
+                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                opacity: 0.5
+            },
         },
         xaxis: {
-            categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
-                '10 Jan', '11 Jan', '12 Jan'
-            ],
-        },
-        grid: {
-            borderColor: '#f1f1f1',
+            categories: ['Session1', 'Session2', 'Session3', 'Session4', 'Session5', 'Session6', 'Session7'],
         }
     }
+
     return (
         <Card
         >
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Performance of Students</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Reason for Negative Performance</Typography>
             <Box className="rounded-bars">
                 <Chart
                     options={optionscolumnchart}
                     series={seriescolumnchart}
 
-                    type="line" height={310} width={500}
+                    type="line" height={270} width={"100%"}
 
-                    // type="line" height={275}width={"100%"}
+                // type="line" height={275}width={"100%"}
 
                 />
             </Box>
@@ -82,5 +79,5 @@ const Performance = () => {
 
 };
 
-export default Performance;
+export default ReasonNeg;
 

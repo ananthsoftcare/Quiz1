@@ -476,7 +476,7 @@ export default function Announcements() {
                 <div className="rowhead">
                     <div className="columnhead1" style={{textAlign:"end"}} >
                         {/* <Typography >Questions</Typography> */}
-                        <b style={{ fontSize: "23px"}}>
+                        <b style={{ fontSize: "18px"}}>
                             Announcements</b>
                     </div>
                     <div className="columnhead2" style={{display:"flex"}}>

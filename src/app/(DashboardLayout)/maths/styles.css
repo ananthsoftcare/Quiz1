@@ -57,6 +57,7 @@
 	text-decoration: none;
 	line-height: 15px;
 	padding:7px
+	/* padding: 14px 0 0 7px; */
 
   }
 
@@ -138,8 +139,12 @@ section {
 	/* height: 300px;  */
   }
   .column2{
-width:"90%"
+width:"50%"
   }
+
+  .column3{
+	width:"40%"
+	  }
   
   /* Clear floats after the columns */
   .row-maths-maths-maths-maths:after {
@@ -267,4 +272,60 @@ body {
   
   
   
+  .columnModal {
+	float: left;
+	width: 40%;
+	padding: 10px;
+	/* height: 300px; Should be removed. Only for demonstration */
+  }
   
+  /* Clear floats after the columns */
+  .rowModal:after {
+	content: "";
+	display: table;
+	clear: both;
+  }
+
+
+  .input {
+	/* max-width: 190px; */
+	height: 44px;
+	background-color: #05060f0a;
+	border-radius: .5rem;
+	padding: 0 1rem;
+	/* border-color: #05060f; */
+	/* border: 2px solid transparent; */
+	font-size: 1rem;
+	transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+  }
+  
+  .label {
+	display: block;
+	margin-bottom: .3rem;
+	font-size: .9rem;
+	font-weight: bold;
+	color: #05060f99;
+	transition: color .3s cubic-bezier(.25,.01,.25,1) 0s;
+  }
+  
+  /* .input:hover, .input:focus, .input-group:hover .input {
+	outline: none;
+	border-color: #05060f;
+  } */
+  
+  /* .input-group:hover .label, .input:focus {
+	color: #05060fc2;
+  } */
+
+
+  select {
+	/* max-width: 190px; */
+	height: 25px;
+	background-color: #05060f0a;
+	border-radius: .3rem;
+	padding: 0 1rem;
+	/* border-color: #05060f; */
+	/* border: 2px solid transparent; */
+	font-size: 1rem;
+	transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+  }
