@@ -191,7 +191,10 @@ const Question: FC<IQuestionComponentProps> = ({
     }}>
       <header className='progress'>
         <progress max={questionsCount + 1} value={number + Number(questionProps.selectedAnswer !== null)} />
-        <span style={{ color: '#fff', borderRadius: '4px', padding: 2, backgroundColor: 'rgb(145 154 231)' }}>Question {number}/ {questionsCount}</span>
+        <Box sx={{ color: '#fff', borderRadius: '4px', padding: 0.5, backgroundColor: 'rgb(145 154 231)' }}>
+          Question {number}/ {questionsCount}
+        </Box>
+        {/* <span style={{ color: '#fff', borderRadius: '4px', padding: 2, backgroundColor: 'rgb(145 154 231)' }}>Question {number}/ {questionsCount}</span> */}
         <CountdownTimer initialSeconds={300} />
       </header>
       <Typography
@@ -249,18 +252,24 @@ const Question: FC<IQuestionComponentProps> = ({
                     alignItems: 'center',
                     fontWeight: 'bold',
                     textAlign: 'center',
+                    cursor:'pointer'
                     // borderRight: '1px solid #ddd'
-                  }}>
-                    Click hind to know where you went wrong?
+                  }}
+                  onClick={mouseEnter}>
+                    Click hint to know where you went wrong?
                   </Typography>
                   {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
                   {rotate === true ? (
                     <>  <span style={{ color: "#fff", fontWeight: 'bold' }}></span>
-                      <ExpandLessIcon style={{ fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
+                      <ExpandLessIcon style={{cursor:'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
                     </>
                   ) : <>
                     <span style={{ color: "#fff" }}></span>
-                    <ExpandMoreIcon style={{ fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
+                    <ExpandMoreIcon  sx={{
+                      ":hover":{
+                        color:'#fff'
+                      }
+                    }} style={{cursor:'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
                   </>
                   }
                 </CardActions>
@@ -279,11 +288,11 @@ const Question: FC<IQuestionComponentProps> = ({
                             <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', borderRadius: '5px', }}> Hint</Typography>
                           </Grid>
                           <Grid item xs={1.5}>
-                              <CloseOutlined onClick={mouseLeave} style={{color:'#713593',cursor:'pointer'}}/>
+                            <CloseOutlined onClick={mouseLeave} style={{ color: '#713593', cursor: 'pointer' }} />
                           </Grid>
                         </Grid>
                       </div>
-                      <p style={{ padding:10 ,paddingTop:1,backgroundColor:'#fff'}}>
+                      <p style={{ padding: 10, paddingTop: 1, backgroundColor: '#fff' }}>
                         You may like to start by skim-reading or “speed-reading” the multiple-choice passages. But then go back and read them slowly and deliberately, and think about the exact meaning of every sentence. Note key words and phrases on your whiteboard if it helps you to concentrate.
                       </p>
                     </Box>

@@ -135,13 +135,13 @@ const Badges = () => {
         sx={{
           "& .MuiMenu-paper": {
             // width: "250px",
-            maxHeight:"380px",
+            maxHeight:"500px",
             border: '1px solid ddd'
           },
         }}
       >
         <Card elevation={8} variant="elevation" sx={{
-          border: '1px solid #fff', backgroundColor: '#fff',
+          border: '1px solid #fff', backgroundColor: '#fff',overflow:'auto',
           maxHeight: '420px', maxWidth: '397px', scrollbarwidth: 'thin', borderRadius: '4px',
         }}>
           {products.map((product, i) => {

@@ -51,7 +51,7 @@ export default function NavItem({
   const Icon = item.icon;
   const theme = useTheme();
   const itemIcon = <Icon stroke={1.5} size="1.3rem" />;
-  
+
 
   const ListItemStyled = styled(ListItemButton)(() => ({
     whiteSpace: "nowrap",
@@ -123,7 +123,7 @@ export default function NavItem({
   const ListItemStyledSub = styled(ListItemButton)(() => ({
     whiteSpace: "nowrap",
     marginBottom: "2px",
-    marginLeft:"38px",
+    marginLeft: "30px",
     padding: "5px 10px 5px 0",
     borderRadius: `30px`,
     backgroundColor: level > 1 ? "transparent !important" : "inherit",
@@ -275,7 +275,20 @@ export default function NavItem({
               ""
             )}
           </ListItemText>
-          {item.children ? <ExpandMore /> : item.children && open ? <ExpandLess /> : ""}
+          {item.children ? (
+            <div>
+              {open === true ? (
+                <ExpandLess /> 
+              ): 
+              open===false?(
+                <ExpandMore />
+              ):""}
+            </div>
+          ) : ""}
+          {/* {item.children ?
+
+            <ExpandMore /> :
+            item.children && open === true ? <ExpandLess /> : ""} */}
           {/* {open==true ? item.children? <ExpandLess /> : <ExpandMore />:""} */}
           {!item?.chip || hideMenu ? null : (
             <Chip
@@ -287,6 +300,7 @@ export default function NavItem({
           )}
         </ListItemStyled>
         {item.children?.map((item: any) => {
+          const Icon = item.icon;
           return (
             <Collapse in={open} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
@@ -343,19 +357,19 @@ export default function NavItem({
                             : "inherit",
                       }}
                     >
-                      {itemIcon}
+                      <Icon stroke={1.5} size="1.3rem" />
+                      {/* {itemIcon} */}
                     </ListItemIcon>
                     <ListItemText>
                       {hideMenu ? "" : <>{`${item?.title}`}</>}
                     </ListItemText>
-                 
-                </ListItemStyledSub>
-              </Link>
-            </List>
+                  </ListItemStyledSub>
+                </Link>
+              </List>
             </Collapse>
-      )
+          )
         })}
-    </Link>
+      </Link>
     </List >
   );
 }

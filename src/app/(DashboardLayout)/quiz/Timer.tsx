@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FC } from 'react';
 import { IQuestionComponentProps, ITimerSeconds } from '../types';
+import { Box } from '@mui/material';
 
 const CountdownTimer: FC<ITimerSeconds> = ({ initialSeconds }) => {
     const [seconds, setSeconds] = useState(initialSeconds);
@@ -30,9 +31,9 @@ const CountdownTimer: FC<ITimerSeconds> = ({ initialSeconds }) => {
 
 
     return (
-        <div style={{color:'#fff',borderRadius:'4px',padding:2, backgroundColor:'rgb(145 154 231)'}}>
-            {formatTime(seconds)}
-        </div>
+        <Box sx={{ color: '#fff', borderRadius: '4px', padding: 0.5, backgroundColor: 'rgb(145 154 231)' ,width:45}}>
+           {formatTime(seconds)}
+        </Box>
     );
 };
 
