@@ -58,14 +58,19 @@ const ProductSales = () => {
       height: 250,
       type: 'radialBar',
     },
+    dataLabels: {
+      enabled: true
+  }, 
     plotOptions: {
       radialBar: {
         dataLabels: {
           name: {
             fontSize: '22px',
+            show:true
           },
           value: {
             fontSize: '16px',
+            show:true
           },
           total: {
             show: true,

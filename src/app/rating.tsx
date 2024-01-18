@@ -2,20 +2,19 @@
 
 
 import React from 'react'
-import  './rating.css';
+import './rating.css';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 
 
-export default function Rating (props:any){
-  
+export default function Rating(props: any) {
 
-
-
-    return(
-   <div>
-  {/* <input id="star1" className="star" type="checkbox" title="bookmark page"/> */}
-  {/* <label  title="Amazing">First star</label> */}
-  <input id="star1" className="star" type="checkbox" title="bookmark page"  onClick={props.onclick} /><br/><br/>
-</div>
+    return (
+        <div className='star2'>
+            <input id="star1"  className="star" type="checkbox"  onClick={props.onclick} /><br /><br />
+        </div>
     )
 }
+
+
+

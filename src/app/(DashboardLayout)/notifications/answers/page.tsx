@@ -84,7 +84,6 @@ export default function Page({ searchParams }: {
 }) {
    
     // const data = router.query;
-    // console.log("data",data)
 
     let questions1 = [
         {

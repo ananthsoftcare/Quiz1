@@ -55,7 +55,7 @@ const ReasonNeg = () => {
             },
         },
         xaxis: {
-            categories: ['Session1', 'Session2', 'Session3', 'Session4', 'Session5', 'Session6', 'Session7'],
+            categories: ['Session1', 'Session2', 'Session3', 'Session4', 'Session5', 'Session6', 'Session7','Session8','Session9','Session10'],
         }
     }
 

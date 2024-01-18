@@ -16,13 +16,15 @@ const ReasonProp = () => {
     const successlight = theme.palette.success.light;
 
 
-    const seriescolumnchart: any = [38.6, 30.8, 22.5, 8.1]
+    const seriescolumnchart: any = [38.6, 30.8, 22.5, 8.1, 10, 14]
     const optionscolumnchart: any = {
         chart: {
             type: 'donut',
         },
-        labels: ['Answered in a hurry', 'I was almost right', 'I donot know', 'Too Dificult'],
-
+        labels: ['Reacted Quickly', 'It was Complicated', 'Not Prepared', 'Thought I was right', 'Faulty Question', 'Other'],
+        legend: {
+            position: 'bottom'
+        },
         responsive: [{
             breakpoint: 480,
             options: {
@@ -47,7 +49,7 @@ const ReasonProp = () => {
                     options={optionscolumnchart}
                     series={seriescolumnchart}
 
-                    type="donut" height={270} width={"100%"}
+                    type="donut" height={320} width={"100%"}
 
                 // type="line" height={275}width={"100%"}
 

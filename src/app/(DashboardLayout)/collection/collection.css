@@ -54,3 +54,40 @@
     background:#a5cd39; 
     border-radius:10px;
     }
+
+    .container {
+      display: flex; /* make the container a flexbox */
+    /* 	justify-content: center; center the items horizontally */
+      align-items: center; /* center the items vertically */
+      }
+      
+
+
+      .rowcollection {
+        display: flex;
+        align-items: center;
+        }
+        
+        .collectionhead1 {
+        width: 2%;
+        margin-right: 10px;
+        justify-content:end;
+        }
+        
+        .collectionhead2 {
+        width: 51%;
+        padding: 0 0 5px 0;
+        justify-content: end;
+        }
+
+        .pillbutton{
+          border: none;
+          /* color: black; */
+          padding: 4px 12px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 16px;
+         }

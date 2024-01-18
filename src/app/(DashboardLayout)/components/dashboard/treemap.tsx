@@ -25,18 +25,28 @@ const Treemaps = () => {
       sparkline: {
         enabled: true
       },
-      toolbar:{
-        show:false
+      toolbar: {
+        show: false
       }
     },
     dataLabels: {
+      dropShadow: {
+        enabled: true,
+        top: 1,
+        left: 1,
+        blur: 1,
+        color: '#073763',
+        opacity: 0.65
+      },
       enabled: true,
       style: {
         fontSize: '12px',
+        show: true
       },
-      // formatter: function (text, op) {
-      //   return [text, op.value]
-      // },
+
+      formatter: function (text: any, op: any) {
+        return [text, op.value]
+      },
       offsetY: -4
     },
     plotOptions: {
@@ -74,7 +84,8 @@ const Treemaps = () => {
           ]
         }
       }
-    }
+    },
+
   }
   const seriescolumnchart: any = [
     {
@@ -118,7 +129,7 @@ const Treemaps = () => {
     //     footer={
     <DashboardCard title="Peer Student Count"
       middlecontent={
-        <Box className="rounded-bars" sx={{padding:0}}>
+        <Box className="rounded-bars" sx={{ padding: 0 }}>
           <Chart
             options={optionscolumnchart}
             series={seriescolumnchart}

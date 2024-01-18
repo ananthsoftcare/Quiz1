@@ -243,7 +243,7 @@ const Question: FC<IQuestionComponentProps> = ({
               ""
             ) :
               <>
-                <CardActions style={{ padding: 10, backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}>
+                <CardActions style={{ backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}>
                   <Typography sx={{
                     ":hover": {
                       color: "#ddd",
@@ -252,24 +252,24 @@ const Question: FC<IQuestionComponentProps> = ({
                     alignItems: 'center',
                     fontWeight: 'bold',
                     textAlign: 'center',
-                    cursor:'pointer'
+                    cursor: 'pointer'
                     // borderRight: '1px solid #ddd'
                   }}
-                  onClick={mouseEnter}>
+                    onClick={mouseEnter}>
                     Click hint to know where you went wrong?
                   </Typography>
                   {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
                   {rotate === true ? (
                     <>  <span style={{ color: "#fff", fontWeight: 'bold' }}></span>
-                      <ExpandLessIcon style={{cursor:'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
+                      <ExpandLessIcon style={{ cursor: 'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
                     </>
                   ) : <>
                     <span style={{ color: "#fff" }}></span>
-                    <ExpandMoreIcon  sx={{
-                      ":hover":{
-                        color:'#fff'
+                    <ExpandMoreIcon sx={{
+                      ":hover": {
+                        color: '#fff'
                       }
-                    }} style={{cursor:'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
+                    }} style={{ cursor: 'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
                   </>
                   }
                 </CardActions>
@@ -315,14 +315,14 @@ const Question: FC<IQuestionComponentProps> = ({
         ) : ""}
         {openModal ? (
           <div>
-            <Modal
+            {/* <Modal
               open={openModal}
               onClose={() => setOpenModal(false)}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
-            >
-              <Box sx={style}>
-                <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 3, borderRadius: '5px', paddingLeft: 10 }}>  Choose why you went wrong ?</Typography>
+            > */}
+            {/* <Box> */}
+              {/* <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 3, borderRadius: '5px', paddingLeft: 10 }}>  Choose why you went wrong ?</Typography>
                 <FormGroup style={{ backgroundColor: '#fff', padding: 15, }}>
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Reacted quickly" />
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="It was Complicated" />
@@ -330,27 +330,43 @@ const Question: FC<IQuestionComponentProps> = ({
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Thought I was right" />
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Faulty question" />
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Other" />
-                </FormGroup>
-                {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                </FormGroup> */}
+              {/* <CardActions style={{  backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}> */}
+                {/* <Typography sx={{
+                  ":hover": {
+                    color: "#ddd",
+                  }, display: 'inline-flex',
+                  fontSize: 14,
+                  alignItems: 'center',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  cursor: 'pointer'
+                  // borderRight: '1px solid #ddd'
+                }}
+                > */}
+                  {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
+                 
                   <Autocomplete
                     disablePortal
                     size='small'
                     id="combo-box-demo"
                     options={currencies}
                     onChange={handleChangeAuto}
-                    sx={{ width: 310, display: 'flex', color: '#fff', backgroundColor: '#fff', border: '1px solid #fff' }}
+                    sx={{ width: 310, display: 'flex', color: '#fff', backgroundColor: 'rgb(145 154 231)', border: '1px solid #fff' }}
                     renderInput={(params) => <TextField  {...params}
                       size='small'
+                      style={{fontWeight:'bold',border:"2px solid rgb(145 154 231)",backgroundColor:'rgb(145 154 231)'}}
                       label="Choose why you went wrong"
                       variant='outlined'
                     />}
                   />
-                </Typography> */}
-              </Box>
-            </Modal>
+                {/* </Typography> */}
+              {/* </CardActions> */}
+            {/* </Box> */}
+            {/* </Modal> */}
           </div>
-        ) : ""}
-        {questionProps.hasAnswered ? (
+        ) :
+        questionProps.hasAnswered ? (
           <Button
             variant="contained"
             size="large"
@@ -360,7 +376,9 @@ const Question: FC<IQuestionComponentProps> = ({
           >
             Next
           </Button>
-        ) : ""}
+        ) : ""
+        }
+     
 
       </Box>&nbsp;
 

@@ -17,7 +17,7 @@ const Wrongansfeed = () => {
     const successlight = theme.palette.success.light;
 
 
-    const seriescolumnchart: any = [44, 55, 41, 17, 15]
+    const seriescolumnchart: any = [24, 25, 11, 17, 10, 20]
     const optionscolumnchart: any = {
         plotOptions: {
             pie: {
@@ -25,29 +25,31 @@ const Wrongansfeed = () => {
                 endAngle: 270
             }
         },
-        
+        labels: ['Reacted Quickly', 'It was Complicated', 'Not Prepared', 'Thought I was right', 'Faulty Question', 'Other'],
         dataLabels: {
-            enabled: false
+            enabled: true
         },
         fill: {
             type: 'gradient',
         },
-
+        legend: {
+            position: 'top'
+        },
         responsive: [{
             breakpoint: 480,
         }]
     }
 
     return (
-        <Card style={{ height: "95%" }}
+        <Card
         >
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Wrong Answer Feedback</Typography>
-            <br /><br /><br /><br /><br />
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)',padding:'10px 0px 15px 10px',  borderRadius: '5px', paddingLeft: 10 }}>Wrong Answer Feedback</Typography>
+
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
                 type="donut"
-                height={"100%"} width={350}
+                height={300} width={330}
 
             // width={"100%"}
             // height={300}

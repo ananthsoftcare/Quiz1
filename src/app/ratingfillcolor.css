@@ -1,30 +1,23 @@
-.star {
+.starrating {
   visibility:hidden;
   font-size:18px;
-  opacity: 0;
   width: 2px;
   /* top: -5px; */
   cursor:pointer;
   /* background-color: aqua; */
   /* color: rgb(255, 221, 0); */
 }
-.star:hover{
-  opacity:1;
-  
-  /* visibility:visible; */
-}
 
 
-.star:before {
+
+.starrating:before {
  content: "\2606";
  position: absolute;
- opacity:1;
  visibility:visible;
 }
-.star:checked:before {
+.starrating:checked:before {
  content: "\2605";
  position: absolute;
- opacity:1;
  color: rgb(255, 247, 10);
 }
 

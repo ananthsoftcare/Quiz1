@@ -42,34 +42,22 @@ const Participate = () => {
             labels: {
                 rotate: -45
             },
-            categories: ['jan', 'feb', 'mar', 'apr', 'may', 'june', 'july'
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July'
             ],
 
         },
         yaxis: {
             title: {
-                text: 'Marks',
+                text: 'Hours',
             },
         },
-        // fill: {
-        //     type: 'gradient',
-        //     gradient: {
-        //         shade: 'light',
-        //         type: "horizontal",
-        //         shadeIntensity: 0.25,
-        //         gradientToColors: undefined,
-        //         inverseColors: true,
-        //         opacityFrom: 0.85,
-        //         opacityTo: 0.85,
-        //         stops: [50, 0, 100]
-        //     },
-        // }
+
     }
 
 
     return (
         <Card>
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Average participation in Hours Spent</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding:'10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Average participation in Hours Spent</Typography>
 
             <Chart
                 options={optionscolumnchart}

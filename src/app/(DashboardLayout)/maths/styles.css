@@ -50,14 +50,14 @@
 
 
 .section-nav ol li a {
-	font: normal 14px Arial;
+	/* font: normal 14px Arial; */
 	/* border-top: 1px solid #ccc; */
 	display: block;
 	color: black;
 	text-decoration: none;
 	line-height: 15px;
-	padding:7px
-	/* padding: 14px 0 0 7px; */
+	/* padding:7px */
+	padding: 8px 0 0 7px;
 
   }
 
@@ -74,6 +74,12 @@
     padding-bottom: 1%;
   }
 
+.rating-icon {
+      visibility: hidden;
+    }
+    a:hover .rating-icon {
+      visibility: visible;
+    }
 
 
 .contentview{
@@ -318,9 +324,21 @@ body {
   } */
 
 
-  select {
+  .selectfilter {
 	/* max-width: 190px; */
 	height: 25px;
+	background-color: #05060f0a;
+	border-radius: .3rem;
+	padding: 0 1rem;
+	/* border-color: #05060f; */
+	/* border: 2px solid transparent; */
+	font-size: 1rem;
+	transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+  }
+
+  .selectOPtion {
+	max-width: 190px;
+	/* height: 25px; */
 	background-color: #05060f0a;
 	border-radius: .3rem;
 	padding: 0 1rem;

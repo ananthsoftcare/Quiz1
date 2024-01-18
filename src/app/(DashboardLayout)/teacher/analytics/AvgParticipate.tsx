@@ -14,8 +14,8 @@ const AvgParticipate = () => {
 
 
     const seriescolumnchart: any = [{
-        name: 'Inflation',
-        data: [73, 40, 50, 60, 70, 60, 50, 80, 90, 56]
+        name: 'Questions',
+        data: [23, 25, 10, 20, 24, 23, 12, 10, 20, 12]
     }]
     const optionscolumnchart: any = {
         plotOptions: {
@@ -33,18 +33,6 @@ const AvgParticipate = () => {
                 show: false
             },
 
-            // crosshairs: {
-            //     fill: {
-            //         type: 'gradient',
-            //         gradient: {
-            //             colorFrom: '#D8E3F0',
-            //             colorTo: '#BED6EF',
-            //             stops: [0, 100],
-            //             opacityFrom: 0.4,
-            //             opacityTo: 0.5,
-            //         }
-            //     }
-            // },
             tooltip: {
                 enabled: true,
             }
@@ -75,7 +63,7 @@ const AvgParticipate = () => {
 
     return (
         <Card>
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Average Participation in Quiz contest</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding:'10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Average Participation in Quiz contest</Typography>
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}

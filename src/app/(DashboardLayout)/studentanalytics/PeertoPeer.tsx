@@ -18,14 +18,12 @@ const PeertoPeer = () => {
     const seriescolumnchart: any = [56, 30];
     const optionscolumnchart: any = {
         labels: ['Queries', 'Answers'],
+        legend: {
+            position: 'top'
+        },
         responsive: [{
             breakpoint: 480,
-            options: {
-                legend: {
-                    enabled: false,
-                    // position: 'bottom'
-                }
-            }, dataLabels: {
+            dataLabels: {
                 enabled: false
             },
         }]
@@ -41,7 +39,7 @@ const PeertoPeer = () => {
                 options={optionscolumnchart}
                 series={seriescolumnchart}
 
-                type="pie" height={350} width={350}
+                type="pie" height={350} width={250}
 
             // type="pie" width={"100%"} height={150}
 

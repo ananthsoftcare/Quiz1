@@ -21,29 +21,22 @@ const Avgcorrectans = () => {
             type: 'pie',
         },
         labels: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }]
+        legend: {
+            position: 'right'
+        },
+       
     }
 
 
     return (
-        <Card style={{ height: '80%' }}
+        <Card
         >
-            <Typography style={{ fontSize: 11, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Average correct answer by question difficulty level</Typography>
-            <br /><br />
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Average correct answer by question difficulty level</Typography>
+
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
-                type="pie" height={350} width={350}
+                type="pie" height={410} width={450}
             // type="donut" width={"100%"} height={500}
             />
         </Card >

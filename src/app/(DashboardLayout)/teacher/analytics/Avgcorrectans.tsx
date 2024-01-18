@@ -20,16 +20,17 @@ const Avgcorrectans = () => {
         chart: {
             type: 'donut',
         },
+        legend: {
+            position: 'top'
+        },
+        labels: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
         responsive: [{
             breakpoint: 480,
             options: {
                 chart: {
                     width: 300
                 },
-                legend: {
-                    show: false,
-                    position: 'bottom'
-                },
+
                 dataLabels: {
                     enabled: false
                 },
@@ -39,14 +40,14 @@ const Avgcorrectans = () => {
 
     }
     return (
-        <Card style={{ height: '80%' }}
+        <Card
         >
-            <Typography style={{ fontSize: 11, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Average correct answer by question difficulty level</Typography>
-            <br/><br/><br/><br/>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding:'10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Average correct answer by question difficulty level</Typography>
+
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
-                type="donut" height={350} width={350}
+                type="donut" height={300} width={330}
             // type="donut" width={"100%"} height={500}
             />
         </Card >

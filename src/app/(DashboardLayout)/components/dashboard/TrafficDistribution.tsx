@@ -89,6 +89,17 @@ const TrafficDistribution = () => {
       height: 'auto',
       type: 'polarArea'
     },
+    dataLabels: {
+      enabled: true,
+      style: {
+        fontSize: '12px',
+        show:true
+      },
+      // formatter: function (text:any, op:any) {
+      //   return [text, op.value]
+      // },
+      offsetY: -4
+    },
     labels: ['Maths', 'Biology', 'Chemistry', 'Physics', 'Communication'],
     fill: {
       opacity: 1

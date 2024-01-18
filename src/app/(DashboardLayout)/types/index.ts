@@ -68,3 +68,7 @@ export interface IAnswersComponentProps {
   hasAnswered: boolean
   updateScore: (x: string) => void
 }
+
+export interface ILinearCardProps {
+  progressValue: any
+}
