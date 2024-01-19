@@ -125,18 +125,15 @@ export default function Content() {
         <DialogContent dividers>
 		<Grid container spacing={{ xs: 1, md: 4 }}
 						columns={{ xs: 4, sm: 8, md: 12 }}>
-						<Grid item xs={4}>
-							<label>Title</label>
-						</Grid>
-						<Grid item xs={8}>
-							<input style={{ width: "85%" }} name="Email" id="Email" className="input" type="email" />
-						</Grid>
+						
 						<Grid item xs={4}>
 							<label>Collection</label>
 						</Grid>
 						<Grid item xs={8}>
 							<select style={{ width: "85%" }} onClick={(e) => handleChangeDropdown(e)} className="input" name="cars" id="cars" >
-								<option value="introduction">Introduction</option>
+							<option value="addTitle"><button style={{ backgroundColor: "green" }}>Add BookmarksTitle</button></option>
+								
+								<option value="introduction" selected>Introduction</option>
 								<option value="chemistry">Chemistry</option>
 								<option value="maths">Physics</option>
 								<option value="biology">Communication</option>
@@ -148,7 +145,6 @@ export default function Content() {
 								<option value="biology">Communication</option>
 								<option value="maths">Maths</option>
 								<option value="social">Social Welfare</option>
-								<option value="addTitle"><button style={{ backgroundColor: "green" }}>Add BookmarksTitle</button></option>
 							</select>
 						</Grid>
 						<Grid item xs={4}>
@@ -226,17 +222,16 @@ export default function Content() {
 							</Grid>
 							<Grid item xs={2}>
 								<Typography ><b>Apply Your Collection</b></Typography>&nbsp;
-								<select className='selectfilter' name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)}>
-									<option value="introduction">Introduction</option>
+								<select name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)}>
+								<option value="addTitle"><button >Add Title</button></option>
+									<option value="introduction" selected>Introduction</option>
 									<option value="chemistry">Chemistry</option>
 									<option value="maths">Physics</option>
 									<option value="biology">Communication</option>	
 									{/* <option value="chemistry">Chemistry</option> */}
 									<option value="maths">Maths</option>
 									<option value="social">Social Welfare</option>
-									<option value="addTitle"><button >Add Title</button></option>
 									{/* <option onClick={() => handleopenModal()} value=''></option> */}
-									<button >Add title</button>
 								</select>
 							</Grid>
 							{/* <Grid item xs={4.5}>

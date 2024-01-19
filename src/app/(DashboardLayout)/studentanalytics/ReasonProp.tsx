@@ -43,7 +43,7 @@ const ReasonProp = () => {
     return (
         <Card
         >
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Reasons Proportion</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Reasons Proportion</Typography>
             <Box >
                 <Chart
                     options={optionscolumnchart}

@@ -209,7 +209,7 @@ body {
   }
   
   /* Full-width textarea */
-  .form-container textarea {
+  .form-container .inputtextarea {
 	width: 100%;
 	padding: 15px;
 	margin: 5px 0 0px 0;
@@ -271,29 +271,9 @@ body {
 	background:#a5cd39; 
   }
   
-  .selectfilter {
-	/* max-width: 190px; */
-	height: 25px;
-	background-color: #05060f0a;
-	border-radius: .3rem;
-	padding: 0 1rem;
-	/* border-color: #05060f; */
-	/* border: 2px solid transparent; */
-	font-size: 1rem;
-	transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
-  }
 
-  .selectOPtion {
-	max-width: 190px;
-	/* height: 25px; */
-	background-color: #05060f0a;
-	border-radius: .3rem;
-	padding: 0 1rem;
-	/* border-color: #05060f; */
-	/* border: 2px solid transparent; */
-	font-size: 1rem;
-	transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
-  }
+
+
 
   .input {
 	/* max-width: 190px; */
@@ -307,5 +287,47 @@ body {
 	transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
   }
   
+
+
+  :root {
+	--arrow-bg: white;
+	--arrow-icon: url("./icons52.png");
+	--option-bg: white;
+	--select-bg: white;
+  
+  }
+
+  select {
+	/* Reset */
+	appearance: none;
+	border: 0;
+	outline: 1;
+	font: inherit;
+	/* Personalize */
+	width: 10rem;
+	padding: 0.5rem 2rem 0.5rem 1rem;
+	background: url("./icons52.png") no-repeat right 0.8em center / 1.4em,
+	  linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+	color: black;
+	border-radius: 15px;
+	box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+  
+	/* Remove IE arrow */
+	&::-ms-expand {
+	  display: none;
+	}
+  
+	/* Remove focus outline */
+	&:focus {
+	  outline: none;
+	}
+  
+	/* <option> colors */
+	option {
+	  color: inherit;
+	  background-color: lightgray;
+	}
+  }
   
   

@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { ILinearCardProps } from '../../types';
 
+
 function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -20,7 +21,6 @@ function LinearProgressWithLabel(props: LinearProgressProps & { value: number })
 }
 
 const LinearWithValueLabel: React.FC<ILinearCardProps> = ({ progressValue }) => {
-    console.log('progrsessvalue', progressValue);
 
     const [progress, setProgress] = React.useState(0);
 

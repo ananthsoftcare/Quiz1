@@ -8,25 +8,23 @@ import Performance from './Performance';
 import Performers from "./Performers";
 import PeertoPeer from './PeertoPeer';
 import Avgcorrectans from './Avgcorrectans';
-import TopPerformers from './TopPerformers';
 import Wrongansfeed from './Wrongansfeed';
 import { usePathname, useRouter } from 'next/navigation';
 import '../analytics.css'
 import './style.css'
-
 const TeacherDashboard = () => {
 
 
   const router = useRouter();
   const pathname = usePathname();
   return (
-    <PageContainer title="Analytics" description="this page is about Analytics">
-      <div style={{ display: "flex", padding: 7 }}>
+    <PageContainer title="Analytics" description="this page is about Analytics" >
+      <div style={{ display: "flex", padding: 7, marginBottom: 10 }}>
         <Grid container spacing={1} item xs={12}>
           <Grid item xs={12} lg={8.3}>
-            Filter By: &nbsp;
+            <b> Filter By  </b>   &nbsp;&nbsp;
             <select name="Chapter" id="Chapter">
-              <option value="All">All</option>
+              <option value="All">Chapter: All</option>
               <option value="Chapter 1">Chapter 1</option>
               <option value="Chapter 2">Chapter 2</option>
               <option value="Chapter 3">Chapter 3</option>
@@ -34,7 +32,7 @@ const TeacherDashboard = () => {
               <option value="Chapter 5">Chapter 5</option>
             </select>&nbsp;
             <select name="Topic" id="Topic">
-              <option value="All">All</option>
+              <option value="All">Topic: All</option>
               <option value="Analytical Essay">Analytical Essay</option>
               <option value="Argumentative Essay">Argumentative Essay</option>
               <option value="Endpoints (Root)">Endpoints (Root)</option>
@@ -60,19 +58,20 @@ const TeacherDashboard = () => {
               <Participate />
             </Grid>
             <Grid item xs={12} lg={5} >
-              {/* <Performers /> */}
+
               <Performance />
             </Grid>
-            <Grid container item xs={12} lg={2}><br />
-              <div className="card1" style={{ width: 180, height: 90, padding: 15, textAlign: 'center', fontSize: 16 }} >
-                No. of Students:<br /> <b>40</b>
+            <Grid container item xs={12}  lg={2} spacing={0.25} style={{display:"flex",justifyContent:"flex-start",flexDirection:"row",alignContent:"space-evenly"}}>
+              <div className="card1" style={{ width: 200, height: 100, padding: 15, textAlign: 'center', alignContent: 'center', fontSize: 16 }} >
+                No. of Students <b>40</b>
               </div>
-              <div className='card1' style={{ width: 180, height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
+              <div className='card1' style={{ width: 200, height: 100, padding: 15, textAlign: 'center', fontSize: 16 }}>
                 Total number of Quizzes:<br /> <b>45</b>
               </div><br />
             </Grid>
             <Grid container item xs={12} lg={5}>
-              <TopPerformers />
+              <Performers />
+              {/* <TopPerformers /> */}
             </Grid>
             <Grid container item xs={12} spacing={1} lg={12} >
               <Grid item xs={12} lg={2.4}>
@@ -96,7 +95,7 @@ const TeacherDashboard = () => {
                 </div>
               </Grid>
               <Grid item xs={12} lg={2.4}>
-                <div className="card1" style={{ padding: 5, height: 90, textAlign: 'center', fontSize: 16 }}>
+                <div className="card1" style={{ padding: 10, height: 90, textAlign: 'center', fontSize: 16 }}>
                   <div >Total No. of Answers: <br /><b>239</b></div>
                 </div>
               </Grid>

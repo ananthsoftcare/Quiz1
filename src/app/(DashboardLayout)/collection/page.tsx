@@ -19,12 +19,21 @@ import DeleteIcon from '@mui/icons-material/DeleteOutline';
 
 // import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import './collection.css';
-import { Checkbox, Grid, TablePagination, Tooltip, styled } from '@mui/material';
+import { Avatar, Button, Card, CardActionArea, CardContent, CardMedia, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, Grid, TablePagination, Tooltip, styled } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
+import CloseIcon from '@mui/icons-material/Close';
 
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+	'& .MuiDialogContent-root': {
+	  padding: theme.spacing(2),
+	},
+	'& .MuiDialogActions-root': {
+	  padding: theme.spacing(1),
+	},
 
+}));
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -45,14 +54,14 @@ function createData(
     fat,
     history: [
       {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
+        subject: 'Biology',
+        chapter: 'Fertility',
+        important: "polymorphism",
       },
       {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
+        subject: 'Biology',
+        chapter: 'Photosynthesis',
+        important: 'poly',
       },
     ],
   };
@@ -63,11 +72,192 @@ function Row(props: { row: ReturnType<typeof createData> }) {
   //   const { index} = props;
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
+  const [openModalAddLabel, setOpenModalAddLabel] = React.useState(false)
+
+
+const handleshowmodal = () =>{
+  setOpenModalAddLabel(true)
+}
+
+const handleClose = () =>{
+  setOpenModalAddLabel(false)
+}
+
+
+const users = [
+  {
+  "id" :1,
+  "userName":"Raghul",
+  "location":"U.K",
+  "img":"./avatar.jpg"
+},
+{
+  "id" :2,
+  "userName":"Ravi",
+  "location":"United",
+  "img":"R S"
+},
+{
+  "id" :3,
+  "userName":"sharuk",
+  "location":"United kingdom",
+  "img":"S H"
+},
+{
+  "id" :4,
+  "userName":"Abdullah",
+  "location":"Japan",
+  "img":"A F"
+},
+{
+  "id" :5,
+  "userName":"Bishnoi",
+  "location":"Pakistan",
+  "img":"B I"
+},{
+  "id" :6,
+  "userName":"Ravi Bishnoi",
+  "location":"United",
+  "img":"R B"
+},{
+  "id" :7,
+  "userName":"Mahendran ",
+  "location":"United",
+  "img":"M R"
+},{
+  "id" :8,
+  "userName":"Sachin ",
+  "location":"United",
+  "img":"R"
+},{
+  "id" :9,
+  "userName":"Sara Arjun",
+  "location":"United",
+  "img":"S A"
+},{
+  "id" :10,
+  "userName":"Ravi",
+  "location":"United",
+  "img":"R"
+},{
+  "id" :11,
+  "userName":"Ravi",
+  "location":"United",
+  "img":"R"
+},
+]
+
+function stringToColor(string: string) {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = '#';
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.slice(-2);
+  }
+  /* eslint-enable no-bitwise */
+
+  return color;
+}
+
+function stringAvatar(name: string) {
+  return {
+    sx: {
+      bgcolor: stringToColor(name),
+    },
+    children: `${name.split(' ')[0][0]}${name.split(' ')[1]}`,
+  };
+}
+
 
   return (
     <React.Fragment>
 
-      <TableRow className='managerows' sx={{ '& > *': { borderBottom: 'unset' } }}>
+
+
+<BootstrapDialog
+        // onClose={handleClose}
+        fullWidth
+      maxWidth='lg'
+    //  style={{height:"50%"}}
+        open={openModalAddLabel}
+      >
+        <DialogTitle sx={{ m: 0, p: "10px 3px 5px 10px",backgroundColor:"rgb(0 133 219 / 66%)",color:"white" }} id="customized-dialog-title">
+        Share Title
+        </DialogTitle>
+        <IconButton
+          aria-label="close"
+        //   onClick={() => handleCloseAllModal()}
+          sx={{
+            position: 'absolute',
+			padding:"5px 0px 5px 0px",
+            right: 8,
+            // top: 2,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon style={{color:"white"}}  onClick={()=>handleClose() } />
+        </IconButton>
+        <DialogContent dividers>
+          <div className='carddesign'>
+          {users.map((usersresponse)=>(
+
+ <Card key={usersresponse.id}   className='cardforall' sx={{ maxWidth: 345 }}>
+ <CardActionArea key={usersresponse.id}>
+   {/* <CardMedia
+     component="img"
+     height="140"
+     image="/static/images/cards/contemplative-reptile.jpg"
+     alt="green iguana"
+   /> */}
+   <CardContent>
+   <Grid container spacing={{ xs: 1, md: 4 }}
+       columns={{ xs: 4, sm: 8, md: 12 }}>
+       <Grid item xs={3}>  
+       <Avatar src="./avatar.jpg"/>
+       </Grid>
+       <Grid item xs={6}>
+       <Typography variant='h6'>{usersresponse.userName}</Typography>
+       <span>
+       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 50 50"><path fill="currentColor" d="m25 42.5l-.8-.9C23.7 41.1 12 27.3 12 19c0-7.2 5.8-13 13-13s13 5.8 13 13c0 8.3-11.7 22.1-12.2 22.7zM25 8c-6.1 0-11 4.9-11 11c0 6.4 8.4 17.2 11 20.4c2.6-3.2 11-14 11-20.4c0-6.1-4.9-11-11-11"/><path fill="currentColor" d="M25 24c-2.8 0-5-2.2-5-5s2.2-5 5-5s5 2.2 5 5s-2.2 5-5 5m0-8c-1.7 0-3 1.3-3 3s1.3 3 3 3s3-1.3 3-3s-1.3-3-3-3"/></svg>
+      {usersresponse.location}
+       </span>
+       </Grid>
+       <Grid item xs={3}>
+       <button className='shareButton'>Share</button>
+       </Grid>
+     </Grid>
+   </CardContent>
+ </CardActionArea>
+</Card>
+          ))}
+          </div>
+       
+		{/* <Grid container spacing={{ xs: 1, md: 4 }}
+						columns={{ xs: 4, sm: 8, md: 12 }}>
+						<Grid item xs={3}>
+							<label>UserName</label>
+						</Grid>
+						<Grid item xs={9}>
+							<input style={{ width: "100%" }} name="Email" id="Email" className="input" type="select" />
+						</Grid>
+					</Grid> */}
+        </DialogContent>
+        <DialogActions>
+		<div style={{ justifyContent: "flex-end", display: "flex", padding: "5px" }}>
+						<Button style={{ justifyContent: "end", display: "flex", color: "white", backgroundColor: "rgb(0, 133, 219)" }} onClick={() => handleClose()}>Submit</Button>
+					</div>
+        </DialogActions>
+      </BootstrapDialog>
+
+      <TableRow className='managerows ' sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell padding="checkbox">
           <Checkbox
             style={{ color: "grey" }}
@@ -116,7 +306,7 @@ function Row(props: { row: ReturnType<typeof createData> }) {
                       <span className="label" style={{ textAlign: "center", color: 'white', width: "100%", padding: "6px", backgroundColor: "grey ", borderRadius: "7px" }}><b >Social Welfare</b></span></div>
                       : ""} 
         </TableCell>
-        <TableCell style={{ padding: "5px 5px 5px 5px" }} align="right"> <button className='pill'>Share</button></TableCell>
+        <TableCell style={{ padding: "5px 5px 5px 5px" }} align="right"> <button className='pill' onClick={()=> handleshowmodal()}>Share</button></TableCell>
         <Tooltip title="Delete" placement='top'>
           <IconButton>
             {/* <svg xmlns="http://www.w3.org/2000/svg" width="35" height="20" viewBox="0 0 2048 2048"><path fill="gray" d="M1792 384h-128v1472q0 40-15 75t-41 61t-61 41t-75 15H448q-40 0-75-15t-61-41t-41-61t-15-75V384H128V256h512V128q0-27 10-50t27-40t41-28t50-10h384q27 0 50 10t40 27t28 41t10 50v128h512zM768 256h384V128H768zm768 128H384v1472q0 26 19 45t45 19h1024q26 0 45-19t19-45zM768 1664H640V640h128zm256 0H896V640h128zm256 0h-128V640h128z"/></svg> */}
@@ -130,12 +320,12 @@ function Row(props: { row: ReturnType<typeof createData> }) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit style={{ borderRadius: "5px" }}>
             <Link href='/biology' style={{textDecoration:"none",color:"black"}}>
-            <div  style={{ justifyContent: "center", backgroundColor: "#cbcbcb", display: "flex", padding: "7px 0 7px 0", margin: "5px" }}>
+            <div  style={{ justifyContent: "center",flexDirection:"row", backgroundColor: "#cbcbcb", display: "flex", padding: "7px 0 7px 0", margin: "5px" }}>
               <Typography>Biology </Typography>
+              <svg style={{display:"flex",alignItems:"center"}} xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="black" d="M15.187 12L7.47 4.285q-.221-.222-.218-.532q.003-.31.224-.532Q7.698 3 8.009 3q.31 0 .531.221l7.637 7.642q.242.243.354.54q.111.299.111.597t-.111.596q-.112.298-.354.54L8.535 20.78q-.222.221-.53.218q-.307-.003-.528-.224t-.221-.532q0-.31.22-.531z" /></svg>
+              <Typography>Fertility </Typography>
               <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="black" d="M15.187 12L7.47 4.285q-.221-.222-.218-.532q.003-.31.224-.532Q7.698 3 8.009 3q.31 0 .531.221l7.637 7.642q.242.243.354.54q.111.299.111.597t-.111.596q-.112.298-.354.54L8.535 20.78q-.222.221-.53.218q-.307-.003-.528-.224t-.221-.532q0-.31.22-.531z" /></svg>
-              <Typography>Plant Fertilization </Typography>
-              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="black" d="M15.187 12L7.47 4.285q-.221-.222-.218-.532q.003-.31.224-.532Q7.698 3 8.009 3q.31 0 .531.221l7.637 7.642q.242.243.354.54q.111.299.111.597t-.111.596q-.112.298-.354.54L8.535 20.78q-.222.221-.53.218q-.307-.003-.528-.224t-.221-.532q0-.31.22-.531z" /></svg>
-              <Typography>Crops fertility </Typography>
+              <Typography>polymorphism </Typography>
             </div>
             </Link>
             <Link href='/biology' style={{textDecoration:"none",color:"black"}}>
@@ -161,6 +351,11 @@ const rows = [
   createData('Electricity', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Communication"),
   createData('Therory', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "maths"),
   createData('Thermal', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Social Welfare"),
+  createData('Quantam', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "maths"),
+  createData('Atom', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Social Welfare"),
+  createData('Nuclear', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "physics"),
+ 
+ 
   createData('Energy', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "physics"),
 ];
 
@@ -181,14 +376,14 @@ export default function Collaction() {
     <div >
      
 
-     <Box sx={{ flexGrow: 1 }}>
+     <Box sx={{ flexGrow: 1 }}  >
       <Grid container   spacing={{ xs: 1, md: 4 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
         <Grid item xs={0.5}>
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z" /></svg>
         </Grid>
         <Grid item xs={2}>
-        <input className='input' type='search'></input>
+        <input className='inputclass' type='search'></input>
         </Grid>
         <Grid item xs={5}>
         <Typography style={{display:"flex",justifyContent:"center"}}><b> My Collections</b></Typography>
@@ -196,7 +391,7 @@ export default function Collaction() {
         <Grid item xs={4.5}>
           <Grid container>
           <Grid item xs={12} justifyContent="end" display="flex">
-          <span style={{ backgroundColor: "#cfcdcd", color: "#2f2f2f"}} onClick={() => router.push("/teacher/chemistry")} className='pillbutton'  >P2P Queries</span>&emsp;
+          <span style={{ backgroundColor: "#cfcdcd", color: "#2f2f2f"}} onClick={() => router.push("/notifications")} className='pillbutton'  >P2P Queries</span>&emsp;
           </Grid>
           </Grid>
         </Grid>
@@ -214,10 +409,10 @@ export default function Collaction() {
  <h6>sdfsd</h6>
         </div> */}
       {/* </div> */}
-      <TableContainer component={Paper} >
+      <TableContainer component={Paper}  className='scrollcontent' >
 
-        <Table aria-label="collapsible table">
-          <TableHead>
+        <Table >
+          <TableHead >
             <TableRow>
               <TableCell />
               {/* <TableCell style={{padding:"5px 5px 5px 5px"}} ><b> #</b></TableCell> */}

@@ -15,7 +15,8 @@
   }
   .columnmanage1 {
     float: left;
-    width: 70%;
+    width: 68%;
+    margin: 0 5px 5px 5px;
     padding:2px;
    /*  height: 300px; Should be removed. Only for demonstration */
   }
@@ -28,7 +29,7 @@
     padding: 10px;
   }
 
-  select {
+  .selectManage {
     box-sizing: border-box;
   
     -moz-appearance: none;
@@ -50,12 +51,12 @@
 
 
 
-  select::-ms-expand {
+  .selectManage::-ms-expand {
     display: none;
   }
 
 
-  select {
+  .selectManage {
     padding: 5px 10px 5px 8px;
     border: 1px solid #999;
     border-radius: 5px;
@@ -67,23 +68,23 @@
   }
 
 
-  select:hover {
+  .selectManage:hover {
     border-color: #777;
   }
   
-  select:focus {
+  .selectManage:focus {
     border-color: #999;
     box-shadow: 0 0 1px 2px #6db4ff;
     outline: none;
   }
-  select:disabled,
-select[aria-disabled=true] {
+  .selectManage:disabled,
+  .selectManage[aria-disabled=true] {
   cursor: not-allowed;
   background-color: rgba(211, 211, 211, .75);
 }
 
-select:disabled:hover,
-select[aria-disabled=true]:hover {
+.selectManage:disabled:hover,
+.selectManage[aria-disabled=true]:hover {
   border-color: #999;
 }
 
@@ -150,9 +151,9 @@ select[aria-disabled=true]:hover {
         } */
 
         .managerows:nth-child(even) {background-color: rgb(248, 255, 246);}
-        .managerows:hover{
+        /* .managerows:hover{
           background-color: #3470b0;
-        }
+        } */
 
 
         .overflowtext {

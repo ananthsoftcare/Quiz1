@@ -59,6 +59,7 @@ export default function Content() {
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+	
 	const router = useRouter();
 	const [openModalAddTitle, setOpenModalAddTitle] = React.useState(false)
 	const [openModalAddLabel, setOpenModalAddLabel] = React.useState(false)
@@ -126,18 +127,14 @@ export default function Content() {
         <DialogContent dividers>
 		<Grid container spacing={{ xs: 1, md: 4 }}
 						columns={{ xs: 4, sm: 8, md: 12 }}>
-						<Grid item xs={4}>
-							<label>Title</label>
-						</Grid>
-						<Grid item xs={8}>
-							<input style={{ width: "85%" }} name="Email" id="Email" className="input" type="email" />
-						</Grid>
+						
 						<Grid item xs={4}>
 							<label>Collection</label>
 						</Grid>
 						<Grid item xs={8}>
 							<select style={{ width: "85%" }} onClick={(e) => handleChangeDropdown(e)} className="input" name="cars" id="cars" >
-								<option value="introduction">Introduction</option>
+							<option value="addTitle"><button style={{ backgroundColor: "green" }}>Add BookmarksTitle</button></option>
+								<option value="introduction" selected> Introduction</option>
 								<option value="chemistry">Chemistry</option>
 								<option value="maths">Physics</option>
 								<option value="biology">Communication</option>
@@ -149,7 +146,6 @@ export default function Content() {
 								<option value="biology">Communication</option>
 								<option value="maths">Maths</option>
 								<option value="social">Social Welfare</option>
-								<option value="addTitle"><button style={{ backgroundColor: "green" }}>Add BookmarksTitle</button></option>
 							</select>
 						</Grid>
 						<Grid item xs={4}>
@@ -218,7 +214,7 @@ export default function Content() {
 							columns={{ xs: 4, sm: 8, md: 12 }}>
 							<Grid item xs={1}>
 								<BootstrapTooltip title="Back">
-									<svg cursor="pointer" onClick={() => router.push('/')} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
+									<svg cursor="pointer" onClick={ router.back} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
 								</BootstrapTooltip>
 							</Grid>
 							<Grid item xs={9}>
@@ -227,15 +223,15 @@ export default function Content() {
 							</Grid>
 							<Grid item xs={2}>
 								<Typography ><b>Apply Your Collection</b></Typography>&nbsp;
-								<select className='selectfilter' name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)}>
-									<option value="introduction">Introduction</option>
+								<select  name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)}>
+								<option value="addTitle"><button >Add Title</button></option>
+									<option value="introduction" selected>Introduction</option>
 									<option value="chemistry">Chemistry</option>
 									<option value="maths">Physics</option>
 									<option value="biology">Communication</option>	
 									{/* <option value="chemistry">Chemistry</option> */}
 									<option value="maths">Maths</option>
 									<option value="social">Social Welfare</option>
-									<option value="addTitle"><button >Add Title</button></option>
 									{/* <option onClick={() => handleopenModal()} value=''></option> */}
 									<button >Add title</button>
 								</select>

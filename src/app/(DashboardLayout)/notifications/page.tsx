@@ -18,6 +18,7 @@ import ScienceIcon from '@mui/icons-material/Science';
 import SmsIcon from '@mui/icons-material/Sms';
 import PublicIcon from '@mui/icons-material/Public';
 import Link from 'next/link';
+import { useState } from 'react';
 
 
 
@@ -449,33 +450,73 @@ export default function PageNotify() {
 
 
 
+    type Answer = {
+        aid: number;
+        author: string;
+        postedDate: string;
+        answer: string;
+    };
+    
+    type Question = {
+        Qid: number;
+        question: string;
+        creater: string;
+        acount: number;
+        answers: Answer[];
+    };
+    
+    type State = {
+        Sid: number;
+        subject: string;
+        qcount: number;
+        questions: Question[];
+    };
+
+    const [question1, setQuestion1] = useState<State>()
+
+    const handlechange = (e: any) => {
+      
+        if (e.target.value !== "") {
+            // setQuestion1([])
+              let value = e.target.value;
+            //   let question = question1.map(response => response.subject)
+            const filtered = questions.filter((row) =>
+                  row.subject === value
+              );
+
+            // setQuestion1(filtered)
+        } else {
+            // setQuestion1(questions)
+        }
+    }
+
+
 
     // const handleClickanswers = (e:any) =>{
-    // // console.log("e",e)
 
     // router.push({'/notifications/answers', query: { userid:e}});
     // }
 
     return (
-        <form method="post" >
-            <Card sx={{ p: 1, width: 'max(100%,500px)', mx: 'auto' }} className='scrollcontent'>
-                <div className="rowhead">
-                    <div className="columnhead1" style={{textAlign:"end"}} >
+        <div>
+            <Card sx={{ p: 1, overflow:"auto", mx: 'auto' }} className='scrollcontent'>
+                <div className="rowhead" style={{ marginBottom: "5px" }}>
+                    <div className="columnhead1" style={{ textAlign: "end" }} >
                         {/* <Typography >Questions</Typography> */}
-                        <b style={{ fontSize: "23px"}}>
+                        <b style={{ fontSize: "23px" }}>
                             Questions</b>
                     </div>
-                    <div className="columnhead2" style={{display:"flex"}}>
+                    <div className="columnhead2" style={{ display: "flex" }}>
                         {/* <Button style={{backgroundColor:'#b9b0b0',color:"white",borderRadius:"5px"}}>Filter features here:</Button>&nbsp; */}
-                        <Typography ><b>Filters</b></Typography>&nbsp;
-                        <select name="cars" id="cars">
-                            <option value="biology">Biology</option>
-                            <option value="chemistry">Chemistry</option>
-                            <option value="maths">Physics</option>
-                            <option value="biology">Communication</option>
+                        <Typography style={{ display: "flex", alignItems: "center" }} ><b>Filters</b></Typography>&emsp;
+                        <select className='selectquestion' onChange={(e) => handlechange(e)} name="cars" id="cars">
+                            <option value="Biology">Biology</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Communication">Communication</option>
                             {/* <option value="chemistry">Chemistry</option> */}
-                            <option value="maths">Maths</option>
-                            <option value="social">Social Welfare</option>
+                            <option value="Maths">Maths</option>
+                            <option value="Social Welfare">Social Welfare</option>
                         </select>
                     </div>
                 </div>
@@ -545,7 +586,7 @@ export default function PageNotify() {
                     </Table>
                 </TableContainer>
             </Card>
-        </form>
+        </div>
     )
 }
 

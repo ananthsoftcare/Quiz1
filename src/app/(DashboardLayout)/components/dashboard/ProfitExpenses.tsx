@@ -90,7 +90,7 @@ const ProfitExpenses = () => {
   return (
     <Card style={{ paddingRight: 5 ,padding:5}}
     >
-      <Typography style={{ fontSize: 16, fontWeight: 600, color: '#073763', backgroundColor: '', padding: 2, borderRadius: '5px', paddingLeft: 18 }}>Performance in enrolled courses</Typography>
+      <Typography style={{ fontSize: 16,height:"65px", fontWeight: 600, color: '#073763', backgroundColor: '', padding: 2, borderRadius: '5px', paddingLeft: 18 }}>Performance in enrolled courses</Typography>
       {/* <Box className="rounded-bars"> */}
       < Chart
         options={optionscolumnchart}

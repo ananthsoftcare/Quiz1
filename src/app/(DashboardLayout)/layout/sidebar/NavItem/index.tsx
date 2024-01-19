@@ -302,7 +302,7 @@ export default function NavItem({
         {item.children?.map((item: any) => {
           const Icon = item.icon;
           return (
-            <Collapse in={open} key={item.id} timeout="auto" unmountOnExit>
+            <Collapse in={open}  key={item.id}  timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 <Link href={item.href} style={{ textDecoration: "none" }}>
                   <ListItemStyledSub

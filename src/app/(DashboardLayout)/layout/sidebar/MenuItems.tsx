@@ -58,7 +58,7 @@ const Menuitems = [
       },
       {
         id: uniqueId(),
-        title: "P2P Queries",
+        title: "P2P Quries",
         icon: IconBellRinging,
         href: "/notifications",
       },

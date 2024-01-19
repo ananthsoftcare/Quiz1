@@ -34,7 +34,7 @@ const PeertoPeer = () => {
 
         // <Card style={{height:'32%'}}
         >
-            <Typography style={{ fontSize: 11, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Peer to peer participation through queries and answers</Typography><br /><br />
+            <Typography style={{ fontSize: 11, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Peer to peer participation through queries and answers</Typography><br /><br />
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}

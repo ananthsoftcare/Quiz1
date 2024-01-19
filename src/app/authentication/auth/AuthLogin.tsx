@@ -22,7 +22,6 @@ interface loginType {
 
 
 // const handlechange =() =>{
-//   console.log("e",e.target.value)
 // }
 
 
