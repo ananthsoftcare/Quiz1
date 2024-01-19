@@ -1178,10 +1178,8 @@ export default function Announcements() {
     useEffect(() => {
         setMain(questionsMain)
     }, [])
-    console.log('main', main);
 
     // const handleClickanswers = (e:any) =>{
-    // // console.log("e",e)
 
     // router.push({'/notifications/answers', query: { userid:e}});
     // }
@@ -1207,8 +1205,7 @@ export default function Announcements() {
             }
             else if (e.target.value==="All") {
                 setMain(questionsMain)
-            }
-            
+            } 
         })
     }
 
@@ -1223,7 +1220,7 @@ export default function Announcements() {
                 <div className="columnhead2" style={{ display: "flex" }}>
                     {/* <Button style={{backgroundColor:'#b9b0b0',color:"white",borderRadius:"5px"}}>Filter features here:</Button>&nbsp; */}
                     <Typography style={{ marginTop: 8 }} ><b>Filters</b></Typography>&emsp;
-                    <form className="form">
+                    <div className="form">
                         <button>
                             <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
                                 <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -1239,7 +1236,7 @@ export default function Announcements() {
                             <option value="Maths">Maths</option>
                             <option value="Social">Social Welfare</option>
                         </select>
-                    </form>
+                    </div>
                 </div>
             </div>
             <Table aria-label="purchases" >
@@ -1247,12 +1244,11 @@ export default function Announcements() {
                     <TableRow>
                         <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>Subject</TableCell>
                         <TableCell align="left" style={{ padding: 10, width: '70%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>Description</TableCell>
-                        <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>Publish Date</TableCell>
-                        {/* <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>To Date</TableCell> */}
+                        <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>From Date</TableCell>
+                        <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>To Date</TableCell>
                     </TableRow>
                 </TableHead>
                 {main.map((question: any, index) => {
-                    console.log('questionss', question);
                     return (
                         <TableBody key={index}>
                             {question.questions.map((qus: any, index: number) => {
@@ -1277,12 +1273,12 @@ export default function Announcements() {
                                         <TableCell align="left" style={{ width: "65%", padding: 10 }} >
                                             {qus.question}
                                         </TableCell>
-                                        <TableCell align="left" style={{ width: "20%", padding: 10 }} >
+                                        <TableCell align="left" style={{ width: "10%", padding: 10 }} >
                                             {qus.startDate}
                                         </TableCell>
-                                        {/* <TableCell align="left" style={{ width: "1%", padding: 10 }} >
+                                        <TableCell align="left" style={{ width: "1%", padding: 10 }} >
                                             {qus.endDate}
-                                        </TableCell> */}
+                                        </TableCell>
                                     </TableRow>
                                 )
                             })}

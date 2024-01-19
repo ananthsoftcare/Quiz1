@@ -17,20 +17,24 @@ const ReasonNeg = () => {
 
 
     const seriescolumnchart: any = [{
-        name: "Not Sure",
-        data: [45, 52, 38, 54, 23, 26, 21, 10, 48, 28, 15, 30]
+        name: "Reacted Quickly",
+        data: [45, 52, 38, 54, 23, 26, 21, 10, 48, 28]
     },
     {
-        name: "Too Quick",
-        data: [25, 11, 12, 12, 14, 18, 19, 37, 36, 51, 32, 35]
+        name: "It was Complicated",
+        data: [25, 11, 12, 12, 14, 18, 19, 37, 36, 51]
     },
     {
-        name: 'Difficult',
-        data: [17, 27, 14, 19, 15, 18, 12, 17, 12, 16, 15, 17]
+        name: 'Thought I was right',
+        data: [17, 27, 14, 19, 15, 18, 12, 17, 12, 16]
     },
     {
-        name: "Lowest",
-        data: [18, 21, 42, 15, 13, 18, 29, 17, 36, 21, 32, 15]
+        name: "Faulty Question",
+        data: [18, 21, 42, 15, 13, 18, 29, 17, 36, 21]
+    },
+    {
+        name: "Other",
+        data: [18, 5, 25, 18, 20, 28, 16, 11, 13, 11]
     },
     ]
     const optionscolumnchart: any = {
@@ -39,11 +43,15 @@ const ReasonNeg = () => {
             type: 'line',
             zoom: {
                 enabled: false
+            },
+            toolbar: {
+                show: false
             }
         },
         dataLabels: {
             enabled: false
         },
+        labels: ['Reacted Quickly', 'It was Complicated', 'Not Prepared', 'Thought I was right', 'Faulty Question', 'Other'],
         stroke: {
             curve: 'smooth',
             width: 2,
@@ -55,7 +63,7 @@ const ReasonNeg = () => {
             },
         },
         xaxis: {
-            categories: ['Session1', 'Session2', 'Session3', 'Session4', 'Session5', 'Session6', 'Session7','Session8','Session9','Session10'],
+            categories: ['Session1', 'Session2', 'Session3', 'Session4', 'Session5', 'Session6', 'Session7', 'Session8', 'Session9', 'Session10'],
         }
     }
 

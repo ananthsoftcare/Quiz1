@@ -7,7 +7,7 @@ import { Card, Typography } from '@mui/material';
 
 
 
-const Participate = () => {
+const ParticipateFilter = () => {
     const theme = useTheme();
     const primary = theme.palette.primary.main;
     const error = theme.palette.error.main;
@@ -17,7 +17,7 @@ const Participate = () => {
 
     const seriescolumnchart: any = [{
         name: 'Servings',
-        data: [44, 55, 41, 67, 22, 43, 21]
+        data: [4, 5, 1, 6, 2, 4, 2]
     }];
     const optionscolumnchart: any = {
         plotOptions: {
@@ -26,18 +26,17 @@ const Participate = () => {
                 columnWidth: '50%',
             }
         },
-        chart: {
-            toolbar: {
-                show: false
-            }
-        },
         dataLabels: {
             enabled: false
         }, colors: '#ADD8E6',
         stroke: {
             width: 2
         },
-
+        chart: {
+            toolbar: {
+                show: false
+            }
+        },
         grid: {
             row: {
                 colors: ['#fff', '#f2f2f2']
@@ -62,7 +61,7 @@ const Participate = () => {
 
     return (
         <Card>
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding:'10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Average participation in Hours Spent</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Average participation in Hours Spent</Typography>
 
             <Chart
                 options={optionscolumnchart}
@@ -74,5 +73,5 @@ const Participate = () => {
     );
 };
 
-export default Participate;
+export default ParticipateFilter;
 

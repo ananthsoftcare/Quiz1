@@ -5,7 +5,7 @@ import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCa
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from "@mui/material/styles";
-const AvgParticipate = () => {
+const AvgParticipateFilter = () => {
     const theme = useTheme();
     const primary = theme.palette.primary.main;
     const error = theme.palette.error.main;
@@ -15,7 +15,7 @@ const AvgParticipate = () => {
 
     const seriescolumnchart: any = [{
         name: 'Questions',
-        data: [23, 25, 10, 20, 24, 23, 12, 10, 20, 12]
+        data: [3, 5, 1, 2, 4, 6, 2, 5, 9, 7]
     }]
     const optionscolumnchart: any = {
         chart:{
@@ -81,5 +81,5 @@ const AvgParticipate = () => {
 
 };
 
-export default AvgParticipate;
+export default AvgParticipateFilter;
 

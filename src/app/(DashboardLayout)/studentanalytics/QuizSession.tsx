@@ -26,7 +26,9 @@ const QuizSession = () => {
         chart: {
             height: 350,
             type: 'bar',
-
+            toolbar: {
+                show: false
+            }
         },
         colors: '#4B0082',
         dataLabels: {
@@ -70,7 +72,7 @@ const QuizSession = () => {
 
     return (
         <Card>
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding:'10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Quiz Session Count by Week</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Quiz Session Count by Week</Typography>
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}

@@ -6,9 +6,10 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from "@mui/material/styles";
 
+import { IconArrowUpLeft } from "@tabler/icons-react";
 
 
-const Performance = () => {
+const PerformanceFilter = () => {
     const theme = useTheme();
     const primary = theme.palette.primary.main;
     const error = theme.palette.error.main;
@@ -17,21 +18,21 @@ const Performance = () => {
 
 
     const seriescolumnchart: any = [{
-        name: "Sessions",
-        data: [45, 52, 38, 54, 83, 96, 81]
+        name: "Lowest",
+        data: [4, 5, 3, 2, 3, 8, 2, 9,8,7]
     },
-        // {
-        //     name: "Session 2",
-        //     data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-        // },
-        // {
-        //     name: 'Total Visits',
-        //     data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
-        // }
+    {
+        name: "Average",
+        data: [3, 4, 6, 4, 1, 8, 2, 3,9,4]
+    },
+    {
+        name: 'Highest',
+        data: [8, 5, 7, 9, 7, 3, 6, 4,6,3]
+    }
     ]
     const optionscolumnchart: any = {
         chart: {
-            height: 350,
+            
             type: 'line',
             zoom: {
                 enabled: false
@@ -54,9 +55,8 @@ const Performance = () => {
             }
         },
         xaxis: {
-            categories: ['Session 01', 'Session 02', 'Session 03', 'Session 04', 'Session 05', 'Session 06', 'Session 07'],
+            categories: ['Day 0', 'Day 10', 'Day 20', 'Day 30', 'Day 40', 'Day 50', 'Day 60', 'Day 70', 'Day 80','Day 90'],
         },
-
         grid: {
             borderColor: '#f1f1f1',
         }
@@ -64,22 +64,22 @@ const Performance = () => {
     return (
         <Card
         >
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Number of Sessions Attended</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding:'10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Performance of Students</Typography>
+            <Box >
+                <Chart 
+                    options={optionscolumnchart}
+                    series={seriescolumnchart}
+                    
+                    type="line" height={310} width={400}
 
-            <Chart
-                options={optionscolumnchart}
-                series={seriescolumnchart}
+                // type="line" height={275}width={"100%"}
 
-                type="line" height={230} width={"100%"}
-
-            // type="line" height={275}width={"100%"}
-
-            />
-
+                />
+            </Box>
         </Card>
     )
 
 };
 
-export default Performance;
+export default PerformanceFilter;
 

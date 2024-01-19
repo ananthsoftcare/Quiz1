@@ -16,28 +16,39 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { IconBellQuestion, IconBellRinging, IconMenu } from "@tabler/icons-react";
 import Link from "next/link";
 
+
 const actions = [
-    { label: "About", ques: '2 question raised from physics 2 question raised from physics 2 question raised from physics 2 question raised from physics', bg: '#F3C790' },
-    { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
-    { label: "Picture", ques: '1 question raised from chemistry', bg: '#ccffff' },
-    { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
-    { label: "About", ques: '2 question raised from physics', bg: '#ccffff' },
-    { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
-    { label: "Picture", ques: '1 question raised from chemistry', bg: '#ccffff' },
-    { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
-    { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
-    { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
-    { label: "About", ques: '2 question raised from physics', bg: '#F3C790' },
-    { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
-    { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
-    { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
-    { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
-    { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
-    { label: "About", ques: '2 question raised from physics', bg: '#F3C790' },
-    { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
-    { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
-    { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
-];
+    { label: 1, value: "Biology chapter 2 quiz evaluation is completed. Please check your results", pbg: "#e0faf7", },
+    { label: 2, value: " Rahul has scored 50 marks out of 50 in Maths chapter 1 Quiz. Congratualtions" },
+    { label: 3, value: "Biology Teacher has set a new Quiz on Chapter 1. Please check it out" },
+    { label: 4, value: "Checkout out new content section for more information", pbg: "#fff", },
+    { label: 5, value: "New questions raised from Physics chapter 1", pbg: "#e0faf7" },
+    { label: 6, value: "Checkout new open quizzes", pbg: "#fff", },
+    { label: 7, value: "10 new answers from your peers on Biology chapter1", pbg: "#e0faf7" },
+    { label: 8, value: "Checkout new open quizzes", pbg: "#fff", },
+]
+// const actions = [
+//     { label: "About", ques: '2 question raised from physics 2 question raised from physics 2 question raised from physics 2 question raised from physics', bg: '#F3C790' },
+//     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
+//     { label: "Picture", ques: '1 question raised from chemistry', bg: '#ccffff' },
+//     { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
+//     { label: "About", ques: '2 question raised from physics', bg: '#ccffff' },
+//     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
+//     { label: "Picture", ques: '1 question raised from chemistry', bg: '#ccffff' },
+//     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
+//     { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
+//     { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
+//     { label: "About", ques: '2 question raised from physics', bg: '#F3C790' },
+//     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
+//     { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
+//     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
+//     { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
+//     { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
+//     { label: "About", ques: '2 question raised from physics', bg: '#F3C790' },
+//     { label: "Profile", ques: '3 question raised from maths', bg: '#fff' },
+//     { label: "Picture", ques: '1 question raised from chemistry', bg: '#F3C790' },
+//     { label: "Trash", ques: '3 question raised from biology', bg: '#fff' },
+// ];
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
 }
@@ -98,7 +109,7 @@ const FAB = () => {
                 </Typography>
                 {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
                 {rotate === true ? (
-                    <>  <span style={{ color: "#fff", fontWeight: 'bold' }}>18 Questions raised from the course you entrolled</span>
+                    <>  <span style={{ color: "#fff", fontWeight: 'bold' }}>New Announcements</span>
                         <ExpandLessIcon style={{ color: "#fff", width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
                     </>
                 ) : <>
@@ -117,7 +128,7 @@ const FAB = () => {
                     {actions.map((product, i) => {
                         return (
                             <div key={i} style={{ padding: 5 }}>
-                                <Box style={{ borderRadius: '4px', padding: 5, backgroundColor: product.bg, }}>
+                                <Box style={{ borderRadius: '4px', padding: 5, backgroundColor: product.pbg, }}>
                                     <Link href={'/notifications'}>
                                         <Typography sx={{
                                             ":hover": {
@@ -126,7 +137,7 @@ const FAB = () => {
                                             }, display: 'inline-flex',
                                             fontSize: 14,
                                             fontWeight: 'bold',
-                                        }}>{product.ques}</Typography>
+                                        }}>{product.value}</Typography>
                                     </Link>
                                 </Box>
                             </div>

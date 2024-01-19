@@ -7,7 +7,7 @@ import { Card, Typography } from '@mui/material';
 
 
 
-const Avgcorrectans = () => {
+const AvgcorrectansFilter = () => {
     const theme = useTheme();
     const primary = theme.palette.primary.main;
     const error = theme.palette.error.main;
@@ -15,40 +15,44 @@ const Avgcorrectans = () => {
     const successlight = theme.palette.success.light;
 
 
-    const seriescolumnchart: any = [44, 55, 13, 43, 22];
+    const seriescolumnchart: any = [4, 5, 1, 4, 2];
     const optionscolumnchart: any = {
         chart: {
-            type: 'pie',
+            type: 'donut',
+        },
+        legend: {
+            position: 'top'
         },
         labels: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
-        legend: {
-            position: 'right',
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 300
+                },
 
-            itemMargin: {
-                horizontal: -10,
-                vertical: 10
-            }
-        },
+                dataLabels: {
+                    enabled: false
+                },
+            },
+
+        }],
 
     }
-
-
     return (
-        <Card 
+        <Card
         >
-        <div>
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Average correct answer by question difficulty level</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding:'10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Average correct answer by question difficulty level</Typography>
 
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
-                type="pie" height={350} width={530}
+                type="donut" height={300} width={330}
             // type="donut" width={"100%"} height={500}
             />
-            </div>
-         </Card >
+        </Card >
     );
 };
 
-export default Avgcorrectans;
+export default AvgcorrectansFilter;
 

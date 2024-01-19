@@ -35,27 +35,37 @@ const Notification = () => {
         setAnchorEl2(null);
     };
     const actions = [
-        // { label: "About",count:2,  ques:'question raised from physics 2 question raised from physics 2 question raised from physics 2 question raised from physics', bg: '#F0F8FF', icon: <ShutterSpeedIcon />, clr: "#1098ad" },
-        { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad", },
-        { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
-        { label: "Trash", count: 3, ques: 'question raised from biology', bg: '#fff', icon: <BiotechIcon />, clr: "#1098ad" },
-        { label: "About", count: 2, ques: 'question raised from physics', bg: '#F0F8FF', icon: <ShutterSpeedIcon />, clr: "#1098ad" },
-        { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
-        { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
-        { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
-        { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
-        { label: "Trash", count: 3, ques: 'question raised from biology', bg: '#fff', icon: <BiotechIcon />, clr: "#1098ad" },
-        { label: "About", count: 2, ques: 'question raised from physics', bg: '#F0F8FF', icon: <ShutterSpeedIcon />, clr: "#1098ad" },
-        { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
-        { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
-        { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
-        { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
-        { label: "Trash", count: 3, ques: 'question raised from biology', bg: '#fff', icon: <BiotechIcon />, clr: "#1098ad" },
-        { label: "About", count: 2, ques: 'question raised from physics', bg: '#F0F8FF', icon: <ShutterSpeedIcon />, clr: "#1098ad" },
-        { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
-        { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
-        { label: "Trash", count: 3, ques: 'question raised from biology', bg: '#fff', icon: <BiotechIcon />, clr: "#1098ad" },
-    ];
+        { label: 1, value: "Biology chapter 2 quiz evaluation is completed. Please check your results", pbg: "#e0faf7", },
+        { label: 2, value: " Rahul has scored 50 marks out of 50 in Maths chapter 1 Quiz. Congratualtions" },
+        { label: 3, value: "Biology Teacher has set a new Quiz on Chapter 1. Please check it out" },
+        { label: 4, value: "Checkout out new content section for more information", pbg: "#fff", },
+        { label: 5, value: "New questions raised from Physics chapter 1", pbg: "#e0faf7" },
+        { label: 6, value: "Checkout new open quizzes", pbg: "#fff", },
+        { label: 7, value: "10 new answers from your peers on Biology chapter1", pbg: "#e0faf7" },
+        { label: 8, value: "Checkout new open quizzes", pbg: "#fff", },
+    ]
+    // const actions = [
+    //     // { label: "About",count:2,  ques:'question raised from physics 2 question raised from physics 2 question raised from physics 2 question raised from physics', bg: '#F0F8FF', icon: <ShutterSpeedIcon />, clr: "#1098ad" },
+    //     { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad", },
+    //     { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
+    //     { label: "Trash", count: 3, ques: 'question raised from biology', bg: '#fff', icon: <BiotechIcon />, clr: "#1098ad" },
+    //     { label: "About", count: 2, ques: 'question raised from physics', bg: '#F0F8FF', icon: <ShutterSpeedIcon />, clr: "#1098ad" },
+    //     { label: "Profile", count: 3, ques: 'question raised from miaths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
+    //     { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
+    //     { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
+    //     { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
+    //     { label: "Trash", count: 3, ques: 'question raised from biology', bg: '#fff', icon: <BiotechIcon />, clr: "#1098ad" },
+    //     { label: "About", count: 2, ques: 'question raised from physics', bg: '#F0F8FF', icon: <ShutterSpeedIcon />, clr: "#1098ad" },
+    //     { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
+    //     { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
+    //     { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
+    //     { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
+    //     { label: "Trash", count: 3, ques: 'question raised from biology', bg: '#fff', icon: <BiotechIcon />, clr: "#1098ad" },
+    //     { label: "About", count: 2, ques: 'question raised from physics', bg: '#F0F8FF', icon: <ShutterSpeedIcon />, clr: "#1098ad" },
+    //     { label: "Profile", count: 3, ques: 'question raised from maths', bg: '#fff', icon: <WalletIcon />, clr: "#1098ad" },
+    //     { label: "Picture", count: 1, ques: ' question raised from chemistry', bg: '#F0F8FF', icon: <ScienceIcon />, clr: "#1098ad" },
+    //     { label: "Trash", count: 3, ques: 'question raised from biology', bg: '#fff', icon: <BiotechIcon />, clr: "#1098ad" },
+    // ];
     return (
         <Box>
             <IconButton
@@ -92,51 +102,77 @@ const Notification = () => {
                     border: '1px solid #fff', backgroundColor: '#fff', overflow: 'auto',
                     maxHeight: '420px', maxWidth: '397px', scrollbarwidth: 'thin', borderRadius: '4px',
                 }}>
-                    {/* <Link href={'/teacher/dashboard'}>Dashboardteacher</Link><br />
-                    <Link href={'/teacher/analytics'}>TeacherAnal</Link><br />
-                    <Link href={'/teacher/content'}>TeacherCOn</Link><br />
-                    <Link href={'/teacher/manage'}>TaeacherMan</Link><br />
-                    <Link href={'/teacher/profile'}>TeacherPro</Link><br /> */}
+
                     {actions.map((product, i) => {
-                        return (
-                            <div key={i} style={{ padding: 1, }}>
-                                <Card style={{ borderRadius: '4px', backgroundColor: product.bg, }}>
-                                    <CardActions>
-                                        <Grid container item xs={12} direction={'row'}>
-                                            <Grid item xs={1.5}>
-                                                <Avatar sx={{ width: 24, height: 24 }} style={{ backgroundColor: product.clr, fontSize: 11 }}>{product.count}</Avatar>
-                                            </Grid>
-                                            <Grid item xs={10.5}>
-                                                <div>
-                                                    <Link href={'/notifications'}>
-                                                        <Typography sx={{
-                                                            ":hover": {
-                                                                color: "#107869",
-                                                                fontWeight: 'bold',
-                                                            }, display: 'inline-flex',
-                                                            fontSize: 14,
+                        return (<div key={i} style={{ padding: 1, }}>
+                            <Card style={{ borderRadius: '4px', backgroundColor: product.pbg, }}>
+                                <CardActions>
+                                    <Grid container item xs={12} direction={'row'}>
+                                        <Grid item xs={10.5}>
+                                            <div>
+                                                <Link href={'/Announcement'}>
+                                                    <Typography sx={{
+                                                        ":hover": {
+                                                            color: "#107869",
                                                             fontWeight: 'bold',
-                                                            textAlign: 'center',
-                                                            justifyContent: 'center',
-                                                            alignItems: 'center'
-                                                            // color: product.clr
-                                                        }}>{product.ques}</Typography>
-                                                    </Link>
-                                                </div>
-                                            </Grid>
+                                                        }, display: 'inline-flex',
+                                                        fontSize: 14,
+                                                        fontWeight: 'bold',
+                                                        // textAlign: 'center',
+                                                        // justifyContent: 'center',
+                                                        alignItems: 'justify'
+                                                        // color: product.clr
+                                                    }}>{product.value}</Typography>
+                                                </Link>
+                                            </div>
                                         </Grid>
-                                    </CardActions>
-                                </Card>
-                            </div>
-                        )
+                                    </Grid>
+                                </CardActions>
+                            </Card>
+                        </div>)
+
+                        // return (
+                        //     <Typography>{product.value}</Typography>
+                        // )
+                        // return (
+                        //     <div key={i} style={{ padding: 1, }}>
+                        //         <Card style={{ borderRadius: '4px', backgroundColor: product.bg, }}>
+                        //             <CardActions>
+                        //                 <Grid container item xs={12} direction={'row'}>
+                        //                     <Grid item xs={1.5}>
+                        //                         <Avatar sx={{ width: 24, height: 24 }} style={{ backgroundColor: product.clr, fontSize: 11 }}>{product.count}</Avatar>
+                        //                     </Grid>
+                        //                     <Grid item xs={10.5}>
+                        //                         <div>
+                        //                             <Link href={'/notifications'}>
+                        //                                 <Typography sx={{
+                        //                                     ":hover": {
+                        //                                         color: "#107869",
+                        //                                         fontWeight: 'bold',
+                        //                                     }, display: 'inline-flex',
+                        //                                     fontSize: 14,
+                        //                                     fontWeight: 'bold',
+                        //                                     textAlign: 'center',
+                        //                                     justifyContent: 'center',
+                        //                                     alignItems: 'center'
+                        //                                     // color: product.clr
+                        //                                 }}>{product.ques}</Typography>
+                        //                             </Link>
+                        //                         </div>
+                        //                     </Grid>
+                        //                 </Grid>
+                        //             </CardActions>
+                        //         </Card>
+                        //     </div>
+                        // )
                     })}
                     <Link href={'/notifications'}>
                         <Button
                             variant="contained"
-                            size="large"
+                            size="medium"
                             fullWidth
                         >
-                            See all questions
+                            See all notifications
                         </Button>
                     </Link>
                 </Card>

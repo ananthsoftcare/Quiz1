@@ -72,3 +72,4 @@ export interface IAnswersComponentProps {
 export interface ILinearCardProps {
   progressValue: any
 }
+

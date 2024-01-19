@@ -11,72 +11,72 @@ const products = [
     name: "Sunil Joshi",
     post: "Web Designer",
     pname: "Elite Admin",
-    priority: "Physics Next Quiz : Due Date :Physics Next Quiz : Due Date :Physics Next Quiz : Due Date :",
+    priority: "Maths: Chapter 1 Quiz on Sets closes on ",
     pbg: "#e0faf7",
-    date: "1st January",
+    date: "21st January",
   },
   {
     id: "2",
     name: "Andrew McDownland",
     post: "Project Manager",
     pname: "Real Homes WP Theme",
-    priority: "Communication Next Quiz : Due Date :",
+    priority: "Please Submit your completed quizzes for proper calculation of scores",
     pbg: "#fff",
-    date: "29th March",
+    date: "",
   },
   {
     id: "3",
     name: "Christopher",
     post: "Project Manager",
     pname: "MedicalPro WP Theme",
-    priority: "Biology Next Quiz : Due Date :",
+    priority: "Biology Quiz on Chapter 1 is closed.",
     pbg: "#e0faf7",
-    date: "1st April",
+    date: "",
   },
   {
     id: "4",
     name: "Nirav Joshi",
     post: "Frontend Engineer",
     pname: "Hosting Press HTML",
-    priority: "Chemistry Next Quiz : Due Date :",
+    priority: "Physics Quiz on Chapter1: Electric Charges and Fields is extended due to technical issues. Due date will be announced later ",
     pbg: "#fff",
-    date: "30th May",
+    date: "",
   },
   {
     id: "5",
     name: "Sunil Joshi",
     post: "Web Designer",
     pname: "Elite Admin",
-    priority: "Physics Next Quiz : Due Date :",
+    priority: "Biology content section is under construction. Please check back later for changes",
     pbg: "#e0faf7",
-    date: "1st January",
+    date: "",
   },
   {
     id: "6",
     name: "Andrew McDownland",
     post: "Project Manager",
     pname: "Real Homes WP Theme",
-    priority: "Communication Next Quiz : Due Date :",
+    priority: "Maths Quiz on chapter 2:Algebra is open now",
     pbg: "#fff",
-    date: "29th March",
+    date: "",
   },
   {
     id: "7",
     name: "Christopher",
     post: "Project Manager",
     pname: "MedicalPro WP Theme",
-    priority: "Biology Next Quiz : Due Date :",
+    priority: "Students are requested to properly submit their quiz tests for proper and timely evaluation.",
     pbg: "#e0faf7",
-    date: "1st April",
+    date: "",
   },
   {
     id: "8",
     name: "Nirav Joshi",
     post: "Frontend Engineer",
     pname: "Hosting Press HTML",
-    priority: "Chemistry Next Quiz : Due Date :",
+    priority: "Chemistry Quiz on Chapter 1: Solutions is undergoing evaluation.Please check back later for results.",
     pbg: "#fff",
-    date: "30th May",
+    date: "",
   },
   {
     id: "9",
@@ -92,9 +92,9 @@ const products = [
     name: "Christopher Jamil",
     post: "Project Manager",
     pname: "MedicalPro WP Theme",
-    priority: "Biology Next Quiz : Due Date :",
+    priority: "Physics Quiz on chapter 2:Electrostatic Potential and Capacitance is open now",
     pbg: "#fff",
-    date: "1st April",
+    date: "",
   }
 ];
 
@@ -135,7 +135,7 @@ const Badges = () => {
         sx={{
           "& .MuiMenu-paper": {
             // width: "250px",
-            maxHeight:"380px",
+            maxHeight: "380px",
             border: '1px solid ddd'
           },
         }}
@@ -156,18 +156,18 @@ const Badges = () => {
                       <Grid item xs={10.5}>
                         <div>
                           <Link href={'/Announcement'}>
-                          <Typography sx={{
-                            ":hover": {
-                              color: "#107869",
+                            <Typography sx={{
+                              ":hover": {
+                                color: "#107869",
+                                fontWeight: 'bold',
+                              }, display: 'inline-flex',
+                              fontSize: 14,
                               fontWeight: 'bold',
-                            }, display: 'inline-flex',
-                            fontSize: 14,
-                            fontWeight: 'bold',
-                            // textAlign: 'center',
-                            // justifyContent: 'center',
-                            alignItems: 'justify'
-                            // color: product.clr
-                          }}>{product.priority + product.date}</Typography>
+                              // textAlign: 'center',
+                              // justifyContent: 'center',
+                              alignItems: 'justify'
+                              // color: product.clr
+                            }}>{product.priority + product.date}</Typography>
                           </Link>
                         </div>
                       </Grid>

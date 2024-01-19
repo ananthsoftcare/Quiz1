@@ -122,7 +122,7 @@ interface HeadCell {
 const headCells: readonly HeadCell[] = [
   {
     id: 'id',
-    numeric: false,
+    numeric: true,
     disablePadding: true,
     label: 'Id',
   },
@@ -236,12 +236,12 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
     // }}
     >
       {/* <div> */}
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z" /></svg>
-        </div>
-        <div style={{ padding: "2px 0 0 2px", width: "100%" }}>
-          <input className='input' type='search'></input>
-        </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z" /></svg>
+      </div>
+      <div style={{ padding: "2px 0 0 2px", width: "100%" }}>
+        <input className='input' type='search'></input>
+      </div>
       {/* </div> */}
       <div style={{ padding: "2px 0 0 2px", width: "50%", justifyContent: "end", display: "flex" }}>
         <button style={{ backgroundColor: "rgb(0, 133, 219)", padding: "5px", display: "flex", justifyContent: "center", border: "none", borderRadius: "5px", color: "white", alignItems: "center" }}>
@@ -377,7 +377,7 @@ export default function EnhancedTable() {
       </Link>
       </div> */}
       <PageContainer title="ManageClass" description="Manage Class">
-        <div className="rowmanage" style={{justifyContent:"space-between"}}>
+        <div className="rowmanage" style={{ justifyContent: "space-between" }}>
           <div className="columnmanage1 ">
             <Box >
               <Paper sx={{ width: '100%', mb: 2 }} className='scrollcontent'>
@@ -427,7 +427,8 @@ export default function EnhancedTable() {
                               component="th"
                               id={labelId}
                               scope="row"
-                              padding="none"
+                              align='left'
+                             style={{padding:"0 0 0 18px"}}
                             >
                               {index + 1}
                             </TableCell>
@@ -484,13 +485,13 @@ export default function EnhancedTable() {
         label="Dense padding"
       /> */}
             </Box>
-          </div> 
+          </div>
           <div className="columnmanage2">
             <Box >
               <p>Schedule Your Class</p>
               <div >
                 <h5 style={{ margin: "2px 0 2px 0" }}>Start Date</h5>
-                <select className='selectManage'  name="startdate" id="startdate">
+                <select className='selectManage' name="startdate" id="startdate">
                   <option disabled selected>Day</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -524,13 +525,13 @@ export default function EnhancedTable() {
                   <option value="30">30</option>
                   <option value="31">31</option>
                 </select>&emsp;
-                <select className='selectManage'  name="startmonth" id="startmonth">
+                <select className='selectManage' name="startmonth" id="startmonth">
                   <option disabled selected>Month</option>
                   {months.map((month, i) => (
                     <option key={month} value={month} >{month}</option>
                   ))}
                 </select>&emsp;
-                <select className='selectManage'  name="startyear" id="startyear">
+                <select className='selectManage' name="startyear" id="startyear">
                   <option disabled selected>Year</option>
                   {years.map((year, i) => (
                     <option key={year} value={year} >{year}</option>
@@ -539,7 +540,7 @@ export default function EnhancedTable() {
               </div>
               <div style={{ margin: "20px 0 0 0" }}>
                 <h5 style={{ margin: "2px 0 2px 0" }}>End Date</h5>
-                <select  className='selectManage' name="enddate" id="enddate">
+                <select className='selectManage' name="enddate" id="enddate">
                   <option disabled selected>Day</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -586,7 +587,9 @@ export default function EnhancedTable() {
                   ))}
                 </select>
               </div>
-
+              <div style={{ display: "flex", justifyContent: "end", marginTop: "5px" }}>
+                <button className='buttonmanage'>schedule</button>
+              </div>
               <div style={{ margin: "20px 0 0 0" }}>
                 <h4 style={{ margin: "10px 0 0 0" }}>Make Announcement</h4>
                 <div style={{ alignItems: "end", display: "flex", justifyContent: "end" }}>

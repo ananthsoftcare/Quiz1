@@ -23,7 +23,12 @@ const ReasonProp = () => {
         },
         labels: ['Reacted Quickly', 'It was Complicated', 'Not Prepared', 'Thought I was right', 'Faulty Question', 'Other'],
         legend: {
-            position: 'bottom'
+            position: 'right',
+
+            itemMargin: {
+                horizontal: 10,
+                vertical: 10
+            }
         },
         responsive: [{
             breakpoint: 480,
@@ -31,9 +36,7 @@ const ReasonProp = () => {
                 chart: {
                     width: 200
                 },
-                legend: {
-                    position: 'bottom'
-                }
+
             }
         }],
         xaxis: {
@@ -49,7 +52,7 @@ const ReasonProp = () => {
                     options={optionscolumnchart}
                     series={seriescolumnchart}
 
-                    type="donut" height={320} width={"100%"}
+                    type="donut" height={280} width={"100%"}
 
                 // type="line" height={275}width={"100%"}
 

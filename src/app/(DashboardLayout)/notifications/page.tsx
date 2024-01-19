@@ -18,7 +18,7 @@ import ScienceIcon from '@mui/icons-material/Science';
 import SmsIcon from '@mui/icons-material/Sms';
 import PublicIcon from '@mui/icons-material/Public';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
@@ -52,9 +52,9 @@ export default function PageNotify() {
 
 
 
-    let questions = [
+    let questionPage = [
         {
-            "Sid": 0,
+            "id": 0,
             "subject": "Physics",
             "qcount": 1,
             // "color": 'rgb(0, 227, 150)',
@@ -114,7 +114,7 @@ export default function PageNotify() {
             ]
         },
         {
-            "Sid": 1,
+            "id": 1,
             "subject": "Maths",
             "qcount": 2,
             "questions": [
@@ -199,7 +199,7 @@ export default function PageNotify() {
             ]
         },
         {
-            "Sid": 2,
+            "id": 2,
             "subject": "Biology",
             "qcount": 3,
             "questions": [
@@ -336,7 +336,7 @@ export default function PageNotify() {
             ]
         },
         {
-            "Sid": 3,
+            "id": 3,
             "subject": "Chemistry",
             "qcount": 4,
             "questions": [
@@ -448,7 +448,214 @@ export default function PageNotify() {
         }
     ]
 
+    let myself = [
+        {
+            "id": 0,
+            "subject": "Physics",
+            "qcount": 1,
+            // "color": 'rgb(0, 227, 150)',
+            "questions": [
+                {
+                    "Qid": 1,
+                    "question": "The light energy emitted by a star is due to",
+                    "creater": "Kelvin",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "18-04-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Kirana",
+                            "postedDate": "30-05-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Sanjana",
+                            "postedDate": "03-04-2023",
+                            "answer": "Burning of nuclei"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "creater": "Hardarashna Hardik",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Sanu",
+                            "postedDate": "07-08-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Prem",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isotopes"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "subject": "Maths",
+            "qcount": 2,
+            "questions": [
+                {
+                    "Qid": 0,
+                    "question": "What are the solutions to 3(x+5)<=3x+20?",
+                    "creater": "Calvin",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Nina",
+                            "postedDate": "13-04-2023",
+                            "answer": "All real numbers"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Banu",
+                            "postedDate": "05-04-2022",
+                            "answer": "all real numbers"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lola",
+                            "postedDate": "18-04-2023",
+                            "answer": "No Solution"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 1,
+                    "question": "What is the product of 75.0 feet and 2.05 feet written with the correct number of significant digits?",
+                    "creater": "Roshan",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Lola",
+                            "postedDate": "10-04-2023",
+                            "answer": "154 ft^2"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Daran",
+                            "postedDate": "05-04-2023",
+                            "answer": "150 ft^2"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2021",
+                            "answer": "154 ft^2"
+                        }
+                    ]
+                }
 
+            ]
+        },
+        {
+            "id": 3,
+            "subject": "Chemistry",
+            "qcount": 4,
+            "questions": [
+                {
+                    "Qid": 0,
+                    "question": "The Rosenmund reaction can produce which carbonyl compounds?",
+                    "creater": "GopalKrisnan",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Narain",
+                            "postedDate": "23-04-2023",
+                            "answer": "Benzaldehyde"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Suja",
+                            "postedDate": "23-04-2023",
+                            "answer": "Benzaldehyde"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Karan2",
+                            "postedDate": "19-05-2023",
+                            "answer": "No Answer"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 1,
+                    "question": "Reactions occur between aldehydes and ketones?",
+                    "creater": "Shewag",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "creater": "Shewag",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+
+            ]
+        }
+    ]
 
     type Answer = {
         aid: number;
@@ -456,7 +663,7 @@ export default function PageNotify() {
         postedDate: string;
         answer: string;
     };
-    
+
     type Question = {
         Qid: number;
         question: string;
@@ -464,57 +671,88 @@ export default function PageNotify() {
         acount: number;
         answers: Answer[];
     };
-    
+
     type State = {
-        Sid: number;
+        id: number;
         subject: string;
         qcount: number;
         questions: Question[];
     };
 
-    const [question1, setQuestion1] = useState<State>()
+    const [question1, setQuestion1] = useState(
+        [{
+            id: 0,
+            subject: "",
+            qcount: 0,
+            questions: [{
+                Qid: 0,
+                question: "",
+                acount: 0,
+                creater: "",
+                answers: [{
+                    aid: 0,
+                    author: "",
+                    postedDate: "",
+                    answer: ""
+                }]
+            }]
+
+        }]
+    )
+
+    const [checked, setChecked] = useState(false)
+
+    useEffect(() => {
+        setQuestion1(questionPage)
+    }, [])
 
     const handlechange = (e: any) => {
-      
-        if (e.target.value !== "") {
-            // setQuestion1([])
-              let value = e.target.value;
-            //   let question = question1.map(response => response.subject)
-            const filtered = questions.filter((row) =>
-                  row.subject === value
-              );
+        let value = e.target.value;
+        if (e.target.value === "All") {
+            setQuestion1(questionPage)
+        }
+        else if (e.target.value != "") {
+            const filtered = questionPage.filter((row) =>
+                row.subject === value
+            );
+            setQuestion1(filtered)
+        }
+    }
 
-            // setQuestion1(filtered)
+
+    const handlechangemyself = (e: any) => {
+        setChecked(!checked)
+        if (checked) {
+            setQuestion1(myself)
         } else {
-            // setQuestion1(questions)
+            setQuestion1(questionPage)
         }
     }
 
 
 
-    // const handleClickanswers = (e:any) =>{
-
-    // router.push({'/notifications/answers', query: { userid:e}});
-    // }
-
     return (
         <div>
-            <Card sx={{ p: 1, overflow:"auto", mx: 'auto' }} className='scrollcontent'>
+            <Card sx={{ p: 1, overflow: "auto", mx: 'auto' }} className='scrollcontent'>
                 <div className="rowhead" style={{ marginBottom: "5px" }}>
                     <div className="columnhead1" style={{ textAlign: "end" }} >
                         {/* <Typography >Questions</Typography> */}
                         <b style={{ fontSize: "23px" }}>
                             Questions</b>
                     </div>
+
                     <div className="columnhead2" style={{ display: "flex" }}>
-                        {/* <Button style={{backgroundColor:'#b9b0b0',color:"white",borderRadius:"5px"}}>Filter features here:</Button>&nbsp; */}
+                        <div className="checkbox-wrapper-34">
+                            <input className="tgl tgl-ios" id="toggle-34" type="checkbox" onClick={(e) => handlechangemyself(e)} />
+                            <label className="tgl-btn" htmlFor="toggle-34"></label>
+                        </div>&emsp;
                         <Typography style={{ display: "flex", alignItems: "center" }} ><b>Filters</b></Typography>&emsp;
-                        <select className='selectquestion' onChange={(e) => handlechange(e)} name="cars" id="cars">
+                        <select className='selectquestion' onChange={handlechange} >
+                            <option value="All">All Subjects</option>
                             <option value="Biology">Biology</option>
                             <option value="Chemistry">Chemistry</option>
                             <option value="Physics">Physics</option>
                             <option value="Communication">Communication</option>
-                            {/* <option value="chemistry">Chemistry</option> */}
                             <option value="Maths">Maths</option>
                             <option value="Social Welfare">Social Welfare</option>
                         </select>
@@ -523,12 +761,13 @@ export default function PageNotify() {
 
                 <TableContainer >
                     <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                        <TableBody>
-                            {questions.map((question: any) => {
-                                return (
-                                    question.questions.map((qus: any) => {
+                        {question1.map((question: any, index) => {
+
+                            return (
+                                <TableBody key={index}>
+                                    {question.questions.map((qus: any, index: number) => {
                                         return (
-                                            <div className='row' key={question.Sid}>
+                                            <div className='row' key={index}>
                                                 <div className='column1' >
                                                     {question.subject === "Physics" ? <div className="container">
                                                         {/* <span className="icon"></span> */}
@@ -554,7 +793,7 @@ export default function PageNotify() {
                                                              question.subject === "Chemistry" ? <span style={{ color: 'rgb(255, 69, 96)' }}> Chemistry</span> : question.subject === "Communication" ? <span style={{ color: "rgb(119, 93, 208) " }} >Communication</span> :
                                                                  question.subject === "SocialWelfare " ? <span style={{ color: 'rgb(0, 143, 251) ' }} color='rgb(0, 143, 251) '> Social Welfare</span> : ""} */}
                                                 </div>
-                                                <div className='column2' >
+                                                <div className='column2'>
                                                     <p style={{ margin: "2px" }}>{qus.question}</p>
                                                 </div>
                                                 <div className='column3'>
@@ -570,7 +809,7 @@ export default function PageNotify() {
 
                                                 </div>
                                             </div>
-                                            // <StyledTableRow key={question.Sid}>
+                                            // <StyledTableRow key={question.id}>
                                             //     <StyledTableCell style={{ minWidth: 200, width: 900, padding: 15 }} > {question.subject === "Physics" ? <span style={{color:'rgb(0, 227, 150)'}} >  <WalletIcon style={{ height: '70px', width: '50px', marginLeft: 9 }} color="success" /> Physics</span>:
                                             //    question.subject === "Maths" ? <span style={{color:'rgb(0, 143, 251)'}} > Maths</span> : question.subject === "Biology"? <span style={{color:'rgb(254, 176, 25)'}} >Biology</span>:
                                             //    question.subject === "Chemistry" ? <span style={{ color:'rgb(255, 69, 96)'}}> Chemistry</span> : question.subject === "Communication"? <span style={{color:"rgb(119, 93, 208) "}} >Communication</span>:
@@ -579,10 +818,11 @@ export default function PageNotify() {
                                             //     </StyledTableCell>
                                             // </StyledTableRow>
                                         )
-                                    })
-                                )
-                            })}
-                        </TableBody>
+                                    })}
+
+                                </TableBody>
+                            )
+                        })}
                     </Table>
                 </TableContainer>
             </Card>

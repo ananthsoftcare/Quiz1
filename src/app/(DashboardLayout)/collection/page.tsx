@@ -141,40 +141,13 @@ const users = [
   "img":"R"
 },{
   "id" :11,
-  "userName":"Ravi",
+  "userName":"Arjun",
   "location":"United",
-  "img":"R"
-},
+  "img":"A"
+}
 ]
 
-function stringToColor(string: string) {
-  let hash = 0;
-  let i;
 
-  /* eslint-disable no-bitwise */
-  for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  let color = '#';
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.slice(-2);
-  }
-  /* eslint-enable no-bitwise */
-
-  return color;
-}
-
-function stringAvatar(name: string) {
-  return {
-    sx: {
-      bgcolor: stringToColor(name),
-    },
-    children: `${name.split(' ')[0][0]}${name.split(' ')[1]}`,
-  };
-}
 
 
   return (
@@ -221,7 +194,7 @@ function stringAvatar(name: string) {
    <Grid container spacing={{ xs: 1, md: 4 }}
        columns={{ xs: 4, sm: 8, md: 12 }}>
        <Grid item xs={3}>  
-       <Avatar src="./avatar.jpg"/>
+       <Avatar src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100226.jpg?t=st=1705652058~exp=1705655658~hmac=09b6b7867aa57466abb0af528ab53e09032376bc8a6da284b1bcc87734e13aa2&w=740"/>
        </Grid>
        <Grid item xs={6}>
        <Typography variant='h6'>{usersresponse.userName}</Typography>
@@ -285,7 +258,7 @@ function stringAvatar(name: string) {
         </TableCell>
         <TableCell style={{ padding: "5px 5px 5px 5px" }} align="right"> <button onClick={() => router.push('/biology')} className='pill'>Apply and View</button></TableCell>
         <TableCell align="left" style={{ width: "10%" }}>{
-          row.fat === "maths" ? <div className="container">
+          row.fat === "Maths" ? <div className="container">
             {/* <span className="icon"></span> */}
             <span className="label" style={{ textAlign: "center", color: 'white', width: "100%", padding: "6px", backgroundColor: "rgb(0, 143, 251)", borderRadius: "7px" }}><b>Maths</b></span></div>
             : row.fat === "Biology" ? <div className="container">
@@ -294,7 +267,7 @@ function stringAvatar(name: string) {
               : row.fat === "Chemistry" ? <div className="container">
                 {/* <span className="icon"><ScienceIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
                 <span className="label" style={{ textAlign: "center", color: 'white', padding: "6px", width: "100%", backgroundColor: "rgb(255, 69, 96)", borderRadius: "7px" }}><b>Chemistry</b></span></div>
-                : row.fat === "physics" ? <div className="container">
+                : row.fat === "Physics" ? <div className="container">
                   {/* <span className="icon"></span> */}
                   <span className="label" style={{ textAlign: "center", color: 'white', width: "100%", padding: "6px", backgroundColor: "rgb(0, 227, 150)", borderRadius: "7px" }}><b>Physics</b></span>
                 </div>
@@ -347,16 +320,14 @@ function stringAvatar(name: string) {
 const rows = [
   createData('Solution Base', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Chemistry"),
   createData('Re-production', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Biology"),
-  createData('Electricity concepts', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "physics"),
+  createData('Electricity concepts', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Physics"),
   createData('Electricity', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Communication"),
-  createData('Therory', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "maths"),
+  createData('Therory', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Maths"),
   createData('Thermal', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Social Welfare"),
-  createData('Quantam', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "maths"),
+  createData('Quantam', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Maths"),
   createData('Atom', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Social Welfare"),
-  createData('Nuclear', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "physics"),
- 
- 
-  createData('Energy', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "physics"),
+  createData('Nuclear', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Physics"),
+  createData('Energy', 'In the following example, we demonstrate how to use react-virtuoso with the Table component. It renders 200 rows and can easily handle more. Virtualization helps with performance issues.', "Physics"),
 ];
 
 export default function Collaction() {
@@ -372,25 +343,66 @@ export default function Collaction() {
     setPage(0);
   };
 
+
+  const [filterimportant, setFilterImportant] = React.useState(
+    [{
+        description: "",
+        fat: "",
+        name:"",
+        history: [{
+            subject: "",
+            chapter: "",
+            important: "",
+        }]
+
+    }]
+)
+React.useEffect(()=>{
+  setFilterImportant(rows)
+},[])
+
+
+const handlechangeSubject = (e:any) =>{
+  let value = e.target.value;
+  if (e.target.value === "All") {
+    setFilterImportant(rows)
+  }
+  else if (e.target.value != "") {
+      const filtered = rows.filter((row) =>
+          row.fat === value
+      );
+      setFilterImportant(filtered)
+  }
+}
+
   return (
     <div >
-     
-
-     <Box sx={{ flexGrow: 1 }}  >
+     <Box sx={{ flexGrow: 1 ,marginBottom:"5px"}}  >
       <Grid container   spacing={{ xs: 1, md: 4 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
-        <Grid item xs={0.5}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z" /></svg>
+       
+        <Grid item xs={6}>
+        <Typography style={{display:"flex",justifyContent:"start",alignItems:"center"}}><b> My Collections</b></Typography>
         </Grid>
-        <Grid item xs={2}>
-        <input className='inputclass' type='search'></input>
-        </Grid>
-        <Grid item xs={5}>
-        <Typography style={{display:"flex",justifyContent:"center"}}><b> My Collections</b></Typography>
-        </Grid>
-        <Grid item xs={4.5}>
+        <Grid item xs={6}>
           <Grid container>
-          <Grid item xs={12} justifyContent="end" display="flex">
+          <Grid item xs={9} justifyContent="end" display="flex">
+          {/* <div className="checkbox-wrapper-34">
+                            <input className="tgl tgl-ios" id="toggle-34" type="checkbox" />
+                            <label className="tgl-btn" htmlFor="toggle-34"></label>
+                        </div>&emsp; */}
+                        <Typography style={{ display: "flex", alignItems: "center" }}  ><b>Filters</b></Typography>&emsp;
+                        <select className='selectquestion' onChange={handlechangeSubject} >
+                            <option value="All">All Subjects</option>
+                            <option value="Biology">Biology</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Communication">Communication</option>
+                            <option value="Maths">Maths</option>
+                            <option value="Social Welfare">Social Welfare</option>
+                        </select>
+            </Grid>
+          <Grid item xs={3} justifyContent="end" display="flex">
           <span style={{ backgroundColor: "#cfcdcd", color: "#2f2f2f"}} onClick={() => router.push("/notifications")} className='pillbutton'  >P2P Queries</span>&emsp;
           </Grid>
           </Grid>
@@ -425,7 +437,7 @@ export default function Collaction() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row, index) => (
+            {filterimportant.map((row, index) => (
               <Row key={row.name} row={row} />
             ))}
           </TableBody>
