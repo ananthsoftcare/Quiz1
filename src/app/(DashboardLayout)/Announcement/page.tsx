@@ -1247,8 +1247,8 @@ export default function Announcements() {
                     <TableRow>
                         <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>Subject</TableCell>
                         <TableCell align="left" style={{ padding: 10, width: '70%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>Description</TableCell>
-                        <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>From Date</TableCell>
-                        <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>To Date</TableCell>
+                        <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>Publish Date</TableCell>
+                        {/* <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>To Date</TableCell> */}
                     </TableRow>
                 </TableHead>
                 {main.map((question: any, index) => {
@@ -1277,12 +1277,12 @@ export default function Announcements() {
                                         <TableCell align="left" style={{ width: "65%", padding: 10 }} >
                                             {qus.question}
                                         </TableCell>
-                                        <TableCell align="left" style={{ width: "10%", padding: 10 }} >
+                                        <TableCell align="left" style={{ width: "20%", padding: 10 }} >
                                             {qus.startDate}
                                         </TableCell>
-                                        <TableCell align="left" style={{ width: "1%", padding: 10 }} >
+                                        {/* <TableCell align="left" style={{ width: "1%", padding: 10 }} >
                                             {qus.endDate}
-                                        </TableCell>
+                                        </TableCell> */}
                                     </TableRow>
                                 )
                             })}
