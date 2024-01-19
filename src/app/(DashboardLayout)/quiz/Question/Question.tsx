@@ -20,6 +20,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { CloseOutlined } from '@mui/icons-material';
+import FAB from '../../components/dashboard/Fab';
 
 
 const style = {
@@ -186,143 +187,153 @@ const Question: FC<IQuestionComponentProps> = ({
   };
 
   return (
-    <Card sx={{
-      p: 2, backgroundColor: '#fff', width: '100%',
-    }}>
-      <header className='progress'>
-        <progress max={questionsCount + 1} value={number + Number(questionProps.selectedAnswer !== null)} />
-        <Box sx={{ color: '#fff', borderRadius: '4px', padding: 0.5, backgroundColor: 'rgb(145 154 231)' }}>
-          Question {number}/ {questionsCount}
-        </Box>
-        {/* <span style={{ color: '#fff', borderRadius: '4px', padding: 2, backgroundColor: 'rgb(145 154 231)' }}>Question {number}/ {questionsCount}</span> */}
-        <CountdownTimer initialSeconds={300} />
-      </header>
-      <Typography
-        display="block"
-        textAlign="center"
-        style={{ fontWeight: 'bold' }}
-        mb={1}
-      >
-        {question}
-      </Typography>
-      {/* {answer && <Next/>} */}
-      <Box
-        sx={{
-          textAlign: 'center',
-          alignItems: 'center',
-          justifyContent: 'space-evenly',
-          flexWrap: 'wrap',
-        }}
-      >
-        <Answers
-          correctAnswer={correctAnswer}
-          answers={ALL_ANSWERS_SHUFFLED.current}
-          hasAnswered={questionProps.hasAnswered}
-          updateScore={handleSelectAnswer}
-        />
-      </Box>
-      <Box
-        component="div"
-        display="flex"
-        justifyContent="space-between"
-        mt={1}
-        gap={3}
-      >
-        <Button
-          variant="outlined"
-          size="large"
-          startIcon={<IconArrowBigLeft />}
-          disabled={number === 1 ? true : false}
-          onClick={previousQuestion}
+    <div>
+      <Card sx={{
+        p: 2, backgroundColor: '#fff', width: '100%',
+      }}>
+        <header className='progress'>
+          <progress max={questionsCount + 1} value={number + Number(questionProps.selectedAnswer !== null)} />
+          <Box sx={{ color: '#fff', borderRadius: '4px', padding: 0.5, backgroundColor: 'rgb(145 154 231)' }}>
+            Question {number}/ {questionsCount}
+          </Box>
+          {/* <span style={{ color: '#fff', borderRadius: '4px', padding: 2, backgroundColor: 'rgb(145 154 231)' }}>Question {number}/ {questionsCount}</span> */}
+          <CountdownTimer initialSeconds={300} />
+        </header>
+        <Typography
+          display="block"
+          textAlign="center"
+          style={{ fontWeight: 'bold' }}
+          mb={1}
         >
-          Back
-        </Button>
-        {questionProps.hasAnswered ? (
-          <div>
-            {correctAnswer === questionProps.selectedAnswer ? (
-              ""
-            ) :
-              <>
-                <CardActions style={{ backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}>
-                  <Typography sx={{
-                    ":hover": {
-                      color: "#ddd",
-                    }, display: 'inline-flex',
-                    fontSize: 14,
-                    alignItems: 'center',
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                    cursor: 'pointer'
-                    // borderRight: '1px solid #ddd'
-                  }}
-                    onClick={mouseEnter}>
-                    Click hint to know where you went wrong?
-                  </Typography>
-                  {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
-                  {rotate === true ? (
-                    <>  <span style={{ color: "#fff", fontWeight: 'bold' }}></span>
-                      <ExpandLessIcon style={{ cursor: 'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
-                    </>
-                  ) : <>
-                    <span style={{ color: "#fff" }}></span>
-                    <ExpandMoreIcon sx={{
-                      ":hover": {
-                        color: '#fff'
-                      }
-                    }} style={{ cursor: 'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
-                  </>
-                  }
-                </CardActions>
-                {hintOpens === true ? (
-                  <Modal
-                    open={hintOpens}
-                    onClose={mouseLeave}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
+          {question}
+        </Typography>
+        {/* {answer && <Next/>} */}
+        <Box
+          sx={{
+            textAlign: 'center',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Answers
+            correctAnswer={correctAnswer}
+            answers={ALL_ANSWERS_SHUFFLED.current}
+            hasAnswered={questionProps.hasAnswered}
+            updateScore={handleSelectAnswer}
+          />
+        </Box>
+        {/* <Box
+          component="div"
+          display="flex"
+          justifyContent="space-between"
+          mt={1}
+          gap={3}
+        >
 
-                    <Box sx={style}>
-                      <div style={{ display: 'flex' }}>
-                        <Grid container item xs={12} spacing={2}>
-                          <Grid item xs={10.5}>
-                            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', borderRadius: '5px', }}> Hint</Typography>
-                          </Grid>
-                          <Grid item xs={1.5}>
-                            <CloseOutlined onClick={mouseLeave} style={{ color: '#713593', cursor: 'pointer' }} />
-                          </Grid>
-                        </Grid>
-                      </div>
-                      <p style={{ padding: 10, paddingTop: 1, backgroundColor: '#fff' }}>
-                        You may like to start by skim-reading or “speed-reading” the multiple-choice passages. But then go back and read them slowly and deliberately, and think about the exact meaning of every sentence. Note key words and phrases on your whiteboard if it helps you to concentrate.
-                      </p>
-                    </Box>
-                  </Modal>
-                ) : ""}
-              </>
-            }
-          </div>
-        ) : ""}
-        {questionProps.hasAnswered === false ? (
-          <Button
-            variant="outlined"
-            size="large"
-            endIcon={<CheckRoundedIcon />}
-            onClick={handleSubmitClick}
-            disabled={questionProps.selectedAnswer != "" ? false : true}
-          >
-            Submit
-          </Button>
-        ) : ""}
-        {openModal ? (
-          <div>
-            {/* <Modal
+        </Box>&nbsp; */}
+
+        <Grid container item xs={12} direction={'row'} display={'flex'}>
+          <Grid item xs={2}>
+            <Button
+              variant="outlined"
+              size="large"
+              startIcon={<IconArrowBigLeft />}
+              disabled={number === 1 ? true : false}
+              onClick={previousQuestion}
+            >
+              Back
+            </Button>
+          </Grid>
+          <Grid item xs={6} justifyContent={'flex-start'} alignItems={'flex-start'} textAlign={'start'}>
+            {questionProps.hasAnswered ? (
+              <div>
+                {correctAnswer === questionProps.selectedAnswer ? (
+                  ""
+                ) :
+                  <>
+                    <CardActions style={{ backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}>
+                      <Typography sx={{
+                        ":hover": {
+                          color: "#ddd",
+                        }, display: 'inline-flex',
+                        fontSize: 14,
+                        alignItems: 'center',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        cursor: 'pointer'
+                        // borderRight: '1px solid #ddd'
+                      }}
+                        onClick={mouseEnter}>
+                        Click hint to know where you went wrong?
+                      </Typography>
+                      {/* <span style={{ padding: 7, display: 'flex', fontSize: 13 }}><IconBellRinging size={15} />18 Question raised from the course you entrolled</span> */}
+                      {rotate === true ? (
+                        <>  <span style={{ color: "#fff", fontWeight: 'bold' }}></span>
+                          <ExpandLessIcon style={{ cursor: 'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseLeave} />
+                        </>
+                      ) : <>
+                        <span style={{ color: "#fff" }}></span>
+                        <ExpandMoreIcon sx={{
+                          ":hover": {
+                            color: '#fff'
+                          }
+                        }} style={{ cursor: 'pointer', fontWeight: 'bold', width: 20, height: 20, justifyContent: 'flex-end', alignItems: 'flex-end', textAlign: 'end' }} onClick={mouseEnter} />
+                      </>
+                      }
+                    </CardActions>
+                    {hintOpens === true ? (
+                      <Modal
+                        open={hintOpens}
+                        onClose={mouseLeave}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+
+                        <Box sx={style}>
+                          <div style={{ display: 'flex' }}>
+                            <Grid container item xs={12} spacing={2}>
+                              <Grid item xs={10.5}>
+                                <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', borderRadius: '5px', }}> Hint</Typography>
+                              </Grid>
+                              <Grid item xs={1.5}>
+                                <CloseOutlined onClick={mouseLeave} style={{ color: '#713593', cursor: 'pointer' }} />
+                              </Grid>
+                            </Grid>
+                          </div>
+                          <p style={{ padding: 10, paddingTop: 1, backgroundColor: '#fff' }}>
+                            You may like to start by skim-reading or “speed-reading” the multiple-choice passages. But then go back and read them slowly and deliberately, and think about the exact meaning of every sentence. Note key words and phrases on your whiteboard if it helps you to concentrate.
+                          </p>
+                        </Box>
+                      </Modal>
+                    ) : ""}
+                  </>
+                }
+              </div>
+            ) : ""}
+          </Grid>
+          <Grid item xs={4} justifyContent={'flex-end'} alignItems={'flex-end'} textAlign={'end'}>
+            {questionProps.hasAnswered === false ? (
+              <Button
+                variant="outlined"
+                size="large"
+                endIcon={<CheckRoundedIcon />}
+                onClick={handleSubmitClick}
+                disabled={questionProps.selectedAnswer != "" ? false : true}
+              >
+                Submit
+              </Button>
+            ) : ""}
+            {openModal ? (
+              <div>
+                {/* <Modal
               open={openModal}
               onClose={() => setOpenModal(false)}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             > */}
-            {/* <Box> */}
-              {/* <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 3, borderRadius: '5px', paddingLeft: 10 }}>  Choose why you went wrong ?</Typography>
+                {/* <Box> */}
+                {/* <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 3, borderRadius: '5px', paddingLeft: 10 }}>  Choose why you went wrong ?</Typography>
                 <FormGroup style={{ backgroundColor: '#fff', padding: 15, }}>
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Reacted quickly" />
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="It was Complicated" />
@@ -331,7 +342,7 @@ const Question: FC<IQuestionComponentProps> = ({
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Faulty question" />
                   <FormControlLabel control={<Checkbox onClick={handleChangeAuto} style={{ color: '#713593' }} />} label="Other" />
                 </FormGroup> */}
-              {/* <CardActions style={{  backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}> */}
+                {/* <CardActions style={{  backgroundColor: "rgb(145 154 231)", maxWidth: '340px', borderRadius: '5px' }}> */}
                 {/* <Typography sx={{
                   ":hover": {
                     color: "#ddd",
@@ -344,60 +355,71 @@ const Question: FC<IQuestionComponentProps> = ({
                   // borderRight: '1px solid #ddd'
                 }}
                 > */}
-                  {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
-                 
-                  <Autocomplete
-                    disablePortal
+                {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
+                <Grid justifyContent={'flex-start'} alignItems={"flex-start"} textAlign={'start'} position={'relative'}>
+                  <Card style={{ padding: 5, backgroundColor: '#ddd' ,position:'absolute',top:-260,left:0}}>
+                    <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 3, borderRadius: '5px', paddingLeft: 10 }}>  Choose why you went wrong ?</Typography>
+                    <Button variant='outlined' onClick={handleChangeAuto} style={{ color: '#713593', margin: 6 }} > Reacted quickly</Button>
+                    <Button variant='outlined' onClick={handleChangeAuto} style={{ color: '#713593', margin: 6 }} > It was Complicated</Button>
+                    <Button variant='outlined' onClick={handleChangeAuto} style={{ color: '#713593', margin: 6 }} > Not Prepared</Button>
+                    <Button variant='outlined' onClick={handleChangeAuto} style={{ color: '#713593', margin: 6 }} > Thought I was right</Button>
+                    <Button variant='outlined' onClick={handleChangeAuto} style={{ color: '#713593', margin: 6 }} > Faulty question</Button>
+                    <Button variant='outlined' onClick={handleChangeAuto} style={{ color: '#713593', margin: 6 }} > Other</Button>
+                  </Card>
+                </Grid>&nbsp; 
+                 {/* 
+                <Autocomplete
+                  disablePortal
+                  size='small'
+                  id="combo-box-demo"
+                  options={currencies}
+                  onChange={handleChangeAuto}
+                  sx={{ width: 310, display: 'flex', color: '#fff', backgroundColor: '#D5EFF5', border: '1px solid #fff' }}
+                  renderInput={(params) => <TextField  {...params}
                     size='small'
-                    id="combo-box-demo"
-                    options={currencies}
-                    onChange={handleChangeAuto}
-                    sx={{ width: 310, display: 'flex', color: '#fff', backgroundColor: 'rgb(145 154 231)', border: '1px solid #fff' }}
-                    renderInput={(params) => <TextField  {...params}
-                      size='small'
-                      style={{fontWeight:'bold',border:"2px solid rgb(145 154 231)",backgroundColor:'rgb(145 154 231)'}}
-                      label="Choose why you went wrong"
-                      variant='outlined'
-                    />}
-                  />
+                    style={{ fontWeight: 'bold', border: "2px solid rgb(145 154 231)", backgroundColor: '#D5EFF5' ,color:'#fff'}}
+                    label="Choose why you went wrong"
+                    variant='outlined'
+                  />}
+                /> */}
                 {/* </Typography> */}
-              {/* </CardActions> */}
-            {/* </Box> */}
-            {/* </Modal> */}
-          </div>
-        ) :
-        questionProps.hasAnswered ? (
+                {/* </CardActions> */}
+                {/* </Box> */}
+                {/* </Modal> */}
+              </div>
+            ) : ""
+            }
+            {questionProps.hasAnswered ? (
+              <Button
+                variant="contained"
+                size="large"
+                style={{ paddingTop: 5 }}
+                endIcon={<SendRoundedIcon />}
+                disabled={questionProps.hasAnswered ? false : true}
+                onClick={handleNextClick}
+              >
+                Next
+              </Button>
+            ) : ""}
+          </Grid>
+        </Grid>
+        <Box
+          sx={{
+            // display: 'flex',
+            marginTop: 2,
+            textAlign: 'start',
+            alignItems: 'start',
+            justifyContent: 'space-evenly',
+            flexWrap: 'wrap',
+          }}
+        >
           <Button
-            variant="contained"
-            size="large"
-            endIcon={<SendRoundedIcon />}
-            disabled={questionProps.hasAnswered ? false : true}
-            onClick={handleNextClick}
-          >
-            Next
-          </Button>
-        ) : ""
-        }
-     
-
-      </Box>&nbsp;
-
-      <Box
-        sx={{
-          // display: 'flex',
-          marginTop: 2,
-          textAlign: 'start',
-          alignItems: 'start',
-          justifyContent: 'space-evenly',
-          flexWrap: 'wrap',
-        }}
-      >
-        <Button
-          sx={{ display: 'block', textAlign: 'left', color: '#073763', fontWeight: 'bold', backgroundColor: '#faa917' }}
-          onClick={handleSkipBtnClick}
-        >Skip Quiz</Button>
-      </Box>
-    </Card >
+            sx={{ display: 'block', textAlign: 'left', color: '#073763', fontWeight: 'bold', backgroundColor: '#faa917' }}
+            onClick={handleSkipBtnClick}
+          >Skip Quiz</Button>
+        </Box>
+      </Card >
+    </div>
   )
 }
 

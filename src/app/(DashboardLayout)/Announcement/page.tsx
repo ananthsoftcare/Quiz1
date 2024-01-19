@@ -18,6 +18,7 @@ import ScienceIcon from '@mui/icons-material/Science';
 import SmsIcon from '@mui/icons-material/Sms';
 import PublicIcon from '@mui/icons-material/Public';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 
 
@@ -46,6 +47,35 @@ interface page {
     query: any;
 }
 
+interface question {
+    Qid: number,
+    question: string,
+    startDate: string,
+    endDate: string,
+    acount: number,
+    answers: []
+}
+
+interface main {
+    Sid: number,
+    subject: string,
+    qcount: number,
+    questions: [{
+        Qid: number,
+        question: string,
+        startDate: string,
+        endDate: string,
+        acount: number,
+        answers: [{
+            aid: number,
+            author: string,
+            postedDate: string,
+            answer: string
+        }]
+    }]
+
+}
+
 export default function Announcements() {
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
         '&:nth-of-type(odd)': {
@@ -56,7 +86,7 @@ export default function Announcements() {
         },
     }));
 
-    let questions = [
+    const questionsMain = [
         {
             "Sid": 0,
             "subject": "Physics",
@@ -414,15 +444,773 @@ export default function Announcements() {
             ]
         }
     ]
+    const questionsMainPhysics = [
+        {
+            "Sid": 0,
+            "subject": "Physics",
+            "qcount": 1,
+            // "color": 'rgb(0, 227, 150)',
+            "questions": [
+                {
+                    "Qid": 1,
+                    "question": "The light energy emitted by a star is due to",
+                    "startDate": "11/1/2024",
+                    "endDate": "21/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "18-04-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Kirana",
+                            "postedDate": "30-05-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Sanjana",
+                            "postedDate": "03-04-2023",
+                            "answer": "Burning of nuclei"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "startDate": "12/1/2024",
+                    "endDate": "11/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Sanu",
+                            "postedDate": "07-08-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Prem",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isotopes"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 3,
+                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "startDate": "7/2/2024",
+                    "endDate": "7/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 4,
+                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "startDate": "9/2/2024",
+                    "endDate": "5/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+   
+    const questionsMainMaths = [
+        {
+            "Sid": 0,
+            "subject": "Maths",
+            "qcount": 1,
+            // "color": 'rgb(0, 227, 150)',
+            "questions": [
+                {
+                    "Qid": 1,
+                    "question": "The light energy emitted by a star is due to",
+                    "startDate": "11/1/2024",
+                    "endDate": "21/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "18-04-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Kirana",
+                            "postedDate": "30-05-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Sanjana",
+                            "postedDate": "03-04-2023",
+                            "answer": "Burning of nuclei"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "startDate": "12/1/2024",
+                    "endDate": "11/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Sanu",
+                            "postedDate": "07-08-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Prem",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isotopes"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 3,
+                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "startDate": "7/2/2024",
+                    "endDate": "7/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 4,
+                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "startDate": "9/2/2024",
+                    "endDate": "5/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+    const questionsMainChemistry = [
+        {
+            "Sid": 0,
+            "subject": "Chemistry",
+            "qcount": 1,
+            // "color": 'rgb(0, 227, 150)',
+            "questions": [
+                {
+                    "Qid": 1,
+                    "question": "The light energy emitted by a star is due to",
+                    "startDate": "11/1/2024",
+                    "endDate": "21/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "18-04-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Kirana",
+                            "postedDate": "30-05-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Sanjana",
+                            "postedDate": "03-04-2023",
+                            "answer": "Burning of nuclei"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "startDate": "12/1/2024",
+                    "endDate": "11/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Sanu",
+                            "postedDate": "07-08-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Prem",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isotopes"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 3,
+                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "startDate": "7/2/2024",
+                    "endDate": "7/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 4,
+                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "startDate": "9/2/2024",
+                    "endDate": "5/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+    const questionsMainBiology = [
+        {
+            "Sid": 0,
+            "subject": "Biology",
+            "qcount": 1,
+            // "color": 'rgb(0, 227, 150)',
+            "questions": [
+                {
+                    "Qid": 1,
+                    "question": "The light energy emitted by a star is due to",
+                    "startDate": "11/1/2024",
+                    "endDate": "21/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "18-04-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Kirana",
+                            "postedDate": "30-05-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Sanjana",
+                            "postedDate": "03-04-2023",
+                            "answer": "Burning of nuclei"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "startDate": "12/1/2024",
+                    "endDate": "11/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Sanu",
+                            "postedDate": "07-08-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Prem",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isotopes"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 3,
+                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "startDate": "7/2/2024",
+                    "endDate": "7/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 4,
+                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "startDate": "9/2/2024",
+                    "endDate": "5/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+    const questionsMainCommunication = [
+        {
+            "Sid": 0,
+            "subject": "Communication",
+            "qcount": 1,
+            // "color": 'rgb(0, 227, 150)',
+            "questions": [
+                {
+                    "Qid": 1,
+                    "question": "The light energy emitted by a star is due to",
+                    "startDate": "11/1/2024",
+                    "endDate": "21/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "18-04-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Kirana",
+                            "postedDate": "30-05-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Sanjana",
+                            "postedDate": "03-04-2023",
+                            "answer": "Burning of nuclei"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "startDate": "12/1/2024",
+                    "endDate": "11/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Sanu",
+                            "postedDate": "07-08-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Prem",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isotopes"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 3,
+                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "startDate": "7/2/2024",
+                    "endDate": "7/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 4,
+                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "startDate": "9/2/2024",
+                    "endDate": "5/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+    const questionsMainSocial = [
+        {
+            "Sid": 0,
+            "subject": "SocialWelfare",
+            "qcount": 1,
+            // "color": 'rgb(0, 227, 150)',
+            "questions": [
+                {
+                    "Qid": 1,
+                    "question": "The light energy emitted by a star is due to",
+                    "startDate": "11/1/2024",
+                    "endDate": "21/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "18-04-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Kirana",
+                            "postedDate": "30-05-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Sanjana",
+                            "postedDate": "03-04-2023",
+                            "answer": "Burning of nuclei"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "startDate": "12/1/2024",
+                    "endDate": "11/2/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Sanu",
+                            "postedDate": "07-08-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Prem",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isotopes"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 3,
+                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "startDate": "7/2/2024",
+                    "endDate": "7/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 4,
+                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "startDate": "9/2/2024",
+                    "endDate": "5/3/2024",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+            ]
+        },
+    ]
+    const [main, setMain] = useState(
+        [{
+        Sid: 0,
+        subject: "",
+        qcount: 0,
+        questions: [{
+            Qid: 0,
+            question: "",
+            startDate: "",
+            endDate: "",
+            acount: 0,
+            answers: [{
+                aid: 0,
+                author: "",
+                postedDate: "",
+                answer: ""
+            }]
+        }]
 
+    }]
+    );
 
-
+    useEffect(() => {
+        setMain(questionsMain)
+    }, [])
+    console.log('main', main);
 
     // const handleClickanswers = (e:any) =>{
     // // console.log("e",e)
 
     // router.push({'/notifications/answers', query: { userid:e}});
     // }
+    const onChangeSearch = (e: any) => {
+        questionsMain.map((value: any, index) => {
+            if (e.target.value==="Physics") {
+                setMain(questionsMainPhysics)
+            }
+            else if (e.target.value==="Maths") {
+                setMain(questionsMainMaths)
+            }
+            else if (e.target.value==="Chemistry") {
+                setMain(questionsMainChemistry)
+            }
+            else if (e.target.value==="Biology") {
+                setMain(questionsMainBiology)
+            }
+            else if (e.target.value==="Communication") {
+                setMain(questionsMainCommunication)
+            }
+            else if (e.target.value==="Social") {
+                setMain(questionsMainSocial)
+            }
+            else if (e.target.value==="All") {
+                setMain(questionsMain)
+            }
+            
+        })
+    }
 
     return (
         <Card sx={{ p: 1, width: 'max(100%,500px)', mx: 'auto' }} className='scrollcontent'>
@@ -434,21 +1222,22 @@ export default function Announcements() {
                 </div>
                 <div className="columnhead2" style={{ display: "flex" }}>
                     {/* <Button style={{backgroundColor:'#b9b0b0',color:"white",borderRadius:"5px"}}>Filter features here:</Button>&nbsp; */}
-                    <Typography style={{marginTop:8}} ><b>Filters</b></Typography>&emsp;
+                    <Typography style={{ marginTop: 8 }} ><b>Filters</b></Typography>&emsp;
                     <form className="form">
                         <button>
                             <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
                                 <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </button>
-                        <select className='input' name="cars" id="cars" style={{border:'1px solid white',width:200}}>
-                            <option value="biology">Biology</option>
-                            <option value="chemistry">Chemistry</option>
-                            <option value="maths">Physics</option>
-                            <option value="biology">Communication</option>
+                        <select className='input' name="cars" id="cars" style={{ border: '1px solid white', width: 200 }} onChange={onChangeSearch}>
+                        <option value="All">All Subject</option>
+                            <option value="Biology">Biology</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Communication">Communication</option>
                             {/* <option value="chemistry">Chemistry</option> */}
-                            <option value="maths">Maths</option>
-                            <option value="social">Social Welfare</option>
+                            <option value="Maths">Maths</option>
+                            <option value="Social">Social Welfare</option>
                         </select>
                     </form>
                 </div>
@@ -462,13 +1251,14 @@ export default function Announcements() {
                         <TableCell align="left" style={{ padding: 10, width: '10%', fontWeight: 'bold', color: 'black', backgroundColor: "#f6f0f6" }}>To Date</TableCell>
                     </TableRow>
                 </TableHead>
-                {questions.map((question: any) => {
+                {main.map((question: any, index) => {
+                    console.log('questionss', question);
                     return (
-                        <TableBody>
-                            {question.questions.map((qus: any) => {
+                        <TableBody key={index}>
+                            {question.questions.map((qus: any, index: number) => {
                                 return (
-                                    <TableRow className='row' key={question.Sid}>
-                                        <TableCell scope="row" align="left" style={{ width: "10%", padding: 10 }}>
+                                    <TableRow className='row' key={index}>
+                                        <TableCell scope="row" align="left" style={{ width: "15%", padding: 10 }}>
                                             {question.subject === "Physics" ?
                                                 <span className="label" style={{ textAlign: "center", color: 'white', backgroundColor: "rgb(0, 227, 150)", borderRadius: "7px", padding: 5 }}><b style={{ padding: 10 }}>Physics</b></span>
                                                 :
@@ -484,7 +1274,7 @@ export default function Announcements() {
                                                                     <span className="label" style={{ textAlign: "center", color: 'white', backgroundColor: "rgb(0, 143, 251) ", borderRadius: "7px", padding: 5 }}><b style={{ padding: 10 }}>Social Welfare</b></span>
                                                                     : ""}
                                         </TableCell>
-                                        <TableCell align="left" style={{ width: "70%", padding: 10 }} >
+                                        <TableCell align="left" style={{ width: "65%", padding: 10 }} >
                                             {qus.question}
                                         </TableCell>
                                         <TableCell align="left" style={{ width: "10%", padding: 10 }} >
