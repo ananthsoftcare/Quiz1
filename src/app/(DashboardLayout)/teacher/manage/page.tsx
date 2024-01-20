@@ -508,7 +508,7 @@ const handleClickMessage = () =>{
           </div>
           <div className="columnmanage2">
             <Box >
-              <p>Schedule Your Class</p>
+              <span style={{fontWeight:'bold',marginBottom:'15px',color:'#713593'}}>Schedule Your Class</span>
               <div >
                 <h5 style={{ margin: "2px 0 2px 0" }}>Start Date</h5>
                 <select className='selectManage' name="startdate" id="startdate">
@@ -607,11 +607,12 @@ const handleClickMessage = () =>{
                   ))}
                 </select>
               </div>
-              <div style={{ display: "flex", justifyContent: "end", marginTop: "5px" }}>
-                <button className='buttonmanage' disabled={buttonHide === true ? true : false} style={ buttonHide === true ? {cursor:"not-allowed"} :{cursor:"pointer"}} onClick={()=>handleClickMessage()}>schedule</button>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: "15px",marginBottom:15 }}>
+                <button className='buttonmanage' disabled={buttonHide === true ? true : false} style={ buttonHide === true ? {cursor:"not-allowed"} :{cursor:"pointer"}} onClick={()=>handleClickMessage()}>Schedule</button>
               </div>
               <div style={{ margin: "20px 0 0 0" }}>
-                <h4 style={{ margin: "10px 0 0 0" }}>Make Announcement</h4>
+              <span style={{fontWeight:'bold',marginBottom:'15px',color:'#713593'}}>Make Announcement</span>
+                {/* <h4 style={{ margin: "10px 0 0 0" }}></h4> */}
                 <div style={{ alignItems: "end", display: "flex", justifyContent: "end" }}>
                   <Button color="primary" style={{ backgroundColor: "grey", color: "white", borderRadius: "10px", padding: "2px" }} >
                     Publish

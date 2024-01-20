@@ -54,7 +54,7 @@ const Performance = () => {
             }
         },
         xaxis: {
-            categories: ['Session 01', 'Session 02', 'Session 03', 'Session 04', 'Session 05', 'Session 06', 'Session 07'],
+            categories: ['Quiz 1', 'Quiz 2', 'Quiz 3', 'Quiz 4', 'Quiz 5', 'Quiz 6', 'Quiz 7'],
         },
 
         grid: {
@@ -64,7 +64,7 @@ const Performance = () => {
     return (
         <Card
         >
-            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Number of Sessions Attended</Typography>
+            <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Number of Quizzes Attended</Typography>
 
             <Chart
                 options={optionscolumnchart}

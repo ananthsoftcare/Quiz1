@@ -357,7 +357,7 @@ const Question: FC<IQuestionComponentProps> = ({
                 > */}
                 {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> */}
                 <Grid justifyContent={'flex-start'} alignItems={"flex-start"} textAlign={'start'} position={'relative'}>
-                  <Card style={{ padding: 5, backgroundColor: '#ddd' ,position:'absolute',top:-260,left:0}}>
+                  <Card style={{ padding: 5, backgroundColor: '#ddd' ,position:'absolute',top:-165,left:0}}>
                     <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#713593', padding: 3, borderRadius: '5px', paddingLeft: 10 }}>  Choose why you went wrong ?</Typography>
                     <Button variant='outlined' onClick={handleChangeAuto} style={{ color: '#713593', margin: 6 }} > Reacted quickly</Button>
                     <Button variant='outlined' onClick={handleChangeAuto} style={{ color: '#713593', margin: 6 }} > It was Complicated</Button>

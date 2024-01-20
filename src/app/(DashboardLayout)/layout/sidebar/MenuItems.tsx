@@ -38,12 +38,12 @@ const Menuitems = [
   //   navlabel: true,
   //   subheader: "Utilities",
   // },
-  {
-    id: uniqueId(),
-    title: "Questions",
-    icon: IconSchool,
-    href: "/notifications",
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: "Questions",
+  //   icon: IconSchool,
+  //   href: "/notifications",
+  // },
     {
     id: uniqueId(),
     title: "Collabration",
@@ -58,7 +58,7 @@ const Menuitems = [
       },
       {
         id: uniqueId(),
-        title: "P2P Quries",
+        title: "P2P Queries",
         icon: IconBellRinging,
         href: "/notifications",
       },

@@ -120,7 +120,7 @@ const TeacherDashboard = () => {
         <Grid item xs={12} lg={2.5}>
           {/* <b> Filter By  </b> */}
           <span style={{ fontWeight: 'bold', color: '#073763' }}>Chapter</span>
-          <select name="Chapter" id="Chapter" onChange={onChangeChapter}>
+          <select name="Chapter" id="Chapter" >
             <option value="All">All</option>
             <option value="Chapter 1">Chapter 1</option>
             <option value="Chapter 2">Chapter 2</option>
@@ -131,7 +131,7 @@ const TeacherDashboard = () => {
         </Grid>
         <Grid item xs={12} lg={2.5}>
           <span style={{ fontWeight: 'bold', color: '#faa917' }}>Topic</span>
-          <select name="Topic" id="Topic" onChange={onTopicChange}>
+          <select name="Topic" id="Topic">
             <option value="All">All</option>
             <option value="Analytical Essay">Analytical Essay</option>
             <option value="Argumentative Essay">Argumentative Essay</option>

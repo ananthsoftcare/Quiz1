@@ -72,4 +72,9 @@ export interface IAnswersComponentProps {
 export interface ILinearCardProps {
   progressValue: any
 }
+export interface ILoginState {
+  loginCheck: any
+}
+
+
 

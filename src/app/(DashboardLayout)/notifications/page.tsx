@@ -722,7 +722,7 @@ export default function PageNotify() {
 
     const handlechangemyself = (e: any) => {
         setChecked(!checked)
-        if (checked) {
+        if (e.target.checked) {
             setQuestion1(myself)
         } else {
             setQuestion1(questionPage)
@@ -738,7 +738,7 @@ export default function PageNotify() {
                     <div className="columnhead1" style={{ textAlign: "end" }} >
                         {/* <Typography >Questions</Typography> */}
                         <b style={{ fontSize: "23px" }}>
-                            Questions</b>
+                            Queries</b>
                     </div>
 
                     <div className="columnhead2" style={{ display: "flex" }}>

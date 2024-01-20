@@ -163,7 +163,7 @@ const users = [
         open={openModalAddLabel}
       >
         <DialogTitle sx={{ m: 0, p: "10px 3px 5px 10px",backgroundColor:"rgb(0 133 219 / 66%)",color:"white" }} id="customized-dialog-title">
-        Share Title
+        Share Collection
         </DialogTitle>
         <IconButton
           aria-label="close"
@@ -396,11 +396,11 @@ const handlechangeSubject = (e:any) =>{
         <Grid item xs={7}>
           <Grid container>
             <Grid xs={5} justifyContent="end" display="flex">
-            <div style={{ padding: "2px 0 0 2px", width: "50%", justifyContent: "end", display: "flex" }}>
+            {/* <div style={{ padding: "2px 0 0 2px", width: "50%", justifyContent: "end", display: "flex" }}>
         <button style={{ backgroundColor: "rgb(0, 133, 219)",cursor:"pointer", padding: "5px", display: "flex", justifyContent: "center", border: "none", borderRadius: "5px", color: "white", alignItems: "center" }}>
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 21 21"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" d="M5.5 10.5h10m-5-5v10" /></svg>
           Add Student</button>
-      </div>
+      </div> */}
             </Grid>
           <Grid item xs={4} justifyContent="end" display="flex">
           {/* <div className="checkbox-wrapper-34">

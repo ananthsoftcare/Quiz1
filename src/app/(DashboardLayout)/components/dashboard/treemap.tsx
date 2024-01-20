@@ -40,7 +40,7 @@ const Treemaps = () => {
       },
       enabled: true,
       style: {
-        fontSize: '12px',
+        fontSize: '25px',
         show: true
       },
 

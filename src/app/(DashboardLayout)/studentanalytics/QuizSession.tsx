@@ -41,7 +41,7 @@ const QuizSession = () => {
         },
 
         xaxis: {
-            categories: ["Week1", "Week2", "Week3", "Week4", "Week5", "Week6"],
+            categories: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6"],
             position: 'Bottom',
             axisBorder: {
                 show: false
