@@ -95,7 +95,7 @@ export default function Announcements() {
             "questions": [
                 {
                     "Qid": 1,
-                    "question": "The light energy emitted by a star is due to",
+                    "question": "Checkout new open quizzes",
                     "startDate": "11/1/2024",
                     "endDate": "21/2/2024",
                     "acount": 3,
@@ -122,7 +122,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 2,
-                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "question": "Chapter2:  Electrostatic Potential and Capacitance- content section open now",
                     "startDate": "12/1/2024",
                     "endDate": "11/2/2024",
                     "acount": 3,
@@ -157,7 +157,7 @@ export default function Announcements() {
             "questions": [
                 {
                     "Qid": 0,
-                    "question": "What are the solutions to 3(x+5)<=3x+20?",
+                    "question": "Solutions of Chapter 2:Algebra Quiz out now. Please check your answers",
                     "startDate": "21/1/2024",
                     "endDate": "11/2/2024",
                     "acount": 3,
@@ -184,7 +184,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 1,
-                    "question": "What is the product of 75.0 feet and 2.05 feet written with the correct number of significant digits?",
+                    "question": "Chapter 1- Sets and Functions- Quiz results out. Check your score now",
                     "startDate": "12/2/2024",
                     "endDate": "12/3/2024",
                     "acount": 3,
@@ -219,7 +219,7 @@ export default function Announcements() {
             "questions": [
                 {
                     "Qid": 0,
-                    "question": "A particular species of plant produces light, non-sticky pollen in large numbers and its stigmas are long and feathery. These modifications facilitate pollination by",
+                    "question": "Quiz results of Chapter 1: Reproduction declared. Rohit secured first mark with 98%",
                     "startDate": "24/2/2024",
                     "endDate": "26/3/2024",
                     "acount": 3,
@@ -246,7 +246,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 1,
-                    "question": "Starting from the innermost part, the correct sequence of parts in an ovule is",
+                    "question": "Chapter 2:Genetics & Evolution- content out now",
                     "startDate": "28/3/2024",
                     "endDate": "1/1/2024",
                     "acount": 3,
@@ -274,7 +274,7 @@ export default function Announcements() {
 
                 {
                     "Qid": 2,
-                    "question": "There are 49 dogs signed up for a dog show. There are 36 more small dogs than large dogs. How many small dogs have signed up to compete? ",
+                    "question": "Results of Quiz 1: 80% cleared Quiz 1",
                     "startDate": "12/2/2024",
                     "endDate": "12/3/2024",
                     "acount": 3,
@@ -301,7 +301,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 3,
-                    "question": "There is a basket containing 5 apples, how do you divide the apples among 5 children so that each child has 1 apple while 1 apple remains in the basket?",
+                    "question": "Student-Teacher doubt solving sessions will be conducted on 2nd and Saturdays of every month",
                     "startDate": "12/2/2024",
                     "endDate": "12/3/2024",
                     "acount": 3,
@@ -335,7 +335,7 @@ export default function Announcements() {
             "questions": [
                 {
                     "Qid": 0,
-                    "question": "The Rosenmund reaction can produce which carbonyl compounds?",
+                    "question": "Chapter 1: Solutions - Quiz results out ",
                     "startDate": "12/2/2024",
                     "endDate": "22/3/2024",
                     "acount": 3,
@@ -362,7 +362,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 1,
-                    "question": "Reactions occur between aldehydes and ketones?",
+                    "question": "Chapter 2: Electrochemistry- Content on the contents page. Check it out now.",
                     "startDate": "2/2/2024",
                     "endDate": "2/3/2024",
                     "acount": 3,
@@ -389,7 +389,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 2,
-                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "question": "Chapter 3: Chemical Kinetics- Doubt solving session on 2nd Saturday of Febrauary. Please join",
                     "startDate": "7/2/2024",
                     "endDate": "7/3/2024",
                     "acount": 3,
@@ -416,7 +416,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 3,
-                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "question": "Chapter 2: Electrochemistry- Solutions out now",
                     "startDate": "9/2/2024",
                     "endDate": "5/3/2024",
                     "acount": 3,
@@ -453,7 +453,7 @@ export default function Announcements() {
             "questions": [
                 {
                     "Qid": 1,
-                    "question": "The light energy emitted by a star is due to",
+                    "question": "Chapter1: Electric Charges and Fields- Quiz results out now: Rahul scored first mark with 97%",
                     "startDate": "11/1/2024",
                     "endDate": "21/2/2024",
                     "acount": 3,
@@ -480,7 +480,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 2,
-                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "question": "Chapter1: Electric Charges and Fields- Results out now",
                     "startDate": "12/1/2024",
                     "endDate": "11/2/2024",
                     "acount": 3,
@@ -507,7 +507,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 3,
-                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "question": "Chapter2: Electrostatic Potential and Capacitance - Content on contents Page. ",
                     "startDate": "7/2/2024",
                     "endDate": "7/3/2024",
                     "acount": 3,
@@ -534,7 +534,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 4,
-                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "question": "Doubt solving Sessions: Every Sunday 2pm to 4pm. Come solve your doubts.",
                     "startDate": "9/2/2024",
                     "endDate": "5/3/2024",
                     "acount": 3,
@@ -572,7 +572,7 @@ export default function Announcements() {
             "questions": [
                 {
                     "Qid": 1,
-                    "question": "The light energy emitted by a star is due to",
+                    "question": "Chapter 2: Algebra- Class on Sunday. Mark it in your Calendar",
                     "startDate": "11/1/2024",
                     "endDate": "21/2/2024",
                     "acount": 3,
@@ -599,7 +599,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 2,
-                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "question": "Sample questions of Chapter 2 Algebra on Contents Page, Solve it now",
                     "startDate": "12/1/2024",
                     "endDate": "11/2/2024",
                     "acount": 3,
@@ -626,7 +626,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 3,
-                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "question": "Result of Chapter1: Sets and Functions- Rahul secured the top rank with 100%",
                     "startDate": "7/2/2024",
                     "endDate": "7/3/2024",
                     "acount": 3,
@@ -744,7 +744,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 3,
-                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "question": "Quiz 1 Results out now",
                     "startDate": "7/2/2024",
                     "endDate": "7/3/2024",
                     "acount": 3,
@@ -771,7 +771,7 @@ export default function Announcements() {
                 },
                 {
                     "Qid": 4,
-                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "question": "Rampal Secured top score of 90% in Quiz 1",
                     "startDate": "9/2/2024",
                     "endDate": "5/3/2024",
                     "acount": 3,
@@ -1210,7 +1210,7 @@ export default function Announcements() {
     }
 
     return (
-        <Card sx={{ p: 1, width: 'max(100%,500px)', mx: 'auto' }} className='scrollcontent'>
+        <Card sx={{ p: 1  }} className='scrollcontent'>
             <div className="rowhead" style={{ padding: 5 }}>
                 <div className="columnhead1" style={{ textAlign: "end" }} >
                     {/* <Typography >Questions</Typography> */}

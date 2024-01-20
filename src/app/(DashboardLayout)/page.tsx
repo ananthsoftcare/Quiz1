@@ -54,9 +54,9 @@ const Dashboard = () => {
           {/* <Grid item xs={12} >
             <TopPayingClients />
           </Grid> */}
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
           <FAB />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </PageContainer>

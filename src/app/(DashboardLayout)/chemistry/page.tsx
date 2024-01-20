@@ -12,6 +12,7 @@ import { IconQuestionMark } from '@tabler/icons-react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import StarBorderSharpIcon from '@mui/icons-material/StarBorderSharp';
 import StarPurple500SharpIcon from '@mui/icons-material/StarPurple500Sharp';
+import CollectionFilter from './collectionFilter';
 
 
 import {
@@ -46,14 +47,77 @@ const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => (
 	}
 }));
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-	'& .MuiDialogContent-root': {
-	  padding: theme.spacing(2),
+
+const links = [
+	{
+	  name: "Introduction",
+	  id: 1,
+	  link: '#introduction'
 	},
-	'& .MuiDialogActions-root': {
-	  padding: theme.spacing(1),
+	{
+	  name: "Valency",
+	  id: 2,
+	  link: '#valency'
 	},
-}));
+	{
+	  name: "Soaps and detergents",
+	  id: 3,
+	  link: '#soaps&detergents'
+	},
+	  {
+	  name: "Points",
+	  id: 4,
+	  link: '#points',
+	  children: [
+		{
+		  name: "Atoms",
+		  id: 4.1,
+		  link: '#endpoints--root',
+		},
+		{
+		  name: "Atomic Energy",
+		  id: 4.2,
+		  link: '#endpoints--cities-overview',
+		},
+		{
+		  name: "Cathode",
+		  id: 4.3,
+		  link: '#endpoints--city-detail',
+		},
+		{
+		  name: "City Config",
+		  id: 4.4,
+		  link: '#endpoints--city-config',
+		},
+		{
+		  name: "Anode",
+		  id: 4.5,
+		  link: '#endpoints--city-spots-overview',
+		},
+		{
+		  name: "City Spot Detail",
+		  id: 4.6,
+		  link: '#endpoints--city-spot-detail',
+		},
+	  ]
+	  },	
+	{
+	  name: "Carbon compounds",
+	  id: 5,
+	  link: '#carbon-compounds'
+	},
+	{
+	  name: "Reactivity series",
+	  id: 6,
+	  link: '#reactivity-series'
+	},
+	{
+	  name: "Conclusion",
+	  id: 7,
+	  link: '#conclusion'
+	}
+];
+
 
 export default function Content() {
 	const [open, setOpen] = React.useState(false);
@@ -63,6 +127,17 @@ export default function Content() {
 	const router = useRouter();
 	const [openModalAddTitle, setOpenModalAddTitle] = React.useState(false)
 	const [openModalAddLabel, setOpenModalAddLabel] = React.useState(false)
+	const [navLinks, setNavLinks] = React.useState([...links]);
+	const [currentCollection, setCurrentCollection]=React.useState('');
+	const [collections, setCollections] = React.useState([
+		{id:1, name: 'Carbon', selections: [5] },
+		{id:2, name: 'Reactivity', selections: [6] },
+		{id:3,name:'Soaps and detergents', selections:[3]}
+	])
+
+
+
+
 
 	type floating = {
 		openModal: string;
@@ -84,18 +159,33 @@ export default function Content() {
 		setOpenModalAddTitle(!openModalAddTitle)
 	}
 
-	const handleChangeDropdown = (e: any) => {
-		if (e.target.value === "addTitle") {
-			setOpenModalAddLabel(true)
-			// let submitStar:boolean = true;
-			
-			// setSubmitStar(true)
-		}
-	}
+
 
 	const handleCloseAllModal = () => {
 		setOpenModalAddLabel(false)
 		setOpenModalAddTitle(false)
+	}
+
+	const handleChangeDropdown = (e: any) => {
+		const { value } = e.target; 
+		if (value === "addTitle") {
+			setOpenModalAddLabel(true)
+		} else if(value === '') {
+			setNavLinks([...links])
+		} else {
+			const l = [...links];
+			const selections = collections.find(c => c.name === value);
+			if(selections) {
+				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+			}
+		}
+	}
+
+	const addCollection = (value: string) => {
+		const addColle: any = [...collections];
+		addColle.push({'name': value});
+		setCollections(addColle);
+		setCurrentCollection('')
 	}
 
 
@@ -103,106 +193,7 @@ export default function Content() {
 	return (
 		<div>
 
-<BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={openModalAddTitle}
-      >
-        <DialogTitle sx={{ m: 0, p: "10px 3px 5px 10px",backgroundColor:"rgb(0 133 219 / 66%)",color:"white" }} id="customized-dialog-title">
-         Add Bookmarks
-        </DialogTitle>
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{
-            position: 'absolute',
-			padding:"5px 0px 5px 0px",
-            right: 8,
-            // top: 2,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon style={{color:"white"}}  onClick={()=>setOpenModalAddTitle(false) } />
-        </IconButton>
-        <DialogContent dividers>
-		<Grid container spacing={{ xs: 1, md: 4 }}
-						columns={{ xs: 4, sm: 8, md: 12 }}>
-						
-						<Grid item xs={4}>
-							<label>Collection</label>
-						</Grid>
-						<Grid item xs={8}>
-							<select style={{ width: "85%" }} onClick={(e) => handleChangeDropdown(e)} className="input" name="cars" id="cars" >
-							<option value="addTitle"><button style={{ backgroundColor: "green" }}>Add BookmarksTitle</button></option>
-								<option value="introduction" selected> Introduction</option>
-								<option value="chemistry">Chemistry</option>
-								<option value="maths">Physics</option>
-								<option value="biology">Communication</option>
-								<option value="chemistry">Chemistry</option>
-								<option value="maths">Physics</option>
-								<option value="biology">Communication</option>
-								<option value="chemistry">Chemistry</option>
-								<option value="maths">Physics</option>
-								<option value="biology">Communication</option>
-								<option value="maths">Maths</option>
-								<option value="social">Social Welfare</option>
-							</select>
-						</Grid>
-						<Grid item xs={4}>
-							<label>Description</label>
-						</Grid>
-						<Grid item xs={8}>
-							<textarea style={{ width: "85%" }} name='description' className="input" ></textarea>
-						</Grid>
-					</Grid>
-        </DialogContent>
-        <DialogActions>
-		<div style={{ justifyContent: "flex-end", display: "flex", padding: "5px" }}>
-						<Button style={{ justifyContent: "end", display: "flex", color: "white", backgroundColor: "rgb(0, 133, 219)" }} onClick={() => setOpenModalAddTitle(false)}>Submit</Button>
-					</div>
-        </DialogActions>
-      </BootstrapDialog>
 
-
-
-	  <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={openModalAddLabel}
-      >
-        <DialogTitle sx={{ m: 0, p: "10px 3px 5px 10px",backgroundColor:"rgb(0 133 219 / 66%)",color:"white" }} id="customized-dialog-title">
-         Add Collection Title
-        </DialogTitle>
-        <IconButton
-          aria-label="close"
-        //   onClick={() => handleCloseAllModal()}
-          sx={{
-            position: 'absolute',
-			padding:"5px 0px 5px 0px",
-            right: 8,
-            // top: 2,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon style={{color:"white"}}  onClick={()=>handleCloseAllModal() } />
-        </IconButton>
-        <DialogContent dividers>
-		<Grid container spacing={{ xs: 1, md: 4 }}
-						columns={{ xs: 4, sm: 8, md: 12 }}>
-						<Grid item xs={2}>
-							<label>Title</label>
-						</Grid>
-						<Grid item xs={10}>
-							<input style={{ width: "100%" }} name="Email" id="Email" className="input" type="email" />
-						</Grid>
-					</Grid>
-        </DialogContent>
-        <DialogActions>
-		<div style={{ justifyContent: "flex-end", display: "flex", padding: "5px" }}>
-						<Button style={{ justifyContent: "end", display: "flex", color: "white", backgroundColor: "rgb(0, 133, 219)" }} onClick={() => handleCloseAllModal()}>Submit</Button>
-					</div>
-        </DialogActions>
-      </BootstrapDialog>
 
 			<Card sx={{ p: 1, width: 'max(100%,500px)', mx: 'auto' }}>
 				{/* <Box height="100%"> */}
@@ -223,18 +214,11 @@ export default function Content() {
 							</Grid>
 							<Grid item xs={2}>
 								<Typography ><b>Apply Your Collection</b></Typography>&nbsp;
-								<select  name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)}>
-								<option value="addTitle"><button >Add Title</button></option>
-									<option value="introduction" selected>Introduction</option>
-									<option value="chemistry">Chemistry</option>
-									<option value="maths">Physics</option>
-									<option value="biology">Communication</option>	
-									{/* <option value="chemistry">Chemistry</option> */}
-									<option value="maths">Maths</option>
-									<option value="social">Social Welfare</option>
-									{/* <option onClick={() => handleopenModal()} value=''></option> */}
-									<button >Add title</button>
-								</select>
+								<select  name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)} defaultValue={''}>
+								<option value="" selected={currentCollection===''}><button>None</button></option>
+								<option value="addTitle" selected={currentCollection==='addTitle'}><button >Add New Collection</button></option>
+								{collections.map(coll => <option key={coll.id} value={coll.name} selected={currentCollection===coll.name}>{coll.name}</option>)}															
+							</select>
 							</Grid>
 							{/* <Grid item xs={4.5}>
           <Grid container>
@@ -264,10 +248,7 @@ export default function Content() {
 										<li>2. Stars (including our Sun)</li>
 										<li>3. Planets orbiting other stars</li>
 										<li>4. Remnants of dead stars: white dwarfs, neutron stars, and black holes</li>
-										<li>5. Giant, cool clouds of gas and dust</li>
-										<li>6. Other galaxies beyond our Milky Way</li>
-										<li>7. Diffuse, hot gas: between stars, and between galaxies</li>
-										<li>8. The overall structure of the universe.</li>
+										
 									</ol>
 									<p>
 										These observations are made using a variety of different techniques. Most
@@ -789,55 +770,15 @@ export default function Content() {
 								</section>
 							</div>
 							<nav className="section-nav scrollcontent">
-								<ol>
-									<li ><a href="#introduction" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>Introduction</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									<li ><a href="#valency" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>Valency</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									<li ><a href="#soaps&detergents" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>Soaps and detergents</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									{/* <li><a href="#authentication">Chemical Basis</a></li>
-								<li><a href="#authentication">Evolution</a></li>
-								<li><a href="#authentication">Ecology</a></li>
-								<li><a href="#authentication">Refrences</a></li> */}
-									<li><a href="#endpoints" style={{ color: "blue" }}>Endpoints</a>
-										<ul>
-											<li className="" ><a href="#endpoints--root" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>Root</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--cities-overview" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>Cities Overview</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--city-detail" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>City Detail</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--city-config" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>City Config</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--city-spots-overview" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>City Spots Overview</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--city-spot-detail" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>City Spot Detail</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											{/* <li className=""><a href="#endpoints--city-icons-overview">City Icons Overview</a></li>
-										<li className=""><a href="#endpoints--city-icon-detail">City Icon Detail</a></li> */}
-										</ul>
-									</li>
-									<li className=""><a href="#carbon-compounds" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>Carbon compounds</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									<li className=""><a href="#reactivity-series" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>Reactivity series</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									<li className=""><a href="#conclusion" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}> <span>Conclusion</span><div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-								</ol>
 
+							<CollectionFilter
+									navLinks={navLinks}
+									openModalAddLabel={openModalAddLabel}
+									openModalAddTitle={openModalAddTitle}
+									setOpenModalAddTitle={setOpenModalAddTitle}
+									setOpenModalAddLabel={setOpenModalAddLabel}
+									addCollection={addCollection}
+								/>
 							</nav>
 						</div>
 					</div>

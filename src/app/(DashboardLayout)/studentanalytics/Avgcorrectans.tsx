@@ -23,7 +23,6 @@ const Avgcorrectans = () => {
         labels: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
         legend: {
             position: 'right',
-
             itemMargin: {
                 horizontal: -10,
                 vertical: 10
@@ -42,7 +41,7 @@ const Avgcorrectans = () => {
             <Chart
                 options={optionscolumnchart}
                 series={seriescolumnchart}
-                type="pie" height={350} width={530}
+                type="pie" height={410} width={450}
             // type="donut" width={"100%"} height={500}
             />
             </div>

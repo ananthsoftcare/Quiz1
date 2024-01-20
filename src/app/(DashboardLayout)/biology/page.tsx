@@ -29,6 +29,8 @@ import Rating from '@/app/rating';
 import StarBorderSharpIcon from '@mui/icons-material/StarBorderSharp';
 import StarPurple500SharpIcon from '@mui/icons-material/StarPurple500Sharp';
 import CloseIcon from '@mui/icons-material/Close';
+import CollectionFilter from './collectionFilter';
+
 
 const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => (
 	<Tooltip {...props} arrow classes={{ popper: className }} />
@@ -41,15 +43,77 @@ const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => (
 	}
 }));
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-	'& .MuiDialogContent-root': {
-	  padding: theme.spacing(2),
-	},
-	'& .MuiDialogActions-root': {
-	  padding: theme.spacing(1),
-	},
-}));
 
+
+const links = [
+	{
+		name: "Introduction",
+		id: 1,
+		link: '#introduction'
+	},
+	{
+		name: "Nitrogen Cycle",
+		id: 2,
+		link: '#request-response'
+	},
+	{
+		name: "Mitosis And Meiosis",
+		id: 3,
+		link: '#authentication'
+	},
+	{
+		name: "Points",
+		id: 4,
+		link: '#points',
+		children: [
+			{
+				name: "Root",
+				id: 4.1,
+				link: '#endpoints--root',
+			},
+			{
+				name: "Cities Overview",
+				id: 4.2,
+				link: '#endpoints--cities-overview',
+			},
+			{
+				name: "City Detail",
+				id: 4.3,
+				link: '#endpoints--city-detail',
+			},
+			{
+				name: "City Config",
+				id: 4.4,
+				link: '#endpoints--city-config',
+			},
+			{
+				name: "City Spots Overview",
+				id: 4.5,
+				link: '#endpoints--city-spots-overview',
+			},
+			{
+				name: "City Spot Detail",
+				id: 4.6,
+				link: '#endpoints--city-spot-detail',
+			},
+		]
+	},
+	{
+		name: "Flora And Fauna",
+		id: 5,
+		link: '#links'
+	},
+	{
+		name: "Human Digestive System",
+		id: 6,
+		link: '#expanders'
+	},
+	{
+		name: "Human Heart",
+		id: 7,
+		link: '#filters'
+	}
+];
 
 
 
@@ -58,12 +122,24 @@ export default function Content() {
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+
 	const router = useRouter();
 	type floating = {
 		openModal: string;
 	};
 	const [openModalAddTitle, setOpenModalAddTitle] = React.useState(false)
 	const [openModalAddLabel, setOpenModalAddLabel] = React.useState(false)
+
+	const [navLinks, setNavLinks] = React.useState([...links]);
+	const [currentCollection, setCurrentCollection] = React.useState('');
+	const [collections, setCollections] = React.useState([
+		{ id:1,name: 'Human', selections: [6, 7] },
+		{id:2, name: 'Nitrogen', selections: [2, 3] },
+		{id:3, name: 'Flora', selections: [5] }
+	])
+
+
+
 
 	const [floatingOpen, setFloatingOpen] =
 		useState<floating>({
@@ -81,14 +157,7 @@ export default function Content() {
 		setOpenModalAddTitle(!openModalAddTitle)
 	}
 
-	const handleChangeDropdown = (e: any) => {
-		if (e.target.value === "addTitle") {
-			setOpenModalAddLabel(true)
-			// let submitStar:boolean = true;
-			
-			// setSubmitStar(true)
-		}
-	}
+
 
 	const handleCloseAllModal = () => {
 		setOpenModalAddLabel(false)
@@ -96,139 +165,56 @@ export default function Content() {
 	}
 
 
+	const handleChangeDropdown = (e: any) => {
+		const { value } = e.target;
+		if (value === "addTitle") {
+			setOpenModalAddLabel(true)
+		} else if (value === '') {
+			setNavLinks([...links])
+		} else {
+			const l = [...links];
+			const selections = collections.find(c => c.name === value);
+			if (selections) {
+				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+			}
+		}
+	}
+
+	const addCollection = (value: string) => {
+		const addColle: any = [...collections];
+		addColle.push({ 'name': value });
+		setCollections(addColle);
+		setCurrentCollection('')
+	}
+
 	return (
-	<div>
-
-
-<BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={openModalAddTitle}
-      >
-        <DialogTitle sx={{ m: 0, p: "10px 3px 5px 10px",backgroundColor:"rgb(0 133 219 / 66%)",color:"white" }} id="customized-dialog-title">
-         Add Bookmarks
-        </DialogTitle>
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{
-            position: 'absolute',
-			padding:"5px 0px 5px 0px",
-            right: 8,
-            // top: 2,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon style={{color:"white"}}  onClick={()=>setOpenModalAddTitle(false) } />
-        </IconButton>
-        <DialogContent dividers>
-		<Grid container spacing={{ xs: 1, md: 4 }}
-						columns={{ xs: 4, sm: 8, md: 12 }}>
-						
-						<Grid item xs={4}>
-							<label>Collection</label>
-						</Grid>
-						<Grid item xs={8}>
-							<select style={{ width: "85%" }} onClick={(e) => handleChangeDropdown(e)} className="input" name="cars" id="cars" >
-							<option value="addTitle"><button style={{ backgroundColor: "green" }}>Add BookmarksTitle</button></option>
-								<option value="introduction" selected>Introduction</option>
-								<option value="chemistry">Chemistry</option>
-								<option value="maths">Physics</option>
-								<option value="biology">Communication</option>
-								<option value="chemistry">Chemistry</option>
-								<option value="maths">Physics</option>
-								<option value="biology">Communication</option>
-								<option value="chemistry">Chemistry</option>
-								<option value="maths">Physics</option>
-								<option value="biology">Communication</option>
-								<option value="maths">Maths</option>
-								<option value="social">Social Welfare</option>
-							</select>
-						</Grid>
-						<Grid item xs={4}>
-							<label>Description</label>
-						</Grid>
-						<Grid item xs={8}>
-							<textarea style={{ width: "85%" }} name='description' className="inputtextarea" ></textarea>
-						</Grid>
-					</Grid>
-        </DialogContent>
-        <DialogActions>
-		<div style={{ justifyContent: "flex-end", display: "flex", padding: "5px" }}>
-						<Button style={{ justifyContent: "end", display: "flex", color: "white", backgroundColor: "rgb(0, 133, 219)" }} onClick={() => setOpenModalAddTitle(false)}>Submit</Button>
-					</div>
-        </DialogActions>
-      </BootstrapDialog>
+		<div>
 
 
 
-	  <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={openModalAddLabel}
-      >
-        <DialogTitle sx={{ m: 0, p: "10px 3px 5px 10px",backgroundColor:"rgb(0 133 219 / 66%)",color:"white" }} id="customized-dialog-title">
-         Add Collection Title
-        </DialogTitle>
-        <IconButton
-          aria-label="close"
-        //   onClick={() => handleCloseAllModal()}
-          sx={{
-            position: 'absolute',
-			padding:"5px 0px 5px 0px",
-            right: 8,
-            // top: 2,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon style={{color:"white"}}  onClick={()=>handleCloseAllModal() } />
-        </IconButton>
-        <DialogContent dividers>
-		<Grid container spacing={{ xs: 1, md: 4 }}
-						columns={{ xs: 4, sm: 8, md: 12 }}>
-						<Grid item xs={2}>
-							<label>Title</label>
-						</Grid>
-						<Grid item xs={10}>
-							<input style={{ width: "100%" }} name="Email" id="Email" className="input" type="email" />
-						</Grid>
-					</Grid>
-        </DialogContent>
-        <DialogActions>
-		<div style={{ justifyContent: "flex-end", display: "flex", padding: "5px" }}>
-						<Button style={{ justifyContent: "end", display: "flex", color: "white", backgroundColor: "rgb(0, 133, 219)" }} onClick={() => handleCloseAllModal()}>Submit</Button>
-					</div>
-        </DialogActions>
-      </BootstrapDialog>
 
 			<Card sx={{ p: 1, width: 'max(100%,500px)', mx: 'auto' }}>
 				{/* <Box height="100%"> */}
 				{/* <button>back</button> */}
 				<PageContainer title="Content" description="this is Content">
-				<Box sx={{ flexGrow: 1 }}>
+					<Box sx={{ flexGrow: 1 }}>
 						<Grid container spacing={{ xs: 1, md: 4 }}
 							columns={{ xs: 4, sm: 8, md: 12 }}>
 							<Grid item xs={1}>
 								<BootstrapTooltip title="Back">
-									<svg cursor="pointer" onClick={() => router.back()} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
+									<svg cursor="pointer" onClick={() => router.back} xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-back-up" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="#0085db" fill="none" strokeLinecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /> </svg>
 								</BootstrapTooltip>
 							</Grid>
 							<Grid item xs={9}>
 								<b style={{ justifyContent: "center", fontSize: "23px", alignItems: "center", padding: "7px", display: "flex" }}>
-								Biology</b>
+									Biology</b>
 							</Grid>
 							<Grid item xs={2}>
 								<Typography ><b>Apply Your Collection</b></Typography>&nbsp;
-								<select  name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)}>
-								<option value="addTitle"><button >Add Title</button></option>
-									<option value="introduction" selected>Introduction</option>
-									<option value="chemistry">Chemistry</option>
-									<option value="maths">Physics</option>
-									<option value="biology">Communication</option>	
-									{/* <option value="chemistry">Chemistry</option> */}
-									<option value="maths">Maths</option>
-									<option value="social">Social Welfare</option>
-									
+								<select name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)} defaultValue={''}>
+									<option value="" selected={currentCollection === ''}><button>None</button></option>
+									<option value="addTitle" selected={currentCollection === 'addTitle'}><button >Add New Collection</button></option>
+									{collections.map(coll => <option key={coll.id}  value={coll.name} selected={currentCollection === coll.name}>{coll.name}</option>)}
 								</select>
 							</Grid>
 							{/* <Grid item xs={4.5}>
@@ -240,19 +226,12 @@ export default function Content() {
         </Grid> */}
 						</Grid>
 					</Box>
-					
+
 					<div className='borderLink'>
 						<div className='main'>
 							<div className='scrollcontent' >
 								<section id="introduction">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Introduction</h2>
-									<p>
-										Astronomy involves the observation of distant objects beyond Earth: from
-										low-orbit spy satellites to our own Solar System to our Milky Way galaxy
-										to other distant galaxies and out to the observable edge of the universe. A
-										non-exhaustive list of some of the types of objects that are observed includes:
-									</p>
-
 									<ol>
 										<li>1. Planets and moons in our own Solar System</li>
 										<li>2. Stars (including our Sun)</li>
@@ -782,113 +761,56 @@ export default function Content() {
 								</section>
 							</div>
 							<nav className="section-nav scrollcontent">
-								<ol>
-									<li ><a href="#introduction" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}>
-										<span>Introduction</span>
-										<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									<li ><a href="#request-response" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>Nitrogen Cycle</span>
-									<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									<li ><a href="#authentication" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>Mitosis And Meiosis</span>
-									<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									{/* <li><a href="#authentication">Chemical Basis</a></li>
-								<li><a href="#authentication">Evolution</a></li>
-								<li><a href="#authentication">Ecology</a></li>
-								<li><a href="#authentication">Refrences</a></li> */}
-									<li><a href="#endpoints" style={{ color: "blue" }}>Endpoints</a>
-										<ul>
-											<li className=""><a href="#endpoints--root" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>Root</span>
-											<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className="" ><a href="#endpoints--cities-overview" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>Cities Overview</span>
-											<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--city-detail" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>City Detail</span>
-											<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--city-config" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>City Config</span>
-											<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--city-spots-overview" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>City Spots Overview</span>
-											<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											<li className=""><a href="#endpoints--city-spot-detail" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>City Spot Detail</span>
-											<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-											{/* <li className=""><a href="#endpoints--city-icons-overview">City Icons Overview</a></li>
-										<li className=""><a href="#endpoints--city-icon-detail">City Icon Detail</a></li> */}
-										</ul>
-									</li>
-									<li className=""><a href="#links" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>Flora And Fauna</span>
-									<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									<li className=""><a href="#expanders" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span> Human Digestive System</span>
-									<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-									<li className=""><a href="#filters" style={{ display: "flex", alignItems: "center", justifyContent: "start", width: "100%" }}><span>Human Heart</span>
-									<div className="rating-icon">
-		<StarBorderSharpIcon  style={{width:"20px",height:"20px",color:"grey"}} onClick={() => handleopenModal()}/>
-    </div></a></li>
-								</ol>
+								<CollectionFilter
+									navLinks={navLinks}
+									openModalAddLabel={openModalAddLabel}
+									openModalAddTitle={openModalAddTitle}
+									setOpenModalAddTitle={setOpenModalAddTitle}
+									setOpenModalAddLabel={setOpenModalAddLabel}
+									addCollection={addCollection}
+								/>
+
+
 
 							</nav>
 						</div>
 					</div>
 
-
-
-
-
-				
-				
 					<div className="open-modal-question" onClick={() => openForm()} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <b>Have Questions,ask to your peers</b>
-    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 20 20">
-        <path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" />
-    </svg>
-</div>
-
-				<div className="chat-popup form-container" style={{display:floatingOpen.openModal}}>
-					<h6 style={{ margin: "0px", padding: "3px 3px", backgroundColor: "#EFE8E4", fontSize: "1rem" }}>Please enter your question and submit
-
-
-
-					</h6>
-					<div>
-					
-						<textarea placeholder="Type message.." name="msg" required></textarea>
+						<b>Have Questions,ask to your peers</b>
+						<svg xmlns="http://www.w3.org/2000/svg" width="50" height="40" viewBox="0 0 20 20">
+							<path fill="white" d="M10 3C7.796 3 6 4.796 6 7a.75.75 0 0 0 1.5 0c0-1.376 1.124-2.5 2.5-2.5s2.5 1.124 2.5 2.5c0 .597-.156.975-.368 1.27c-.232.325-.547.58-.969.92l-.01.008c-.4.323-.893.724-1.27 1.288c-.391.588-.633 1.313-.633 2.264v.5a.75.75 0 0 0 1.5 0v-.5c0-.674.164-1.105.382-1.432c.233-.349.552-.62.964-.953l.068-.055c.374-.302.834-.672 1.188-1.167C13.75 8.588 14 7.903 14 7c0-2.204-1.796-4-4-4m0 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2" />
+						</svg>
 					</div>
-					<div style={{ alignItems: "end", display: "flex", justifyContent: "end" }}>
-					<Button color="primary" style={{ backgroundColor: "grey", color: "white", borderRadius: "10px", padding: "2px" }} onClick={() => closeForm()}>
-							Submit
-						</Button>&emsp;
-						<Button color="primary" style={{ backgroundColor: "rgb(250, 169, 23)", color: "white", borderRadius: "10px", padding: "2px" }} onClick={() => closeForm()}>
-							Close
-						</Button>
+
+					<div className="chat-popup form-container" style={{ display: floatingOpen.openModal }}>
+						<h6 style={{ margin: "0px", padding: "3px 3px", backgroundColor: "#EFE8E4", fontSize: "1rem" }}>Please enter your question and submit
+
+
+
+						</h6>
+						<div>
+
+							<textarea placeholder="Type message.." name="msg" required></textarea>
+						</div>
+						<div style={{ alignItems: "end", display: "flex", justifyContent: "end" }}>
+							<Button color="primary" style={{ backgroundColor: "grey", color: "white", borderRadius: "10px", padding: "2px" }} onClick={() => closeForm()}>
+								Submit
+							</Button>&emsp;
+							<Button color="primary" style={{ backgroundColor: "rgb(250, 169, 23)", color: "white", borderRadius: "10px", padding: "2px" }} onClick={() => closeForm()}>
+								Close
+							</Button>
+						</div>
 					</div>
-				</div>
 
-			</PageContainer>
-		</Card>
+				</PageContainer>
+			</Card>
 
-</div>
-				
-	
+		</div>
 
-				
+
+
+
 	)
 }
 

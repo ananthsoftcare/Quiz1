@@ -111,13 +111,13 @@ const TeacherDashboard = () => {
   const pathname = usePathname();
   return (
     <PageContainer title="Analytics" description="this page is about Analytics" >
-      <Grid container spacing={1} item xs={12} paddingBottom={1} >
-        <Grid item xs={0.8}>
+      <Grid container spacing={1} item xs={12} lg={12} marginBottom={1}>
+        <Grid item xs={12} lg={0.8}>
           <div style={{ paddingTop: 23 }}>
             <span style={{ fontWeight: 'bold', color: '#713593' }}> Filter By  </span>
           </div>
         </Grid>
-        <Grid item xs={2.5} >
+        <Grid item xs={12} lg={2.5}>
           {/* <b> Filter By  </b> */}
           <span style={{ fontWeight: 'bold', color: '#073763' }}>Chapter</span>
           <select name="Chapter" id="Chapter" onChange={onChangeChapter}>
@@ -129,7 +129,7 @@ const TeacherDashboard = () => {
             <option value="Chapter 5">Chapter 5</option>
           </select>
         </Grid>
-        <Grid item xs={2.5}>
+        <Grid item xs={12} lg={2.5}>
           <span style={{ fontWeight: 'bold', color: '#faa917' }}>Topic</span>
           <select name="Topic" id="Topic" onChange={onTopicChange}>
             <option value="All">All</option>
@@ -139,7 +139,7 @@ const TeacherDashboard = () => {
             <option value="City">City Config</option>
           </select>
         </Grid>
-        <Grid item xs={2.5}>
+        <Grid item xs={12} lg={2.5}>
           <span style={{ fontWeight: 'bold', color: '#a5cd39' }}>Student</span>
           <select name="Topic" id="Topic" onChange={onStudentChange}>
             <option value="All">All</option>
@@ -149,7 +149,7 @@ const TeacherDashboard = () => {
             <option value="Velu">Velu</option>
           </select>
         </Grid>
-        <Grid item xs={3.7} justifyContent={'flex-end'} alignItems={'flex-end'} textAlign={'end'}>
+        <Grid item xs={12} lg={3.7} justifyContent={'flex-end'} alignItems={'flex-end'} textAlign={'end'}>
           <div style={{ paddingTop: 23 }}>
             <span onClick={() => router.push("/teacher/content")} className='pillbutton' style={pathname == "/teacher/content" ? { backgroundColor: "#a39c9c", color: "#2f2f2f" } : { backgroundColor: "#cfcdcd", color: "#2f2f2f" }} >Content</span>&emsp;
             <span onClick={() => router.push("/teacher/analytics")} className='pillbutton' style={pathname == "/teacher/analytics" ? { backgroundColor: "#a39c9c", color: "#2f2f2f" } : { backgroundColor: "#cfcdcd", color: "#2f2f2f" }} >Analytics</span>&emsp;

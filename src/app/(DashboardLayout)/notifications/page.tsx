@@ -743,7 +743,7 @@ export default function PageNotify() {
 
                     <div className="columnhead2" style={{ display: "flex" }}>
                         <div className="checkbox-wrapper-34">
-                            <input className="tgl tgl-ios" id="toggle-34" type="checkbox" onClick={(e) => handlechangemyself(e)} />
+                            <input className="tgl tgl-ios" id="toggle-34"  type="checkbox" onClick={(e) => handlechangemyself(e)} />
                             <label className="tgl-btn" htmlFor="toggle-34"></label>
                         </div>&emsp;
                         <Typography style={{ display: "flex", alignItems: "center" }} ><b>Filters</b></Typography>&emsp;

@@ -25,7 +25,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import PageContainer from '../../components/container/PageContainer';
 import './manage.css'
-import { Button } from '@mui/material';
+import { Alert, Button, Stack } from '@mui/material';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -240,7 +240,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z" /></svg>
       </div>
       <div style={{ padding: "2px 0 0 2px", width: "100%" }}>
-        <input className='input' type='search'></input>
+        <input className='inputDesign' type='search'></input>
       </div>
       {/* </div> */}
       <div style={{ padding: "2px 0 0 2px", width: "50%", justifyContent: "end", display: "flex" }}>
@@ -266,6 +266,8 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [messagetrue,setMessageTrue] = React.useState(false)
+  const [buttonHide,setButtonHide] = React.useState(false)
   const pathname = usePathname();
   const router = useRouter();
   const handleRequestSort = (
@@ -276,6 +278,8 @@ export default function EnhancedTable() {
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
+
+
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -342,8 +346,24 @@ export default function EnhancedTable() {
   // const years = [...Array(3)].map((_, i) => currentYear + i - i);
   const years = [...Array(10)].map((_, i) => currentYear + i - 1 + 1);
 
+
+const handleClickMessage = () =>{
+  
+  setMessageTrue(true)
+  setTimeout(() => {
+    setMessageTrue(false)
+    setButtonHide(true)
+  },2000)
+}
+
   return (
     <div>
+      {messagetrue ? 
+      <Stack  sx={{display:"flex",alignItems:"center"}}  spacing={2}>
+      <Alert  variant="filled" style={{color:'white'}} severity="success">
+        Schedule Saved.
+      </Alert>
+      </Stack>:"" }
 
       <div className="rowhead">
         <div className="columnhead1" style={{ textAlign: "start" }} >
@@ -588,7 +608,7 @@ export default function EnhancedTable() {
                 </select>
               </div>
               <div style={{ display: "flex", justifyContent: "end", marginTop: "5px" }}>
-                <button className='buttonmanage'>schedule</button>
+                <button className='buttonmanage' disabled={buttonHide === true ? true : false} style={ buttonHide === true ? {cursor:"not-allowed"} :{cursor:"pointer"}} onClick={()=>handleClickMessage()}>schedule</button>
               </div>
               <div style={{ margin: "20px 0 0 0" }}>
                 <h4 style={{ margin: "10px 0 0 0" }}>Make Announcement</h4>

@@ -107,7 +107,7 @@ const Badges = () => {
     setAnchorEl2(null);
   };
   return (
-    <Box>
+    <Box >
       <IconButton
         size="large"
         aria-label="show 11 new notifications"
@@ -132,15 +132,16 @@ const Badges = () => {
         onClose={handleClose2}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
-        sx={{
-          "& .MuiMenu-paper": {
-            // width: "250px",
-            maxHeight: "380px",
-            border: '1px solid ddd'
-          },
-        }}
+      // sx={{
+      //   "& .MuiMenu-paper": {
+      //     // width: "250px",
+      //     maxHeight: "380px",
+      //     border: '1px solid ddd'
+      //   },
+      // }}
       >
         <Card elevation={8} variant="elevation" sx={{
+          overflow: "auto",
           border: '1px solid #fff', backgroundColor: '#fff',
           maxHeight: '420px', maxWidth: '397px', scrollbarwidth: 'thin', borderRadius: '4px',
         }}>

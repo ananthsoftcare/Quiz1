@@ -256,7 +256,16 @@ const users = [
             {open ? <KeyboardArrowUpIcon fontSize='medium' style={{ fontWeight: "bold" }} /> : <KeyboardArrowDownIcon style={{ fontWeight: "bold" }} fontSize='medium' />}
           </IconButton>
         </TableCell>
-        <TableCell style={{ padding: "5px 5px 5px 5px" }} align="right"> <button onClick={() => router.push('/biology')} className='pill'>Apply and View</button></TableCell>
+        <TableCell style={{ padding: "5px 5px 5px 5px" }} align="right"> 
+        {
+          row.fat === "Maths" ? 
+        <button onClick={() => router.push('/maths')} className='pill'>Apply and View</button>
+        : row.fat === "Biology" ?  <button onClick={() => router.push('/biology')} className='pill'>Apply and View</button>
+        : row.fat === "Chemistry" ? <button onClick={() => router.push('/chemistry')} className='pill'>Apply and View</button>
+        : row.fat === "Physics" ? <button onClick={() => router.push('/physics')} className='pill'>Apply and View</button>
+        : row.fat === "Communication" ? <button onClick={() => router.push('/communication')} className='pill'>Apply and View</button>
+        : row.fat === "Social Welfare" ? <button onClick={() => router.push('/socialwelfare')} className='pill'>Apply and View</button> :""}
+        </TableCell>
         <TableCell align="left" style={{ width: "10%" }}>{
           row.fat === "Maths" ? <div className="container">
             {/* <span className="icon"></span> */}
@@ -381,12 +390,19 @@ const handlechangeSubject = (e:any) =>{
       <Grid container   spacing={{ xs: 1, md: 4 }}
         columns={{ xs: 4, sm: 8, md: 12 }}>
        
-        <Grid item xs={6}>
+        <Grid item xs={5}>
         <Typography style={{display:"flex",justifyContent:"start",alignItems:"center"}}><b> My Collections</b></Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={7}>
           <Grid container>
-          <Grid item xs={9} justifyContent="end" display="flex">
+            <Grid xs={5} justifyContent="end" display="flex">
+            <div style={{ padding: "2px 0 0 2px", width: "50%", justifyContent: "end", display: "flex" }}>
+        <button style={{ backgroundColor: "rgb(0, 133, 219)",cursor:"pointer", padding: "5px", display: "flex", justifyContent: "center", border: "none", borderRadius: "5px", color: "white", alignItems: "center" }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 21 21"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" d="M5.5 10.5h10m-5-5v10" /></svg>
+          Add Student</button>
+      </div>
+            </Grid>
+          <Grid item xs={4} justifyContent="end" display="flex">
           {/* <div className="checkbox-wrapper-34">
                             <input className="tgl tgl-ios" id="toggle-34" type="checkbox" />
                             <label className="tgl-btn" htmlFor="toggle-34"></label>
