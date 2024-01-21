@@ -52,7 +52,7 @@ const Menuitems = [
     children: [
       {
         id: uniqueId(),
-        title: "Collection",
+        title: "Collections",
         icon: IconNote,
         href: "/collection",
       },
@@ -64,7 +64,7 @@ const Menuitems = [
       },
       {
         id: uniqueId(),
-        title: "Announcement",
+        title: "Announcements",
         icon: IconSpeakerphone,
         href: "/Announcement",
       },

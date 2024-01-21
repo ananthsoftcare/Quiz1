@@ -109,7 +109,7 @@ const products = [
 
 const UpcomingSchedules = () => {
   return (
-    <DashboardCard title="Remainders"
+    <DashboardCard title="Reminders"
       middlecontent={<Box sx={{
         overflow: "auto", maxHeight: '295px', scrollbarwidth: 'thin'}}>
         <Grid >

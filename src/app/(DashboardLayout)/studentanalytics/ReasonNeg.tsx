@@ -25,6 +25,10 @@ const ReasonNeg = () => {
         data: [25, 11, 12, 12, 14, 18, 19, 37, 36, 51]
     },
     {
+        name: 'Not Prepared',
+        data: [10, 8, 9, 9, 12, 14, 18, 10, 11, 6]
+    },
+    {
         name: 'Thought I was right',
         data: [17, 27, 14, 19, 15, 18, 12, 17, 12, 16]
     },

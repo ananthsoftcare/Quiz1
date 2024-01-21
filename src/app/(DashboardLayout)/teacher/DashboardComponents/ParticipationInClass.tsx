@@ -77,7 +77,7 @@ const ParticipationInClass = () => {
         <Card sx={{ height: "100.5%", marginBottom: 1, padding: 1 }}>
             <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: 2, borderRadius: '5px', paddingLeft: 10 }}>Track your classes</Typography>
             <Grid container item xs={12} direction={'row'} display={'inline-flex'}>
-                <Grid item xs={6} padding={2} paddingTop={3}>
+                <Grid item xs={6} padding={2} paddingTop={11}>
                     <Typography style={{ fontSize: 13, fontWeight: 'bold', textAlign: 'center', color: '#073763', }}>Participation in classes</Typography>
                     <Typography style={{ fontSize: 15, fontWeight: 'bold', textAlign: 'center', paddingTop: 5, color: '#713593' }}>17 Quizzes</Typography>
                     <Typography style={{ fontSize: 10, textAlign: 'center', color: '#713593' }}>of 20 ( Required count )</Typography>

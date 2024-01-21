@@ -112,12 +112,12 @@ const TeacherDashboard = () => {
   return (
     <PageContainer title="Analytics" description="this page is about Analytics" >
       <Grid container spacing={1} item xs={12} lg={12} marginBottom={1}>
-        <Grid item xs={12} lg={0.8}>
-          <div style={{ paddingTop: 23 }}>
-            <span style={{ fontWeight: 'bold', color: '#713593' }}> Filter By  </span>
+        <Grid item xs={12} lg={0.8} style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+          <div style={{paddingTop:"14px"}}>
+            <span style={{ fontWeight: 'bold', color: '#713593',display:"flex",alignItems:"center",justifyContent:"center" }}> Filter By  </span>
           </div>
         </Grid>
-        <Grid item xs={12} lg={2.5}>
+        <Grid item xs={12} lg={2.2}>
           {/* <b> Filter By  </b> */}
           <span style={{ fontWeight: 'bold', color: '#073763' }}>Chapter</span>
           <select name="Chapter" id="Chapter" >
@@ -129,7 +129,7 @@ const TeacherDashboard = () => {
             <option value="Chapter 5">Chapter 5</option>
           </select>
         </Grid>
-        <Grid item xs={12} lg={2.5}>
+        <Grid item xs={12} lg={2.2}>
           <span style={{ fontWeight: 'bold', color: '#faa917' }}>Topic</span>
           <select name="Topic" id="Topic">
             <option value="All">All</option>

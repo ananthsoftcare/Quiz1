@@ -79,13 +79,22 @@ const CumulativeParticipation = () => {
         //         distributed: false,
         //     }
         // },
+        // xaxis: {
+        //     type: 'datetime',
+        //     categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT',
+        //         '01/05/2011 GMT', '01/06/2011 GMT'
+        //     ],
+        // },
         xaxis: {
-            type: 'datetime',
-            categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT',
-                '01/05/2011 GMT', '01/06/2011 GMT'
-            ],
-        },
-
+            type: 'category',
+            categories: ['week 1','week 2','week 3','week 4','week 5','week 6'],
+            labels: {
+              style: {
+                fontSize: '13px',
+                fontWeight: 500,
+              },
+            }
+          },
         legend: {
             show: false,
             position: 'left',

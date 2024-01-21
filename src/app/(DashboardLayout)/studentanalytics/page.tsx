@@ -79,15 +79,44 @@ const StudentAnalytics = () => {
   }
 
 
-  
+
   return (
     <PageContainer title="Analytics" description="this page is about Analytics">
-      <Typography><h3 style={{color:'#713593'}}>Your Analytics of Maths - Level 1</h3></Typography>
-      <Box>
-        <Grid item xs={12} lg={12}>
-          <Grid container spacing={1}>
-            <Grid item xs={12} lg={6}>
+      <Typography><h3 style={{ color: '#713593' }}>Your Analytics of Maths - Level 1</h3></Typography>
 
+      <Box>
+        <Grid container spacing={1}>
+          <Grid container item xs={12} lg={12} spacing={1} style={{ backgroundColor: 'white', borderRadius: '10px' }}>
+            <Grid item xs={12} lg={7}  display={"flex"} >
+              <Grid item xs={12} lg={1.5}>
+                <div style={{ paddingTop: 23 }}>
+                  <span style={{ fontWeight: 'bold', color: '#713593' }}> Filter By</span>
+                </div>
+              </Grid>
+              <Grid item xs={12} lg={4}>
+                {/* <b> Filter By  </b> */}
+                <span style={{ fontWeight: 'bold', color: '#073763' }}>Chapter</span>
+                <select name="Chapter" id="Chapter" >
+                  <option value="All">All</option>
+                  <option value="Chapter 1">Chapter 1</option>
+                  <option value="Chapter 2">Chapter 2</option>
+                  <option value="Chapter 3">Chapter 3</option>
+                  <option value="Chapter 4">Chapter 4</option>
+                  <option value="Chapter 5">Chapter 5</option>
+                </select>
+              </Grid>
+              <Grid item xs={12} lg={3.5}>
+                <span style={{ fontWeight: 'bold', color: '#faa917' }}>Topic</span>
+                <select name="Topic" id="Topic">
+                  <option value="All">All</option>
+                  <option value="Analytical Essay">Analytical Essay</option>
+                  <option value="Argumentative Essay">Argumentative Essay</option>
+                  <option value="Endpoints">Endpoints (Root)</option>
+                  <option value="City">City Config</option>
+                </select>
+              </Grid>
+            </Grid>
+            {/* <Grid item xs={12} lg={8}>
               <div className='card2' style={{ padding: 10, marginBottom: 10, width: '100%', height: 60, textAlign: 'center', fontSize: 16 }} >
                 <b> Filter By  </b>   &nbsp;&nbsp;
                 <select name="Chapter" id="Chapter" onChange={onChangeChapter}>
@@ -106,61 +135,63 @@ const StudentAnalytics = () => {
                   <option value="City">City Config</option>
                 </select>
               </div>
+            </Grid> */}
+            <Grid item xs={12} lg={5}>
+              <div className="card" style={{ padding: 10, marginBottom: 10, width: '100%', height: 60, textAlign: 'center', fontSize: 18 }} >
+                Overall Score  <b>70%</b>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid container item xs={12} lg={12} spacing={1}>
+            <Grid item xs={12} lg={6}>
               <Performance />
             </Grid>
-            
             <Grid item xs={12} lg={6}>
-              <Grid item>
-                <div className="card" style={{ padding: 10, marginBottom: 10, width: '100%', height: 60, textAlign: 'center', fontSize: 18 }} >
-                  Overall Score  <b>70%</b>
-                </div>
-              </Grid>
-              <Grid item>
-                <QuizSession /></Grid>
+              <QuizSession />
+            </Grid>
+            {/* <TopPerformers /> */}
+          </Grid><br />
+          {chapter2 ? (
+            <Grid container item xs={12} spacing={1} lg={12} >
+              <Grid item xs={12} lg={2.4}>
+                <div className="card1" style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
+                  Total No. of Quiz Sessions <br /> <b>40</b>
+                </div></Grid><Grid item xs={12} lg={2.4}>
+                <div className='card1' style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
+                  Successful Sessions: <br /> <b>35</b>
+                </div></Grid><Grid item xs={12} lg={2.4}>
+                <div className="card1" style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
+                  <div > No. of Chapters:<br /> <b>56</b></div>
+                </div></Grid><Grid item xs={12} lg={2.4}>
+                <div className="card1" style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
+                  <div >No. of Topics: <br /><b>340</b></div>
+                </div></Grid><Grid item xs={12} lg={2.4}>
+                <div className="card1" style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
+                  <div >No. of Questions: <br /><b>902</b></div>
+                </div></Grid>
               {/* <TopPerformers /> */}
-            </Grid><br />
-            {chapter2 ? (
-              <Grid container item xs={12} spacing={1} lg={12} >
-                <Grid item xs={12} lg={2.4}>
-                  <div className="card1" style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
-                    Total No. of Quiz Sessions <br /> <b>40</b>
-                  </div></Grid><Grid item xs={12} lg={2.4}>
-                  <div className='card1' style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
-                    Successful Sessions: <br /> <b>35</b>
-                  </div></Grid><Grid item xs={12} lg={2.4}>
-                  <div className="card1" style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
-                    <div > No. of Chapters:<br /> <b>56</b></div>
-                  </div></Grid><Grid item xs={12} lg={2.4}>
-                  <div className="card1" style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
-                    <div >No. of Topics: <br /><b>340</b></div>
-                  </div></Grid><Grid item xs={12} lg={2.4}>
-                  <div className="card1" style={{ height: 90, padding: 15, textAlign: 'center', fontSize: 16 }}>
-                    <div >No. of Questions: <br /><b>902</b></div>
-                  </div></Grid>
-                {/* <TopPerformers /> */}
+            </Grid>
+          ) : ""}
+          {chapter3 ? (
+            <Grid container item xs={12} spacing={1} lg={12} display={'flex'}>
+              <Grid item lg={6} style={{ height: 370, width: '100%' }}>
+                <TopPerformers />
               </Grid>
-            ) : ""}
-            {chapter3 ? (
-              <Grid container item xs={12} spacing={1} lg={12} display={'flex'}>
-                <Grid item lg={6} style={{ height: 370, width: '100%' }}>
-                  <TopPerformers />
-                </Grid>
-                <Grid item lg={6}>
-                  <Avgcorrectans />
-                </Grid>
+              <Grid item lg={6}>
+                <Avgcorrectans />
               </Grid>
-            ) : ""}
-            {chapter4 ? (
-              <Grid container item xs={12} spacing={1} lg={12} display={'flex'}>
-                <Grid item xs={12} lg={6}>
-                  <ReasonNeg />
-                </Grid>
-                <Grid item xs={12} lg={6}>
-                  <ReasonProp />
-                </Grid>
+            </Grid>
+          ) : ""}
+          {chapter4 ? (
+            <Grid container item xs={12} spacing={1} lg={12} display={'flex'}>
+              <Grid item xs={12} lg={6}>
+                <ReasonNeg />
               </Grid>
-            ) : ""}
-          </Grid>
+              <Grid item xs={12} lg={6}>
+                <ReasonProp />
+              </Grid>
+            </Grid>
+          ) : ""}
         </Grid>
       </Box>
     </PageContainer >

@@ -8,6 +8,7 @@
 	position: sticky;
 	top: 2rem;
 	align-self: start;
+	
 }
 
 .mainpage {
@@ -209,7 +210,7 @@ body {
   }
   
   /* Full-width textarea */
-  .form-container .inputtextarea {
+  .form-container textarea {
 	width: 100%;
 	padding: 15px;
 	margin: 5px 0 0px 0;

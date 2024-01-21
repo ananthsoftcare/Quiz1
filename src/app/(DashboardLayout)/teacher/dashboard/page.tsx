@@ -49,9 +49,9 @@ const TeacherDashboard = () => {
           {/* <Grid item xs={12} >
             <TopPayingClients />
           </Grid> */}
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <FABTeacher />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </PageContainer >

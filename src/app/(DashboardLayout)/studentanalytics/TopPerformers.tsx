@@ -10,9 +10,9 @@ const Performers = () => {
             <Typography style={{ fontSize: 15, fontWeight: 'bold', color: '#073763', backgroundColor: 'rgb(222 253 253)', padding: '10px 0px 15px 10px', borderRadius: '5px', paddingLeft: 10 }}>Performance Ranking in this course</Typography><br />
             <Box sx={{ overflow: 'auto', maxHeight: 310, width: '100%' }}>
                 <Grid container item xs={12} lg={12} style={{ paddingLeft: 30, paddingBottom: 10, display: 'flex' }} >
-                    <Grid item xs={1} lg={2}>Raju</Grid>
-                    <Grid item xs={11} lg={10}>
-                        <div className="progress-bar" role="progressbar" style={{ width: "90%" }}>90%</div></Grid>
+                    <Grid item xs={1} lg={2} style={{ color: 'green', fontWeight: 'bold' }}>Raju</Grid>
+                    <Grid item xs={11} lg={10} >
+                        <div className="progress-bar" role="progressbar" style={{ width: "90%", backgroundColor: 'green' }}>90%</div></Grid>
                 </Grid>
                 <Grid container item xs={12} lg={12} style={{ paddingLeft: 30, paddingBottom: 10, display: 'flex' }}   >
                     <Grid item xs={1} lg={2}>Priya</Grid>

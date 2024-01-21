@@ -50,12 +50,12 @@ const links = [
 	{
 	  name: "Laws of Motions",
 	  id: 2,
-	  link: '#request-response'
+	  link: '#lawsofmotion'
 	},
 	{
 	  name: "Newton’s laws",
 	  id: 3,
-	  link: '#authentication'
+	  link: '#newtons_laws'
 	},
 	  {
 	  name: "Endpoints",
@@ -97,28 +97,36 @@ const links = [
 	{
 	  name: "Conservation of energy",
 	  id: 5,
-	  link: '#links'
+	  link: '#conservationOfenergy'
 	},
 	{
 	  name: "Gravity",
 	  id: 6,
-	  link: '#expanders'
+	  link: '#gravity'
 	},
 	{
 	  name: "Mass versus weight",
 	  id: 7,
-	  link: '#filters'
+	  link: '#mass-versus-weight'
 	}
 ];
 
-export default function Content() {
+export default function Content({ searchParams }: {
+	searchParams: {
+		cTitle: string,
+		cTopic: string,
+		link:string
+	}
+}) {
 	const [open, setOpen] = React.useState(false);
 	const [navLinks, setNavLinks] = React.useState([...links]);
 	const [currentCollection, setCurrentCollection]=React.useState('');
 
 	const [collections, setCollections] = React.useState([
-		{id:1, name: 'Laws', selections: [2, 3] },
-		{id:2, name: 'End Points', selections: [4,5,6] }
+		{id:1, name: 'Laws', selections: [2, 3]  },
+		{id:2, name: 'End Points', selections: [4,5,6] },
+		{id:3, name: 'Conservation of energy', selections: [5] },
+		{id:4, name: 'Gravity', selections: [6] }
 	])
 
 	const handleOpen = () => setOpen(true);
@@ -126,12 +134,36 @@ export default function Content() {
 	const router = useRouter();
 	const [openModalAddTitle, setOpenModalAddTitle] = React.useState(false)
 	const [openModalAddLabel, setOpenModalAddLabel] = React.useState(false)
+const [smoothSelect,setSmoothSelect] = useState([{
+	name:"",
+	id:0,
+	link:""
 
+}])
 
 	
 	type floating = {
 		openModal: string;
 	};
+
+
+
+	React.useEffect(() => {
+
+
+		if (searchParams.cTitle === "" || undefined) {
+		}else{
+			const l = [...links];
+			const searchParamsSelections = collections.find(c => c.name === searchParams.cTitle);
+			if (searchParamsSelections) {
+				setNavLinks(l.filter(ll => searchParamsSelections.selections.includes(ll.id)))
+				 const section = document.querySelector('#' + searchParams.link);
+				 if(section !== null) {
+				 section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+				 }
+			}
+		}
+	}, [])
 
 	const [floatingOpen, setFloatingOpen] =
 		useState<floating>({
@@ -155,12 +187,34 @@ export default function Content() {
 			setOpenModalAddLabel(true)
 		} else if(value === '') {
 			setNavLinks([...links])
-		} else {
+		}
+		else {
 			const l = [...links];
 			const selections = collections.find(c => c.name === value);
-			if(selections) {
-				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+			let defaultScroll;
+			if (selections && selections.selections) {
+				defaultScroll = l.find(nav => nav.id === selections.selections[0]);
 			}
+			// setSmooothValue(selections)
+			if (selections) {
+				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+				if (defaultScroll?.link) {
+					const section = document.querySelector(defaultScroll.link); 
+					if(section !== null){
+						section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				}
+				// if (section !== null) {
+				// 	section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				// }
+			}
+
+
+			// console.log("selections :: "+l.filter(ll => selections.selections.includes(selections.selections[0])));
+			// const section = document.querySelector(selections.selections[0]);
+			// if(section !== null) {
+			// 	 section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+			// }
 		}
 	}
 
@@ -175,6 +229,7 @@ export default function Content() {
 		setCollections(addColle);
 		setCurrentCollection('')
 	}
+
 
 	return (
 		<div>
@@ -195,10 +250,12 @@ export default function Content() {
 						</Grid>
 						<Grid item xs={2}>
 							<Typography ><b>Apply Your Collection</b></Typography>&nbsp;
-							<select  name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)} defaultValue={''}>
+							<select value={searchParams.cTitle} name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)} defaultValue={''}>
 								<option value="" selected={currentCollection===''}><button>None</button></option>
 								<option value="addTitle" selected={currentCollection==='addTitle'}><button >Add New Collection</button></option>
-								{collections.map(coll => <option key={coll.id} value={coll.name} selected={currentCollection===coll.name}>{coll.name}</option>)}															
+								{collections.map(coll =>
+									 <option key={coll.id} value={coll.name}   selected={currentCollection===coll.name}>{coll.name}</option>
+									)}															
 							</select>
 						</Grid>
 					</Grid>
@@ -239,7 +296,7 @@ export default function Content() {
 										to give the sharpest possible images at radio to infrared wavelengths, or adaptive optics which achieves something similar in the optical and infrared.
 									</p>
 								</section>
-								<section id="request-response">
+								<section id="lawsofmotion">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Laws of Motions</h2>
 									<div>
 										New Science Text Books are prepared in such a way that they develop childrens observation
@@ -300,7 +357,7 @@ export default function Content() {
 										</ol>
 									</div>
 								</section>
-								<section id="authentication">
+								<section id="newtons_laws">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Newton’s laws </h2>
 									<p>
 										1960s: Passwords and encryption
@@ -635,7 +692,7 @@ export default function Content() {
 										<p>…</p>
 									</section> */}
 								</section>
-								<section id="links">
+								<section id="conservationOfenergy">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Conservation of energy</h2>
 									<p>
 										Its founder, Italian architect Paolo
@@ -662,7 +719,7 @@ export default function Content() {
 										evolution of humankind
 									</p>
 								</section>
-								<section id="expanders">
+								<section id="gravity">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Gravity</h2>
 									<p>
 										In view of the COVID-19 pandemic, it was felt imperative to reduce content load on students. The National Education Policy 2020 also emphasises reducing the content load and providing opportunities for experiential learning with creative mindset. In this background, the NCERT had undertaken the exercise to rationalise the textbooks across all classes and all subjects. Learning Outcomes already developed by the NCERT across classes had been taken into consideration in this exercise. Contents of the textbooks had been rationalised in view of the following:
@@ -675,7 +732,7 @@ export default function Content() {
 										The present textbooks uploaded in pdf form are rationalised textbooks. These were rationalised for the session 2022-23 and will continue in 2023-24.
 									</p>
 								</section>
-								<section id="filters">
+								<section id="mass-versus-weight">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Mass versus weight</h2>
 									<p>
 										Mind takes form in the city;

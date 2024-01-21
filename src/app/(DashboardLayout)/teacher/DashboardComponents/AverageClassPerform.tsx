@@ -74,10 +74,15 @@ const AverageClassPerform = () => {
             }
         },
         xaxis: {
-            categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
-                '10 Jan', '11 Jan', '12 Jan'
+            categories: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'Sep',
+                'Oct', 'Nov', 'Dec'
             ],
         },
+        // xaxis: {
+        //     categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
+        //         '10 Jan', '11 Jan', '12 Jan'
+        //     ],
+        // },
         grid: {
             borderColor: '#f1f1f1',
         }

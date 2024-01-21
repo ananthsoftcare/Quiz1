@@ -172,12 +172,34 @@ export default function Content() {
 			setOpenModalAddLabel(true)
 		} else if(value === '') {
 			setNavLinks([...links])
-		} else {
+		} 
+		else {
 			const l = [...links];
 			const selections = collections.find(c => c.name === value);
-			if(selections) {
-				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+			let defaultScroll;
+			if (selections && selections.selections) {
+				defaultScroll = l.find(nav => nav.id === selections.selections[0]);
 			}
+			// setSmooothValue(selections)
+			if (selections) {
+				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+				if (defaultScroll?.link) {
+					const section = document.querySelector(defaultScroll.link); 
+					if(section !== null){
+						section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				}
+				// if (section !== null) {
+				// 	section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				// }
+			}
+
+
+			// console.log("selections :: "+l.filter(ll => selections.selections.includes(selections.selections[0])));
+			// const section = document.querySelector(selections.selections[0]);
+			// if(section !== null) {
+			// 	 section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+			// }
 		}
 	}
 

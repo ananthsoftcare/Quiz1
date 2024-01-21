@@ -175,12 +175,13 @@ const DashboardBooks = () => {
         <PageContainer title="Shadow" description="this is Shadow">
             {/* <DashboardCard title="Course"> */}
             <Grid container spacing={1}>
-                <Grid item xs={12} lg={6}>
+
+                <Grid item xs={12} lg={6} >
                     <Card sx={{ padding: 0 }}>
                         <Grid className="container">
                             <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
                                 <IconButton onClick={handleAnalytics}>
-                                    <AnalyticsIcon sx={{
+                                    < AnalyticsIcon sx={{
                                         ":hover": {
                                             color: 'blue', height: '40px', width: '100px',
                                         },
@@ -189,55 +190,50 @@ const DashboardBooks = () => {
                                 </IconButton>
                             </Typography>
                             <CardHeader
-                                style={{ padding: 0, backgroundColor: '', }}
+                                style={{ padding: 0, backgroundColor: '' }}
                                 avatar={
-                                    <WalletIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="success" />
+                                    <BiotechIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="info" />
                                 }
                                 action={
-                                    <div style={{ width: '11%', height: "7px", marginTop: 20, marginLeft: 66 }}>
-                                        <CircularProgressbar value={66} text={`${66}%`} strokeWidth={7} styles={{
+                                    <div style={{ width: '11%', height: "7px", marginTop: 18, marginLeft: 56 }}>
+                                        <CircularProgressbar value={88} text={`${88}%`} strokeWidth={7} styles={{
                                             background: {
-                                                fill: "#6aa84f",
+                                                fill: "#89bded",
                                                 fontSize: '28px',
                                                 fontWeight: 'bold'
                                             },
                                             path: {
-                                                stroke: "#6aa84f"
+                                                stroke: "#89bded"
                                             },
                                             trail: {
                                                 // stroke: "ActiveBorder",
                                                 transform: "rotate(90deg)",
                                                 transformOrigin: "center center",
-                                                backgroundColor: '#6aa84f'
+                                                backgroundColor: '#89bded'
                                             },
                                             text: {
                                                 // Tweak text color:
-                                                fill: '#6aa84f',
+                                                fill: '#89bded',
                                                 // Tweak text size:
                                                 fontSize: '28px',
                                             },
                                         }} />
-
-
                                     </div>
                                 }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Maths</span>}
-                            // subheader={<CardActions className="overlay" style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="success" />Analytics</CardActions>}
-                            /><Divider />
-
-
-                        </Grid>
+                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Biology</span>}
+                            // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="info" />Analytics</CardActions>}
+                            />
+                        </Grid><Divider />
                         <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
                             <Grid item xs={6} sx={{
                                 ":hover": {
-                                    color: "#fff",
-                                    background: 'linear-gradient(34deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px #e9f7ed"
+                                    color: "green",
+                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-
-                                <Link href='/teacher/maths'>
+                                <Link href='/teacher/biology'>
                                     <Button size="small" variant="text" sx={{
                                         ":hover": {
                                             color: "#ffffff",
@@ -257,35 +253,22 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                {/* <Link href={'/quiz/chemistryquiz/Home'}> */}
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-
-                                }}>
-                                    <IconGridDots style={{ height: 16 }} />Manage
-                                </Button>
-                                {/* </Link> */}
-
-                            </Grid>
-
-
-                            {/* <Button size="small" variant="text"
-<<<<<<< HEAD
->>>>>>> 1fdd2a68c73ee996f5e17d3541843045748aab39
-=======
->>>>>>> 18d78a5d8d7dfd710a78da49d44cff0fa19a050a
-                                    sx={{
+                                <Link
+                                    href={{
+                                        pathname: '/teacher/manage/',
+                                        query: { pageId: 'Biology' },
+                                    }}
+                                    style={{ textDecoration: "none", color: "black" }}>
+                                    <Button size="small" variant="text" sx={{
                                         ":hover": {
-                                            bgcolor: "#B4F8C8",
-                                            color: "green",
-                                            fontSize: 5
-                                        }
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
                                     }}>
-                                    Analytics
-                                </Button> */}
+                                        <IconGridDots style={{ height: 16 }} />Manage
+                                    </Button>
+                                </Link>
+                            </Grid>
                         </Grid>
                     </Card>
                 </Grid>
@@ -381,24 +364,31 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconGridDots style={{ height: 16 }} />Manage
-                                </Button>
+                                <Link
+                                    href={{
+                                        pathname: '/teacher/manage/',
+                                        query: { pageId: 'Physics' },
+                                    }}
+                                    style={{ textDecoration: "none", color: "black" }}>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconGridDots style={{ height: 16 }} />Manage
+                                    </Button>
+                                </Link>
                             </Grid>
                         </Grid>
                     </Card>
                 </Grid>
-                <Grid item xs={12} lg={6} >
+                <Grid item xs={12} lg={6}>
                     <Card sx={{ padding: 0 }}>
                         <Grid className="container">
                             <Typography className="overlay" style={{ fontSize: 15, color: "#fff", fontWeight: 'bold', cursor: 'pointer' }}>
                                 <IconButton onClick={handleAnalytics}>
-                                    < AnalyticsIcon sx={{
+                                    <AnalyticsIcon sx={{
                                         ":hover": {
                                             color: 'blue', height: '40px', width: '100px',
                                         },
@@ -407,59 +397,64 @@ const DashboardBooks = () => {
                                 </IconButton>
                             </Typography>
                             <CardHeader
-                                style={{ padding: 0, backgroundColor: '' }}
+                                style={{ padding: 0, backgroundColor: '', }}
                                 avatar={
-                                    <BiotechIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="info" />
+                                    <WalletIcon style={{ height: '65px', width: '45px', marginLeft: 9 }} color="success" />
                                 }
                                 action={
-                                    <div style={{ width: '11%', height: "7px", marginTop: 18, marginLeft: 56 }}>
-                                        <CircularProgressbar value={88} text={`${88}%`} strokeWidth={7} styles={{
+                                    <div style={{ width: '11%', height: "7px", marginTop: 20, marginLeft: 66 }}>
+                                        <CircularProgressbar value={66} text={`${66}%`} strokeWidth={7} styles={{
                                             background: {
-                                                fill: "#89bded",
+                                                fill: "#6aa84f",
                                                 fontSize: '28px',
                                                 fontWeight: 'bold'
                                             },
                                             path: {
-                                                stroke: "#89bded"
+                                                stroke: "#6aa84f"
                                             },
                                             trail: {
                                                 // stroke: "ActiveBorder",
                                                 transform: "rotate(90deg)",
                                                 transformOrigin: "center center",
-                                                backgroundColor: '#89bded'
+                                                backgroundColor: '#6aa84f'
                                             },
                                             text: {
                                                 // Tweak text color:
-                                                fill: '#89bded',
+                                                fill: '#6aa84f',
                                                 // Tweak text size:
                                                 fontSize: '28px',
                                             },
                                         }} />
+
+
                                     </div>
                                 }
-                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Biology</span>}
-                            // subheader={<CardActions style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="info" />Analytics</CardActions>}
-                            />
-                        </Grid><Divider />
+                                title={<span style={{ fontWeight: 'bold', fontSize: 13 }}>Maths</span>}
+                            // subheader={<CardActions className="overlay" style={{ padding: 0 }} title="Analytics">< AnalyticsIcon color="success" />Analytics</CardActions>}
+                            /><Divider />
+
+
+                        </Grid>
                         <Grid container item xs={12} style={{ justifyContent: 'space-between', alignItems: 'center', textAlign: 'center', padding: 0, }}>
                             <Grid item xs={6} sx={{
                                 ":hover": {
-                                    color: "green",
-                                    background: 'linear-gradient(32deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
-                                    boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 0.5)"
+                                    color: "#fff",
+                                    background: 'linear-gradient(34deg,#e9a35a, #e9a35a, #e9a35a,#e9a35a)',
+                                    boxShadow: "2px 2px 5px 0px #e9f7ed"
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href='/teacher/biology'>
-                                    <Button size="small" variant="text" sx={{
-                                        ":hover": {
-                                            color: "#ffffff",
-                                        },
-                                        fontSize: 14,
-                                    }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
-                                    </Button>
-                                </Link>
+
+                                {/* <Link href='/teacher/maths'> */}
+                                <Button disabled size="small" variant="text" sx={{
+                                    ":hover": {
+                                        color: "#ffffff",
+                                    },
+                                    fontSize: 14,
+                                }}>
+                                    <IconNotebook style={{ height: 16 }} /> Content
+                                </Button>
+                                {/* </Link> */}
 
                             </Grid>
                             <Grid item xs={6} sx={{
@@ -470,15 +465,42 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconGridDots style={{ height: 16 }} />Manage
-                                </Button>
+                                {/* <Link href={'/quiz/chemistryquiz/Home'}> */}
+                                <Link
+                                    href={{
+                                        pathname: '/teacher/manage/',
+                                        query: { pageId: 'Maths' },
+                                    }}
+                                    style={{ textDecoration: "none", color: "black" }}>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+
+                                    }}>
+                                        <IconGridDots style={{ height: 16 }} />Manage
+                                    </Button>
+                                </Link>
+                                {/* </Link> */}
+
                             </Grid>
+
+
+                            {/* <Button size="small" variant="text"
+<<<<<<< HEAD
+>>>>>>> 1fdd2a68c73ee996f5e17d3541843045748aab39
+=======
+>>>>>>> 18d78a5d8d7dfd710a78da49d44cff0fa19a050a
+                                    sx={{
+                                        ":hover": {
+                                            bgcolor: "#B4F8C8",
+                                            color: "green",
+                                            fontSize: 5
+                                        }
+                                    }}>
+                                    Analytics
+                                </Button> */}
                         </Grid>
                     </Card>
                 </Grid><Divider />
@@ -540,16 +562,16 @@ const DashboardBooks = () => {
 
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href="/teacher/chemistry">
-                                    <Button size="small" variant="text" sx={{
-                                        ":hover": {
-                                            color: "#ffffff",
-                                        },
-                                        fontSize: 14,
-                                    }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
-                                    </Button>
-                                </Link>
+                                {/* <Link href="/teacher/chemistry"> */}
+                                <Button size="small" disabled variant="text" sx={{
+                                    ":hover": {
+                                        color: "#ffffff",
+                                    },
+                                    fontSize: 14,
+                                }}>
+                                    <IconNotebook style={{ height: 16 }} /> Content
+                                </Button>
+                                {/* </Link> */}
                             </Grid>
                             <Grid item xs={6} sx={{
                                 ":hover": {
@@ -559,14 +581,21 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconGridDots style={{ height: 16 }} />Manage
-                                </Button>
+                                <Link
+                                    href={{
+                                        pathname: '/teacher/manage/',
+                                        query: { pageId: 'Chemistry' },
+                                    }}
+                                    style={{ textDecoration: "none", color: "black" }}>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconGridDots style={{ height: 16 }} />Manage
+                                    </Button>
+                                </Link>
                             </Grid>
                         </Grid>
                     </Card>
@@ -628,17 +657,16 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href="/teacher/communication">
-
-                                    <Button size="small" variant="text" sx={{
-                                        ":hover": {
-                                            color: "#ffffff",
-                                        },
-                                        fontSize: 14,
-                                    }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
-                                    </Button>
-                                </Link>
+                                {/* <Link href="/teacher/communication"> */}
+                                <Button size="small" disabled variant="text" sx={{
+                                    ":hover": {
+                                        color: "#ffffff",
+                                    },
+                                    fontSize: 14,
+                                }}>
+                                    <IconNotebook style={{ height: 16 }} /> Content
+                                </Button>
+                                {/* </Link> */}
                             </Grid>
                             <Grid item xs={6} sx={{
                                 ":hover": {
@@ -648,14 +676,21 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconGridDots style={{ height: 16 }} />Manage
-                                </Button>
+                                <Link
+                                    href={{
+                                        pathname: '/teacher/manage/',
+                                        query: { pageId: 'Communication' },
+                                    }}
+                                    style={{ textDecoration: "none", color: "black" }}>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconGridDots style={{ height: 16 }} />Manage
+                                    </Button>
+                                </Link>
                             </Grid>
                         </Grid>
                     </Card>
@@ -726,16 +761,16 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Link href="/teacher/socialwelfare">
-                                    <Button size="small" variant="text" sx={{
-                                        ":hover": {
-                                            color: "#ffffff",
-                                        },
-                                        fontSize: 14,
-                                    }}>
-                                        <IconNotebook style={{ height: 16 }} /> Content
-                                    </Button>
-                                </Link>
+                                {/* <Link href="/teacher/socialwelfare"> */}
+                                <Button size="small" disabled variant="text" sx={{
+                                    ":hover": {
+                                        color: "#ffffff",
+                                    },
+                                    fontSize: 14,
+                                }}>
+                                    <IconNotebook style={{ height: 16 }} /> Content
+                                </Button>
+                                {/* </Link> */}
                             </Grid>
                             <Grid item xs={6} sx={{
                                 ":hover": {
@@ -745,14 +780,21 @@ const DashboardBooks = () => {
                                 },
                                 borderRight: '1px solid #ddd'
                             }}>
-                                <Button size="small" variant="text" onClick={handleSubmitEvents} sx={{
-                                    ":hover": {
-                                        color: "#ffffff",
-                                    },
-                                    fontSize: 14,
-                                }}>
-                                    <IconGridDots style={{ height: 16 }} />Manage
-                                </Button>
+                                <Link
+                                    href={{
+                                        pathname: '/teacher/manage/',
+                                        query: { pageId: 'Social Welfare' },
+                                    }}
+                                    style={{ textDecoration: "none", color: "black" }}>
+                                    <Button size="small" variant="text" sx={{
+                                        ":hover": {
+                                            color: "#ffffff",
+                                        },
+                                        fontSize: 14,
+                                    }}>
+                                        <IconGridDots style={{ height: 16 }} />Manage
+                                    </Button>
+                                </Link>
                             </Grid>
                         </Grid>
                     </Card>

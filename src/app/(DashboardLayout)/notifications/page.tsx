@@ -445,7 +445,178 @@ export default function PageNotify() {
                     ]
                 }
             ]
-        }
+        },
+        {
+            "id": 3,
+            "subject": "Communication",
+            "qcount": 4,
+            "questions": [
+                {
+                    "Qid": 0,
+                    "question": "The Rosenmund reaction can produce which carbonyl compounds?",
+                    "creater": "GopalKrisnan",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Narain",
+                            "postedDate": "23-04-2023",
+                            "answer": "Benzaldehyde"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Suja",
+                            "postedDate": "23-04-2023",
+                            "answer": "Benzaldehyde"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Karan2",
+                            "postedDate": "19-05-2023",
+                            "answer": "No Answer"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 1,
+                    "question": "Reactions occur between aldehydes and ketones?",
+                    "creater": "Shewag",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "Two girls were born to the same mother, at the same time, on the same day, in the same month and the same year and yet somehow they’re not twins. Why not?",
+                    "creater": "Shewag",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 3,
+                    "question": "There is a three-digit number. The second digit is four times as big as the third digit, while the first digit is three less than the second digit. What is the number?",
+                    "creater": "Shewag",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Karen",
+                            "postedDate": "23-04-2023",
+                            "answer": "nucleophilic addition"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Paji",
+                            "postedDate": "23-04-2023",
+                            "answer": "electrophilic addition"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 0,
+            "subject": "Social Welfare",
+            "qcount": 1,
+            // "color": 'rgb(0, 227, 150)',
+            "questions": [
+                {
+                    "Qid": 1,
+                    "question": "The light energy emitted by a star is due to",
+                    "creater": "Kelvin",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Karan",
+                            "postedDate": "18-04-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Kirana",
+                            "postedDate": "30-05-2023",
+                            "answer": "Joining of nuclei"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Sanjana",
+                            "postedDate": "03-04-2023",
+                            "answer": "Burning of nuclei"
+                        }
+                    ]
+                },
+                {
+                    "Qid": 2,
+                    "question": "A radioactive nucleus emits a beta particle, then the parent and daughter nuclei are",
+                    "creater": "Hardarashna Hardik",
+                    "acount": 3,
+                    "answers": [
+                        {
+                            "aid": 0,
+                            "author": "Sanu",
+                            "postedDate": "07-08-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 1,
+                            "author": "Prem",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isobars"
+                        },
+                        {
+                            "aid": 2,
+                            "author": "Lali",
+                            "postedDate": "23-04-2023",
+                            "answer": "Isotopes"
+                        }
+                    ]
+                }
+            ]
+        },
     ]
 
     let myself = [
@@ -721,7 +892,7 @@ export default function PageNotify() {
 
 
     const handlechangemyself = (e: any) => {
-        setChecked(!checked)
+        // setChecked(!checked)
         if (e.target.checked) {
             setQuestion1(myself)
         } else {
@@ -771,23 +942,23 @@ export default function PageNotify() {
                                                 <div className='column1' >
                                                     {question.subject === "Physics" ? <div className="container">
                                                         {/* <span className="icon"></span> */}
-                                                        <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(0, 227, 150)", borderRadius: "7px" }}><b>Physics</b></span>
+                                                        <span className="label" style={{ textAlign: "center", color: 'white', width: "100%", backgroundColor: "rgb(0, 227, 150)", borderRadius: "7px" }}><b>Physics</b></span>
                                                     </div> :
                                                         question.subject === "Maths" ? <div className="container">
                                                             {/* <span className="icon"></span> */}
-                                                            <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(0, 143, 251)", borderRadius: "7px" }}><b>Maths</b></span></div>
+                                                            <span className="label" style={{ textAlign: "center", color: 'white', width: "100%", backgroundColor: "rgb(0, 143, 251)", borderRadius: "7px" }}><b>Maths</b></span></div>
                                                             : question.subject === "Biology" ? <div className="container">
                                                                 {/* <span className="icon"><BiotechIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
-                                                                <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(254, 176, 25)", borderRadius: "7px" }}><b>Biology</b></span></div>
+                                                                <span className="label" style={{ textAlign: "center", color: 'white', width: "100%", backgroundColor: "rgb(254, 176, 25)", borderRadius: "7px" }}><b>Biology</b></span></div>
                                                                 : question.subject === "Chemistry" ? <div className="container">
                                                                     {/* <span className="icon"><ScienceIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
-                                                                    <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(255, 69, 96)", borderRadius: "7px" }}><b>Chemistry</b></span></div>
+                                                                    <span className="label" style={{ textAlign: "center", color: 'white',width: "100%",  backgroundColor: "rgb(255, 69, 96)", borderRadius: "7px" }}><b>Chemistry</b></span></div>
                                                                     : question.subject === "Communication" ? <div className="container">
                                                                         {/* <span className="icon"><SmsIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
-                                                                        <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(119, 93, 208) ", borderRadius: "7px" }}><b>Communication</b></span></div>
-                                                                        : question.subject === "SocialWelfare" ? <div className="container">
+                                                                        <span className="label" style={{ textAlign: "center", color: 'white', width: "100%",padding:"5px", backgroundColor: "rgb(119, 93, 208) ", borderRadius: "7px" }}><b>Communication</b></span></div>
+                                                                        : question.subject === "Social Welfare" ? <div className="container">
                                                                             {/* <span className="icon"><PublicIcon style={{ height: '38px', width: '38px' }} color="info" /></span> */}
-                                                                            <span className="label" style={{ textAlign: "center", color: 'white', width: "80%", backgroundColor: "rgb(0, 143, 251) ", borderRadius: "7px" }}><b>Social Welfare</b></span></div>
+                                                                            <span className="label" style={{ textAlign: "center", color: 'white', width: "100%", backgroundColor: "rgb(0, 143, 251) ", borderRadius: "7px" }}><b>Social Welfare</b></span></div>
                                                                             : ""}
                                                     {/* question.subject === "Maths" ? <span style={{ color: 'rgb(0, 143, 251)' }} > Maths</span> : question.subject === "Biology" ? <span style={{ color: 'rgb(254, 176, 25)' }} >Biology</span> :
                                                              question.subject === "Chemistry" ? <span style={{ color: 'rgb(255, 69, 96)' }}> Chemistry</span> : question.subject === "Communication" ? <span style={{ color: "rgb(119, 93, 208) " }} >Communication</span> :

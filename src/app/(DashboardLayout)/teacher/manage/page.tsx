@@ -12,6 +12,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Toolbar from '@mui/material/Toolbar';
+import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
@@ -19,15 +20,25 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import Modal from '@mui/material/Modal';
 // import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import PageContainer from '../../components/container/PageContainer';
 import './manage.css'
-import { Alert, Button, Stack } from '@mui/material';
+import { Alert, Avatar, Button, Card, CardActionArea, CardContent, Grid, Stack, styled } from '@mui/material';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField
+} from "@mui/material";
+
 
 interface Data {
   id: number;
@@ -219,36 +230,60 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 interface EnhancedTableToolbarProps {
   numSelected: number;
 }
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  '& .MuiDialogContent-root': {
+    padding: theme.spacing(2),
+  },
+  '& .MuiDialogActions-root': {
+    padding: theme.spacing(1),
+  },
+}));
+const stylebox = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'white',
+  border: '2px solid #k',
+  borderRadius: '5px',
+  boxShadow: 2,
+  // p: 1,
+};
 
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   const { numSelected } = props;
 
   return (
-    <Toolbar
-      sx={{ backgroundColor: "#f7f9fd" }}
-    // sx={{
-    //   pl: { sm: 2 },
-    //   pr: { xs: 1, sm: 1 },
-    //   ...(numSelected > 0 && {
-    //     bgcolor: (theme) =>
-    //       alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-    //   }),
-    // }}
-    >
-      {/* <div> */}
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z" /></svg>
-      </div>
-      <div style={{ padding: "2px 0 0 2px", width: "100%" }}>
-        <input className='inputDesign' type='search'></input>
-      </div>
-      {/* </div> */}
-      <div style={{ padding: "2px 0 0 2px", width: "50%", justifyContent: "end", display: "flex" }}>
-        <button style={{ backgroundColor: "rgb(0, 133, 219)", padding: "5px", display: "flex", justifyContent: "center", border: "none", borderRadius: "5px", color: "white", alignItems: "center" }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 21 21"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" d="M5.5 10.5h10m-5-5v10" /></svg>
-          Add Student</button>
-      </div>
-    </Toolbar>
+    <div>
+      <Toolbar
+        sx={{ backgroundColor: "#f7f9fd" }}
+      // sx={{
+      //   pl: { sm: 2 },
+      //   pr: { xs: 1, sm: 1 },
+      //   ...(numSelected > 0 && {
+      //     bgcolor: (theme) =>
+      //       alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+      //   }),
+      // }}
+      >
+        {/* <div> */}
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z" /></svg>
+        </div>
+        <div style={{ padding: "2px 0 0 2px", width: "100%" }}>
+          <input className='inputDesign' type='search'></input>
+        </div>
+        {/* </div> */}
+        <div style={{ padding: "2px 0 0 2px", width: "50%", justifyContent: "end", display: "flex" }}>
+          <button style={{ backgroundColor: "rgb(0, 133, 219)", padding: "5px", display: "flex", justifyContent: "center", border: "none", borderRadius: "5px", color: "white", alignItems: "center" }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 21 21"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" d="M5.5 10.5h10m-5-5v10" /></svg>
+            Add Student</button>
+        </div>
+      </Toolbar>
+
+    </div>
+
     // <div>
     //   <div >
     //   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z"/></svg>
@@ -259,15 +294,21 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
     // </div>
   );
 }
-export default function EnhancedTable() {
+export default function EnhancedTable({ searchParams }: {
+  searchParams: {
+    pageId: string
+  }
+}
+) {
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] = React.useState<keyof Data>('description');
   const [selected, setSelected] = React.useState<readonly number[]>([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [messagetrue,setMessageTrue] = React.useState(false)
-  const [buttonHide,setButtonHide] = React.useState(false)
+  const [messagetrue, setMessageTrue] = React.useState(false)
+  const [studentAddMessage, setStudentAddMessage] = React.useState(false)
+  const [buttonHide, setButtonHide] = React.useState(false)
   const pathname = usePathname();
   const router = useRouter();
   const handleRequestSort = (
@@ -278,8 +319,58 @@ export default function EnhancedTable() {
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
+  const [ctitle, setCtitle] = React.useState<string[]>([]);
+
+  React.useEffect(() => {
+
+    if (searchParams.pageId === "" || undefined) {
+    } else {
+      // const l = [...links];
+      // const searchParamsSelections = collections.find(c => c.name === searchParams.cTitle);
+      // if (searchParamsSelections) {
+      //   setNavLinks(l.filter(ll => searchParamsSelections.selections.includes(ll.id)))
+      //   //textInput.current.focus();
+      //   const section = document.querySelector('#' + searchParams.link);
+      //   if (section !== null) {
+      //     section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      //   }
+      // }
+    }
+
+    // if(smoothSelect){
+    // 	const section = document.querySelector(smoothValue.selections[0]);
+    // 	if(section !== null) {
+    // 		 section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+    // 	}
+    // }
+  }, [])
+
+  const [openModalAddLabel, setOpenModalAddLabel] = React.useState(false)
+  const onSubmitName = () => {
+
+    ctitle.map((ct, i) => {
+      let data = createData(rows.length + 1, `${ct}`, 'Functions of Adjectives. An adjective modifies a noun; that is, it provides more detail about a noun.', "Excelling", 0, 0)
+      rows.push(data)
+    })
 
 
+    setStudentAddMessage(true)
+    setTimeout(() => {
+      setStudentAddMessage(false)
+      setButtonHide(true)
+    }, 2000)
+    handleClose()
+
+  }
+  const handleChangeDropdown = (e: any) => {
+    setOpenModalAddLabel(true)
+    // let submitStar:boolean = true;
+
+  }
+  const handleClose = () => {
+    setOpenModalAddLabel(false)
+    setCtitle([])
+  }
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -347,29 +438,116 @@ export default function EnhancedTable() {
   const years = [...Array(10)].map((_, i) => currentYear + i - 1 + 1);
 
 
-const handleClickMessage = () =>{
-  
-  setMessageTrue(true)
-  setTimeout(() => {
-    setMessageTrue(false)
-    setButtonHide(true)
-  },2000)
-}
+  const handleClickMessage = () => {
+
+    setMessageTrue(true)
+    setTimeout(() => {
+      setMessageTrue(false)
+      setButtonHide(true)
+    }, 2000)
+  }
+
+
+
+  const users = [
+    {
+      "id": 1,
+      "userName": "Raghul",
+      "location": "U.K",
+      "img": "https://img.freepik.com/free-vector/cute-boy-standing-position-showing-thumb_96037-450.jpg?w=1060&t=st=1705762720~exp=1705763320~hmac=7b00f0ddec55f88b4d7efb77a4285a8accefb4f3934c24b7a04ff042fd7a8e5d"
+    },
+    {
+      "id": 2,
+      "userName": "Ravi",
+      "location": "United",
+      "img": "https://img.freepik.com/free-photo/fun-3d-cartoon-illustration-indian-businessman_183364-114457.jpg?w=740&t=st=1705762375~exp=1705762975~hmac=f44f94db8f7107db3d65d1fe632358abebc7ae6b947f9be090f58fd1b038d9e2"
+    },
+    {
+      "id": 3,
+      "userName": "sharuk",
+      "location": "United kingdom",
+      "img": "https://img.freepik.com/free-vector/follow-me-social-business-theme-design_24877-50426.jpg?w=740&t=st=1705762438~exp=1705763038~hmac=939afc2997ab45f05176a2fddebc9c4e56057ba9647b94d89215ea77ebb361b4"
+    },
+    {
+      "id": 4,
+      "userName": "Abdullah",
+      "location": "Japan",
+      "img": "https://img.freepik.com/free-vector/follow-me-social-business-theme-design_24877-50426.jpg?w=740&t=st=1705762438~exp=1705763038~hmac=939afc2997ab45f05176a2fddebc9c4e56057ba9647b94d89215ea77ebb361b4"
+    },
+    {
+      "id": 5,
+      "userName": "Bishnoi",
+      "location": "Pakistan",
+      "img": "https://img.freepik.com/free-photo/fun-3d-illustration-cartoon-police-officer_183364-81207.jpg?w=360&t=st=1705761003~exp=1705761603~hmac=d30f0ca449689308e60690f9e77d489bed99ea992c78a60a5a5be074a9cfa13c"
+    }, {
+      "id": 6,
+      "userName": "Ravi Bishnoi",
+      "location": "United",
+      "img": "https://img.freepik.com/free-vector/follow-me-social-business-theme-design_24877-50426.jpg?w=740&t=st=1705762438~exp=1705763038~hmac=939afc2997ab45f05176a2fddebc9c4e56057ba9647b94d89215ea77ebb361b4"
+    }, {
+      "id": 7,
+      "userName": "Mahendran ",
+      "location": "United",
+      "img": "https://img.freepik.com/free-photo/fun-3d-cartoon-illustration-indian-businessman_183364-114457.jpg?w=740&t=st=1705762375~exp=1705762975~hmac=f44f94db8f7107db3d65d1fe632358abebc7ae6b947f9be090f58fd1b038d9e2"
+    }, {
+      "id": 8,
+      "userName": "Sachin ",
+      "location": "United",
+      "img": "https://img.freepik.com/free-vector/boy-student-sitting-stack-books-with-laptop-flat-icon-illustration_1284-64037.jpg?w=740&t=st=1705762520~exp=1705763120~hmac=32a49fdd1505cd44181da8ed951d35f028eca91c95013db381a34359e3e5547b"
+    }, {
+      "id": 9,
+      "userName": "Sara Arjun",
+      "location": "United",
+      "img": "https://img.freepik.com/free-vector/cute-boy-standing-position-showing-thumb_96037-450.jpg?w=1060&t=st=1705762720~exp=1705763320~hmac=7b00f0ddec55f88b4d7efb77a4285a8accefb4f3934c24b7a04ff042fd7a8e5d"
+    }, {
+      "id": 10,
+      "userName": "Ravi",
+      "location": "United",
+      "img": "https://img.freepik.com/free-vector/man-working-computer-home_1308-102130.jpg?w=1380&t=st=1705762539~exp=1705763139~hmac=ccba77a0dfb51d50a91ef1e20c250eb9c1838f01981b156abf2b9997891a2dbb"
+    }, {
+      "id": 11,
+      "userName": "Arjun",
+      "location": "United",
+      "img": "https://img.freepik.com/free-photo/fun-3d-cartoon-illustration-indian-businessman_183364-114457.jpg?w=740&t=st=1705762375~exp=1705762975~hmac=f44f94db8f7107db3d65d1fe632358abebc7ae6b947f9be090f58fd1b038d9e2"
+    }
+  ]
+
+  const handleStudentAdd = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
+    if (e.target.checked) {
+      setCtitle([...ctitle, name])
+    } else {
+      if (ctitle.includes(name)) {
+        setCtitle(ctitle.filter(ct => ct != name))
+      }
+    }
+
+  }
+
+
+  console.log("setCtitle", ctitle)
 
   return (
     <div>
-      {messagetrue ? 
-      <Stack  sx={{display:"flex",alignItems:"center"}}  spacing={2}>
-      <Alert  variant="filled" style={{color:'white'}} severity="success">
-        Schedule Saved.
-      </Alert>
-      </Stack>:"" }
+      {messagetrue ?
+        <Stack sx={{ display: "flex", alignItems: "center" }} spacing={2}>
+          <Alert variant="filled" style={{ color: 'white' }} severity="success">
+            Schedule Saved.
+          </Alert>
+        </Stack> : ""}
+
+
+      {studentAddMessage ?
+        <Stack sx={{ display: "flex", alignItems: "center" }} spacing={2}>
+          <Alert variant="filled" style={{ color: 'white' }} severity="success">
+            Student Added Suucessfully
+          </Alert>
+        </Stack> : ""}
 
       <div className="rowhead">
         <div className="columnhead1" style={{ textAlign: "start" }} >
           {/* <Typography >Questions</Typography> */}
-          <b style={{ fontSize: "16px" }}>
-            Manage Your class </b>(<span style={{ color: 'rgb(255, 69, 96)' }}>Students in Chemistry Level 1</span>)
+          {/* <b style={{ fontSize: "16px" }}> */}
+            {/* Manage Your class </b>(<span style={{ color: 'rgb(255, 69, 96)' }}>Students in {searchParams.pageId} Level 1</span>) */}
         </div>
         <div className="columnhead2" style={{ display: "flex" }}>
           {/* <Button style={{backgroundColor:'#b9b0b0',color:"white",borderRadius:"5px"}}>Filter features here:</Button>&nbsp; */}
@@ -401,7 +579,25 @@ const handleClickMessage = () =>{
           <div className="columnmanage1 ">
             <Box >
               <Paper sx={{ width: '100%', mb: 2 }} className='scrollcontent'>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
+                <Card style={{ marginBottom: 5 }}>
+                  <Grid container item xs={12} lg={12} style={{ display: 'flex', padding: 8 }}>
+                    <Grid item xs={12} lg={9}>
+                      {/* <div style={{ display: 'flex' }}> */}
+                        {/* <div className="columnhead1" style={{ textAlign: "start" }} > */}
+                          {/* <Typography >Questions</Typography> */}
+                          <b style={{ fontSize: "16px" }}>
+                            Manage Your class</b> <span style={{ color: 'rgb(255, 69, 96)' }}>Students in {searchParams.pageId} Level 1</span>
+                        {/* </div> */}
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="skyblue" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z" /></svg>
+                        <input className='inputDesign' placeholder='Filter' type='search'></input> */}
+                      {/* </div> */}
+                    </Grid>
+                    <Grid item xs={12} lg={3} justifyContent={'flex-end'} alignItems={'flex-end'} textAlign={'end'}>
+                      <Button size='small' style={{ backgroundColor: "rgb(0, 133, 219)", color: '#fff' }} onClick={(e) => handleChangeDropdown(e)}>Add Student</Button>
+                    </Grid>
+                  </Grid>
+                </Card>
                 <TableContainer sx={{ height: '80%' }}>
                   <Table
                     // sx={{ minWidth: 750 }}
@@ -448,9 +644,9 @@ const handleClickMessage = () =>{
                               id={labelId}
                               scope="row"
                               align='left'
-                             style={{padding:"0 0 0 18px"}}
+                              style={{ padding: "0 0 0 18px" }}
                             >
-                              {index + 1}
+                              {row.id}
                             </TableCell>
                             <TableCell
                               component="th"
@@ -506,13 +702,164 @@ const handleClickMessage = () =>{
       /> */}
             </Box>
           </div>
+          {/* <BootstrapDialog
+            // onClose={handleClose}
+            aria-labelledby="customized-dialog-title"
+            open={openModalAddLabel}
+          > */}
+          <BootstrapDialog
+            // onClose={handleClose}
+            fullWidth
+            maxWidth='lg'
+            //  style={{height:"50%"}}
+            open={openModalAddLabel}
+          >
+            <DialogTitle sx={{ m: 0, p: "10px 3px 5px 10px", backgroundColor: "rgb(0 133 219 / 66%)", color: "white" }} id="customized-dialog-title">
+              Add Students
+            </DialogTitle>
+            <IconButton
+              aria-label="close"
+              //   onClick={() => handleCloseAllModal()}
+              sx={{
+                position: 'absolute',
+                padding: "5px 0px 5px 0px",
+                right: 8,
+                // top: 2,
+                color: (theme) => theme.palette.grey[500],
+              }}
+            >
+              <CloseIcon style={{ color: "white" }} onClick={() => handleClose()} />
+            </IconButton>
+            <DialogContent dividers>
+              <div className='carddesign'>
+                {users.map((usersresponse) => (
+                  <Card key={usersresponse.id} className='cardforall' sx={{ maxWidth: 345 }}>
+                    <CardActionArea key={usersresponse.id}>
+                      {/* <CardMedia
+     component="img"
+     height="140"
+     image="/static/images/cards/contemplative-reptile.jpg"
+     alt="green iguana"
+   /> */}
+                      <CardContent>
+                        <Grid container spacing={{ xs: 1, md: 4 }}
+                          columns={{ xs: 4, sm: 8, md: 12 }}>
+                          <Grid item xs={3}>
+                            <Avatar src={usersresponse.img} />
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Typography variant='h6'>{usersresponse.userName}</Typography>
+                            <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 50 50"><path fill="currentColor" d="m25 42.5l-.8-.9C23.7 41.1 12 27.3 12 19c0-7.2 5.8-13 13-13s13 5.8 13 13c0 8.3-11.7 22.1-12.2 22.7zM25 8c-6.1 0-11 4.9-11 11c0 6.4 8.4 17.2 11 20.4c2.6-3.2 11-14 11-20.4c0-6.1-4.9-11-11-11" /><path fill="currentColor" d="M25 24c-2.8 0-5-2.2-5-5s2.2-5 5-5s5 2.2 5 5s-2.2 5-5 5m0-8c-1.7 0-3 1.3-3 3s1.3 3 3 3s3-1.3 3-3s-1.3-3-3-3" /></svg>
+                              {usersresponse.location}
+                            </span>
+                          </Grid>
+                          <Grid item xs={3} justifyContent="end" display="flex" style={{ padding: "35px 0 0 0" }}>
+                            {/* <div className="checkbox-wrapper-31">
+  <input type="checkbox"/>
+  <svg viewBox="0 0 35.6 35.6">
+    <circle className="background" cx="17.8" cy="17.8" r="17.8"></circle>
+    <circle className="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+    <polyline className="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+  </svg>
+</div> */}
+
+
+                            <div className="checkbox-wrapper-39">
+                              <label>
+                                <input type="checkbox" onChange={(e) => handleStudentAdd(e, usersresponse.userName)} />
+                                <span className="checkbox" ></span>
+                              </label>
+                            </div>
+
+
+
+
+
+
+
+                            {/* <Button style={{ justifyContent: "end", display: "flex", color: "white", backgroundColor: "rgb(0, 133, 219)" }} onClick={() => handleClose()}>Add</Button> */}
+                            {/* <button className='shareButton' onChange={e => setCtitle(usersresponse.userName)}>Add</button> */}
+                          </Grid>
+                        </Grid>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                ))}
+              </div>
+
+              {/* <Grid container spacing={{ xs: 1, md: 4 }}
+						columns={{ xs: 4, sm: 8, md: 12 }}>
+						<Grid item xs={3}>
+							<label>UserName</label>
+						</Grid>
+						<Grid item xs={9}>
+							<input style={{ width: "100%" }} name="Email" id="Email" className="input" type="select" />
+						</Grid>
+					</Grid> */}
+            </DialogContent>
+            <DialogActions>
+              <div style={{ justifyContent: "flex-end", display: "flex", padding: "5px" }}>
+                <Button style={{ justifyContent: "end", display: "flex", color: "white", backgroundColor: "rgb(0, 133, 219)" }} onClick={() => onSubmitName()}>Submit</Button>
+              </div>
+            </DialogActions>
+          </BootstrapDialog>
+
+
+
+
+          {/* <Modal
+            open={openModalAddLabel}
+            onClose={() => setOpenModalAddLabel(false)}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={stylebox}>
+              <div style={{ display: 'flex', backgroundColor: 'rgb(0 133 219 / 66%)' }}>
+                <DialogTitle sx={{ m: 0, p: "10px 3px 5px 10px", color: "white" }} id="customized-dialog-title">
+                  Add Student Name
+                </DialogTitle>
+                <IconButton
+                  aria-label="close"
+                  onClick={() => handleClose()}
+                  sx={{
+                    position: 'absolute',
+                    padding: "5px 0px 5px 0px",
+                    right: 8,
+                    // top: 2,
+                    color: (theme) => theme.palette.grey[500],
+                  }}
+                >
+                  <CloseIcon style={{ color: "white" }} onClick={handleClose} />
+                </IconButton>
+              </div>
+              <DialogContent dividers>
+                <Grid container spacing={{ xs: 1, md: 4 }}
+                  columns={{ xs: 4, sm: 8, md: 12 }}>
+                  <Grid item xs={3.5}>
+                    <label>Enter Name</label>
+                  </Grid>
+                  <Grid item xs={8.5}>
+                    <input style={{ width: "100%" }} name="Email" id="Email" className="input" type="text" value={ctitle} onChange={e => setCtitle(e.target.value)} />
+                  </Grid>
+                </Grid>
+              </DialogContent>
+              <DialogActions>
+                <div style={{ justifyContent: "flex-end", display: "flex", padding: "5px" }}>
+                  <Button disabled={ctitle.trim().length == 0} style={{ justifyContent: "end", display: "flex", color: "white", backgroundColor: "rgb(0, 133, 219)" }} onClick={onSubmitName}>Submit</Button>
+                </div>
+              </DialogActions>
+            </Box>
+          </Modal> */}
+
+
           <div className="columnmanage2">
             <Box >
-              <span style={{fontWeight:'bold',marginBottom:'15px',color:'#713593'}}>Schedule Your Class</span>
+              <span style={{ fontWeight: 'bold', marginBottom: '15px', color: '#713593' }}>Schedule Your Class</span>
               <div >
                 <h5 style={{ margin: "2px 0 2px 0" }}>Start Date</h5>
-                <select className='selectManage' name="startdate" id="startdate">
-                  <option disabled selected>Day</option>
+                <select className='selectManage' name="startdate" id="startdate" value={new Date().getDate()}>
+                  <option disabled >Day</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -545,14 +892,13 @@ const handleClickMessage = () =>{
                   <option value="30">30</option>
                   <option value="31">31</option>
                 </select>&emsp;
-                <select className='selectManage' name="startmonth" id="startmonth">
-                  <option disabled selected>Month</option>
+                <select className='selectManage' name="startmonth" id="startmonth" value={new Date().getMonth()}>
+                  <option disabled >Month</option>
                   {months.map((month, i) => (
                     <option key={month} value={month} >{month}</option>
                   ))}
                 </select>&emsp;
                 <select className='selectManage' name="startyear" id="startyear">
-                  <option disabled selected>Year</option>
                   {years.map((year, i) => (
                     <option key={year} value={year} >{year}</option>
                   ))}
@@ -561,7 +907,7 @@ const handleClickMessage = () =>{
               <div style={{ margin: "20px 0 0 0" }}>
                 <h5 style={{ margin: "2px 0 2px 0" }}>End Date</h5>
                 <select className='selectManage' name="enddate" id="enddate">
-                  <option disabled selected>Day</option>
+                  <option disabled >Day</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -607,11 +953,11 @@ const handleClickMessage = () =>{
                   ))}
                 </select>
               </div>
-              <div style={{ display: "flex", justifyContent: "center", marginTop: "15px",marginBottom:15 }}>
-                <button className='buttonmanage' disabled={buttonHide === true ? true : false} style={ buttonHide === true ? {cursor:"not-allowed"} :{cursor:"pointer"}} onClick={()=>handleClickMessage()}>Schedule</button>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: "15px", marginBottom: 15 }}>
+                <button className='buttonmanage' disabled={buttonHide === true ? true : false} style={buttonHide === true ? { cursor: "not-allowed" } : { cursor: "pointer" }} onClick={() => handleClickMessage()}>Schedule</button>
               </div>
               <div style={{ margin: "20px 0 0 0" }}>
-              <span style={{fontWeight:'bold',marginBottom:'15px',color:'#713593'}}>Make Announcement</span>
+                <span style={{ fontWeight: 'bold', marginBottom: '15px', color: '#713593' }}>Make Announcement</span>
                 {/* <h4 style={{ margin: "10px 0 0 0" }}></h4> */}
                 <div style={{ alignItems: "end", display: "flex", justifyContent: "end" }}>
                   <Button color="primary" style={{ backgroundColor: "grey", color: "white", borderRadius: "10px", padding: "2px" }} >
@@ -622,9 +968,10 @@ const handleClickMessage = () =>{
               </div>
             </Box>
           </div>
+
         </div>
 
-      </PageContainer>
+      </PageContainer >
 
 
 
@@ -638,6 +985,6 @@ const handleClickMessage = () =>{
     <p>Some text..</p>
   </div>
 </div> */}
-    </div>
+    </div >
   );
 }

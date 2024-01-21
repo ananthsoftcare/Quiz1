@@ -120,17 +120,23 @@ const links = [
 	{
 	  name: "Research Essay",
 	  id: 8,
-	  link: '#expanders'
+	  link: '#research-essay'
 	},
 	{
 	  name: "Composition Essay",
 	  id: 9,
-	  link: '#filters'
+	  link: '#composition-essay'
 	}
 ];
 
 
-export default function Content() {
+export default function Content({ searchParams }: {
+	searchParams: {
+		cTitle: string,
+		cTopic: string,
+		link:string
+	}
+}) {
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -175,6 +181,25 @@ export default function Content() {
 		{id:3, name: 'Research Essay', selections: [8] }
 	])
 
+	React.useEffect(() => {
+
+
+		if (searchParams.cTitle === "" || undefined) {
+		}else{
+			const l = [...links];
+			const selections = collections.find(c => c.name === searchParams.cTitle);
+			if (selections) {
+				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+			 	//textInput.current.focus();
+				 const section = document.querySelector('#' + searchParams.link);
+				 if(section !== null) {
+				 section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+				 }
+			}
+		}
+	}, [])
+
+
 	function openForm() {
 		setFloatingOpen({ openModal: 'block' })
 	}
@@ -200,12 +225,34 @@ export default function Content() {
 			setOpenModalAddLabel(true)
 		} else if(value === '') {
 			setNavLinks([...links])
-		} else {
+		}
+		else {
 			const l = [...links];
 			const selections = collections.find(c => c.name === value);
-			if(selections) {
-				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+			let defaultScroll;
+			if (selections && selections.selections) {
+				defaultScroll = l.find(nav => nav.id === selections.selections[0]);
 			}
+			// setSmooothValue(selections)
+			if (selections) {
+				setNavLinks(l.filter(ll => selections.selections.includes(ll.id)))
+				if (defaultScroll?.link) {
+					const section = document.querySelector(defaultScroll.link); 
+					if(section !== null){
+						section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				}
+				// if (section !== null) {
+				// 	section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				// }
+			}
+
+
+			// console.log("selections :: "+l.filter(ll => selections.selections.includes(selections.selections[0])));
+			// const section = document.querySelector(selections.selections[0]);
+			// if(section !== null) {
+			// 	 section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+			// }
 		}
 	}
 
@@ -296,7 +343,7 @@ export default function Content() {
 							</Grid>
 							<Grid item xs={2}>
 								<Typography ><b>Apply Your Collection</b></Typography>&nbsp;
-								<select  name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)} defaultValue={''}>
+								<select  value={searchParams.cTitle} name="cars" id="cars" onChange={(e) => handleChangeDropdown(e)} defaultValue={''}>
 								<option value="" selected={currentCollection===''}><button>None</button></option>
 								<option value="addTitle" selected={currentCollection==='addTitle'}><button >Add New Collection</button></option>
 								{collections.map(coll => <option key={coll.id} value={coll.name} selected={currentCollection===coll.name}>{coll.name}</option>)}															
@@ -801,7 +848,7 @@ export default function Content() {
 										evolution of humankind
 									</p>
 								</section>
-								<section id="expanders">
+								<section id="research-essay">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Research Essay</h2>
 									<p>
 										In view of the COVID-19 pandemic, it was felt imperative to reduce content load on students. The National Education Policy 2020 also emphasises reducing the content load and providing opportunities for experiential learning with creative mindset. In this background, the NCERT had undertaken the exercise to rationalise the textbooks across all classes and all subjects. Learning Outcomes already developed by the NCERT across classes had been taken into consideration in this exercise. Contents of the textbooks had been rationalised in view of the following:
@@ -814,7 +861,7 @@ export default function Content() {
 										The present textbooks uploaded in pdf form are rationalised textbooks. These were rationalised for the session 2022-23 and will continue in 2023-24.
 									</p>
 								</section>
-								<section id="filters">
+								<section id="composition-essay">
 									<h2 style={{ fontSize: "16px", margin: 0 }}>Composition Essay</h2>
 									<p>
 										Mind takes form in the city;
