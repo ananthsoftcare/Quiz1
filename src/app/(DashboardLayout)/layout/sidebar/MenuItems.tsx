@@ -46,7 +46,7 @@ const Menuitems = [
   // },
     {
     id: uniqueId(),
-    title: "Collabration",
+    title: "Collaboration",
     icon: IconTable,
     href: "/Collabration",
     children: [
